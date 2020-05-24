@@ -167,14 +167,14 @@ color:white;
 }
 
 .coverImageContainer{
-  width:60%;
+  width:100%;
   height:60%;
 background-color:#0000;
 }
 .loadedImageContainer{
   background-color:#0000;
   width:auto;
-  max-width:80%;
+  max-width:95%;
   height:auto;
   margin-bottom:15px;
   margin-top:15px;

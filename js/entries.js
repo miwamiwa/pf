@@ -127,10 +127,10 @@ let projectDescriptions = [
   },
 
 
-/*
+
   {
   title:"Doodle Risk",
-  fullDescription:"A hobby project for the confinement period to be played with roommates: a three-player game of Risk made with Processing that plays over a local network. Players customize their own tile appearance and can use the ocean as a common doodle space.",
+  fullDescription:"A hobby project for the confinement period to be played with two roommates. A three-player game of Risk made with Processing that plays over a local network. Players customize their own tile appearance and can use the ocean as a common doodle space.",
   coverImage:"doodlerisk.png", // OR coverVideo:"<iframe>",
   tags:["Processing (java)","Networking"],
   date:[15,4,2020],
@@ -143,7 +143,7 @@ let projectDescriptions = [
    }
   ]
   },
-*/
+
 
 /*
 {
@@ -166,7 +166,7 @@ date:[15,4,2020],
 
 {
 title:"Parc-laf-scape",
-fullDescription:"After effects project made for CART 212 Digital Media Studio class. ",
+fullDescription:"After Effects project made for CART 212 Digital Media Studio class. ",
 coverVideo:`<iframe width="560" height="315" src="https://www.youtube.com/embed/5frYCJ43ALQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
 tags:["After Effects"],
 date:[20,2,2019],
