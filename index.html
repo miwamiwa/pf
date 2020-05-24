@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+  <script src="js/entries.js"></script>
+  <script src="js/entryClass.js"></script>
+  <script src="js/sorting.js"></script>
+  <script src="js/script.js"></script>
+</head>
+
+<body onwheel="mouseWheel()">
+
+<div id="tophalf" class="w3-animate-opacity">
+  <!-- TITLE (TOP SECTION) -->
+<div id="titlearea">
+  <div class="pageTitle">Samuel Paré-Chouinard's portfolio</div>
+</div>
+
+<div id="tagarea">
+
+<div id="tagTitle">Filter projects by tag:</div>
+<div id="tagpicker"> </div>
+</div>
+</div>
+
+
+
+
+<div id="bottomhalf">
+  <!-- MENU (LEFT SECTION) -->
+  <div id="menusection">
+
+    <div class="wallDescription">sort by <span id="dateButton" class="sortingOption" onclick="sortByDate()">date</span> / <span id="nameButton" class="sortingOption" onclick="sortByName()">name</span></div>
+
+    <div class="menuTitle" id="menuText">projects:</div>
+    <div id="results"> </div>
+
+
+
+   </div>
+
+
+  <!-- WALL (RIGHT SECTION) -->
+<div id="wallsection">
+
+  <div id="wall"> </div>
+  </div>
+
+
+</div>
+
+<div id="galleryView">
+  <div class="galleryButton" id="closeGallery"  onclick="closeGalleryView()">x</div>
+
+  <div class="galleryButton" id="galleryRightButton" onclick="nextImage()"> > </div>
+  <div class="galleryButton" id="galleryLeftButton" onclick="previousImage()"> < </div>
+  <div class="galleryButton" id="galleryImageCounter"> </div>
+  <div id="galleryImageViewer"> </div>
+</div>
+  </body>
+</html>

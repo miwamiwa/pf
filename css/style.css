@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&family=Manuale&display=swap');
+
+body{
+  height: 100%;
+  font-size:5vmin;
+  overflow: hidden;
+    font-family: 'Crete Round', serif;
+}
+
+/*
+  font-family: 'Raleway', sans-serif;
+   */
+#tophalf{
+  margin-left:3px;
+  margin-top:3px;
+  height:122px;
+  line-height:20px;
+  background-color:#cccf;
+  border-radius:8px;
+  color:#333f;
+  margin-bottom:10px;
+  box-shadow: 4px 4px #555;
+/*  background-color:#c0cf;*/
+}
+.pageTitle{
+
+  padding-left:5px;
+  font-size: 20px;
+  width:400px;
+  position:relative;
+  top:16px;
+  text-decoration:underline;
+  }
+#tagTitle{
+  margin-bottom:5px;
+  font-size:14px;
+}
+#tagarea{
+  padding-left:5px;
+  padding-right:5px;
+  bottom:-25px;
+  position:relative;
+  background-color:#eee8;
+}
+.tagListElement{
+
+  z-index:11;
+  font-size:15px;
+  display:inline-block;
+  margin-right:6px;
+  background-color:#fff9;
+
+  border-style:solid;
+  border-width:1px;
+  border-color:#aaa9;
+  margin-bottom:3px;
+  padding:0px 5px;
+  border-radius:8px;
+}
+.tagListElement:hover{
+  cursor:pointer;
+  border-color:#ddd9;
+  background-color:#eee9;
+  color:#aaaf;
+}
+.tagListElement:active{
+border-color:#4449;
+color:white;
+}
+
+
+#bottomhalf{
+
+  background-color:red;
+}
+
+
+
+#menusection{
+  background-color:#999f;
+  border-radius:8px;
+  padding:3px;
+  position:fixed;
+  width:185px;
+  margin-left:3px;
+  box-shadow: 4px 4px #555;
+}
+.menuTitle{
+  font-size:15px;
+  margin-top:50px;
+}
+
+.menuElement{
+  border-style:solid;
+  border-color:#777;
+  background-color:#cccc;
+  border-radius:8px;
+  border-width:1px;
+  margin-bottom:3px;
+  padding:1px;
+  padding-left:3px;
+  font-size:16px;
+}
+.menuElement:hover{
+  background-color:#bbbd;
+  border-color:#bbbf;
+  cursor:pointer;
+  color:#666f;
+}
+/* "sort by date/name" */
+.wallDescription{
+  font-size:18px;
+  background-color:white;
+  color:#888f;
+  border-radius:8px;
+  width:170px;
+  top:5px;
+  left:5px;
+  position:relative;
+  text-align:center;
+}
+.sortingOption{
+  color:#333;
+}
+.sortingOption:hover{
+  cursor:pointer;
+  color:#aaa;
+}
+
+
+
+#wallsection{
+  left:200px;
+  position:absolute;
+  border-radius:8px;
+}
+#wall{
+  overflow-y: scroll;
+  height:calc(100vh - 150px);
+  width:80%;
+  max-width:1000px;
+  padding-right:10px;
+  margin-left:10px;
+}
+
+.wallElement{
+  margin-bottom:25px;
+  font-size:14px;
+  background-color:lightblue;
+  border-radius:8px;
+  padding:12px;
+}
+.wallElementTitle{
+  font-size:24px;
+}
+.wallElementDateBox{
+  font-size:14px;
+  font-style:italic;
+  color:#444f;
+  margin-bottom:2px;
+}
+.wallElementDescription{
+  font-size:14px;
+}
+.wallElementTagList{
+  font-size:16px;
+}
+
+.coverImageContainer{
+  width:60%;
+  height:60%;
+background-color:#0000;
+}
+.loadedImageContainer{
+  background-color:#0000;
+  width:auto;
+  max-width:80%;
+  height:auto;
+  margin-bottom:15px;
+  margin-top:15px;
+}
+
+.soundcloudContainer{
+  width:60%;
+  height:60%;
+background-color:#0000;
+}
+.loadedSoundcloudContainer{
+  background-color:#0000;
+  width:auto;
+  max-width:50%;
+  height:auto;
+  margin-top:15px;
+}
+
+
+.coverImage{
+  width:100%;
+}
+.videoCredits{
+  font-size:1.5vmin;
+  font-style:italic;
+}
+.imageGalleryDescription{
+  font-size:2vmin;
+  margin-top:3vmin;
+}
+.imageGalleryContainer{
+  margin-top:2vmin;
+  position:relative;
+}
+.imageGalleryThumbnail{
+  background-position:center;
+  width:100px;
+  height:100px;
+  display:inline-block;
+}
+
+
+.externalLinksBox{
+  margin-top:4vmin;
+}
+.externalLinksDescription{
+  margin-bottom:2vmin;
+  font-size:16px;
+  color:#444f;
+}
+.externalLinkEntry{
+  /* this is the box around each external link in the alrger external links box*/
+}
+.externalLinkText{
+  font-size:16px;
+}
+
+
+
+#galleryView{
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:500;
+  background-color:#bbbc;
+  display:none;
+  position:fixed;
+
+  flex-direction:column;
+  justify-content:center;
+}
+#galleryImageViewer{
+
+}
+.galleryButton{
+  color:black;
+  font-size:8vmin;
+  position:fixed;
+  height:26vmin;
+  width:50vmin;
+  padding-top:6vmin;
+
+}
+.galleryButton:hover{
+  color:grey;
+}
+#closeGallery{
+  padding-top:0;
+  text-align:right;
+  right:6vmin;
+  top:3vmin;
+
+
+}
+#galleryRightButton{
+  text-align:right;
+  right: 2vmin;
+  top:45%;
+}
+#galleryLeftButton{
+  text-align:left;
+  left:2vmin;
+  top:45%;
+}
+
+#galleryImageCounter{
+  padding-top:1vmin;
+  left:0;
+  top:0;
+}
+
+
+
+
+
+.selectedText{
+  color:orange;
+}
