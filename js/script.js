@@ -22,7 +22,9 @@ let lastWheelState = false;
 let wheelTimer;
 let loadImages = false;
 let loop;
-
+window.onhashchange = function() {
+ console.log("hash change")
+}
 function mouseWheel(event){
   console.log("wheel")
   wheelState=true;
@@ -175,6 +177,7 @@ function createTagList(){
 function loadPage(){
 
   emptyPage();
+  getTagFromURL();
   setupMenuText();
   sortedEntries = sortElements();
 
@@ -185,6 +188,45 @@ function loadPage(){
     displayImages();
 
     showSelectedTag();
+}
+
+function getTagFromURL(){
+
+  let url = window.location.href;
+
+  let param = url.split("?");
+
+  console.log(param);
+
+  if(param.length==2&&param[1].length>4){
+    let tag = param[1].substring(4,param[1].length).toLowerCase().replace("_"," ");
+
+    console.log("tag is "+tag);
+
+      for(let i=0;i<projectDescriptions.length; i++){
+        for(let j=0; j<projectDescriptions[i].tags.length; j++){
+          console.log("checking ",projectDescriptions[i].tags[j]);
+          if(projectDescriptions[i].tags[j].toLowerCase()==tag){
+            selectedTag = projectDescriptions[i].tags[j];
+            console.log("matched")
+          }
+
+        }
+      }
+  }
+}
+
+
+// set window url to include a tag.
+function setURL(input){
+
+  let url = window.location.href;
+
+  let params = url.split("?");
+  let tag = "?tag="+input.replace(" ","_");
+
+  window.location.href = params[0]+tag;
+  //location.reload();
 }
 
 function setupMenuText(){
@@ -214,8 +256,10 @@ function emptyPage(){
 function tagClicked(input){
   //console.log("tag lcicked")
   doc.wall.scrollTop=0;
+
   selectedTag=input;
-  loadPage();
+  setURL(input);
+
 }
 
 function menuElementClicked(name){
