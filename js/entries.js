@@ -91,6 +91,10 @@ let projectDescriptions = [
     {
       title:'SFX video',
       link:'https://vimeo.com/440352144'
+    },
+    {
+      title:'Play Bad Bots',
+      link:'https://sampc.itch.io/bad-bots-gmtk-2020-jam'
     }
   ]
 },
