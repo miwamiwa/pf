@@ -79,8 +79,8 @@ let projectDescriptions = [
 
 {
   title: 'Bad Bots',
-  fullDescription: 'Solo game project submitted to GMTK Game Jam 2020. Game, sound and art made by me in 48 hours. The theme was "out of control".',
-  tags:['Game design','Sound Design','Unity','Blender'],
+  fullDescription: 'Solo game project submitted to GMTK Game Jam 2020. Game, sounds and art made by me in 48 hours. The theme was "out of control".',
+  tags:['Game design','Sound Design','Unity','Blender',"Music"],
   date:[12,07,2020],
   coverImage:'badbot.png',
   externalLinks:[
@@ -128,7 +128,7 @@ let projectDescriptions = [
 
   //******************** LIQUID PERCEPTIONS ******************************
   {
-  title:"Liquid Perceptions Sound Design",
+  title:"Liquid Perceptions",
   fullDescription:"Liquid Perceptions is a research-creation project by Olivia McGilchrist, Seyed M. Tabatabaei, Julia Salles and Dougy Hérard at the Milieux Institute at Concordia Univeristy, for which I provided some sound design work. "
   +"<br><br>In this dual VR and non-VR experience, two players compete by catching as many fish as they can on a touch screen while a third player, wearing the VR set, witnesses directly the ecological damage of the first two players' fishing, as they swim across the increasingly dangerous underwater environment that lies beneath."
   +"<br>I created sound effects and edited provided musical material to create different soundtracks for the underwater environment (for the VR user's headphones) and overwater (speakers heard by everyone).<br> I programmed the soundtrack in Max MSP (communicating with the Unity project using OSC), to route the soundtracks easily and to allow for some sound design experimentation. The final result featured use of granulation to handle large amounts of sound emitting objects, and some basic motion mapping.",
@@ -144,13 +144,13 @@ let projectDescriptions = [
 
   //******************** FASTENED FURIOUS ******************************
   {
-  title:"Fastened Furious Sound Design",
+  title:"Fastened Furious",
   fullDescription:`Fastened Furious was created for the Ubisoft 2019 Game Lab Competition, where the theme was “spectacle.” The game is a race between two teams of two players tethered together, overcoming wacky obstacles and racing to the finish line. Our game was nominated for the Jury's Special Award. (summary and images by Nicole Lin)
 <br><br>I picked and produced sound effects, composed BGM tracks, set up the project in Wwise and scripted audio triggers in C#. The soundtrack featured midi instruments that would interchange during gameplay, using tools included in Wwise and some C# scripting on the Unity side.
 <br><br>Collaborators: Dougy Herard, Zied Jebali, Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin, Scott Smith`,
   coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   <div class="videoCredits">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-  tags:["Sound Design","Wwise", "Unity", "C#"],
+  tags:["Sound Design","Wwise", "Unity", "C#","Music"],
   date:[1,4,2019],
   soundcloudDescription:"BGM tracks from Fastened Furious:",
   soundcloudLink: `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
@@ -189,6 +189,16 @@ fullDescription:"Short video made for CART 362 3D Digital Production class. Expe
 coverVideo:`<iframe width="560" height="315" src="https://www.youtube.com/embed/pC_m4TD3dg8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`, // OR coverVideo:"<iframe>",
 tags:["Blender","Animation Nodes"],
 date:[15,4,2020],
+
+},
+
+{
+  title:'soundcloud page',
+  fullDescription:'Selected musical examples',
+  //coverImage:'',
+tags:['Music'],
+date:[12,12,2012],
+soundcloudLink:`<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1096301104&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/featured" title="featured" target="_blank" style="color: #cccccc; text-decoration: none;">featured</a></div>`
 
 },
 
