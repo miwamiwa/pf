@@ -10,16 +10,17 @@
 </head>
 
 <body onwheel="mouseWheel()">
+  <div id='mother'>
 
 <div id="tophalf" class="w3-animate-opacity">
   <!-- TITLE (TOP SECTION) -->
 <div id="titlearea">
-  <div class="pageTitle">Samuel Paré-Chouinard's portfolio</div>
+  <div class="pageTitle">Samuel Paré-Chouinard <span id='pagesubtitle'> programming, games and sound design</span></div>
 </div>
-
+<div id="tagTitle">Filter projects by tag:</div>
 <div id="tagarea">
 
-<div id="tagTitle">Filter projects by tag:</div>
+
 <div id="tagpicker"> </div>
 </div>
 </div>
@@ -57,6 +58,8 @@
   <div class="galleryButton" id="galleryLeftButton" onclick="previousImage()"> < </div>
   <div class="galleryButton" id="galleryImageCounter"> </div>
   <div id="galleryImageViewer"> </div>
+</div>
+
 </div>
   </body>
 </html>

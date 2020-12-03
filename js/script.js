@@ -45,7 +45,7 @@ function runLoop(){
   lastWheelState=wheelState;
 }
 
-let maxDist = 0.8*window.innerHeight;
+let maxDist = 1.0*window.innerHeight;
 
 function displayImages(){
   for(let i=0; i<entries.length; i++){
@@ -70,6 +70,7 @@ function displayImages(){
 
           let container = entries[i].wallElement.getElementsByClassName("coverImageContainer");
           entries[i].coverImageDisplayed = true;
+
           container[0].innerHTML = "<div class='w3-animate-opacity'>"+entries[i].info.coverVideo+"</div>";
 
           container[0].setAttribute("class","loadedImageContainer");
@@ -153,20 +154,28 @@ function loadEntries(){
 
 function createTagList(){
 
-  tagList.push({div:0, tag:"all"});
+
 
   for(let i=0; i<entries.length; i++){
 
     for(let j=0; j<entries[i].info.tags.length; j++){
-
-      let found = tagList.some(el => el.tag === entries[i].info.tags[j]);
-      if(!found) tagList.push({div:0, tag:entries[i].info.tags[j]});
-    }
+      if(entries[i].info.tags[j]!="Programming"
+    &&entries[i].info.tags[j]!="Sound Design"
+  &&entries[i].info.tags[j]!="Game Design"){
+    let found = tagList.some(el => el.tag === entries[i].info.tags[j]);
+    if(!found) tagList.push({div:0, tag:entries[i].info.tags[j], iscategory:false});
+  }
+        }
   }
 
-  for(let i=0; i<tagList.length; i++){
+  tagList.unshift({div:0, tag:"Programming", iscategory:true},{div:0, tag:"Sound Design", iscategory:true}, {div:0, tag:"Game Design", iscategory:true});
+  tagList.unshift({div:0, tag:"all", iscategory:false});
 
-    tagList[i].div = makeDiv({class:"tagListElement", id:"tag"+i, content: tagList[i].tag, clickEvent:"tagClicked('"+tagList[i].tag+"')" });
+  for(let i=0; i<tagList.length; i++){
+    if(!tagList[i].iscategory)
+     tagList[i].div = makeDiv({class:"tagListElement", id:"tag"+i, content: tagList[i].tag, clickEvent:"tagClicked('"+tagList[i].tag+"')" });
+    else
+     tagList[i].div = makeDiv({class:"tagListElement tagListElementCategory", id:"tag"+i, content: tagList[i].tag, clickEvent:"tagClicked('"+tagList[i].tag+"')" });
     doc.tagList.appendChild( tagList[i].div );
   }
 }

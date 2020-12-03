@@ -2,9 +2,19 @@
 
 body{
   height: 100%;
-  font-size:5vmin;
+  font-size:14px;
   overflow: hidden;
-    font-family: 'Crete Round', serif;
+  background-color:white;
+  font-family: 'courier', serif;
+
+  display:flex;
+  flex-direction:row;
+
+  justify-content:center;
+}
+
+#mother{
+
 }
 
 /*
@@ -13,43 +23,69 @@ body{
 #tophalf{
   margin-left:3px;
   margin-top:3px;
-  height:122px;
+  height:78px;
+  max-width:650px;
   line-height:20px;
-  background-color:#cccf;
+  background-color:#eeef;
   border-radius:8px;
   color:#333f;
   margin-bottom:10px;
-  box-shadow: 4px 4px #555;
+  box-shadow: 4px 4px #5558;
+  z-index:10;
 /*  background-color:#c0cf;*/
 }
 .pageTitle{
 
   padding-left:5px;
   font-size: 20px;
-  width:400px;
+  width:600px;
   position:relative;
-  top:16px;
-  text-decoration:underline;
+  top:4px;
+  font-weight:bold;
+
+  }
+
+
+
+  #pagesubtitle{
+    font-size:14px;
+    color:#555f;
   }
 #tagTitle{
-  margin-bottom:5px;
-  font-size:14px;
+  margin-top:8px;
+  margin-bottom:2px;
+  padding-left:14px;
+  color:#999f;
+  font-size:12px;
+
 }
 #tagarea{
   padding-left:5px;
   padding-right:5px;
-  bottom:-25px;
+  bottom:5px;
+  padding-top:5px;
   position:relative;
-  background-color:#eee8;
+  background-color:#ffff;
+  left:5px;
+  max-width:610px;
+  height:30px;
+  overflow-y:scroll;
+  z-index:15;
+  border-radius:8px
+}
+#tagarea:hover{
+  height:80px;
+  box-shadow: 4px 4px #5558;
+  bottom:23px;
 }
 .tagListElement{
 
   z-index:11;
-  font-size:15px;
+  font-size:12px;
   display:inline-block;
   margin-right:6px;
   background-color:#fff9;
-
+  color:#888f;
   border-style:solid;
   border-width:1px;
   border-color:#aaa9;
@@ -63,44 +99,60 @@ body{
   background-color:#eee9;
   color:#aaaf;
 }
+
 .tagListElement:active{
 border-color:#4449;
 color:white;
 }
 
+.tagListElementCategory{
+  color:#449f;
+  font-weight:bolder;
+}
+
 
 #bottomhalf{
 
-  background-color:red;
+  background-color:none;
 }
 
 
 
 #menusection{
-  background-color:#999f;
+  background-color:#ddde;
   border-radius:8px;
   padding:3px;
   position:fixed;
-  width:185px;
+  width:15px;
   margin-left:3px;
-  box-shadow: 4px 4px #555;
+  box-shadow: 4px 4px #5558;
+  min-height:100px;
+}
+#menusection:hover{
+  width:185px;
+  z-index:5;
 }
 .menuTitle{
   font-size:15px;
   margin-top:50px;
 }
-
-.menuElement{
+#menusection .menuElement {
+  display:none;
   border-style:solid;
   border-color:#777;
-  background-color:#cccc;
+  background-color:#ccce;
   border-radius:8px;
   border-width:1px;
-  margin-bottom:3px;
-  padding:1px;
+  margin-bottom:0px;
+  padding:0px;
   padding-left:3px;
-  font-size:16px;
+  font-size:12px;
 }
+#menusection:hover .menuElement {
+   display:block;
+
+}
+
 .menuElement:hover{
   background-color:#bbbd;
   border-color:#bbbf;
@@ -108,7 +160,12 @@ color:white;
   color:#666f;
 }
 /* "sort by date/name" */
-.wallDescription{
+#menusection .wallDescription{
+
+
+  display:none;
+}
+#menusection:hover .wallDescription{
   font-size:18px;
   background-color:white;
   color:#888f;
@@ -118,6 +175,15 @@ color:white;
   left:5px;
   position:relative;
   text-align:center;
+  display:block;
+}
+
+#menusection #menuText{
+  display:none;
+}
+
+#menusection:hover #menuText{
+  display:block;
 }
 .sortingOption{
   color:#333;
@@ -130,15 +196,16 @@ color:white;
 
 
 #wallsection{
-  left:200px;
-  position:absolute;
+  left:20px;
+  position:relative;
   border-radius:8px;
+  z-index:0;
 }
 #wall{
   overflow-y: scroll;
-  height:calc(100vh - 150px);
+  height:calc(100vh - 92px);
   width:80%;
-  max-width:1000px;
+  width:645px;
   padding-right:10px;
   margin-left:10px;
 }
@@ -146,24 +213,42 @@ color:white;
 .wallElement{
   margin-bottom:25px;
   font-size:14px;
-  background-color:lightblue;
+  background-color:#8c88;
   border-radius:8px;
   padding:12px;
+  line-height:16px;
+  position:relative;
 }
+
+.vimeoVid{
+  position:relative;
+  max-width:595px
+}
+
 .wallElementTitle{
   font-size:20px;
+  width:100%;
 }
 .wallElementDateBox{
   font-size:12px;
   font-style:italic;
-  color:#444f;
-  margin-bottom:2px;
+  color:#888f;
+  position:absolute;
+  right:10px;
+  margin-bottom:0px;
+  display:inline-block;
+  line-height:12px;
 }
 .wallElementDescription{
   font-size:14px;
+  line-height:12px;
+  max-width:500px;
 }
 .wallElementTagList{
   font-size:12px;
+  line-height:15px;
+  color:#888f;
+
 }
 
 .coverImageContainer{
@@ -218,18 +303,24 @@ background-color:#0000;
 
 
 .externalLinksBox{
-  margin-top:2vmin;
+  margin-top:20px;
 }
 .externalLinksDescription{
-  margin-bottom:1vmin;
-  font-size:14px;
-  color:#444f;
+  margin-bottom:0px;
+  font-size:12px;
+  color:#999f;
 }
 .externalLinkEntry{
   /* this is the box around each external link in the alrger external links box*/
+ font-size:14px;
+ line-height:14px;
 }
 .externalLinkText{
-  font-size:16px;
+  font-size:15px;
+  color:#666f;
+}
+.externalLinkText:hover{
+  color:#000f;
 }
 
 

@@ -92,8 +92,8 @@ addWallElement(){
   }
 
   let content = `
-  <div class="wallElementTitle"> ${this.info.title} </div>
-  <div class="wallElementDateBox"> ${date} </div>
+  <div class="wallElementTitle"> ${this.info.title} <span class="wallElementDateBox"> ${date} </span> </div>
+
   <div class="wallElementTagList"> ${tags} </div>
   ${coverImg}
   <div class="wallElementDescription"> ${this.info.fullDescription} </div>

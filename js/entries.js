@@ -25,7 +25,16 @@ externalLinks:[
 
 
 */
+/*
 
+to add: gilgamesh vignettes 1 and 2
+https://melissalim.itch.io/the-councillors-blessings
+https://miwamiwa.github.io/cart415/gilgahtml2/
+ghost buster game
+https://sampc.itch.io/ghost-game-demo
+13k2020 game of peace
+https://miwamiwa.github.io/13k2020/
+*/
 let projectDescriptions = [
 
 
@@ -66,7 +75,7 @@ let projectDescriptions = [
 {
   title:"Laundromadness!",
   fullDescription:"Bitsy project for CART 215 Game Design class",
-  tags:["Game design","Bitsy"],
+  tags:["Game Design","Bitsy"],
   date:[1,12,2019],
   coverImage:"laundromadness_preview.png",
   externalLinks:[
@@ -80,7 +89,7 @@ let projectDescriptions = [
 {
   title: 'Bad Bots',
   fullDescription: 'Solo game project submitted to GMTK Game Jam 2020. Game, sounds and art made by me in 48 hours. The theme was "out of control".',
-  tags:['Game design','Sound Design','Unity','Blender',"Music"],
+  tags:['Game Design','Sound Design','Unity','Blender',"Music"],
   date:[12,07,2020],
   coverImage:'badbot.png',
   externalLinks:[
@@ -107,8 +116,8 @@ let projectDescriptions = [
   +"<br>The theme of the competition was 'Back', so here is a game in which you (mama ape) bring your kids back home, on your back, to some Bach. "
   +"<br><br>I coded my own audio and visual frameworks in a effort to cram in as many images and as much sound as possible, which I think gave some pretty interesting results. From a gameplay perspective, this is sort of an unfortunate case of too much of me testing my own game (it's too hard!). I am planning on updating this in the near future."
   +"<br><br>Controls: left=a, right=d, space=jump, w=wiggle (drop a passenger)",
-  coverVideo:`<iframe src="https://player.vimeo.com/video/432701435" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`,
-  tags:["Javascript","Game design","Sound Design"],
+  coverVideo:`<iframe src="https://player.vimeo.com/video/432701435" class="vimeoVid" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`,
+  tags:["Javascript","Game Design","Sound Design"],
   date:[13,9,2019],
   externalLinks:[
     {
@@ -136,7 +145,7 @@ let projectDescriptions = [
   fullDescription:"Liquid Perceptions is a research-creation project by Olivia McGilchrist, Seyed M. Tabatabaei, Julia Salles and Dougy Hérard at the Milieux Institute at Concordia Univeristy, for which I provided some sound design work. "
   +"<br><br>In this dual VR and non-VR experience, two players compete by catching as many fish as they can on a touch screen while a third player, wearing the VR set, witnesses directly the ecological damage of the first two players' fishing, as they swim across the increasingly dangerous underwater environment that lies beneath."
   +"<br>I created sound effects and edited provided musical material to create different soundtracks for the underwater environment (for the VR user's headphones) and overwater (speakers heard by everyone).<br> I programmed the soundtrack in Max MSP (communicating with the Unity project using OSC), to route the soundtracks easily and to allow for some sound design experimentation. The final result featured use of granulation to handle large amounts of sound emitting objects, and some basic motion mapping.",
-  coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="vimeoVid" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   <div class="videoCredits">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
   tags:["Sound Design","Max MSP", "Unity"],
   date:[20,12,2019],
@@ -152,7 +161,7 @@ let projectDescriptions = [
   fullDescription:`Fastened Furious was created for the Ubisoft 2019 Game Lab Competition, where the theme was “spectacle.” The game is a race between two teams of two players tethered together, overcoming wacky obstacles and racing to the finish line. Our game was nominated for the Jury's Special Award. (summary and images by Nicole Lin)
 <br><br>I picked and produced sound effects, composed BGM tracks, set up the project in Wwise and scripted audio triggers in C#. The soundtrack featured midi instruments that would interchange during gameplay, using tools included in Wwise and some C# scripting on the Unity side.
 <br><br>Collaborators: Dougy Herard, Zied Jebali, Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin, Scott Smith`,
-  coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" class="vimeoVid" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   <div class="videoCredits">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
   tags:["Sound Design","Wwise", "Unity", "C#","Music"],
   date:[1,4,2019],
