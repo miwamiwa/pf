@@ -3,7 +3,7 @@ window.onload = start;
 let entries = [];
 let tagList = [];
 let selectedTag = "all";
-let sortBy = "date";
+let sortBy = "name";
 let sortedEntries = [];
 let doc = {
   results:0,
@@ -25,6 +25,11 @@ let loop;
 window.onhashchange = function() {
  console.log("hash change")
 }
+
+
+// add aboozar's piece???
+
+/*
 function mouseWheel(event){
   console.log("wheel")
   wheelState=true;
@@ -93,8 +98,11 @@ function displayImages(){
 
   }
 }
-
+*/
 function start(){
+
+  let result = localStorage.getItem('samsitesortingoption');
+  if(result=="name"||result=="date") sortBy = result;
 
   let promise = new Promise(function(resolve, reject) {
     loadEntries();
@@ -120,7 +128,7 @@ function start(){
     error => alert(error) // doesn't run
   );
 
-  loop = setInterval(runLoop,50);
+  //loop = setInterval(runLoop,50);
 }
 
 
@@ -194,7 +202,7 @@ function loadPage(){
         entries[ sortedEntries[i] ].addEntry();
     }
 
-    displayImages();
+  //  displayImages();
 
     showSelectedTag();
 }
@@ -351,10 +359,12 @@ function makeDiv(makeup){
 
 function sortByDate(){
   sortBy="date";
-  loadPage();
+  localStorage.setItem('samsitesortingoption', 'date');
+  location.reload();
 }
 
 function sortByName(){
   sortBy="name";
-  loadPage();
+  localStorage.setItem('samsitesortingoption', 'name');
+  location.reload();
 }
