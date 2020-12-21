@@ -70,7 +70,7 @@ let projectDescriptions = [
   fullDescription:"Prototype for an audio-only game about chasing ghosts. ",
   coverImage:"ghostLarge.png",
   iconImage:"GHOST.png",
-  tags:["Game Design","Audio Game","Unity","Mobile"],
+  tags:["Game Design","Audio Game","Unity","Mobile","Sound Design"],
   date:[1,12,2020],
   externalLinks:[
     {
