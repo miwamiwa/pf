@@ -53,10 +53,10 @@ let projectDescriptions = [
   },
   {
     title:"js13k 2020 game",
-    fullDescription:"Game made for js13k2020",
+    fullDescription:"Game made for js13k2020. Sound design features browser-based sound generation.",
     iconImage:"13kicon.png",
     coverImage:"samjs13kSMALL.png",
-    tags:["Game Design","Javascript"],
+    tags:["Game Design","Javascript","Sound Design"],
     date:[13,9,2020],
     externalLinks:[
       {
