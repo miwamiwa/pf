@@ -1,0 +1,43 @@
+
+#resumeBody{
+  padding:20px;
+
+  font-size:calc(10px + 0.75vw);
+  line-height:calc(12px + 0.75vw);
+}
+
+#resumeTitle{
+  padding:10px;
+}
+
+.rSubtitle{
+  font-size:calc(16px + 0.75vw);
+  line-height:calc(14px + 0.75vw);
+  padding:2vw;
+}
+
+.rIndentedWrap{
+  margin-left:2vw;
+  text-indent:-2vw;
+  padding:1vw;
+}
+
+.rIndentedBodyText{
+  margin-left:3vw;
+  font-style:italic;
+}
+
+.rLink{
+  color:black;
+  cursor:pointer;
+  text-decoration:underline;
+}
+
+.rItalics{
+  color:#666f;
+  font-style:italic;
+}
+.rSpacing{
+  width:2vw;
+  height:6vh;
+}

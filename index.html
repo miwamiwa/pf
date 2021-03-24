@@ -1,65 +1,64 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-
+  <link rel="stylesheet" type="text/css" href="css/nav.css" />
+  <link rel="stylesheet" type="text/css" href="css/popup.css" />
+  <script> let pageIs = "home"; </script>
   <script src="js/entries.js"></script>
   <script src="js/entryClass.js"></script>
   <script src="js/sorting.js"></script>
+  <script src="js/expandProject.js"></script>
   <script src="js/script.js"></script>
 </head>
 
-<body> <!-- onwheel="mouseWheel()"> -->
-  <div id='mother'>
+<body>
 
-<div id="tophalf" class="w3-animate-opacity">
-  <!-- TITLE (TOP SECTION) -->
-<div id="titlearea">
-  <div class="pageTitle">Samuel Paré-Chouinard <span id='pagesubtitle'> programming, games and sound design</span></div>
-</div>
-<div id="tagTitle">Filter projects by tag:</div>
-<div id="tagarea">
-
-
-<div id="tagpicker"> </div>
-</div>
-</div>
-
-
-
-
-<div id="bottomhalf">
-  <!-- MENU (LEFT SECTION) -->
-  <div id="menusection">
-
-    <div class="wallDescription">sort by <span id="dateButton" class="sortingOption" onclick="sortByDate()">date</span> / <span id="nameButton" class="sortingOption" onclick="sortByName()">name</span></div>
-
-    <div class="menuTitle" id="menuText">projects:</div>
-    <div id="results"> </div>
-
-
-
-   </div>
-
-
-  <!-- WALL (RIGHT SECTION) -->
-<div id="wallsection">
-
-  <div id="wall"> </div>
+  <!-- Image gallery container (hidden) -->
+  <div id="galleryView">
+    <div class="galleryButton" id="closeGallery"  onclick="closeGalleryView()">x</div>
+    <div class="galleryButton" id="galleryRightButton" onclick="nextImage()"> > </div>
+    <div class="galleryButton" id="galleryLeftButton" onclick="previousImage()"> < </div>
+    <div class="galleryButton" id="galleryImageCounter"> </div>
+    <div id="galleryImageViewer"> </div>
   </div>
 
+  <!-- Cover video container -->
+  <div id='vidcontainer'></div>
+  <!-- Cover text container -->
+  <section id="coverSectionSmall"> </section>
 
-</div>
+  <!--NAV BAR container -->
+  <section id="navSection"> </section>
 
-<div id="galleryView">
-  <div class="galleryButton" id="closeGallery"  onclick="closeGalleryView()">x</div>
+  <!-- banderolle container -->
+  <section id="banderolleSection">
+    <div id='banderolleInside'>
+      <div id="bandLeft">
+        <img src="images/sami.png" alt="" class="bandImg">
+      </div>
 
-  <div class="galleryButton" id="galleryRightButton" onclick="nextImage()"> > </div>
-  <div class="galleryButton" id="galleryLeftButton" onclick="previousImage()"> < </div>
-  <div class="galleryButton" id="galleryImageCounter"> </div>
-  <div id="galleryImageViewer"> </div>
-</div>
+      <div id="bandRight">
+        <div id="bandRightText">
+          <span class="indent"></span>Samuel is a digital artist and musician from Gatineau, QC. Raised around the world, he graduated from a bachelors of music at Mcgill university in 2016 and currently studies Computation Arts at Concordia university.
+          <br><br><span class="indent"></span>Samuel is interested in interactive media, game design, as well as digital music and sound technology. He likes participating in game jams and game design competitions such as GMTK jam, Ubisoft Gamelab competition, and js13k, as programmer and/or sound designer. He currently works as teaching assistant and research assistant at Concordia university.
+        </div>
+      </div>]
+    </div>
+  </section>
 
-</div>
-  </body>
+  <section id="popupSection">
+  </section>
+
+  <section id="bodySection">
+    <div id="subjectsContainer">Featured projects
+      <div id="subjectsBox"></div>
+    </div>
+    <div id="bodyContentBox"></div>
+  </section>
+
+  <section id="showMoreSection" class="lessmore" onclick="showMore()">Show more</section>
+  <section id="showLessSection" class="lessmore" onclick="showLess()">Show less</section>
+  <section id="footerSection"></section>
+</body>
 </html>

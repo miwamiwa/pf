@@ -5,6 +5,8 @@ let tagList = [];
 let selectedTag = "all";
 let sortBy = "name";
 let sortedEntries = [];
+let selectedProject;
+
 let doc = {
   results:0,
   wall:0,
@@ -16,131 +18,623 @@ let doc = {
   dateButton:0,
   nameButton:0
 }
-
+let imagesInArticle = [];
+let navsection;
+let banderollesection;
+let subjectsbox;
+let bodycontentsbox;
+let featureSelection="Programming";
+let popupsection;
+let showmoresection;
+let showlesssection;
+let titlebox;
 let wheelState = false;
 let lastWheelState = false;
 let wheelTimer;
 let loadImages = false;
 let loop;
+let popupoffsetted = false;
+let starturl;
+let subjects = [featureSelection];
+let boxStatus=[]; // for project box opacity animation
+// video parallax effect intensity
+let parallaxfactor =3;
+let gallerySelection = {entry:0,index:0};
+/*
 window.onhashchange = function() {
- console.log("hash change")
+console.log("hash change")
+}
+*/
+
+// start()
+//
+// called when page loads.
+// sets up pointers, creates necessary page elements.
+
+function start(){
+  /*
+  let vid = document.getElementById("coverVideo");
+  vid.playbackRate = 0.9;
+  */
+
+  // save url on page start. prevents defaulting to wrong page on setup
+  starturl=window.location.href;
+
+  // create some pointers
+  doc.galleryView = document.getElementById("galleryView");
+  doc.imageViewer = document.getElementById("galleryImageViewer");
+  navsection=document.getElementById("navSection");
+  banderollesection=document.getElementById("banderolleSection");
+  subjectsbox=document.getElementById("subjectsBox");
+  titlebox=document.getElementById("coverSectionSmall");
+
+  // create top page elements
+  createCoverBox();
+  populateNav();
+
+  // bind scroll event
+  window.onscroll=scrollevent;
+
+  if(pageIs=="home"){
+    bodycontentsbox=document.getElementById("bodyContentBox");
+    popupsection=document.getElementById("popupSection");
+    popupsection.hidden=true;
+    showmoresection=document.getElementById("showMoreSection");
+    showlesssection=document.getElementById("showLessSection");
+    showlesssection.hidden=true;
+
+    // if this is home page, classify projects by featured subjects,
+    // then add subjects buttons to the ui.
+    populateBody();
+  }
+
+  else if(pageIs=="resume"){
+    popupsection=document.getElementById("popupSection");
+  }
+
+  // check what to append to the page depending on
+  // url commands.
+  if(pageIs=="home")
+    checkURL();
+}
+
+// scrollevent()
+//
+// called when page is scrolled.
+// fixes nav bar and popup title bar positions
+// if needed. Also the video parallax happens here.
+
+
+function scrollevent(){
+
+  // VIDEO PARALLAX
+  document.getElementById("coverVideo").style.top =
+  (-200+document.body.scrollTop/parallaxfactor) +"px";
+
+  // fix nav bar position on all pages
+  if(document.body.scrollTop>0.40*window.innerHeight){
+    navsection.style.position="fixed";
+    navsection.style.top="0px";
+
+    // if there is a banderolle section, fix banderolle position
+    if(pageIs=="home")
+      banderollesection.style.marginTop="40px";
+    else {
+      document.getElementById("bodySection").style.marginTop="40px";
+    }
+    // fix popup title and body positions
+    if(popupshown&&document.body.scrollTop>0.40*window.innerHeight+200){
+      let p=document.getElementsByClassName("popuptitle");
+      p[0].style.position="fixed";
+      p[0].style.top="40px";
+      popupoffsetted=true;
+      popupsection.style.marginTop="60px";
+    }
+    else if(popupshown) resetPopupSectionOffsets();
+
+  }
+  // if we've scrolled up and out of fix range, re-fix everything
+  else {
+    navsection.style.position="relative";
+    if(pageIs=="home") banderollesection.style.marginTop="0px";
+    else document.getElementById("bodySection").style.marginTop="0px";
+    if(popupshown) resetPopupSectionOffsets();
+  }
 }
 
 
-// add aboozar's piece???
+//resetpopupsectionoffsets()
+//
+// reset position of the popup section inside function scrollevent()
+function resetPopupSectionOffsets(){
+  let p=document.getElementsByClassName("popuptitle");
+  p[0].style.position="relative";
+  p[0].style.top="0px";
+  popupoffsetted = false;
+  popupsection.style.marginTop="0px";
+}
+
+
+// populatenav()
+//
+// add nav bar elements to the page
+
+function populateNav(){
+  navsection.innerHTML = `<div id="navHeader">
+  Samuel <span class="medNavHeader"><br>Paré-Chouinard's</span> <span class="smallerNavHeader"> portfolio website </span>
+  </div>
+  <!-- nav buttons -->
+  <div id="navBody">
+  <a class="navButton" href="index.html">Home</a>
+  <a class="navButton" href="about.html">About</a>
+  <a class="navButton" href="artistStatement.html">Artist Statement</a>
+  <a class="navButton" href="bio.html">Bio</a>
+  <a class="navButton" href="resume.html">Resume</a>
+  <a class="navButton" href="contact.html">Contact</a>
+  </div>`;
+}
+
+
+
+/* checkurl()
+on page load, check current url for a category or project selection
+then apply desired settings
+*/
+function checkURL(){
+
+  let url = starturl;
+
+  let categoryIndex = url.indexOf("?category=");
+  let projectIndex = url.indexOf("?selected=");
+
+  if(categoryIndex!=-1){
+    let cat = url.substring(categoryIndex+10, url.length);
+    if(projectIndex!=-1){
+      cat = url.substring(categoryIndex+10,projectIndex);
+    }
+
+    //console.log("category selection:")
+    //console.log(cat);
+
+    cat=cat.replace("_"," ");
+    let i=subjects.indexOf(cat);
+    if(i!=-1) selectSubject(i);
+  }
+  if(projectIndex!=-1){
+    let proj = url.substring(projectIndex+10,url.length);
+    proj=proj.replace("_"," ");
+
+    while(proj.indexOf("_")>=0)
+    proj=proj.replace("_"," ");
+    //console.log("project selection:");
+    //console.log(proj);
+    let index=-1;
+    for(let i=0; i<projectDescriptions.length; i++){
+      let p = projectDescriptions[i];
+      if(p.title==proj) index=i;
+    }
+
+    if(index!=-1){
+      expandProject(index);
+      reachPopup();
+    }
+
+  }
+}
+
+// populateprojectslist()
+//
+// so far not used LOL
+// but this would be used to sort all projects by date,
+// then append them to page.
+// intended for the larger projects list on resume page.
+
+function populateProjectsList(){
+
+  let projectsSortedByDate = [0];
+  for(let i=1; i<projectDescriptions.length; i++){
+    let p = projectDescriptions[i];
+    let placed = false;
+    for(let j=0; j<projectsSortedByDate.length; j++){
+      let p2 = projectDescriptions[projectsSortedByDate[j]];
+      if(!placed){
+        if( p.date[2]<p2.date[2] ) placed=true;
+        else if ( p.date[2]==p2.date[2] &&p.date[1]<p2.date[1] )
+        placed=true;
+        else if(
+          p.date[2]==p2.date[2]
+          &&p.date[1]==p2.date[1]
+          &&p.date[0]<p2.date[0]
+        ) placed=true;
+
+        if(placed) projectsSortedByDate.splice(j,0,i);
+
+      }
+    }
+    if(!placed) projectsSortedByDate.push(i);
+  }
+
+  projectsSortedByDate=projectsSortedByDate.reverse();
+
+  for(let i=0; i<projectsSortedByDate.length; i++){
+    let p = projectDescriptions[projectsSortedByDate[i]];
+
+    let div = document.createElement("div");
+    div.classList.add("resumeListElement");
+    let date = getDate(p.date);
+    div.innerHTML = `- ${p.title}. ${date}.`;
+    document.getElementById("bodySection").appendChild(div);
+  }
+}
+
+// createcoverbox()
+//
+// create box containing page title,
+// and also append the video element to the page.
+
+function createCoverBox(){
+
+  // page title element
+  titlebox.innerHTML=`
+  <div id="coverTitleBox">
+  <div class="coverTitle1">Samuel Paré-Chouinard</div>
+  <div class="coverTitle2">Programming, Sound Design, Game Design</div>
+  </div>`;
+
+  // video element
+  document.getElementById("vidcontainer").innerHTML=`<video id="coverVideo" height="100%" width="100%" autoplay muted loop >
+  <source src="images/Sequence_01_1.mp4" type="video/mp4">
+  </video>`;
+}
+
+
+
+// populateBody()
+//
+// create a list of subjects using project descriptions data.
+// called in start().
+
+function populateBody(){
+  // populate subjects list
+  selectSubject(0);
+  for(let i=0; i<projectDescriptions.length; i++){
+    let p = projectDescriptions[i];
+    if(p.featuredIn!=undefined)
+    // populate subjects list
+    for(let j=0; j<p.featuredIn.length; j++){
+      if(!subjects.includes(p.featuredIn[j]))
+      subjects.push(p.featuredIn[j])
+    }
+  }
+  // create ui for subject selection
+  updateSubjectsBox();
+}
+
+
+// updateSubjectsBox()
+//
+// create ui buttons for button selection.
+// called in populateBody()
+
+function updateSubjectsBox(){
+  subjectsbox.innerHTML="";
+  for(let i=0; i<subjects.length; i++){
+    let tempbox = document.createElement("span");
+    tempbox.classList.add("subjectbox");
+    if(subjects[i]==featureSelection) tempbox.classList.add("selectedSubject")
+    subjectsbox.appendChild(tempbox);
+    tempbox.innerHTML=subjects[i];
+    tempbox.setAttribute("onclick",`selectSubject(${i})`);
+  }
+}
+
+// showLess()
+//
+// displays only featured projects from selected subject (feature selection)
+// called when ui button is pressed
+
+function showLess(){
+  let index=subjects.indexOf(featureSelection);
+  selectSubject(index,true);
+}
+
+// showMore()
+//
+//  displays more projects from selected subject (feature selection)
+// called when ui button is pressed.
+
+function showMore(){
+  bodycontentsbox.innerHTML="";
+  let featuredprojectcount =0;
+  let taggedprojectcount =0;
+  for(let i=0; i<projectDescriptions.length; i++){
+    let p = projectDescriptions[i];
+    if(p.tags.includes(featureSelection)) {
+      // add box to page
+      addProjectBox(p,i,false);
+    }
+  }
+
+  // update show/hide button
+  showmoresection.hidden=true;
+  showlesssection.hidden=false;
+  // update page scroll
+  bodycontentsbox.scrollIntoView();
+  document.body.scrollTop -= 40;
+}
+
+// triggerShowBoxMeta()
+//
+// trigger text fade-in on a project box
+// called on box's mouseenter event
+
+function triggerShowBoxMeta(index){
+  //console.log("show!")
+  boxStatus[index]="show";
+  showBoxMeta(index);
+}
+
+// triggerHideBoxMeta()
+//
+// trigger text fade-out on a project box
+// called on box's mouseleave event
+
+function triggerHideBoxMeta(index){
+  //console.log("hide")
+  boxStatus[index]="hide";
+  hideBoxMeta(index);
+}
+
+// showBoxMeta()
+//
+// update box opacity so as to display it.
+// repeats until cancelled or fully displayed.
+// starts in triggerShowBoxMeta().
+
+function showBoxMeta(index){
+
+  if(boxStatus[index]=="show"){
+    let box = document.getElementById("box"+index);
+    let num = parseFloat(box.style.opacity) + 0.1;
+    box.style.opacity = num;
+
+    if(box.style.opacity<1)
+      setTimeout(showBoxMeta, 40, index);
+  }
+}
+
+// hideBoxMeta()
+//
+// increment box opacity so as to hide it.
+// repeats until cancelled or fully hidden.
+// triggered in triggerHideBoxMeta()
+
+function hideBoxMeta(index){
+
+  if(boxStatus[index]=="hide"){
+    let box = document.getElementById("box"+index);
+    let num = parseFloat(box.style.opacity) - 0.1;
+    box.style.opacity = num;
+
+    if(box.style.opacity>0)
+      setTimeout(hideBoxMeta, 40, index);
+  }
+}
+
+
+// addProjectBox()
+//
+// add project box to html with the correct size,
+// image, hidden meta element, and mouse hover & click events.
+
+function addProjectBox(p,index,isbigbox){
+  let tempbox = document.createElement("div");
+  tempbox.classList.add("featurebox");
+  bodycontentsbox.appendChild(tempbox);
+
+  let img = document.createElement("img");
+  if(p.coverImage!=undefined) img.src="images/"+p.coverImage;
+  else if (p.imageGallery!=undefined) img.src="images/"+p.imageGallery[0]
+  else img.src="images/"+p.iconImage;
+  img.style.objectFit="cover";
+
+  if(isbigbox){
+    img.width="200";
+    img.height="200";
+
+  }
+  else {
+    img.width="150";
+    img.height="150";
+    tempbox.classList.add("featureboxSmall");
+  }
+  img.style.borderRadius="2px";
+
+  tempbox.appendChild(img);
+
+  boxoverlay = document.createElement("div");
+  boxoverlay.classList.add("boxoverlay");
+  boxoverlay.style.width=img.width+"px";
+  boxoverlay.style.height=img.height+"px";
+  boxoverlay.style.opacity =0;
+
+
+  let truncatedtxt = getTagData(index);
+  truncatedtxt += "<br>";
+
+  if(p.shortDescription!=undefined) truncatedtxt += p.shortDescription;
+  else if(p.fullDescription.length>100)
+  truncatedtxt += p.fullDescription.substring(0,100)+"...";
+  else truncatedtxt+=p.fullDescription;
+
+  boxoverlay.innerHTML = `
+  <div class='boxoverlayTitle'>${p.title}</div>
+  <div class='boxoverlayBody'>${truncatedtxt}</div>
+  `;
+
+  boxoverlay.id="box"+index;
+
+  boxoverlay.setAttribute("onmouseenter",`triggerShowBoxMeta(${index})`);
+  boxoverlay.setAttribute("onmouseleave",`triggerHideBoxMeta(${index})`);
+  boxoverlay.setAttribute("onclick",`expandProject(${index})`);
+  tempbox.appendChild(boxoverlay);
+}
+
+
+// updateCurrentURL()
+//
+// update url in the address bar.
+// called when a project is selected or un selected,
+// or when a feature subject is selected.
+
+function updateCurrentURL(){
+
+  let currenturl=starturl;
+  let url = currenturl.substring(0,currenturl.indexOf(".html")+5);
+  let category=featureSelection.replace(" ","_");
+
+  url+="?category="+category;
+  let selection="";
+  if(selectedProject!=undefined)
+  selection="?selected="+selectedProject.replace(" ","_");
+
+  url+=selection;
+  window.history.pushState("","last page",url);
+
+}
+
+// getTagData()
+//
+// given a project index, return all its tags in one string.
+
+function getTagData(index){
+  let p = projectDescriptions[index];
+  let tags= "Tags: ";
+  for(let i=0; i<p.tags.length; i++){
+    let ending = ", "
+    if(i==p.tags.length-1) ending=".";
+
+    tags +=p.tags[i]+ending;
+  }
+  return tags;
+}
+
+// listElementsInAString()
+//
+// convert a given array to string form separated with "<br>-"
+// a separator can be provided but isn't required
+
+function listElementsInAString(arr,sep){
+
+  let result="";
+  let separator = "<br>- ";
+  if(sep!=undefined) separator = sep;
+
+  for(let i=0 ;i<arr.length; i++){
+    result += separator+arr[i];
+  }
+  return result;
+}
+
+
 
 /*
-function mouseWheel(event){
-  console.log("wheel")
-  wheelState=true;
-  clearTimeout(wheelTimer);
-  wheelTimer = setTimeout(function(){ wheelState = false; }, 100);
+reachpopup()
+scroll to the "popup" section on the page
+*/
+
+function reachPopup(){
+
+  popupsection.scrollIntoView();
+
+  if(popupoffsetted)
+  document.body.scrollTop -= 100;
+  else document.body.scrollTop -= 40;
+
+  scrollevent();
 }
 
 
 
-function runLoop(){
-
-  if( wheelState || (!wheelState&&lastWheelState) || loadImages ){
-
-    displayImages();
-  //  console.log("\n")
-    loadImages = false;
+/*
+function GET DATE
+returns date in string form given a 3-part date array
+*/
+let popupshown=false;
+function getDate(data){
+  let month="";
+  switch(data[1]){
+    case 1: month="January"; break;
+    case 2: month="February"; break;
+    case 3: month="March"; break;
+    case 4: month="April"; break;
+    case 5: month="May"; break;
+    case 6: month="June"; break;
+    case 7: month="July"; break;
+    case 8: month="August"; break;
+    case 9: month="September"; break;
+    case 10: month="October"; break;
+    case 11: month="November"; break;
+    case 12: month="December"; break;
   }
-  lastWheelState=wheelState;
+  return data[0] +" "+month+" "+data[2];
 }
 
-let maxDist = 1.0*window.innerHeight;
+// exitpopup()
+//
+// collapse popup section and remove project from url
 
-function displayImages(){
-  for(let i=0; i<entries.length; i++){
-  ////  console.log(doc.wall.scrollTop)
-  if(sortedEntries.includes(i)){
-    let dist = entries[i].wallElement.offsetTop - doc.wall.scrollTop;
-    if(  dist > -maxDist && dist < maxDist){
-    //  console.log("yeayh", i);
+function exitpopup(){
+  popupsection.hidden=true;
+  popupshown=false;
+  selectedProject=undefined;
+  updateCurrentURL();
+}
 
-      if(!entries[i].coverImageDisplayed){
+// selectSubject()
+//
+// update url and project boxes at bottom of home page
+// according to user's subject selection.
+// should be called on load and when user clicks a subject box (button).
+// NEEDS FIX: called 3 times on load. feels like overkill.
 
-        if(entries[i].info.coverImage!=undefined){
-          console.log("display")
-          let container = entries[i].wallElement.getElementsByClassName("coverImageContainer");
-          entries[i].coverImageDisplayed = true;
-        //  console.log("append image",entries[i].info.coverImage)
-          container[0].innerHTML = "<img src='images/"+entries[i].info.coverImage+"' class='coverImage w3-animate-opacity'>"
-
-          container[0].setAttribute("class","loadedImageContainer");
-        }
-        else if(entries[i].info.coverVideo!=undefined){
-
-          let container = entries[i].wallElement.getElementsByClassName("coverImageContainer");
-          entries[i].coverImageDisplayed = true;
-
-          container[0].innerHTML = "<div class='w3-animate-opacity'>"+entries[i].info.coverVideo+"</div>";
-
-          container[0].setAttribute("class","loadedImageContainer");
-        }
-
-        if(entries[i].info.soundcloudLink!=undefined){
-
-          let container = entries[i].wallElement.getElementsByClassName("soundcloudContainer");
-          entries[i].coverImageDisplayed = true;
-          let description="";
-          if(entries[i].info.soundcloudDescription!=undefined) description = "<br><div class='soundcloudDescription'>"+entries[i].info.soundcloudDescription+"</div>";
-          container[0].innerHTML = "<div class='w3-animate-opacity'>"+description+entries[i].info.soundcloudLink+"</div>";
-
-          container[0].setAttribute("class","loadedSoundcloudContainer");
-        }
-
+function selectSubject(index){
+  console.log("select subject!")
+  featureSelection = subjects[index];
+  updateSubjectsBox();
+  bodycontentsbox.innerHTML="";
+  let featuredprojectcount =0;
+  let taggedprojectcount =0;
+  for(let i=0; i<projectDescriptions.length; i++){
+    let p = projectDescriptions[i];
+    if(p.tags.includes(featureSelection)) taggedprojectcount++;
+    if(p.featuredIn!=undefined){
+      if(p.featuredIn.includes(featureSelection)){
+        // add box to page
+        addProjectBox(p,i,true);
+        featuredprojectcount++;
       }
     }
   }
 
-  }
-}
-*/
-function start(){
+  if(featuredprojectcount<taggedprojectcount) showmoresection.hidden=false;
+  else showmoresection.hidden=true;
+  showlesssection.hidden=true;
 
-  let result = localStorage.getItem('samsitesortingoption');
-  if(result=="name"||result=="date") sortBy = result;
-
-  let promise = new Promise(function(resolve, reject) {
-    loadEntries();
-    resolve();
-  });
-
-  promise.then(
-    result => {
-
-      doc.results = document.getElementById("results");
-      doc.wall = document.getElementById("wall");
-      doc.tagList = document.getElementById("tagpicker");
-      doc.menuText = document.getElementById("menuText");
-      doc.galleryView = document.getElementById("galleryView");
-      doc.imageViewer = document.getElementById("galleryImageViewer");
-      doc.galleryCounter = document.getElementById("galleryImageCounter");
-      doc.nameButton = document.getElementById("nameButton");
-      doc.dateButton = document.getElementById("dateButton");
-      createTagList();
-      loadPage();
-
-    },
-    error => alert(error) // doesn't run
-  );
-
-  //loop = setInterval(runLoop,50);
+  updateCurrentURL();
 }
 
+// showSelectedTag()
+//
+// called in old loadPage() function.
+// not in use.
 
 function showSelectedTag(){
 
   for(let i=0; i<tagList.length; i++){
-if(tagList[i].div.classList.contains("selectedText")) tagList[i].div.classList.remove("selectedText");
-if(tagList[i].div.innerHTML==selectedTag) tagList[i].div.classList.add("selectedText");
-
+    if(tagList[i].div.classList.contains("selectedText")) tagList[i].div.classList.remove("selectedText");
+    if(tagList[i].div.innerHTML==selectedTag) tagList[i].div.classList.add("selectedText");
   }
-
-
   if(sortBy=="date"){
     if(doc.nameButton.classList.contains("selectedText")) doc.nameButton.classList.remove("selectedText");
     doc.dateButton.classList.add("selectedText");
@@ -151,6 +645,10 @@ if(tagList[i].div.innerHTML==selectedTag) tagList[i].div.classList.add("selected
   }
 }
 
+// loadEntries()
+//
+// not in use.
+
 function loadEntries(){
 
   for(let i=0; i<projectDescriptions.length; i++){
@@ -159,37 +657,41 @@ function loadEntries(){
 }
 
 
-
+/*
 function createTagList(){
 
 
 
-  for(let i=0; i<entries.length; i++){
+for(let i=0; i<entries.length; i++){
 
-    for(let j=0; j<entries[i].info.tags.length; j++){
-      if(entries[i].info.tags[j]!="Programming"
-    &&entries[i].info.tags[j]!="Sound Design"
-  &&entries[i].info.tags[j]!="Game Design"){
-    let found = tagList.some(el => el.tag === entries[i].info.tags[j]);
-    if(!found) tagList.push({div:0, tag:entries[i].info.tags[j], iscategory:false});
-  }
-        }
-  }
-
-  tagList.unshift({div:0, tag:"Programming", iscategory:true},{div:0, tag:"Sound Design", iscategory:true}, {div:0, tag:"Game Design", iscategory:true});
-  tagList.unshift({div:0, tag:"all", iscategory:false});
-
-  for(let i=0; i<tagList.length; i++){
-    if(!tagList[i].iscategory)
-     tagList[i].div = makeDiv({class:"tagListElement", id:"tag"+i, content: tagList[i].tag, clickEvent:"tagClicked('"+tagList[i].tag+"')" });
-    else
-     tagList[i].div = makeDiv({class:"tagListElement tagListElementCategory", id:"tag"+i, content: tagList[i].tag, clickEvent:"tagClicked('"+tagList[i].tag+"')" });
-    doc.tagList.appendChild( tagList[i].div );
-  }
+for(let j=0; j<entries[i].info.tags.length; j++){
+if(entries[i].info.tags[j]!="Programming"
+&&entries[i].info.tags[j]!="Sound Design"
+&&entries[i].info.tags[j]!="Game Design"){
+let found = tagList.some(el => el.tag === entries[i].info.tags[j]);
+if(!found) tagList.push({div:0, tag:entries[i].info.tags[j], iscategory:false});
+}
+}
 }
 
+tagList.unshift({div:0, tag:"Programming", iscategory:true},{div:0, tag:"Sound Design", iscategory:true}, {div:0, tag:"Game Design", iscategory:true});
+tagList.unshift({div:0, tag:"all", iscategory:false});
+
+for(let i=0; i<tagList.length; i++){
+if(!tagList[i].iscategory)
+tagList[i].div = makeDiv({class:"tagListElement", id:"tag"+i, content: tagList[i].tag, clickEvent:"tagClicked('"+tagList[i].tag+"')" });
+else
+tagList[i].div = makeDiv({class:"tagListElement tagListElementCategory", id:"tag"+i, content: tagList[i].tag, clickEvent:"tagClicked('"+tagList[i].tag+"')" });
+doc.tagList.appendChild( tagList[i].div );
+}
+}
+*/
 
 
+// loadPage()
+//
+// old start() function.
+// not in use. see start().
 
 function loadPage(){
 
@@ -198,14 +700,18 @@ function loadPage(){
   setupMenuText();
   sortedEntries = sortElements();
 
-    for(let i=0; i<sortedEntries.length; i++){
-        entries[ sortedEntries[i] ].addEntry();
-    }
+  for(let i=0; i<sortedEntries.length; i++){
+    entries[ sortedEntries[i] ].addEntry();
+  }
 
   //  displayImages();
 
-    showSelectedTag();
+  showSelectedTag();
 }
+
+// getTagFromURL()
+//
+// not in use. see checkURL().
 
 function getTagFromURL(){
 
@@ -220,21 +726,24 @@ function getTagFromURL(){
 
     console.log("tag is "+tag);
 
-      for(let i=0;i<projectDescriptions.length; i++){
-        for(let j=0; j<projectDescriptions[i].tags.length; j++){
-          console.log("checking ",projectDescriptions[i].tags[j]);
-          if(projectDescriptions[i].tags[j].toLowerCase()==tag){
-            selectedTag = projectDescriptions[i].tags[j];
-            console.log("matched")
-          }
-
+    for(let i=0;i<projectDescriptions.length; i++){
+      for(let j=0; j<projectDescriptions[i].tags.length; j++){
+        console.log("checking ",projectDescriptions[i].tags[j]);
+        if(projectDescriptions[i].tags[j].toLowerCase()==tag){
+          selectedTag = projectDescriptions[i].tags[j];
+          console.log("matched")
         }
+
       }
+    }
   }
 }
 
-
+// setURL()
+//
+// not in use. see updateCurrentURL().
 // set window url to include a tag.
+
 function setURL(input){
 
   let url = window.location.href;
@@ -246,17 +755,21 @@ function setURL(input){
   //location.reload();
 }
 
+// setupMenuText()
+//
+// not in use. was for "menu" section on left side of screen but that's gone now.
+
 function setupMenuText(){
 
   //let menuText="All projects:";
-//  if(selectedTag!="all") menuText = "Projects tagged with: "+selectedTag;
+  //  if(selectedTag!="all") menuText = "Projects tagged with: "+selectedTag;
   let menuText = "Jump to:";
   doc.menuText.innerHTML = menuText;
 }
 
-
-
-
+// emptyPage()
+//
+// not in use. clear page elements before loading new.
 
 function emptyPage(){
 
@@ -265,10 +778,11 @@ function emptyPage(){
   for(let i=0; i<entries.length; i++){
     entries[i].coverImageDisplayed = false;
   }
-
 }
 
-
+// tagClicked()
+//
+// tag list not in use.
 
 function tagClicked(input){
   //console.log("tag lcicked")
@@ -276,76 +790,104 @@ function tagClicked(input){
 
   selectedTag=input;
   setURL(input);
-
 }
+
+// menuElementClicked()
+//
+// menu not in use.
 
 function menuElementClicked(name){
 
   loadImages = true;
   for(let i=0; i<entries.length; i++){
     if(entries[i].info.title==name){
-    doc.wall.scrollTop= entries[i].wallElement.offsetTop-window.innerHeight/20; // ?? gotta adjust this if wall formatting changes brodog
+      doc.wall.scrollTop= entries[i].wallElement.offsetTop-window.innerHeight/20; // ?? gotta adjust this if wall formatting changes brodog
     }
   }
 }
 
-let gallerySelection = {entry:0,index:0};
+/* IMAGE GALLERY CODE */
+
+// galleryImageClicked()
+//
+// displays image gallery element and selected image.
 
 function galleryImageClicked(e,entry,index){
 
-gallerySelection.entry = entry;
-gallerySelection.index= index;
+  gallerySelection.entry = entry;
+  gallerySelection.index= index;
 
   e = e || window.event;
-      var target = e.target || e.srcElement,
-          text = target.textContent || target.innerText;
+  var target = e.target || e.srcElement,
+  text = target.textContent || target.innerText;
 
   //console.log(e.target)
 
   let styleString = e.target.getAttribute("style");
-  let thisurl = styleString.substring(styleString.indexOf("url('")+5, styleString.indexOf("');"));
+  let thisurl = "images/"+projectDescriptions[entry].imageGallery[index];
 
   doc.galleryView.style.display="flex";
 
   updateGalleryImageCounter();
   updateImageViewer(thisurl);
-//  e.target.setAttribute("style", `background-image:url('${thisurl}');background-position:center;width:90%;height:90%;display:inline-block;`);
+  //e.target.setAttribute("style", `background-image:url('${thisurl}');background-position:center;width:90%;height:90%;display:inline-block;`);
 }
 
+// updateGalleryImageCounter()
+//
+// update on screen display showing position within image gallery
+
 function updateGalleryImageCounter(){
-  let l=entries[gallerySelection.entry].info.imageGallery.length;
+  let l=projectDescriptions[gallerySelection.entry].imageGallery.length;
   let i=gallerySelection.index+1;
   doc.galleryCounter.innerHTML = i+" / "+l;
 }
+
+// closeGalleryView()
+//
+// hide image gallery ui
 
 function closeGalleryView(){
   doc.galleryView.style.display="none";
 }
 
+// nextImage()
+//
+// image gallery controls called on pressing 'right' button (>)
+
 function nextImage(){
 
-//  console.log(gallerySelection.entry,entries[gallerySelection.entry])
-  if( gallerySelection.index+1 < entries[gallerySelection.entry].info.imageGallery.length ){
+  if( gallerySelection.index+1 < projectDescriptions[gallerySelection.entry].imageGallery.length ){
     gallerySelection.index++;
     updateGalleryImageCounter()
-    updateImageViewer( "images/"+entries[gallerySelection.entry].info.imageGallery[gallerySelection.index]);
+    updateImageViewer( "images/"+projectDescriptions[gallerySelection.entry].imageGallery[gallerySelection.index]);
   }
-
 }
+
+// previousImage()
+//
+// image gallery controls called on pressing 'left' button (<)
 
 function previousImage(){
 
   if( gallerySelection.index-1 >=0 ){
     gallerySelection.index--;
     updateGalleryImageCounter()
-    updateImageViewer( "images/"+entries[gallerySelection.entry].info.imageGallery[gallerySelection.index]);
+    updateImageViewer( "images/"+projectDescriptions[gallerySelection.entry].imageGallery[gallerySelection.index]);
   }
 }
+
+// updateImageViewer()
+//
+// update image element
 
 function updateImageViewer(imageUrl){
   doc.imageViewer.innerHTML= "<img src='"+imageUrl+"' style='max-height:75%;max-width:85%;display:block; margin-left:auto; margin-right:auto;'>";
 }
 
+// makeDiv()
+//
+// not in use.
 
 function makeDiv(makeup){
 
@@ -357,11 +899,19 @@ function makeDiv(makeup){
   return div;
 }
 
+// sortByDate()
+//
+// not in use.
+
 function sortByDate(){
   sortBy="date";
   localStorage.setItem('samsitesortingoption', 'date');
   location.reload();
 }
+
+// sortByName()
+//
+// not in use.
 
 function sortByName(){
   sortBy="name";
