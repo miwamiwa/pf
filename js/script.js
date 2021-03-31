@@ -1,5 +1,6 @@
 window.onload = start;
-
+window.onresize =resize;
+let navcanvas,navctx,navtarget,navx=0,navvel=40;
 let entries = [];
 let tagList = [];
 let selectedTag = "all";
@@ -45,6 +46,18 @@ window.onhashchange = function() {
 console.log("hash change")
 }
 */
+
+let smallmode = false;
+
+function resize(){
+  if(window.innerWidth<=600){
+    smallmode=true;
+  }
+  else smallmode=false;
+
+  scrollevent();
+}
+
 
 // start()
 //
@@ -96,6 +109,10 @@ function start(){
   // url commands.
   if(pageIs=="home")
     checkURL();
+
+    // place nav bar to correct height
+  scrollevent();
+  resize();
 }
 
 // scrollevent()
@@ -106,13 +123,59 @@ function start(){
 
 
 function scrollevent(){
+  let fsize=0.08*window.innerHeight*(1-(document.body.scrollTop-0.3*window.innerHeight)/(0.1*window.innerHeight));
+  let titleel=document.getElementsByClassName("coverTitle1")[0];
+
+  if(document.body.scrollTop>0.4*window.innerHeight){
+    titleel.style.fontSize="20px";
+    titleel.style.lineHeight="20px";
+  }
+  else if(document.body.scrollTop>0.3*window.innerHeight){
+    titleel.style.fontSize=fsize+"px";
+    titleel.style.lineHeight=fsize+"px";
+  }
+
+  else {
+    titleel.style.fontSize="8vw";
+    titleel.style.lineHeight="8vw";
+  }
 
   // VIDEO PARALLAX
   document.getElementById("coverVideo").style.top =
   (-200+document.body.scrollTop/parallaxfactor) +"px";
 
+  if(document.body.scrollTop>0.4*window.innerHeight-20){
+    let t = document.getElementsByClassName("coverTitle2")[0];
+    t.style.display="none";
+    document.getElementById("navHeader")
+      .style.top=(document.body.scrollTop - 0.4*window.innerHeight)
+    document.getElementById("navHeader")
+        .style.display="block"
+
+        if(!smallmode)
+      document.getElementById("navBody").style.width="50%"
+      else document.getElementById("navBody").style.width="100%"
+  }
+
+
+  else{
+    document.getElementsByClassName("coverTitle2")[0].style.display="block";
+    document.getElementById("navHeader")
+      .style.display="none";
+    document.getElementById("navBody").style.width="100%"
+  }
   // fix nav bar position on all pages
   if(document.body.scrollTop>0.40*window.innerHeight){
+    document.getElementById("navHeader")
+      .style.top=0;
+      document.getElementById("navHeader")
+          .style.display="block"
+
+          if(!smallmode)
+        document.getElementById("navBody").style.width="50%"
+        else document.getElementById("navBody").style.width="100%"
+
+    document.getElementById("coverTitleBox").style.display="none";
     navsection.style.position="fixed";
     navsection.style.top="0px";
 
@@ -135,10 +198,14 @@ function scrollevent(){
   }
   // if we've scrolled up and out of fix range, re-fix everything
   else {
+    document.getElementById("navBody").style.width="100%"
+    document.getElementById("coverTitleBox").style.display="block";
     navsection.style.position="relative";
     if(pageIs=="home") banderollesection.style.marginTop="0px";
     else document.getElementById("bodySection").style.marginTop="0px";
     if(popupshown) resetPopupSectionOffsets();
+
+
   }
 }
 
@@ -160,19 +227,51 @@ function resetPopupSectionOffsets(){
 // add nav bar elements to the page
 
 function populateNav(){
-  navsection.innerHTML = `<div id="navHeader">
-  Samuel <span class="medNavHeader"><br>Paré-Chouinard's</span> <span class="smallerNavHeader"> portfolio website </span>
-  </div>
+  navsection.innerHTML = `
+  <canvas id="navcanvas"></canvas>
+
+  <div id="navHeader">
+  SAMUEL PARÉ-CHOUINARD </div>
   <!-- nav buttons -->
-  <div id="navBody">
-  <a class="navButton" href="index.html">Home</a>
-  <a class="navButton" href="about.html">About</a>
-  <a class="navButton" href="artistStatement.html">Artist Statement</a>
-  <a class="navButton" href="bio.html">Bio</a>
-  <a class="navButton" href="resume.html">Resume</a>
-  <a class="navButton" href="contact.html">Contact</a>
+  <div id="navBody" onmouseleave="navfx2()">
+  <a id="n0" class="navButton" onmouseenter="navfx(0)" href="index.html">HOME</a>
+  <a id="n1" class="navButton" onmouseenter="navfx(1)" href="about.html">ABOUT</a>
+
+  <a id="n2" class="navButton" onmouseenter="navfx(2)" href="resume.html">RESUME</a>
+  <a id="n3" class="navButton" onmouseenter="navfx(3)" href="contact.html">CONTACT</a>
   </div>`;
+
+
+  navcanvas = document.getElementById("navcanvas");
+  navcanvas.width=window.innerWidth;
+  navcanvas.height=2;
+  navctx=navcanvas.getContext("2d");
+
+  setInterval(navupdate,50);
 }
+
+function navupdate(){
+  //console.log("ey")
+  navctx.fillStyle="#fff1"
+  navctx.fillRect(0,0,navcanvas.width,navcanvas.height);
+  if(navtarget!=undefined){
+    if(navx+navvel<navtarget) navx+=navvel;
+    else if(navx-navvel>navtarget) navx-=navvel;
+    else navx=navtarget;
+    navctx.fillStyle="#f888";
+    navctx.fillRect(navx,0,40,2);
+  }
+}
+function navfx2(){
+  navtarget=undefined;
+}
+function navfx(index){
+  let el = document.getElementById("n"+index);
+  let box = el.getBoundingClientRect();
+  navtarget = box.left;
+}
+
+
 
 
 
@@ -277,8 +376,8 @@ function createCoverBox(){
   // page title element
   titlebox.innerHTML=`
   <div id="coverTitleBox">
-  <div class="coverTitle1">Samuel Paré-Chouinard</div>
-  <div class="coverTitle2">Programming, Sound Design, Game Design</div>
+  <div class="coverTitle1">SAMUEL PARÉ-CHOUINARD</div>
+  <div class="coverTitle2">MULTIDISCIPLINARY DIGITAL ARTIST</div>
   </div>`;
 
   // video element
@@ -490,7 +589,14 @@ function addProjectBox(p,index,isbigbox){
 function updateCurrentURL(){
 
   let currenturl=starturl;
+  //console.log(currenturl);
   let url = currenturl.substring(0,currenturl.indexOf(".html")+5);
+  if(currenturl.indexOf(".html")==-1){
+    let qmark =currenturl.indexOf("?");
+    if(qmark!=-1)
+      url = currenturl.substring(0,qmark);
+    else url = currenturl;
+  }
   let category=featureSelection.replace(" ","_");
 
   url+="?category="+category;
@@ -499,6 +605,8 @@ function updateCurrentURL(){
   selection="?selected="+selectedProject.replace(" ","_");
 
   url+=selection;
+
+  //console.log(url)
   window.history.pushState("","last page",url);
 
 }

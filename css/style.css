@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
 
 body{
   font-family: 'Roboto', helvetica, sans-serif;
@@ -69,26 +70,32 @@ left:0;
 
 
 #coverTitleBox{
-  position:absolute;
+  position:fixed;
+
+  font-family: 'Megrim', cursive;
+  font-weight:bold;
   top:0px;
   z-index:2;
   display:flex;
   flex-direction:column;
   height:100%;
 
-  padding:20px;
+  padding:10px;
   color:white;
-  text-shadow: 1px 1px 2px #000f;
 }
 
 .coverTitle1{
-  font-size:50px;
-  line-height:50px;
+  font-family: 'Roboto', helvetica, sans-serif;
+  font-weight:bold;
+  font-size:8vw;
+  line-height:8vw;
+  letter-spacing:2px;
 }
 
 .coverTitle2{
-  font-size:30px;
-  line-height:30px;
+  font-family: 'Roboto', helvetica, sans-serif;
+  font-size:15px;
+  line-height:14px;
 }
 /* BANDEROLLE SECTION (about)*/
 #banderolleSection{
