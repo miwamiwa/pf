@@ -19,6 +19,11 @@ body{
   line-height:calc(16px + 0.75vw);
 }
 
+.logoS{
+  color:white;
+  background-color:black;
+  padding:5px;
+}
 indent{
   margin-left:5vw;
   position:relative;

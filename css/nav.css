@@ -2,7 +2,7 @@
 #navSection{
   background-color:#ffff;
   width:100%;
-  height:42px;
+  height:8vh;
   z-index:10;
   overflow:hidden;
 }
@@ -23,6 +23,7 @@
 
   font-family: 'Roboto', helvetica, sans-serif;
   font-weight:bold;
+
   font-size:calc(12px + 1.8vh);
   line-height:calc(6px + 1.8vh);
   letter-spacing:2px;
@@ -60,14 +61,15 @@
 }
 
 .navButton{
+  background-color:#ffff;
   letter-spacing:1px;
   border-left:1px solid #dddf;
 
   width:calc(180px + 0.8vh);
-  height:25px;
+  height:100%;
 
-  font-size:calc(12px + 1.8vh);
-  line-height:calc(12px + 1.8vh);
+  font-size:calc(12px + 3vh);
+  line-height:calc(12px + 3vh);
   font-weight:bold;
   text-decoration-line:none;
 
@@ -86,16 +88,11 @@
 
 
 @media screen and (max-width: 600px) {
-  #navBody{
-    width:100%;
-  }
+
 
  #navSection{
    width:100%;
    justify-content:center;
  }
- .navButton{
-   margin:1vw;
-   font-size:calc(8 + 0.2vw);
- }
+
 }

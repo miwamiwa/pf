@@ -1,5 +1,7 @@
 window.onload = start;
 window.onresize =resize;
+
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 let navcanvas,navctx,navtarget,navx=0,navvel=40;
 let entries = [];
 let tagList = [];
@@ -7,7 +9,8 @@ let selectedTag = "all";
 let sortBy = "name";
 let sortedEntries = [];
 let selectedProject;
-
+let compressednavwidth="90%";
+let expandednavwidth="100%";
 let doc = {
   results:0,
   wall:0,
@@ -65,6 +68,8 @@ function resize(){
 // sets up pointers, creates necessary page elements.
 
 function start(){
+
+  console.log("is mobile: "+isMobile)
   /*
   let vid = document.getElementById("coverVideo");
   vid.playbackRate = 0.9;
@@ -123,14 +128,22 @@ function start(){
 
 
 function scrollevent(){
-  let fsize=0.08*window.innerHeight*(1-(document.body.scrollTop-0.3*window.innerHeight)/(0.1*window.innerHeight));
+
   let titleel=document.getElementsByClassName("coverTitle1")[0];
 
-  if(document.body.scrollTop>0.4*window.innerHeight){
+  if(document.body.scrollTop>0.35*window.innerHeight){
     titleel.style.fontSize="20px";
     titleel.style.lineHeight="20px";
   }
   else if(document.body.scrollTop>0.3*window.innerHeight){
+    let scrollfact=( 1-
+      (document.body.scrollTop-0.3*window.innerHeight)
+      /(0.05*window.innerHeight)
+    );
+
+    let fsize = 20+0.08 * window.innerHeight * scrollfact;
+    let lsize = -10+2 * scrollfact;
+    titleel.style.letterSpacing=lsize+"px";
     titleel.style.fontSize=fsize+"px";
     titleel.style.lineHeight=fsize+"px";
   }
@@ -138,6 +151,7 @@ function scrollevent(){
   else {
     titleel.style.fontSize="8vw";
     titleel.style.lineHeight="8vw";
+    titleel.style.letterSpacing="2px";
   }
 
   // VIDEO PARALLAX
@@ -152,9 +166,7 @@ function scrollevent(){
     document.getElementById("navHeader")
         .style.display="block"
 
-        if(!smallmode)
-      document.getElementById("navBody").style.width="50%"
-      else document.getElementById("navBody").style.width="100%"
+      document.getElementById("navBody").style.width=compressednavwidth;
   }
 
 
@@ -162,7 +174,7 @@ function scrollevent(){
     document.getElementsByClassName("coverTitle2")[0].style.display="block";
     document.getElementById("navHeader")
       .style.display="none";
-    document.getElementById("navBody").style.width="100%"
+    document.getElementById("navBody").style.width=expandednavwidth;
   }
   // fix nav bar position on all pages
   if(document.body.scrollTop>0.40*window.innerHeight){
@@ -171,9 +183,7 @@ function scrollevent(){
       document.getElementById("navHeader")
           .style.display="block"
 
-          if(!smallmode)
-        document.getElementById("navBody").style.width="50%"
-        else document.getElementById("navBody").style.width="100%"
+        document.getElementById("navBody").style.width=compressednavwidth;
 
     document.getElementById("coverTitleBox").style.display="none";
     navsection.style.position="fixed";
@@ -198,7 +208,7 @@ function scrollevent(){
   }
   // if we've scrolled up and out of fix range, re-fix everything
   else {
-    document.getElementById("navBody").style.width="100%"
+    document.getElementById("navBody").style.width=expandednavwidth;
     document.getElementById("coverTitleBox").style.display="block";
     navsection.style.position="relative";
     if(pageIs=="home") banderollesection.style.marginTop="0px";
@@ -231,13 +241,13 @@ function populateNav(){
   <canvas id="navcanvas"></canvas>
 
   <div id="navHeader">
-  SAMUEL PARÉ-CHOUINARD </div>
+  <span class="logoS">S</span> </div>
   <!-- nav buttons -->
   <div id="navBody" onmouseleave="navfx2()">
   <a id="n0" class="navButton" onmouseenter="navfx(0)" href="index.html">HOME</a>
   <a id="n1" class="navButton" onmouseenter="navfx(1)" href="about.html">ABOUT</a>
 
-  <a id="n2" class="navButton" onmouseenter="navfx(2)" href="resume.html">RESUME</a>
+  <a id="n2" class="navButton" onmouseenter="navfx(2)" href="resume.html">CV</a>
   <a id="n3" class="navButton" onmouseenter="navfx(3)" href="contact.html">CONTACT</a>
   </div>`;
 
@@ -376,7 +386,7 @@ function createCoverBox(){
   // page title element
   titlebox.innerHTML=`
   <div id="coverTitleBox">
-  <div class="coverTitle1">SAMUEL PARÉ-CHOUINARD</div>
+  <div class="coverTitle1"><span class="logoS">S</span>AMUEL PARÉ-CHOUINARD</div>
   <div class="coverTitle2">MULTIDISCIPLINARY DIGITAL ARTIST</div>
   </div>`;
 
