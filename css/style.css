@@ -291,16 +291,19 @@ flex-wrap:wrap;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
+  background-color:#fff0;
 }
 .boxoverlay:hover{
   cursor:pointer;
+  background-color:#6669;
 }
 .boxoverlayTitle{
-  font-size:16px;
-
+  font-size:calc(10px + 1.5vh);
+  font-weight:bold;
 }
 .boxoverlayBody{
-  font-size:10px;
+  font-size:calc(10px + 0.6vh);
+  line-height:calc(10px + 0.8vh);
   font-style:italic;
 
 }
