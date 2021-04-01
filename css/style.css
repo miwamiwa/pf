@@ -190,13 +190,18 @@ height:200px;
 
 }
 #subjectsContainer{
-  font-size:20px;
-  padding:8px;
+  padding-top:4vh;
+  padding-left:10px;
+  font-size:calc(12px + 2vh);
+
   width:100%;
+
 }
 #subjectsBox{
-  margin-top:10px;
+  padding:2vh 0px;
   width:100%;
+display:flex;
+flex-wrap:wrap;
 }
 /*
 .subjectbox{
@@ -213,19 +218,16 @@ height:200px;
 }
 */
 .subjectbox{
-  border-style:solid;
-  border-width:1px;
-  border-color:#dddf;
-  border-radius:3px;
+  border-left:1px solid #94b0d6;
 
-  width:150px;
-  height:25px;
-
-  font-size:calc(8px + 0.2vw);
-  line-height:calc(9px + 0.2vw);
+  width:250px;
+  height:8vh;
+  font-weight:bold;
+  font-size:calc(8px + 2.0vh);
+  line-height:calc(9px + 2.0vh);
   text-decoration-line:none;
-  margin:5px;
-  padding:5px;
+  margin:0px;
+  padding:2vh;
   padding-left:15px;
   padding-right:15px;
   text-align:center;
@@ -248,11 +250,11 @@ height:200px;
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
-  justify-content:center;
+  justify-content:flex-start;
 }
 .featurebox{
-  width:200px;
-  height:200px;
+  width:30vh;
+  height:30vh;
   background-color:white;
   margin:5px;
   border-radius:3px;
@@ -261,8 +263,8 @@ height:200px;
 }
 
 .featureboxSmall{
-  width:150px;
-  height:150px;
+  width:30vh;
+  height:30vh;
   border-radius:3px;
 }
 
@@ -297,10 +299,13 @@ height:200px;
 
 }
 .lessmore{
+  padding:8vh 2vw;
   background-color:#bbbf;
   color:#444f;
   text-align:center;
-  font-size:30px;
+  font-weight:bold;
+  font-size:calc(12px + 2vh);
+  line-height:calc(12px + 2vh);
   cursor:pointer;
 }
 .lessmore:hover{

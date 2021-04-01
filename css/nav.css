@@ -63,7 +63,7 @@ justify-content:center;
   top:2px;
   width:50%;
   height:100%;
-  background-color:white;
+  background-color:#61a5ff;
   display:flex;
   flex-direction:row;
   justify-content:space-around;
@@ -71,9 +71,9 @@ justify-content:center;
 }
 
 .navButton{
-  background-color:#ffff;
+  background-color:#61a5ff;
   letter-spacing:1px;
-  border-left:1px solid #dddf;
+  border-left:1px solid #94b0d6;
 
   width:calc(180px + 0.8vh);
   height:100%;
@@ -85,7 +85,7 @@ justify-content:center;
 
   padding:5px;
   text-align:center;
-  background-color:white;
+
   display:flex;
   align-items:center;
   justify-content:center;

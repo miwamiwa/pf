@@ -12,22 +12,26 @@
   width:100vw;
   padding-left:15px;
 
-  background-color:white;
-  font-size:32px;
-  line-height:32px;
+  background-color:#e3ca9a;
+
+  font-weight:bold;
+  font-size:calc(12px + 2vh);
+  line-height:calc(12px + 2vh);
   z-index:5;
 }
 
 .popupsubtitle{
-  color:#bbbf;
-  font-size:16px;
+  color:#333f;
+  font-weight:300;
+  font-size:calc(6px + 1.8vh);
+  line-height:calc(6px + 1.8vh);
   margin-left:10px;
 }
 .popupsubtitle:hover{
   color:#cccf;
 }
 .popupbody{
-  font-size:calc(10px + 0.6vh);
+  font-size:calc(10px + 1.6vh);
   padding:20px;
   width:80%;
   position:relative;
@@ -93,19 +97,19 @@
 .fdinfosection{
   width:200px;
   padding:4px;
-  color:#777f;
-  font-size:calc(10px + 0.5vw);
-  line-height:calc(12px + 0.6vw);
+  color:#333f;
+  font-size:calc(10px + 1.5vw);
+  line-height:calc(12px + 1.6vw);
 }
 
 .fdinfosection:hover{
-  color:#333f;
+  color:#111f;
 }
 
 .fdinfotitle{
-  font-style:italic;
+  font-weight:bold;
   color:#666f;
-  font-size:calc(8px + 0.5vw);
+  font-size:calc(10px + 1.5vw);
 }
 
 .fdinfotitle{
@@ -113,8 +117,8 @@
 }
 
 .fdBody{
-  font-size:calc(12px + 0.5vw);
-  font-size:calc(13px + 0.5vw);
+  font-size:calc(12px + 1.6vh);
+
 }
 
 .fdImg{

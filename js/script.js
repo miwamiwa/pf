@@ -130,6 +130,7 @@ function start(){
 function scrollevent(){
 
   let titleel=document.getElementsByClassName("coverTitle1")[0];
+  let level2height=(0.08*window.innerHeight);
 
   if(document.body.scrollTop>0.35*window.innerHeight){
     titleel.style.fontSize="20px";
@@ -159,8 +160,10 @@ function scrollevent(){
   (-200+document.body.scrollTop/parallaxfactor) +"px";
 
   if(document.body.scrollTop>0.4*window.innerHeight-20){
+
     let t = document.getElementsByClassName("coverTitle2")[0];
     t.style.display="none";
+
     document.getElementById("navHeader")
       .style.top=(document.body.scrollTop - 0.4*window.innerHeight)
     document.getElementById("navHeader")
@@ -191,17 +194,17 @@ function scrollevent(){
 
     // if there is a banderolle section, fix banderolle position
     if(pageIs=="home")
-      banderollesection.style.marginTop="40px";
+      banderollesection.style.marginTop=level2height+"px";
     else {
-      document.getElementById("bodySection").style.marginTop="40px";
+      document.getElementById("bodySection").style.marginTop=level2height+"px";
     }
     // fix popup title and body positions
     if(popupshown&&document.body.scrollTop>0.40*window.innerHeight+200){
       let p=document.getElementsByClassName("popuptitle");
       p[0].style.position="fixed";
-      p[0].style.top="40px";
+      p[0].style.top=level2height+"px";
       popupoffsetted=true;
-      popupsection.style.marginTop="60px";
+      popupsection.style.marginTop=(level2height+20)+"px";
     }
     else if(popupshown) resetPopupSectionOffsets();
 
@@ -262,7 +265,7 @@ function populateNav(){
 
 function navupdate(){
   //console.log("ey")
-  navctx.fillStyle="#fff1"
+  navctx.fillStyle="#61a5ff33"
   navctx.fillRect(0,0,navcanvas.width,navcanvas.height);
   if(navtarget!=undefined){
     if(navx+navvel<navtarget) navx+=navvel;
@@ -432,7 +435,7 @@ function updateSubjectsBox(){
     tempbox.classList.add("subjectbox");
     if(subjects[i]==featureSelection) tempbox.classList.add("selectedSubject")
     subjectsbox.appendChild(tempbox);
-    tempbox.innerHTML=subjects[i];
+    tempbox.innerHTML=subjects[i].toUpperCase();
     tempbox.setAttribute("onclick",`selectSubject(${i})`);
   }
 }
@@ -548,13 +551,15 @@ function addProjectBox(p,index,isbigbox){
   img.style.objectFit="cover";
 
   if(isbigbox){
-    img.width="200";
-    img.height="200";
+    let size = 0.3*window.innerHeight;
+    img.width=size;
+    img.height=size;
 
   }
   else {
-    img.width="150";
-    img.height="150";
+    let size = 0.3*window.innerHeight;
+    img.width=size;
+    img.height=size;
     tempbox.classList.add("featureboxSmall");
   }
   img.style.borderRadius="2px";
