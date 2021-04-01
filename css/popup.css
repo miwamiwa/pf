@@ -33,9 +33,9 @@
 .popupbody{
   font-size:calc(10px + 1.6vh);
   padding:20px;
-  width:80%;
+  width:100%;
   position:relative;
-  left:10%;
+  left:0%;
 }
 .popupimg{
   object-fit:cover;

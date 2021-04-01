@@ -2,7 +2,7 @@ window.onload = start;
 window.onresize =resize;
 
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-let navcanvas,navctx,navtarget,navx=0,navvel=40;
+let navcanvas,navctx,navtarget,navx=0,navvel=16;
 let entries = [];
 let tagList = [];
 let selectedTag = "all";
@@ -44,6 +44,9 @@ let boxStatus=[]; // for project box opacity animation
 // video parallax effect intensity
 let parallaxfactor =3;
 let gallerySelection = {entry:0,index:0};
+let lastH;
+
+let resizeRate=300;
 /*
 window.onhashchange = function() {
 console.log("hash change")
@@ -51,6 +54,7 @@ console.log("hash change")
 */
 
 let smallmode = false;
+let bsize;
 
 function resize(){
   if(window.innerWidth<=600){
@@ -69,7 +73,9 @@ function resize(){
 
 function start(){
 
+  lastH=window.innerHeight;
   console.log("is mobile: "+isMobile)
+  setInterval(checkResize,resizeRate);
   if(isMobile){
     window.onorientationchange=resize;
   }
@@ -86,6 +92,9 @@ function start(){
   doc.imageViewer = document.getElementById("galleryImageViewer");
   navsection=document.getElementById("navSection");
   banderollesection=document.getElementById("banderolleSection");
+  if(banderollesection!=undefined)
+  bsize=banderollesection.getBoundingClientRect().height;
+
   subjectsbox=document.getElementById("subjectsBox");
   titlebox=document.getElementById("coverSectionSmall");
 
@@ -133,11 +142,14 @@ function start(){
 function scrollevent(){
 
   let titleel=document.getElementsByClassName("coverTitle1")[0];
+  let titleel2=document.getElementById("logopt2");
   let level2height=(0.08*window.innerHeight);
 
   if(document.body.scrollTop>0.35*window.innerHeight){
     titleel.style.fontSize="20px";
     titleel.style.lineHeight="20px";
+    titleel2.style.fontSize="20px";
+    titleel2.style.lineHeight="20px";
   }
   else if(document.body.scrollTop>0.3*window.innerHeight){
     let scrollfact=( 1-
@@ -150,12 +162,20 @@ function scrollevent(){
     titleel.style.letterSpacing=lsize+"px";
     titleel.style.fontSize=fsize+"px";
     titleel.style.lineHeight=fsize+"px";
+
+    titleel2.style.letterSpacing=lsize+"px";
+    titleel2.style.fontSize=fsize+"px";
+    titleel2.style.lineHeight=fsize+"px";
+    //titleel2.style.left= fsize+"px";
   }
 
   else {
-    titleel.style.fontSize="8vw";
-    titleel.style.lineHeight="8vw";
+    titleel.style.fontSize="8vh";
+    titleel.style.lineHeight="8vh";
     titleel.style.letterSpacing="2px";
+    titleel2.style.fontSize="8vh";
+    titleel2.style.lineHeight="8vh";
+    titleel2.style.letterSpacing="2px";
   }
 
   // VIDEO PARALLAX
@@ -392,7 +412,7 @@ function createCoverBox(){
   // page title element
   titlebox.innerHTML=`
   <div id="coverTitleBox">
-  <div class="coverTitle1"><span class="logoS">S</span>AMUEL PARÉ-CHOUINARD</div>
+  <div class="coverTitle1"><span class="coverlogo logoS">S</span><span id="logopt2">AMUEL PARÉ-CHOUINARD</span></div>
   <div class="coverTitle2">MULTIDISCIPLINARY DIGITAL ARTIST</div>
   </div>`;
 
@@ -567,12 +587,13 @@ function addProjectBox(p,index,isbigbox){
   }
   img.style.borderRadius="2px";
 
+  img.classList.add("pboximg")
   tempbox.appendChild(img);
 
   boxoverlay = document.createElement("div");
   boxoverlay.classList.add("boxoverlay");
-  boxoverlay.style.width=img.width+"px";
-  boxoverlay.style.height=img.height+"px";
+  boxoverlay.style.width="30vh";
+  boxoverlay.style.height="30vh";
   boxoverlay.style.opacity =0;
 
 
@@ -597,6 +618,18 @@ function addProjectBox(p,index,isbigbox){
   tempbox.appendChild(boxoverlay);
 }
 
+
+function checkResize(){
+  if(lastH!=window.innerHeight){
+    lastH=window.innerHeight;
+    let size=(0.3*window.innerHeight);
+    let boxes=document.getElementsByClassName("pboximg");
+    for(let i=0; i<boxes.length; i++){
+      boxes[i].width=size;
+      boxes[i].height=size;
+    }
+  }
+}
 
 // updateCurrentURL()
 //
@@ -715,6 +748,11 @@ function exitpopup(){
   popupshown=false;
   selectedProject=undefined;
   updateCurrentURL();
+  if(pageIs=="home")
+    document.getElementById("subjectsContainer").scrollIntoView();
+    //console.log(document.getElementById("bodySection").getBoundingClientRect())
+    //console.log(document.body.scrollTop)
+    //document.getElementById("bodyContentBox").scrollIntoView();
 }
 
 // selectSubject()

@@ -2,8 +2,8 @@
 #resumeBody{
   padding:20px;
 
-  font-size:calc(10px + 0.75vw);
-  line-height:calc(12px + 0.75vw);
+  font-size:calc(12px + 1.6vh);
+  font-size:calc(16px + 1.6vh);
 }
 
 #resumeTitle{
@@ -11,8 +11,9 @@
 }
 
 .rSubtitle{
-  font-size:calc(16px + 0.75vw);
-  line-height:calc(14px + 0.75vw);
+  font-size:calc(12px + 1.6vh);
+  font-size:calc(16px + 1.6vh);
+  font-weight:bold;
   padding:2vw;
 }
 
