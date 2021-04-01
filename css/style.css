@@ -233,14 +233,14 @@ flex-wrap:wrap;
 .subjectbox{
   border-left:1px solid #94b0d6;
 
-  width:250px;
+  width:28vh;
   height:8vh;
   font-weight:bold;
   font-size:calc(8px + 2.0vh);
   line-height:calc(9px + 2.0vh);
   text-decoration-line:none;
   margin:0px;
-  padding:2vh;
+  padding:2.5vh;
   padding-left:15px;
   padding-right:15px;
   text-align:center;
