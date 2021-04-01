@@ -70,6 +70,9 @@ function resize(){
 function start(){
 
   console.log("is mobile: "+isMobile)
+  if(isMobile){
+    window.onorientationchange=resize;
+  }
   /*
   let vid = document.getElementById("coverVideo");
   vid.playbackRate = 0.9;
