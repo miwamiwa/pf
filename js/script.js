@@ -241,7 +241,7 @@ function populateNav(){
   <canvas id="navcanvas"></canvas>
 
   <div id="navHeader">
-  <span class="logoS">S</span> </div>
+  <div class="navlogo logoS">S</div> </div>
   <!-- nav buttons -->
   <div id="navBody" onmouseleave="navfx2()">
   <a id="n0" class="navButton" onmouseenter="navfx(0)" href="index.html">HOME</a>
