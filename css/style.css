@@ -8,16 +8,27 @@ body{
   height:100%;
 }
 
-.pageTitle{
+.f1{
   font-size:calc(22px + 1.6vh);
-  font-size:calc(26px + 1.6vh);
-  font-weight:bold;
-    padding:10px;
+  line-height:calc(26px + 1.6vh);
 }
 
-.defaultBodyText{
+.f2{
   font-size:calc(12px + 1.6vh);
-  font-size:calc(16px + 1.6vh);
+  line-height:calc(16px + 1.6vh);
+}
+
+
+.f3{
+  font-size:calc(6px + 1.6vh);
+  line-height:calc(8px + 1.6vh);
+}
+
+.pageTitle{
+  font-size:calc(22px + 1.6vh);
+  line-height:calc(26px + 1.6vh);
+  font-weight:bold;
+    padding:10px;
 }
 
 .logoS{
@@ -43,7 +54,6 @@ indent{
 .videoCredits{
   position:relative;
   left:6%;
-  font-size:10px;
   color:#666f;
 }
 
@@ -51,7 +61,7 @@ indent{
 #coverSection{
   position:relative;
   width:100%;
-  height:70vh;
+  height:80vh;
   overflow-y:hidden;
   position:relative;
   z-index:0;
@@ -67,13 +77,11 @@ indent{
 }
 
 #coverVideo{
-top:-200px;
+top:0px;
 object-fit:cover;
 position:relative;
 transform:translateY(-0px);
 z-index:1;
--o-filter: blur(2px);
-    filter: blur(2px);
 }
 
 #vidcontainer{
@@ -154,15 +162,12 @@ align-items:center;
 #bandRight{
 
 
-line-height:13px;
 display:flex;
 left:5px;
 position:relative;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-font-size:calc(10px + 1.6vw);
-line-height:calc(9px + 1.6vw);
 height:200px;
 }
 #bandRightText{
@@ -187,7 +192,6 @@ height:200px;
   #bandRight{
     width:100%;
     padding:15px;
-    font-size:calc(4px + 1.1vw);
   }
   #bandRightText{
     width:100%;

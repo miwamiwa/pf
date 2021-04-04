@@ -45,7 +45,8 @@ let boxStatus=[]; // for project box opacity animation
 let parallaxfactor =3;
 let gallerySelection = {entry:0,index:0};
 let lastH;
-
+let tbh;
+let hunit;
 let resizeRate=300;
 /*
 window.onhashchange = function() {
@@ -62,6 +63,8 @@ function resize(){
   }
   else smallmode=false;
 
+  tbh = titlebox.getBoundingClientRect().height;
+  hunit = 0.1*window.innerHeight;
   scrollevent();
 }
 
@@ -86,7 +89,7 @@ function start(){
 
   // save url on page start. prevents defaulting to wrong page on setup
   starturl=window.location.href;
-
+  hunit = 0.1*window.innerHeight;
   // create some pointers
   doc.galleryView = document.getElementById("galleryView");
   doc.imageViewer = document.getElementById("galleryImageViewer");
@@ -96,7 +99,10 @@ function start(){
   bsize=banderollesection.getBoundingClientRect().height;
 
   subjectsbox=document.getElementById("subjectsBox");
-  titlebox=document.getElementById("coverSectionSmall");
+  titlebox=document.getElementById("coverSection");
+  if(titlebox==undefined) titlebox=document.getElementById("coverSectionSmall");
+  tbh = titlebox.getBoundingClientRect().height;
+
 
   // create top page elements
   createCoverBox();
@@ -145,15 +151,15 @@ function scrollevent(){
   let titleel2=document.getElementById("logopt2");
   let level2height=(0.08*window.innerHeight);
 
-  if(document.body.scrollTop>0.35*window.innerHeight){
+  if(document.body.scrollTop>tbh-.5*hunit){
     titleel.style.fontSize="20px";
     titleel.style.lineHeight="20px";
     titleel2.style.fontSize="20px";
     titleel2.style.lineHeight="20px";
   }
-  else if(document.body.scrollTop>0.3*window.innerHeight){
+  else if(document.body.scrollTop>tbh-hunit){
     let scrollfact=( 1-
-      (document.body.scrollTop-0.3*window.innerHeight)
+      (document.body.scrollTop-(tbh-hunit))
       /(0.05*window.innerHeight)
     );
 
@@ -182,13 +188,13 @@ function scrollevent(){
   document.getElementById("coverVideo").style.top =
   (-200+document.body.scrollTop/parallaxfactor) +"px";
 
-  if(document.body.scrollTop>0.4*window.innerHeight-20){
+  if(document.body.scrollTop>tbh-20){
 
     let t = document.getElementsByClassName("coverTitle2")[0];
     t.style.display="none";
 
     document.getElementById("navHeader")
-      .style.top=(document.body.scrollTop - 0.4*window.innerHeight)
+      .style.top=(document.body.scrollTop - tbh)
     document.getElementById("navHeader")
         .style.display="block"
 
@@ -203,7 +209,7 @@ function scrollevent(){
     document.getElementById("navBody").style.width=expandednavwidth;
   }
   // fix nav bar position on all pages
-  if(document.body.scrollTop>0.40*window.innerHeight){
+  if(document.body.scrollTop>tbh){
     document.getElementById("navHeader")
       .style.top=0;
       document.getElementById("navHeader")
@@ -222,7 +228,7 @@ function scrollevent(){
       document.getElementById("bodySection").style.marginTop=level2height+"px";
     }
     // fix popup title and body positions
-    if(popupshown&&document.body.scrollTop>0.40*window.innerHeight+200){
+    if(popupshown&&document.body.scrollTop>tbh+200){
       let p=document.getElementsByClassName("popuptitle");
       p[0].style.position="fixed";
       p[0].style.top=level2height+"px";

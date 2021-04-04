@@ -471,7 +471,7 @@ let projectDescriptions = [
   iconImage:'lpicon.png',
 
   coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-  <div class="videoCredits">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+  <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
   tags:["Game Sound","Max MSP", "Unity"],
   date:[20,12,2019],
 
@@ -494,7 +494,7 @@ let projectDescriptions = [
       where the theme was “spectacle.” The game is a race between two teams of
       two players tethered together, overcoming wacky obstacles and racing to the
       finish line. Our game was nominated for the Jury's Special Award.
-      (summary and images by Nicole Lin)
+
 
       %#%#I picked and produced sound effects, composed BGM tracks, set up the project
       in Wwise and scripted audio triggers in C#. %#%#%#a0 %#The soundtrack featured midi
@@ -507,7 +507,7 @@ let projectDescriptions = [
 
   },
   coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-  <div class="videoCredits">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+  <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
   tags:["Game Sound","Wwise", "Unity", "C#","Music"],
   date:[1,4,2019],
   soundcloudDescription:"BGM tracks from Fastened Furious:",
