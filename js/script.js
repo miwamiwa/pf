@@ -74,7 +74,7 @@ let resized = true; // to prevent extra calls of checkresize()
 function resize(){
   resized=true;
   checkSmallMode();
-
+  if(isMobile) coverbox.style.height="86vh";
   tbh = coverbox.getBoundingClientRect().height;
   hunit = 0.1*window.innerHeight;
   navbheight = 0.2*hunit+8;
@@ -100,6 +100,10 @@ function checkSmallMode(){
 // sets up pointers, creates necessary page elements.
 
 function start(){
+  if(isMobile){
+    window.onorientationchange=resize;
+  }
+
 /*
   let el = document.createElement("div");
   el.innerHTML=window.innerWidth;
@@ -111,15 +115,13 @@ function start(){
   */
 
 
-  
+
   checkSmallMode();
   //console.log(window.visualViewport.width,window.innerHeight);
   lastH=window.innerHeight;
   //console.log("is mobile: "+isMobile)
   setInterval(checkResize,resizeRate);
-  if(isMobile){
-    window.onorientationchange=resize;
-  }
+
 
   // save url on page start. prevents defaulting to wrong page on setup
   starturl=window.location.href;
@@ -579,6 +581,7 @@ function createCoverBox(){
 
   coverbox=document.getElementById("coverSection");
   if(coverbox==undefined) coverbox=document.getElementById("coverSectionSmall");
+  if(isMobile) coverbox.style.height="86vh";
   tbh = coverbox.getBoundingClientRect().height;
 
 
