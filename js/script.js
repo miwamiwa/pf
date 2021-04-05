@@ -9,8 +9,8 @@ let selectedTag = "all";
 let sortBy = "name";
 let sortedEntries = [];
 let selectedProject;
-let compressednavwidth="90%";
-let expandednavwidth="100%";
+let compressednavwidth="60%";
+let expandednavwidth="60%";
 let doc = {
   results:0,
   wall:0,
@@ -186,7 +186,7 @@ function scrollevent(){
 
   // VIDEO PARALLAX
   document.getElementById("coverVideo").style.top =
-  (-200+document.body.scrollTop/parallaxfactor) +"px";
+  (0-document.body.scrollTop/parallaxfactor) +"px";
 
   if(document.body.scrollTop>tbh-20){
 
