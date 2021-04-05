@@ -100,7 +100,7 @@ function checkSmallMode(){
 // sets up pointers, creates necessary page elements.
 
 function start(){
-
+/*
   let el = document.createElement("div");
   el.innerHTML=window.innerWidth;
   el.style.position="fixed";
@@ -108,6 +108,10 @@ function start(){
   el.style.left=0;
   el.style.fontSize="100px";
   document.body.appendChild(el);
+  */
+
+
+  
   checkSmallMode();
   //console.log(window.visualViewport.width,window.innerHeight);
   lastH=window.innerHeight;
