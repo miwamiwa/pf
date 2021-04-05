@@ -581,7 +581,7 @@ function createCoverBox(){
 
   coverbox=document.getElementById("coverSection");
   if(coverbox==undefined) coverbox=document.getElementById("coverSectionSmall");
-  if(isMobile) coverbox.style.height="86vh";
+  if(isMobile) coverbox.style.height="84vh";
   tbh = coverbox.getBoundingClientRect().height;
 
 
