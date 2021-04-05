@@ -101,6 +101,13 @@ function checkSmallMode(){
 
 function start(){
 
+  let el = document.createElement("div");
+  el.innerHTML=window.innerWidth;
+  el.style.position="fixed";
+  el.style.top=0;
+  el.style.left=0;
+  el.style.fontSize="100px";
+  document.body.appendChild(el);
   checkSmallMode();
   //console.log(window.visualViewport.width,window.innerHeight);
   lastH=window.innerHeight;
