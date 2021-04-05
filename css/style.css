@@ -47,7 +47,7 @@ position:absolute;
 left: 9.5vh;
 }
 indent{
-  margin-left:0vw;
+  margin-left:3vw;
   position:relative;
 }
 
@@ -63,7 +63,7 @@ indent{
   width:100%;
   height:80vh;
   overflow-y:hidden;
-  position:relative;
+
   z-index:0;
 }
 
@@ -138,8 +138,9 @@ left:0;
   background-color:#ffff;
   position:relative;
   width:100%;
-  height:86%;
-  top:7%;
+  height:100%;
+  top:0%;
+  padding:2%;
   left:0%;
 }
 
@@ -185,7 +186,7 @@ height:200px;
   margin-left:35px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .bandImg{
     display:none !important;
   }
@@ -199,6 +200,8 @@ height:200px;
   #bandRightText{
     width:100%;
   }
+
+
 }
 
 /* PAGE BODY */

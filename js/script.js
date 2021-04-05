@@ -31,7 +31,7 @@ let featureSelection="Programming";
 let popupsection;
 let showmoresection;
 let showlesssection;
-let titlebox;
+let coverbox;
 let wheelState = false;
 let lastWheelState = false;
 let wheelTimer;
@@ -45,7 +45,8 @@ let boxStatus=[]; // for project box opacity animation
 let parallaxfactor =3;
 let gallerySelection = {entry:0,index:0};
 let lastH;
-let tbh;
+let tbh; // "Title Box Height". the "coverbox" is the
+// entire cover section (video and title)
 let hunit;
 let resizeRate=300;
 /*
@@ -56,16 +57,39 @@ console.log("hash change")
 
 let smallmode = false;
 let bsize;
+let titleel;//=document.getElementsByClassName("coverTitle1")[0];
+let titleel2;//=document.getElementById("logopt2");
+let titlebox;
+let coversubtitle;
+let navlogo;
+let navbody;
+let navbheight; // nav button height in px
+let navheight;
+let resized = true; // to prevent extra calls of checkresize()
 
+//resize()
+//
+// on window resized callback
 function resize(){
+  resized=true;
+  checkSmallMode();
+
+  tbh = coverbox.getBoundingClientRect().height;
+  hunit = 0.1*window.innerHeight;
+  navbheight = 0.2*hunit+8;
+  scrollevent();
+  styleTitle();
+}
+
+// checkSmallMode()
+//
+// if window width is < 600 px, then we are smol
+function checkSmallMode(){
   if(window.innerWidth<=600){
     smallmode=true;
   }
   else smallmode=false;
-
-  tbh = titlebox.getBoundingClientRect().height;
-  hunit = 0.1*window.innerHeight;
-  scrollevent();
+  //smallmode = true;
 }
 
 
@@ -76,21 +100,21 @@ function resize(){
 
 function start(){
 
+  checkSmallMode();
+  //console.log(window.visualViewport.width,window.innerHeight);
   lastH=window.innerHeight;
-  console.log("is mobile: "+isMobile)
+  //console.log("is mobile: "+isMobile)
   setInterval(checkResize,resizeRate);
   if(isMobile){
     window.onorientationchange=resize;
   }
-  /*
-  let vid = document.getElementById("coverVideo");
-  vid.playbackRate = 0.9;
-  */
 
   // save url on page start. prevents defaulting to wrong page on setup
   starturl=window.location.href;
   hunit = 0.1*window.innerHeight;
+  navbheight = 2*hunit+8;
   // create some pointers
+
   doc.galleryView = document.getElementById("galleryView");
   doc.imageViewer = document.getElementById("galleryImageViewer");
   navsection=document.getElementById("navSection");
@@ -99,10 +123,6 @@ function start(){
   bsize=banderollesection.getBoundingClientRect().height;
 
   subjectsbox=document.getElementById("subjectsBox");
-  titlebox=document.getElementById("coverSection");
-  if(titlebox==undefined) titlebox=document.getElementById("coverSectionSmall");
-  tbh = titlebox.getBoundingClientRect().height;
-
 
   // create top page elements
   createCoverBox();
@@ -131,13 +151,54 @@ function start(){
   // check what to append to the page depending on
   // url commands.
   if(pageIs=="home")
-    checkURL();
+  checkURL();
 
-    // place nav bar to correct height
+  // place nav bar to correct height
   scrollevent();
   resize();
 }
 
+
+function styleTitle(fsize,lheight,fsize2,spacing){
+  // logo s
+  titleel.style.fontSize=fsize;
+  titleel.style.lineHeight=lheight;
+  // rest of the title
+  titleel2.style.fontSize=fsize;
+  titleel2.style.lineHeight=lheight;
+
+  coversubtitle.style.fontSize=fsize2;
+  coversubtitle.style.lineHeight=fsize2;
+  coversubtitle.style.top=(14*scrollfact)+"vh";
+  titleel2.style.left=`calc(${fsize} + 15px)`;
+
+  if(spacing!=undefined){
+    titleel.style.letterSpacing=spacing+"px";
+    titleel2.style.letterSpacing=spacing+"px";
+    coversubtitle.style.letterSpacing=(spacing*.5)+"px";
+  }
+
+  let fact=scrollfact;
+  titlebox.style.left=(scrollfact*26)+"vw";
+  // center elements
+  if(smallmode){
+
+    titlebox.style.top=(30*fact)+"vh";
+    coversubtitle.style.top=(14*fact)+"vh";
+
+  }
+  else {
+    //titlebox.style.left="26vw";
+    titlebox.style.top=(20*fact)+"vh";
+    coversubtitle.style.top=(26*fact)+"vh";
+  }
+}
+
+let scrollfact=1;
+const smallTitleSize = "4";
+const bigTitleSize = "8";
+const smallSubTitleSize = "2";
+const bigSubTitleSize = "3";
 // scrollevent()
 //
 // called when page is scrolled.
@@ -147,75 +208,85 @@ function start(){
 
 function scrollevent(){
 
-  let titleel=document.getElementsByClassName("coverTitle1")[0];
-  let titleel2=document.getElementById("logopt2");
-  let level2height=(0.08*window.innerHeight);
+  let level2height=.08*window.innerHeight;
+  let scroll = document.body.scrollTop;
 
-  if(document.body.scrollTop>tbh-.5*hunit){
-    titleel.style.fontSize="20px";
-    titleel.style.lineHeight="20px";
-    titleel2.style.fontSize="20px";
-    titleel2.style.lineHeight="20px";
-  }
-  else if(document.body.scrollTop>tbh-hunit){
-    let scrollfact=( 1-
-      (document.body.scrollTop-(tbh-hunit))
-      /(0.05*window.innerHeight)
-    );
+  let titlesize = bigTitleSize;
+  let subtitlesize = bigSubTitleSize;
+  let shrinkrange = 4*hunit;
 
-    let fsize = 20+0.08 * window.innerHeight * scrollfact;
-    let lsize = -10+2 * scrollfact;
-    titleel.style.letterSpacing=lsize+"px";
-    titleel.style.fontSize=fsize+"px";
-    titleel.style.lineHeight=fsize+"px";
-
-    titleel2.style.letterSpacing=lsize+"px";
-    titleel2.style.fontSize=fsize+"px";
-    titleel2.style.lineHeight=fsize+"px";
-    //titleel2.style.left= fsize+"px";
+  if(smallmode){
+    shrinkrange = 4*hunit;
+    titlesize = smallTitleSize;
+    subtitlesize = smallSubTitleSize;
   }
 
+  let shrinkheight= tbh-shrinkrange;
+
+
+  // when title is at smallest size
+  //if(scroll>tbh-.5*hunit)
+    //styleTitle("20px","20px","1vh");
+  //else
+
+  // when title is shrinking
+
+  if(scroll>shrinkheight){
+
+    // sfact =1 at top of shrink range, 0 at bottom
+    scrollfact=( 1- (scroll-shrinkheight) / (shrinkrange) );
+    // font size
+    let fsize1 = titlesize * 0.1*hunit;
+
+    let iscrollfact = 1-scrollfact;
+    //console.log(iscrollfact)
+    let fsize = navbheight + scrollfact*(fsize1-navbheight);//20+0.08 * window.innerHeight * scrollfact;
+    let fsize2 = navbheight + scrollfact*((subtitlesize * 0.1*hunit)-navbheight);
+    let lsize = 2 - 10  * iscrollfact; // space between characters
+    let lineheight= fsize - 19 * iscrollfact;
+    console.log(fsize,titlesize)
+    styleTitle(fsize+"px",lineheight+"px",fsize2+"px",lsize)
+  }
+
+  // when page fully scrolled up
   else {
-    titleel.style.fontSize="8vh";
-    titleel.style.lineHeight="8vh";
-    titleel.style.letterSpacing="2px";
-    titleel2.style.fontSize="8vh";
-    titleel2.style.lineHeight="8vh";
-    titleel2.style.letterSpacing="2px";
+    scrollfact=1;
+    styleTitle(titlesize+"vh",titlesize+"vh", subtitlesize+"vh",2);
   }
 
   // VIDEO PARALLAX
   document.getElementById("coverVideo").style.top =
-  (0-document.body.scrollTop/parallaxfactor) +"px";
+    (0-scroll/parallaxfactor) +"px";
 
-  if(document.body.scrollTop>tbh-20){
 
-    let t = document.getElementsByClassName("coverTitle2")[0];
-    t.style.display="none";
+  if(scroll>tbh-navheight){
 
-    document.getElementById("navHeader")
-      .style.top=(document.body.scrollTop - tbh)
-    document.getElementById("navHeader")
-        .style.display="block"
+    // subtitle is hidden
+    coversubtitle.style.display="none";
 
-      document.getElementById("navBody").style.width=compressednavwidth;
+    // nav logo scrolls in from top
+    navlogo.style.top=(scroll - tbh);
+    navlogo.style.display="block";
+
+    navbody.style.width=compressednavwidth;
   }
 
 
   else{
-    document.getElementsByClassName("coverTitle2")[0].style.display="block";
-    document.getElementById("navHeader")
-      .style.display="none";
-    document.getElementById("navBody").style.width=expandednavwidth;
-  }
-  // fix nav bar position on all pages
-  if(document.body.scrollTop>tbh){
-    document.getElementById("navHeader")
-      .style.top=0;
-      document.getElementById("navHeader")
-          .style.display="block"
 
-        document.getElementById("navBody").style.width=compressednavwidth;
+    coversubtitle.style.display="block";
+    navlogo.style.display="none";
+    navbody.style.width=expandednavwidth;
+  }
+
+
+
+  // fix nav bar position on all pages
+  if(scroll>tbh){
+    navlogo.style.top=0;
+    navlogo.style.display="block"
+
+    navbody.style.width=compressednavwidth;
 
     document.getElementById("coverTitleBox").style.display="none";
     navsection.style.position="fixed";
@@ -223,12 +294,12 @@ function scrollevent(){
 
     // if there is a banderolle section, fix banderolle position
     if(pageIs=="home")
-      banderollesection.style.marginTop=level2height+"px";
+    banderollesection.style.marginTop=level2height+"px";
     else {
       document.getElementById("bodySection").style.marginTop=level2height+"px";
     }
     // fix popup title and body positions
-    if(popupshown&&document.body.scrollTop>tbh+200){
+    if(popupshown&&scroll>tbh+200){
       let p=document.getElementsByClassName("popuptitle");
       p[0].style.position="fixed";
       p[0].style.top=level2height+"px";
@@ -240,7 +311,7 @@ function scrollevent(){
   }
   // if we've scrolled up and out of fix range, re-fix everything
   else {
-    document.getElementById("navBody").style.width=expandednavwidth;
+    navbody.style.width=expandednavwidth;
     document.getElementById("coverTitleBox").style.display="block";
     navsection.style.position="relative";
     if(pageIs=="home") banderollesection.style.marginTop="0px";
@@ -285,9 +356,12 @@ function populateNav(){
 
 
   navcanvas = document.getElementById("navcanvas");
+  navlogo = document.getElementById("navHeader");
+  navbody = document.getElementById("navBody");
   navcanvas.width=window.innerWidth;
   navcanvas.height=2;
   navctx=navcanvas.getContext("2d");
+  navheight = navsection.getBoundingClientRect().height;
 
   setInterval(navupdate,50);
 }
@@ -415,8 +489,13 @@ function populateProjectsList(){
 
 function createCoverBox(){
 
+  coverbox=document.getElementById("coverSection");
+  if(coverbox==undefined) coverbox=document.getElementById("coverSectionSmall");
+  tbh = coverbox.getBoundingClientRect().height;
+
+
   // page title element
-  titlebox.innerHTML=`
+  coverbox.innerHTML=`
   <div id="coverTitleBox">
   <div class="coverTitle1"><span class="coverlogo logoS">S</span><span id="logopt2">AMUEL PARÉ-CHOUINARD</span></div>
   <div class="coverTitle2">MULTIDISCIPLINARY DIGITAL ARTIST</div>
@@ -426,6 +505,12 @@ function createCoverBox(){
   document.getElementById("vidcontainer").innerHTML=`<video id="coverVideo" height="100%" width="100%" autoplay muted loop >
   <source src="images/Sequence_01_1.mp4" type="video/mp4">
   </video>`;
+
+  // create some pointers
+  titleel=document.getElementsByClassName("coverTitle1")[0];
+  titleel2=document.getElementById("logopt2");
+  titlebox=document.getElementById("coverTitleBox");
+  coversubtitle = document.getElementsByClassName("coverTitle2")[0];
 }
 
 
@@ -540,7 +625,7 @@ function showBoxMeta(index){
     box.style.opacity = num;
 
     if(box.style.opacity<1)
-      setTimeout(showBoxMeta, 40, index);
+    setTimeout(showBoxMeta, 40, index);
   }
 }
 
@@ -558,7 +643,7 @@ function hideBoxMeta(index){
     box.style.opacity = num;
 
     if(box.style.opacity>0)
-      setTimeout(hideBoxMeta, 40, index);
+    setTimeout(hideBoxMeta, 40, index);
   }
 }
 
@@ -626,7 +711,7 @@ function addProjectBox(p,index,isbigbox){
 
 
 function checkResize(){
-  if(lastH!=window.innerHeight){
+  if(resized&&lastH!=window.innerHeight){
     lastH=window.innerHeight;
     let size=(0.3*window.innerHeight);
     let boxes=document.getElementsByClassName("pboximg");
@@ -635,6 +720,7 @@ function checkResize(){
       boxes[i].height=size;
     }
   }
+  resized=false;
 }
 
 // updateCurrentURL()
@@ -651,7 +737,7 @@ function updateCurrentURL(){
   if(currenturl.indexOf(".html")==-1){
     let qmark =currenturl.indexOf("?");
     if(qmark!=-1)
-      url = currenturl.substring(0,qmark);
+    url = currenturl.substring(0,qmark);
     else url = currenturl;
   }
   let category=featureSelection.replace(" ","_");
@@ -755,10 +841,10 @@ function exitpopup(){
   selectedProject=undefined;
   updateCurrentURL();
   if(pageIs=="home")
-    document.getElementById("subjectsContainer").scrollIntoView();
-    //console.log(document.getElementById("bodySection").getBoundingClientRect())
-    //console.log(document.body.scrollTop)
-    //document.getElementById("bodyContentBox").scrollIntoView();
+  document.getElementById("subjectsContainer").scrollIntoView();
+  //console.log(document.getElementById("bodySection").getBoundingClientRect())
+  //console.log(document.body.scrollTop)
+  //document.getElementById("bodyContentBox").scrollIntoView();
 }
 
 // selectSubject()
