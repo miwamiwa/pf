@@ -131,31 +131,41 @@ left:0;
   height:80vh;
   left:0%;
   position:relative;
+  background-color:#dddf;
+  padding:10vh 0;
 }
 #banderolleInside{
-  background-color:#ffff;
+  background-color:#eeef;
   position:relative;
   width:100%;
   height:100%;
   top:0%;
   padding:2%;
   left:0%;
+  border-radius:2px;
+  border-bottom:1px solid #ffff;
+
+  display:flex;
+  flex-flow:column-reverse;
+
+  justify-content:space-around;
+  align-items:center;
 }
 
 
 .bandImg{
-  max-width:150px;
-  max-height:150px;
+  object-fit:cover;
+  object-position:0% 40%;
+
   position:relative;
-  top:6px;
-  left:8px;
+  width:100vw;
+  height:5vh;
   box-shadow:#fff8 0px 0px 3px 3px;
   border-radius:2px;
 }
 #bandLeft{
-width:120px;
+width:100vw;
 height:160px;
-float:left;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -163,20 +173,20 @@ align-items:center;
 }
 #bandRight{
 
+  position:relative;
+  width:calc(90vw - 130px);
+  height:200px;
 
 display:flex;
-left:5px;
-position:relative;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-height:200px;
+
 }
 #bandRightText{
   position:relative;
   top:-12px;
   padding:6px;
-  width: calc(100vw - 150px);
   background-color:#ffff;
   max-height:180px;
 }

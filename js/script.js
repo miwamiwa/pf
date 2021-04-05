@@ -157,6 +157,8 @@ function start(){
   // place nav bar to correct height
   scrollevent();
   resize();
+
+  if(document.body.scrollTop> 2*hunit) hidescrollnav();
 }
 
 
@@ -289,6 +291,11 @@ function scrollevent(){
 
   // fix nav bar position on all pages
   if(scroll>tbh){
+
+    if(revealedNav.style.display=="none")
+      hidescrollnav();
+
+
     navlogo.style.top=0;
     navlogo.style.display="block"
 
@@ -326,6 +333,12 @@ function scrollevent(){
 
 
   }
+
+  if(scroll==0&&scrollNavButton.style.display=="none")
+    fadeOutNav();
+
+  document.getElementsByClassName("bandImg")[0]
+    .style.objectPosition=`0% ${ (100-60*document.body.scrollTop/window.innerHeight) }%`;
 }
 
 
@@ -341,6 +354,58 @@ function resetPopupSectionOffsets(){
 }
 
 
+let scrollNavButton;
+let revealedNav;
+
+function scrollNavAction(){
+
+  scrollNavButton.style.display="none";
+  revealedNav.style.display="block";
+  revealedNav.style.opacity="0";
+
+  setTimeout( fadeInNav, 100 );
+  setTimeout( scrollovercover, 20 );
+}
+
+function showscrollnav(){
+  revealedNav.style.display="none";
+  scrollNavButton.style.display="flex";
+}
+
+function hidescrollnav(){
+  console.log("elo")
+  revealedNav.style.display="block";
+  revealedNav.style.opacity =0;
+  scrollNavButton.style.display="none";
+  fadeInNav();
+}
+
+function scrollovercover(){
+
+  document.body.scrollTop += 25;
+
+  if(document.body.scrollTop<tbh) setTimeout(scrollovercover, 20);
+}
+
+function fadeInNav(){
+
+  let num = parseFloat(revealedNav.style.opacity) + 0.1;
+  revealedNav.style.opacity = num;
+
+  if(num<1) setTimeout( fadeInNav, 100 );
+}
+
+function fadeOutNav(){
+
+  let num = parseFloat(revealedNav.style.opacity) - 0.1;
+  revealedNav.style.opacity = num;
+
+  if(num>0) setTimeout( fadeOutNav, 40 );
+  else{
+    showscrollnav();
+  }
+}
+
 // populatenav()
 //
 // add nav bar elements to the page
@@ -348,7 +413,10 @@ function resetPopupSectionOffsets(){
 function populateNav(){
   navsection.innerHTML = `
   <canvas id="navcanvas"></canvas>
-
+  <div id="scrollingnav" onclick="scrollNavAction()">
+  v v v
+  </div>
+  <div id="revealednav">
   <div id="navHeader">
   <div class="navlogo logoS">S</div> </div>
   <!-- nav buttons -->
@@ -358,9 +426,12 @@ function populateNav(){
 
   <a id="n2" class="navButton" onmouseenter="navfx(2)" href="resume.html">CV</a>
   <a id="n3" class="navButton" onmouseenter="navfx(3)" href="contact.html">CONTACT</a>
-  </div>`;
+  </div>
+  </div>
+  `;
 
-
+  scrollNavButton = document.getElementById("scrollingnav");
+  revealedNav = document.getElementById("revealednav");
   navcanvas = document.getElementById("navcanvas");
   navlogo = document.getElementById("navHeader");
   navbody = document.getElementById("navBody");

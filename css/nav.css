@@ -7,6 +7,23 @@
   overflow:hidden;
 }
 
+#scrollingnav{
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  font-size:12vh;
+}
+
+#revealednav{
+  width:100%;
+  height:100%;
+  display:none;
+  opacity:0;
+}
+
 #navcanvas{
   position:absolute;
   top:0;
