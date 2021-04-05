@@ -31,11 +31,13 @@
   color:#cccf;
 }
 .popupbody{
-  font-size:calc(10px + 1.6vh);
-  padding:20px;
-  width:100%;
+
+    font-size:calc(8px + 1.2vh);
+    line-height:calc(10px + 1.2vh);
+
+  width:90vw;
+  left:5vw;
   position:relative;
-  left:0%;
 }
 .popupimg{
   object-fit:cover;
@@ -53,14 +55,10 @@
   padding:6px;
 }
 .datebox{
-  font-size:calc(8px + 0.6vh);
-  line-height:calc(8px + 0.6vh);
   margin-left:5%;
   float:left;
 }
 .tags{
-  font-size:calc(7px + 0.6vh);
-  line-height:calc(8px + 0.6vh);
   color:#999f;
   position:relative;
   left:6px;
@@ -68,6 +66,7 @@
   font-style:italic;
 }
 .exitproject{
+  background-color:#e3ca9a;
   position:absolute;
   top:10;
   right:6vw;
@@ -76,7 +75,6 @@
 }
 .popupbodyitalic{
   font-style:italic;
-  font-size:12px;
 }
 /* links section in popup ui */
 .popupexternallinks{
@@ -89,17 +87,18 @@
 
 
 .fdInfoBox{
+
+  position:relative;
+  width:100%;
   display:flex;
   flex-direction:row;
-  justify-content:space-around;
+  justify-content:space-between;
 }
 
 .fdinfosection{
   width:200px;
   padding:4px;
   color:#333f;
-  font-size:calc(10px + 1.5vw);
-  line-height:calc(12px + 1.6vw);
 }
 
 .fdinfosection:hover{
@@ -109,7 +108,6 @@
 .fdinfotitle{
   font-weight:bold;
   color:#666f;
-  font-size:calc(10px + 1.5vw);
 }
 
 .fdinfotitle{
@@ -117,13 +115,13 @@
 }
 
 .fdBody{
-  font-size:calc(12px + 1.6vh);
+  position:relative;
 
 }
 
 .fdImg{
   object-fit:cover;
-  width:90vw;
+
   height:60vh;
   margin-left:calc(-5vw - 20px);
 

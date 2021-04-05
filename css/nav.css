@@ -123,4 +123,9 @@ justify-content:center;
    justify-content:center;
  }
 
+ .navButton{
+   font-size:calc(8px + 2vw);
+   line-height:calc(8px + 2vw);
+ }
+
 }

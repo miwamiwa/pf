@@ -141,12 +141,14 @@ function expandProject(index,noupdate){
     <div class="exitproject" onclick="exitpopup()"> x </div>
   </div>
 
+
+
+  ${coverimg}
+  
   <div class="popupTopPadding">
     <div class="datebox"> ${date} </div>
     <div class="tags"> ${tags} </div>
   </div>
-
-  ${coverimg}
 
   <div class="popupbody">
     <div class='popupbodyitalic'></div>
