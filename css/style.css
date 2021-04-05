@@ -61,7 +61,7 @@ indent{
 #coverSection{
   position:relative;
   width:100%;
-  height:80vh;
+  height:92vh;
   overflow-y:hidden;
 
   z-index:0;
@@ -78,8 +78,6 @@ indent{
 
 #coverVideo{
 top:0px;
-width:100vw;
-height:80vh;
 object-fit:cover;
 position:relative;
 transform:translateY(-0px);
@@ -130,7 +128,7 @@ left:0;
 #banderolleSection{
 
   width:100%;
-  height:200px;
+  height:80vh;
   left:0%;
   position:relative;
 }

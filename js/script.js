@@ -56,7 +56,7 @@ console.log("hash change")
 */
 
 let smallmode = false;
-let bsize;
+let bsize;// banderolle section height
 let titleel;//=document.getElementsByClassName("coverTitle1")[0];
 let titleel2;//=document.getElementById("logopt2");
 let titlebox;
@@ -66,6 +66,7 @@ let navbody;
 let navbheight; // nav button height in px
 let navheight;
 let resized = true; // to prevent extra calls of checkresize()
+
 
 //resize()
 //
@@ -120,7 +121,7 @@ function start(){
   navsection=document.getElementById("navSection");
   banderollesection=document.getElementById("banderolleSection");
   if(banderollesection!=undefined)
-  bsize=banderollesection.getBoundingClientRect().height;
+    bsize=banderollesection.getBoundingClientRect().height;
 
   subjectsbox=document.getElementById("subjectsBox");
 
@@ -179,7 +180,12 @@ function styleTitle(fsize,lheight,fsize2,spacing){
   }
 
   let fact=scrollfact;
-  titlebox.style.left=(scrollfact*26)+"vw";
+  let w = logos.getBoundingClientRect().width + titleel2.getBoundingClientRect().width;
+  let offset = ( window.innerWidth - w )/2;
+  offset *= scrollfact;
+
+
+  titlebox.style.left=offset+"px";
   // center elements
   if(smallmode){
 
@@ -299,7 +305,7 @@ function scrollevent(){
       document.getElementById("bodySection").style.marginTop=level2height+"px";
     }
     // fix popup title and body positions
-    if(popupshown&&scroll>tbh+200){
+    if(popupshown&&scroll>tbh+bsize){
       let p=document.getElementsByClassName("popuptitle");
       p[0].style.position="fixed";
       p[0].style.top=level2height+"px";
@@ -508,10 +514,12 @@ function createCoverBox(){
 
   // create some pointers
   titleel=document.getElementsByClassName("coverTitle1")[0];
+  logos = document.getElementsByClassName("coverlogo")[0];
   titleel2=document.getElementById("logopt2");
   titlebox=document.getElementById("coverTitleBox");
   coversubtitle = document.getElementsByClassName("coverTitle2")[0];
 }
+let logos;
 
 
 
