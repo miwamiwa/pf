@@ -94,13 +94,22 @@ function checkSmallMode(){
   //smallmode = true;
 }
 
-
+const languageParam = "Swslv";
 // start()
 //
 // called when page loads.
 // sets up pointers, creates necessary page elements.
 
 function start(){
+
+  let lang= localStorage.getItem(languageParam);
+  //console.log(lang);
+  if(lang!=undefined&&lang!=null){
+    if(lang=="en") isFr=false;
+    else if(lang=="fr") isFr=true;
+  }
+  else isFr=true;
+
   if(isMobile){
     window.onorientationchange=resize;
   }
@@ -473,6 +482,7 @@ function toggleLanguage(){
   isFr = !isFr;
   console.log(isFr)
   updateLanguage();
+
 }
 
 function updateLanguage(){
@@ -488,6 +498,10 @@ function updateLanguage(){
     if(isFr) fritems[i].classList.remove("hidden");
     else fritems[i].classList.add("hidden");
   }
+
+  if(isFr)
+    localStorage.setItem(languageParam,"fr");
+  else localStorage.setItem(languageParam,"en");
 }
 
 function navupdate(){
@@ -615,6 +629,8 @@ function createCoverBox(){
 
   coverbox=document.getElementById("coverSection");
   if(coverbox==undefined) coverbox=document.getElementById("coverSectionSmall");
+
+  // fix cover page size if mobile (max vh is actually less than 100 lol wtf)
   if(isMobile) coverbox.style.height="84vh";
   tbh = coverbox.getBoundingClientRect().height;
 

@@ -287,7 +287,7 @@ cursor:pointer;
   background-color:#999f;
 }
 #bodyContentBox{
-  padding:10vh 7vh;
+  padding:8vh 2vh;
   width:100%;
   height:auto;
   display:flex;
@@ -368,6 +368,8 @@ cursor:pointer;
 .lessmore:hover{
   color:#666f;
 }
+
+
 #footerSection{
   background-color:#eeef;
   width:100%;
