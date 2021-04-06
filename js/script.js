@@ -1,6 +1,7 @@
 window.onload = start;
 window.onresize =resize;
 
+let featureboxsize =22;
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 let navcanvas,navctx,navtarget,navx=0,navvel=16;
 let entries = [];
@@ -9,8 +10,8 @@ let selectedTag = "all";
 let sortBy = "name";
 let sortedEntries = [];
 let selectedProject;
-let compressednavwidth="60%";
-let expandednavwidth="60%";
+let compressednavwidth="75%";
+let expandednavwidth="75%";
 let doc = {
   results:0,
   wall:0,
@@ -171,7 +172,9 @@ function start(){
   scrollevent();
   resize();
 
-  if(document.body.scrollTop> 2*hunit) hidescrollnav();
+  if(document.body.scrollTop !=0) hidescrollnav();
+
+  updateLanguage();
 }
 
 
@@ -183,15 +186,19 @@ function styleTitle(fsize,lheight,fsize2,spacing){
   titleel2.style.fontSize=fsize;
   titleel2.style.lineHeight=lheight;
 
-  coversubtitle.style.fontSize=fsize2;
-  coversubtitle.style.lineHeight=fsize2;
-  coversubtitle.style.top=(14*scrollfact)+"vh";
+  coversubtitle[0].style.fontSize=fsize2;
+  coversubtitle[0].style.lineHeight=fsize2;
+  coversubtitle[0].style.top=(14*scrollfact)+"vh";
+  coversubtitle[1].style.fontSize=fsize2;
+  coversubtitle[1].style.lineHeight=fsize2;
+  coversubtitle[1].style.top=(14*scrollfact)+"vh";
   titleel2.style.left=`calc(${fsize} + 15px)`;
 
   if(spacing!=undefined){
     titleel.style.letterSpacing=spacing+"px";
     titleel2.style.letterSpacing=spacing+"px";
-    coversubtitle.style.letterSpacing=(spacing*.5)+"px";
+    coversubtitle[0].style.letterSpacing=(spacing*.5)+"px";
+    coversubtitle[1].style.letterSpacing=(spacing*.5)+"px";
   }
 
   let fact=scrollfact;
@@ -205,13 +212,15 @@ function styleTitle(fsize,lheight,fsize2,spacing){
   if(smallmode){
 
     titlebox.style.top=(30*fact)+"vh";
-    coversubtitle.style.top=(14*fact)+"vh";
+    coversubtitle[0].style.top=(14*fact)+"vh";
+    coversubtitle[1].style.top=(14*fact)+"vh";
 
   }
   else {
     //titlebox.style.left="26vw";
     titlebox.style.top=(20*fact)+"vh";
-    coversubtitle.style.top=(26*fact)+"vh";
+    coversubtitle[0].style.top=(26*fact)+"vh";
+    coversubtitle[1].style.top=(26*fact)+"vh";
   }
 }
 
@@ -265,7 +274,7 @@ function scrollevent(){
     let fsize2 = navbheight + scrollfact*((subtitlesize * 0.1*hunit)-navbheight);
     let lsize = 2 - 10  * iscrollfact; // space between characters
     let lineheight= fsize - 19 * iscrollfact;
-    console.log(fsize,titlesize)
+    //console.log(fsize,titlesize)
     styleTitle(fsize+"px",lineheight+"px",fsize2+"px",lsize)
   }
 
@@ -282,36 +291,23 @@ function scrollevent(){
 
   if(scroll>tbh-navheight){
 
-    // subtitle is hidden
-    coversubtitle.style.display="none";
-
     // nav logo scrolls in from top
     navlogo.style.top=(scroll - tbh);
     navlogo.style.display="block";
-
     navbody.style.width=compressednavwidth;
+
   }
-
-
   else{
 
-    coversubtitle.style.display="block";
     navlogo.style.display="none";
     navbody.style.width=expandednavwidth;
   }
 
-
-
   // fix nav bar position on all pages
   if(scroll>tbh){
 
-    if(revealedNav.style.display=="none")
-      hidescrollnav();
-
-
     navlogo.style.top=0;
     navlogo.style.display="block"
-
     navbody.style.width=compressednavwidth;
 
     document.getElementById("coverTitleBox").style.display="none";
@@ -349,7 +345,12 @@ function scrollevent(){
 
   if(scroll==0&&scrollNavButton.style.display=="none")
     fadeOutNav();
+  else if(scroll>0&&revealedNav.style.display!="block")
+    hidescrollnav();
 
+    //console.log(scroll, revealedNav.style.display)
+
+  if(banderollesection!=undefined)
   document.getElementsByClassName("bandImg")[0]
     .style.objectPosition=`0% ${ (100-60*document.body.scrollTop/window.innerHeight) }%`;
 }
@@ -434,11 +435,22 @@ function populateNav(){
   <div class="navlogo logoS">S</div> </div>
   <!-- nav buttons -->
   <div id="navBody" onmouseleave="navfx2()">
-  <a id="n0" class="navButton" onmouseenter="navfx(0)" href="index.html">HOME</a>
-  <a id="n1" class="navButton" onmouseenter="navfx(1)" href="about.html">ABOUT</a>
+  <a id="n0" class="navButton" onmouseenter="navfx(0)" href="index.html">
+  <span class="en">HOME</span><span class="fr">MENU</span>
+  </a>
 
-  <a id="n2" class="navButton" onmouseenter="navfx(2)" href="resume.html">CV</a>
-  <a id="n3" class="navButton" onmouseenter="navfx(3)" href="contact.html">CONTACT</a>
+  <a id="n1" class="navButton" onmouseenter="navfx(1)" href="about.html">
+  <span class="en">ABOUT</span><span class="fr">À PROPOS</span>
+  </a>
+
+  <a id="n2" class="navButton" onmouseenter="navfx(2)" href="resume.html">
+  <span class="en">CV</span><span class="fr">CV</span>
+  </a>
+  <a id="n3" class="navButton" onmouseenter="navfx(3)" href="contact.html">
+  <span class="en">CONTACT</span><span class="fr">CONTACT</span>
+  </a>
+  <span id="n4" class="navButton" onmouseenter="navfx(4)" onclick="toggleLanguage()">
+  <span class="en">FR</span><span class="fr">EN</span></span>
   </div>
   </div>
   `;
@@ -454,6 +466,28 @@ function populateNav(){
   navheight = navsection.getBoundingClientRect().height;
 
   setInterval(navupdate,50);
+}
+
+let isFr = false;
+function toggleLanguage(){
+  isFr = !isFr;
+  console.log(isFr)
+  updateLanguage();
+}
+
+function updateLanguage(){
+  let enitems = document.getElementsByClassName("en");
+  let fritems = document.getElementsByClassName("fr");
+
+
+  for(let i=0; i<enitems.length;i++){
+    if(!isFr) enitems[i].classList.remove("hidden");
+    else enitems[i].classList.add("hidden");
+  }
+  for(let i=0; i<fritems.length;i++){
+    if(isFr) fritems[i].classList.remove("hidden");
+    else fritems[i].classList.add("hidden");
+  }
 }
 
 function navupdate(){
@@ -589,7 +623,8 @@ function createCoverBox(){
   coverbox.innerHTML=`
   <div id="coverTitleBox">
   <div class="coverTitle1"><span class="coverlogo logoS">S</span><span id="logopt2">AMUEL PARÉ-CHOUINARD</span></div>
-  <div class="coverTitle2">MULTIDISCIPLINARY DIGITAL ARTIST</div>
+  <div class="coverTitle2 en">MULTIDISCIPLINARY DIGITAL ARTIST</div>
+  <div class="coverTitle2 fr">ARTISTE PLURIDISCIPLINAIRE</div>
   </div>`;
 
   // video element
@@ -602,7 +637,7 @@ function createCoverBox(){
   logos = document.getElementsByClassName("coverlogo")[0];
   titleel2=document.getElementById("logopt2");
   titlebox=document.getElementById("coverTitleBox");
-  coversubtitle = document.getElementsByClassName("coverTitle2")[0];
+  coversubtitle = document.getElementsByClassName("coverTitle2");
 }
 let logos;
 
@@ -758,15 +793,15 @@ function addProjectBox(p,index,isbigbox){
   img.style.objectFit="cover";
 
   if(isbigbox){
-    let size = 0.3*window.innerHeight;
-    img.width=size;
-    img.height=size;
+    let size = hunit*featureboxsize/10;//*window.innerHeight;
+    //img.width=size;
+    //img.height=size;
 
   }
   else {
-    let size = 0.3*window.innerHeight;
-    img.width=size;
-    img.height=size;
+    let size = hunit*featureboxsize/10;
+    //img.width=size;
+    //img.height=size;
     tempbox.classList.add("featureboxSmall");
   }
   img.style.borderRadius="2px";
@@ -776,8 +811,8 @@ function addProjectBox(p,index,isbigbox){
 
   boxoverlay = document.createElement("div");
   boxoverlay.classList.add("boxoverlay");
-  boxoverlay.style.width="30vh";
-  boxoverlay.style.height="30vh";
+  //boxoverlay.style.width=featureboxsize+"vh";
+  //boxoverlay.style.height=featureboxsize+"vh";
   boxoverlay.style.opacity =0;
 
 
@@ -803,16 +838,17 @@ function addProjectBox(p,index,isbigbox){
 }
 
 
-function checkResize(){
+function checkResize(){/*
   if(resized&&lastH!=window.innerHeight){
     lastH=window.innerHeight;
-    let size=(0.3*window.innerHeight);
+    let size=hunit*featureboxsize/10;
     let boxes=document.getElementsByClassName("pboximg");
     for(let i=0; i<boxes.length; i++){
       boxes[i].width=size;
       boxes[i].height=size;
     }
   }
+  */
   resized=false;
 }
 
