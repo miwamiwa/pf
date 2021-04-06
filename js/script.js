@@ -247,7 +247,7 @@ const bigSubTitleSize = "3";
 
 function scrollevent(){
 
-  let level2height=.08*window.innerHeight;
+  let level2height=navheight;
   let scroll = document.body.scrollTop;
 
   let titlesize = bigTitleSize;
@@ -261,12 +261,6 @@ function scrollevent(){
   }
 
   let shrinkheight= tbh-shrinkrange;
-
-
-  // when title is at smallest size
-  //if(scroll>tbh-.5*hunit)
-    //styleTitle("20px","20px","1vh");
-  //else
 
   // when title is shrinking
 
@@ -405,7 +399,7 @@ function hidescrollnav(){
 
 function scrollovercover(){
 
-  document.body.scrollTop += 25;
+  document.body.scrollTop += 0.5*hunit;
 
   if(document.body.scrollTop<tbh) setTimeout(scrollovercover, 20);
 }
@@ -689,13 +683,43 @@ function populateBody(){
 function updateSubjectsBox(){
   subjectsbox.innerHTML="";
   for(let i=0; i<subjects.length; i++){
+
+    // en box
     let tempbox = document.createElement("span");
     tempbox.classList.add("subjectbox");
-    if(subjects[i]==featureSelection) tempbox.classList.add("selectedSubject")
+    tempbox.classList.add("en");
     subjectsbox.appendChild(tempbox);
     tempbox.innerHTML=subjects[i].toUpperCase();
     tempbox.setAttribute("onclick",`selectSubject(${i})`);
+
+    // fr box
+    let tempbox2 = document.createElement("span");
+    tempbox2.classList.add("subjectbox");
+    tempbox2.classList.add("fr");
+    subjectsbox.appendChild(tempbox2);
+    tempbox2.innerHTML=traductionSubjectBox(subjects[i]).toUpperCase();
+    tempbox2.setAttribute("onclick",`selectSubject(${i})`);
+
+    // display selection
+    if(subjects[i]==featureSelection){
+      tempbox.classList.add("selectedSubject")
+      tempbox2.classList.add("selectedSubject")
+    }
+
+    if(isFr) tempbox.classList.add("hidden");
+    else tempbox2.classList.add("hidden");
   }
+}
+
+// traductionsubjectbox()
+//
+// traduit les grandes categories
+
+function traductionSubjectBox(input){
+  input=input.toLowerCase();
+  if(input=="game design") return "Conception de jeu";
+  if(input=="game sound") return "Conception sonore";
+  if(input=="programming") return "Programmation";
 }
 
 // showLess()
@@ -730,7 +754,7 @@ function showMore(){
   showlesssection.hidden=false;
   // update page scroll
   bodycontentsbox.scrollIntoView();
-  document.body.scrollTop -= 40;
+  //document.body.scrollTop -= 40;
 }
 
 // triggerShowBoxMeta()
@@ -944,8 +968,8 @@ function reachPopup(){
   popupsection.scrollIntoView();
 
   if(popupoffsetted)
-  document.body.scrollTop -= 100;
-  else document.body.scrollTop -= 40;
+    document.body.scrollTop -= Math.ceil(2*navheight);
+  else document.body.scrollTop -= navheight;
 
   scrollevent();
 }
@@ -984,6 +1008,7 @@ function exitpopup(){
   popupsection.hidden=true;
   popupshown=false;
   selectedProject=undefined;
+  clearInterval(ssInterval);
   updateCurrentURL();
   if(pageIs=="home")
   document.getElementById("subjectsContainer").scrollIntoView();

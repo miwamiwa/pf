@@ -13,18 +13,42 @@ function expandProject(index,noupdate){
   if(noupdate==undefined)
     updateCurrentURL();
 
+    clearInterval(ssInterval);
   // clear and un-hide popup area
   popupsection.innerHTML = "";
   popupsection.hidden = false;
 
   // setup cover image element
   let coverimg = "";
-  if(p.coverImage!=undefined)
-  coverimg=`<div class='popupimgcontainer'>
-  <img class="popupimg" src="images/${p.coverImage}"></img>
-  </div>`;
-  else if(p.coverVideo!=undefined)
-  coverimg=p.coverVideo;
+
+  // if there is a cover image
+  if(p.coverImage!=undefined){
+
+    // if there is no image gallery, display just the image
+    if(p.imageGallery==undefined)
+      coverimg=`<div class='popupimgcontainer'>
+      <img class="popupimg" src="images/${p.coverImage}"></img>
+      </div>`;
+
+    // if there is an image gallery, make a slide showwww
+    else {
+      coverimg=makeSlideShow(p.coverImage,false,p.imageGallery);
+    }
+  }
+
+  // if there is no cover image but there is a video
+  else if(p.coverVideo!=undefined){
+
+    // if there is no image gallery, display just the video
+    if(p.imageGallery==undefined)
+      coverimg=p.coverVideo;
+
+    // if there is an image gallery, make a slide showwww
+    else {
+      coverimg=makeSlideShow(false,p.coverVideo,p.imageGallery);
+    }
+  }
+
 
   // get tags string
   let tags = getTagData(index);
@@ -144,7 +168,7 @@ function expandProject(index,noupdate){
 
 
   ${coverimg}
-  
+
   <div class="popupTopPadding">
     <div class="datebox"> ${date} </div>
     <div class="tags"> ${tags} </div>
@@ -168,4 +192,156 @@ function expandProject(index,noupdate){
   // scroll to element
   popupshown=true;
   reachPopup();
+}
+
+let slideShowElements = [];
+let slideshowpos =0;
+let ssInterval;
+let ssel1 = undefined;
+let ssel2 = undefined;
+let sscounter =0;
+// <img class="popupimg" src="images/${p.coverImage}"></img>
+function makeSlideShow(coverimg,covervideo,gallery){
+
+  slideShowElements = [];
+  ssel1 = undefined;
+  ssel2 = undefined;
+  sscounter =0;
+  slideshowpos =0;
+
+  let el1,el2;
+  if(coverimg==false){
+    slideShowElements.push(covervideo);
+    el1=covervideo;
+  }
+  else {
+    el1 =`<img class="popupimg" src="images/${coverimg}"></img>`;
+    slideShowElements.push(el1);
+  }
+
+  for(let i=0; i<gallery.length; i++){
+    let el;
+    if(gallery[i].charAt(0)=='<'){
+      el = gallery[i];
+    }
+    else {
+      el = `<img class="popupimg" src="images/${gallery[i]}"></img>`;
+    }
+
+    slideShowElements.push(el);
+  }
+
+  el2 = slideShowElements[1];
+
+  let result=`<div class='popupimgcontainer' onmouseenter="pauseSlideShow()" onmouseleave="continueSlideShow()"
+      ontouchstart="pauseSlideShow()" ontouchend="continueSlideShow()">
+  <div class="slideshowel" id="slideshowel1" style="z-index:1;">${el1}</div>
+  <div class="slideshowel" id="slideshowel2" style="z-index:0;">${el2}</div>
+  </div>`;
+
+  ssInterval = setInterval(updateSlideShow, 100);
+  return result;
+}
+
+
+function pauseSlideShow(){
+    ssPaused = true;
+    console.log("ss paused")
+}
+
+function continueSlideShow(){
+    ssPaused = false;
+    console.log("ss unpaused")
+}
+
+let ssPaused = false;
+let ssIncrements = 10;
+let showDuration=30;
+let el1x =0;
+let el2x =ssIncrements;
+let transitionDuration=ssIncrements;
+let sstotalduration = showDuration+transitionDuration;
+
+function updateSlideShow(){
+
+  if((ssVidPlaying||ssPaused) && sscounter%sstotalduration<showDuration)
+    sscounter =0;
+//  sstotalduration = showDuration+transitionDuration;
+  if(ssel1==undefined) ssel1 = document.getElementById("slideshowel1");
+  if(ssel2==undefined) ssel2 = document.getElementById("slideshowel2");
+
+  if(ssel1!=undefined&&ssel2!=undefined){
+
+    let t = sscounter%sstotalduration;
+    let w = ssel1.getBoundingClientRect().width;
+
+    ssel1.style.left= ( w*el1x/ssIncrements )+"px";
+    ssel2.style.left= ( w*el2x/ssIncrements )+"px";
+    if(t>=showDuration){
+      let t2 = t-showDuration;
+
+      el1x --;
+      el2x --;
+
+      if(el1x==-ssIncrements){
+        el1x *=-1;
+
+        let newindex=(slideshowpos+2)%slideShowElements.length;
+
+
+
+        ssel1.innerHTML=slideShowElements[newindex];
+
+        setupVimeoVid(ssel1);
+
+
+
+        slideshowpos++;
+      }
+      if(el2x==-ssIncrements){
+        el2x *=-1;
+        let newindex=(slideshowpos+2)%slideShowElements.length;
+        ssel2.innerHTML=slideShowElements[newindex];
+        setupVimeoVid(ssel2);
+        slideshowpos++;
+      }
+    }
+
+
+
+
+
+    sscounter++;
+  }
+}
+
+
+let ssVidPlaying=false;
+
+// setupVimeoVid()
+//
+// this syntax using vimeo js api is needed to detect when a video is being played
+function setupVimeoVid(el){
+  ssVidPlaying=false;
+  let iframe = el.querySelector('iframe');
+
+  if(iframe!=undefined){
+    let player = new Vimeo.Player(iframe);
+
+    player.on('play', function() {
+        //console.log('played the video!');
+        ssVidPlaying=true;
+        //console.log("playing!")
+    });
+
+    player.on('bufferstart', function(){
+      ssVidPlaying=true;
+      //console.log("buffering!")
+    });
+
+    player.on('pause', function() {
+        //console.log('paused the video!');
+        ssVidPlaying=false;
+    });
+}
 }

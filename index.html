@@ -7,6 +7,9 @@
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
   <link rel="stylesheet" type="text/css" href="css/popup.css" />
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+
   <script> let pageIs = "home"; </script>
   <script src="js/entries.js"></script>
   <script src="js/entryClass.js"></script>
@@ -53,14 +56,25 @@
   </section>
 
   <section id="bodySection">
-      <div id="subjectsContainer"><span class="subjectsTitle">FEATURED PROJECTS</span>
+      <div id="subjectsContainer"><span class="subjectsTitle">
+        <span class="en">FEATURED PROJECTS</span>
+        <span class="fr">EN VEDETTE</span>
+      </span>
       <div id="subjectsBox"></div>
     </div>
     <div id="bodyContentBox"></div>
   </section>
 
-  <section id="showMoreSection" class="lessmore" onclick="showMore()">  SHOW MORE  </section>
-  <section id="showLessSection" class="lessmore" onclick="showLess()">  SHOW LESS  </section>
+  <section id="showMoreSection" class="lessmore" onclick="showMore()">
+    <span class="en">SHOW MORE</span>
+    <span class="fr">PLUS</span>
+  </section>
+
+  <section id="showLessSection" class="lessmore" onclick="showLess()">
+    <span class="en">SHOW LESS</span>
+    <span class="fr">MOINS</span>
+  </section>
+
   <section id="footerSection"></section>
 </body>
 </html>
