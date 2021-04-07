@@ -8,6 +8,31 @@ body{
   font-weight:300;
   width:100%;
   height:100%;
+background-color:black;
+
+}
+#viewportparent{
+
+background-color:white;
+position:absolute;
+top:92vh;
+left:0;
+width:100%;
+display:flex;
+flex-direction:row;
+justify-content:center;
+align-items:flex-end;
+}
+
+
+
+#viewport{
+  width:100%;
+  max-width:800px;
+  position:relative;
+  top:0vh;
+  left:0;
+  background-color:#dddf;
 }
 
 
@@ -63,12 +88,16 @@ indent{
 
 
 #coverSection{
-  position:relative;
+  position:absolute;
+  top:0;
+  left:0;
   width:100%;
   height:92vh;
   overflow-y:hidden;
   overflow-x:hidden;
   z-index:0;
+
+  max-width:800px;
 }
 
 #coverSectionSmall{
@@ -78,6 +107,8 @@ indent{
   overflow-y:hidden;
   position:relative;
   z-index:0;
+
+  max-width:800px;
 }
 
 #coverVideo{
@@ -144,6 +175,8 @@ indent{
   position:relative;
   background-color:#dddf;
   padding:10vh 0;
+
+  max-width:800px;
 }
 #banderolleInside{
   background-color:#eeef;
@@ -171,7 +204,7 @@ indent{
   position:relative;
   width:100vw;
   height:5vh;
-  box-shadow:#fff8 0px 0px 3px 3px;
+
   border-radius:2px;
 }
 #bandLeft{
@@ -180,7 +213,7 @@ indent{
   display:flex;
   justify-content:center;
   align-items:center;
-
+max-width:800px;
 }
 #bandRight{
 
@@ -192,7 +225,7 @@ indent{
   justify-content:center;
   align-items:center;
   flex-direction:column;
-
+max-width:800px;
 }
 #bandRightText{
   position:relative;
@@ -206,19 +239,8 @@ indent{
 }
 
 @media screen and (max-width: 600px) {
-  .bandImg{
-    display:none !important;
-  }
-  #bandLeft{
-    width:0;
-  }
-  #bandRight{
-    width:100%;
-    padding:15px;
-  }
-  #bandRightText{
-    width:100%;
-  }
+
+
 
 
 }
@@ -229,6 +251,8 @@ indent{
   width:100%;
   min-height:200px;
   position:relative;
+
+  max-width:800px;
 
 }
 #subjectsContainer{
@@ -265,7 +289,7 @@ cursor:pointer;
 }
 */
 .subjectbox{
-  border-left:1px solid #dddf;
+  /*+ border-left:1px solid #dddf; */
   flex-grow: 1;
   font-size:calc(8px + 1.4vh);
   line-height:calc(8px + 1.4vh);
@@ -300,7 +324,7 @@ cursor:pointer;
 }
 .featurebox{
   width:22vh;
-  height:22vh;
+  height:37vh;
   flex-grow: 1;
   background-color:white;
   margin:0.5vh;
@@ -312,44 +336,58 @@ cursor:pointer;
 .pboximg{
   object-fit:cover;
   width:100%;
-  height:100%;
+  height:22vh;
   padding:3px;
 }
 
 .featureboxSmall{
   width:22vh;
-  height:22vh;
+  height:37vh;
   border-radius:3px;
 }
 
 .boxoverlay{
-  position:absolute;
-  color:white;
+  position:relative;
+  color:black;
   z-index:2;
   top:0;
   left:0;
   width:100%;
-  height:100%;
+  height:15vh;
   padding:8px;
   display:flex;
   flex-direction:column;
-  justify-content:flex-end;
-  background-color:#fff0;
+  justify-content:flex-start;
+
+  overflow:hidden;
 }
-.boxoverlay:hover{
+.tagz{
+  color:#666f;
+  display:inline-block;
+  margin:0;
+  padding:0;
+  position:relative;
+  width:100%;
+  font-style:italic;
+  margin-bottom:8px;
+  margin-top:2px;
+}
+.featurebox:hover{
   cursor:pointer;
-  background-color:#6669;
+  background-color:#ccc9;
 }
 .boxoverlayTitle{
-  font-size:calc(10px + 1.5vh);
-  line-height:calc(10px + 1.5vh);
+  font-size:calc(8px + 1.0vh);
+  line-height:calc(8px + 1.0vh);
   font-weight:bold;
+  width:100%;
 }
 .boxoverlayBody{
-  font-size:calc(10px + 0.6vh);
-  line-height:calc(10px + 0.8vh);
-  font-style:italic;
+  font-size:calc(8px + 0.6vh);
+  line-height:calc(8px + 0.8vh);
 
+  overflow:hidden;
+  text-align:left;
 }
 #showMoreSection{
 
@@ -367,9 +405,12 @@ cursor:pointer;
   font-size:calc(6px + 2vh);
   line-height:calc(6px + 2vh);
   cursor:pointer;
+
+  max-width:800px;
 }
 .lessmore:hover{
-  color:#666f;
+  color:#bbbf;
+  background-color:#fff3;
 }
 
 
@@ -377,6 +418,8 @@ cursor:pointer;
   background-color:#eeef;
   width:100%;
   height:100px;
+
+  max-width:800px;
 }
 
 

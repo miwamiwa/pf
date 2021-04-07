@@ -186,6 +186,19 @@ function expandProject(index,noupdate){
 
   `;
 
+  if(isMobile&&viewportW<800){
+    document.getElementsByClassName("popupbody")[0].style.padding="4vw"
+    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="4vw"
+  }
+  else if(viewportW<800){
+    document.getElementsByClassName("popupbody")[0].style.padding="3vw"
+    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="3vw"
+  }
+  else {
+    document.getElementsByClassName("popupbody")[0].style.padding="0vw"
+    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="0vw"
+  }
+
   if(noupdate==undefined)
   // collapse featured project list
   showLess();
@@ -233,7 +246,7 @@ function makeSlideShow(coverimg,covervideo,gallery){
 
   el2 = slideShowElements[1];
 
-  let result=`<div class='popupimgcontainer' onmouseenter="pauseSlideShow()" onmouseleave="continueSlideShow()"
+  let result=`<div class='popupimgcontainer' onmousedown="pauseSlideShow()" onmouseup="continueSlideShow()"
       ontouchstart="pauseSlideShow()" ontouchend="continueSlideShow()">
   <div class="slideshowel" id="slideshowel1" style="z-index:1;">${el1}</div>
   <div class="slideshowel" id="slideshowel2" style="z-index:0;">${el2}</div>

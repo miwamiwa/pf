@@ -10,8 +10,8 @@ let selectedTag = "all";
 let sortBy = "name";
 let sortedEntries = [];
 let selectedProject;
-let compressednavwidth="75%";
-let expandednavwidth="75%";
+let compressednavwidth="85%";
+let expandednavwidth="85%";
 let doc = {
   results:0,
   wall:0,
@@ -67,7 +67,7 @@ let navbody;
 let navbheight; // nav button height in px
 let navheight;
 let resized = true; // to prevent extra calls of checkresize()
-
+let viewport;
 
 //resize()
 //
@@ -76,8 +76,23 @@ function resize(){
   resized=true;
   checkSmallMode();
   if(isMobile) coverbox.style.height="86vh";
-  tbh = coverbox.getBoundingClientRect().height;
+  tbh = document.getElementById("coverVideo").getBoundingClientRect().height;
   hunit = 0.1*window.innerHeight;
+  viewportW=viewport.getBoundingClientRect().width;
+
+  if(popupshown&&isMobile&&viewportW<800){
+    document.getElementsByClassName("popupbody")[0].style.padding="4vw"
+    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="4vw"
+  }
+  else if(popupshown&&viewportW<800){
+    document.getElementsByClassName("popupbody")[0].style.padding="3vw"
+    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="3vw"
+  }
+  else if(popupshown){
+    document.getElementsByClassName("popupbody")[0].style.padding="0vw"
+    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="0vw"
+  }
+
   navbheight = 0.2*hunit+8;
   scrollevent();
   styleTitle();
@@ -95,6 +110,8 @@ function checkSmallMode(){
 }
 
 const languageParam = "Swslv";
+let viewportW;
+let viewpp;
 // start()
 //
 // called when page loads.
@@ -103,6 +120,10 @@ const languageParam = "Swslv";
 function start(){
 
   let lang= localStorage.getItem(languageParam);
+
+  viewport=document.getElementById("viewport");
+  viewportW=viewport.getBoundingClientRect().width;
+  viewpp = document.getElementById("viewportparent");
   //console.log(lang);
   if(lang!=undefined&&lang!=null){
     if(lang=="en") isFr=false;
@@ -130,7 +151,7 @@ function start(){
   //console.log(window.visualViewport.width,window.innerHeight);
   lastH=window.innerHeight;
   //console.log("is mobile: "+isMobile)
-  setInterval(checkResize,resizeRate);
+  //setInterval(checkResize,resizeRate);
 
 
   // save url on page start. prevents defaulting to wrong page on setup
@@ -155,7 +176,7 @@ function start(){
   // bind scroll event
   window.onscroll=scrollevent;
 
-  if(pageIs=="home"){
+  if(pageIs=="home"||pageIs=="works"){
     bodycontentsbox=document.getElementById("bodyContentBox");
     popupsection=document.getElementById("popupSection");
     popupsection.hidden=true;
@@ -174,7 +195,7 @@ function start(){
 
   // check what to append to the page depending on
   // url commands.
-  if(pageIs=="home")
+  if(pageIs=="home"||pageIs=="works")
   checkURL();
 
   // place nav bar to correct height
@@ -248,6 +269,7 @@ const bigSubTitleSize = "3";
 function scrollevent(){
 
   let level2height=navheight;
+  console.log(navheight);
   let scroll = document.body.scrollTop;
 
   let titlesize = bigTitleSize;
@@ -260,8 +282,8 @@ function scrollevent(){
     subtitlesize = smallSubTitleSize;
   }
 
-  let shrinkheight= tbh-shrinkrange;
-
+  let shrinkheight= 2*hunit;
+  let shrinkover=3*hunit;
   // when title is shrinking
 
   if(scroll>shrinkheight){
@@ -291,11 +313,15 @@ function scrollevent(){
   document.getElementById("coverVideo").style.top =
     (0-scroll/parallaxfactor) +"px";
 
-
-  if(scroll>tbh-navheight){
+  if(scroll>shrinkover){
+    navlogo.style.top=0;
+    navlogo.style.display="block"
+    navbody.style.width=compressednavwidth;
+  }
+  else if(scroll>shrinkover-navheight){
 
     // nav logo scrolls in from top
-    navlogo.style.top=(scroll - tbh);
+    navlogo.style.top=(scroll - shrinkover);
     navlogo.style.display="block";
     navbody.style.width=compressednavwidth;
 
@@ -309,9 +335,7 @@ function scrollevent(){
   // fix nav bar position on all pages
   if(scroll>tbh){
 
-    navlogo.style.top=0;
-    navlogo.style.display="block"
-    navbody.style.width=compressednavwidth;
+
 
     document.getElementById("coverTitleBox").style.display="none";
     navsection.style.position="fixed";
@@ -435,11 +459,11 @@ function populateNav(){
   </div>
   <div id="revealednav">
   <div id="navHeader">
-  <div class="navlogo logoS">S</div> </div>
+  <div class="navlogo logoS" onclick="reachPage('index.html')">S</div> </div>
   <!-- nav buttons -->
   <div id="navBody" onmouseleave="navfx2()">
-  <a id="n0" class="navButton" onmouseenter="navfx(0)" href="index.html">
-  <span class="en">HOME</span><span class="fr">MENU</span>
+  <a id="n0" class="navButton" onmouseenter="navfx(0)" href="works.html">
+  <span class="en">WORKS</span><span class="fr">PROJETS</span>
   </a>
 
   <a id="n1" class="navButton" onmouseenter="navfx(1)" href="about.html">
@@ -469,6 +493,10 @@ function populateNav(){
   navheight = navsection.getBoundingClientRect().height;
 
   setInterval(navupdate,50);
+}
+
+function reachPage(){
+  window.location.href="index.html"
 }
 
 let isFr = false;
@@ -626,7 +654,7 @@ function createCoverBox(){
 
   // fix cover page size if mobile (max vh is actually less than 100 lol wtf)
   if(isMobile) coverbox.style.height="84vh";
-  tbh = coverbox.getBoundingClientRect().height;
+
 
 
   // page title element
@@ -648,6 +676,7 @@ function createCoverBox(){
   titleel2=document.getElementById("logopt2");
   titlebox=document.getElementById("coverTitleBox");
   coversubtitle = document.getElementsByClassName("coverTitle2");
+  tbh = document.getElementById("coverVideo").getBoundingClientRect().height;
 }
 let logos;
 
@@ -831,7 +860,7 @@ function addProjectBox(p,index,isbigbox){
   else if (p.imageGallery!=undefined) img.src="images/"+p.imageGallery[0]
   else img.src="images/"+p.iconImage;
   img.style.objectFit="cover";
-
+/*
   if(isbigbox){
     let size = hunit*featureboxsize/10;//*window.innerHeight;
     //img.width=size;
@@ -844,22 +873,25 @@ function addProjectBox(p,index,isbigbox){
     //img.height=size;
     tempbox.classList.add("featureboxSmall");
   }
+  */
   img.style.borderRadius="2px";
 
   img.classList.add("pboximg")
-  tempbox.appendChild(img);
-
+  let tempbox2 = document.createElement("div");
+  tempbox2.classList.add("pboximg");
+  tempbox2.appendChild(img);
+  tempbox.appendChild(tempbox2);
   boxoverlay = document.createElement("div");
   boxoverlay.classList.add("boxoverlay");
   //boxoverlay.style.width=featureboxsize+"vh";
   //boxoverlay.style.height=featureboxsize+"vh";
-  boxoverlay.style.opacity =0;
+  //boxoverlay.style.opacity =0;
 
 
-  let truncatedtxt = getTagData(index);
+  let truncatedtxt =  "<div class='tagz'>"+(getTagData(index)) + "</div>";
   truncatedtxt += "<br>";
 
-  if(p.shortDescription!=undefined) truncatedtxt += p.shortDescription;
+  if(p.shortDescription!=undefined) truncatedtxt += "<span>"+p.shortDescription+ "</span>";
   else if(p.fullDescription.length>100)
   truncatedtxt += p.fullDescription.substring(0,100)+"...";
   else truncatedtxt+=p.fullDescription;
@@ -871,9 +903,9 @@ function addProjectBox(p,index,isbigbox){
 
   boxoverlay.id="box"+index;
 
-  boxoverlay.setAttribute("onmouseenter",`triggerShowBoxMeta(${index})`);
-  boxoverlay.setAttribute("onmouseleave",`triggerHideBoxMeta(${index})`);
-  boxoverlay.setAttribute("onclick",`expandProject(${index})`);
+  //boxoverlay.setAttribute("onmouseenter",`triggerShowBoxMeta(${index})`);
+  //boxoverlay.setAttribute("onmouseleave",`triggerHideBoxMeta(${index})`);
+  tempbox.setAttribute("onclick",`expandProject(${index})`);
   tempbox.appendChild(boxoverlay);
 }
 
@@ -929,7 +961,7 @@ function updateCurrentURL(){
 
 function getTagData(index){
   let p = projectDescriptions[index];
-  let tags= "Tags: ";
+  let tags= "";
   for(let i=0; i<p.tags.length; i++){
     let ending = ", "
     if(i==p.tags.length-1) ending=".";
@@ -1010,7 +1042,7 @@ function exitpopup(){
   selectedProject=undefined;
   clearInterval(ssInterval);
   updateCurrentURL();
-  if(pageIs=="home")
+  if(pageIs=="home"||pageIs=="wors")
   document.getElementById("subjectsContainer").scrollIntoView();
   //console.log(document.getElementById("bodySection").getBoundingClientRect())
   //console.log(document.body.scrollTop)
