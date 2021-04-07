@@ -10,8 +10,8 @@ let selectedTag = "all";
 let sortBy = "name";
 let sortedEntries = [];
 let selectedProject;
-let compressednavwidth="85%";
-let expandednavwidth="85%";
+let compressednavwidth="75%";
+let expandednavwidth="75%";
 let doc = {
   results:0,
   wall:0,
@@ -205,6 +205,8 @@ function start(){
   if(document.body.scrollTop !=0) hidescrollnav();
 
   updateLanguage();
+
+  if(pageIs!="home") scrollovercover();
 }
 
 
@@ -425,7 +427,11 @@ function scrollovercover(){
 
   document.body.scrollTop += 0.5*hunit;
 
-  if(document.body.scrollTop<tbh) setTimeout(scrollovercover, 20);
+let limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
+                   document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
+
+                   //console.log(document.body.scrollTop, limit)
+  if(document.body.scrollTop<tbh && document.body.scrollTop < limit-window.innerHeight) setTimeout(scrollovercover, 20);
 }
 
 function fadeInNav(){
