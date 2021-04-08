@@ -8,20 +8,20 @@ body{
   font-weight:300;
   width:100%;
   height:100%;
-background-color:#dddf;
+  background-color:#dddf;
 
 }
 #viewportparent{
 
-background-color:white;
-position:absolute;
-top:92vh;
-left:0;
-width:100%;
-display:flex;
-flex-direction:row;
-justify-content:center;
-align-items:flex-end;
+  background-color:white;
+  position:absolute;
+  top:92vh;
+  left:0;
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:flex-end;
 }
 
 
@@ -57,7 +57,7 @@ align-items:flex-end;
   font-size:calc(22px + 1.6vh);
   line-height:calc(26px + 1.6vh);
   font-weight:bold;
-  padding:10px;
+  padding:10vw;
 }
 
 .logoS{
@@ -120,6 +120,7 @@ indent{
   height:92vh;
   transform:translateY(-0px);
   z-index:1;
+  
   filter: brightness(1.10) contrast(0.4);
 }
 
@@ -170,7 +171,6 @@ indent{
 #banderolleSection{
 
   width:100%;
-  height:80vh;
   left:0%;
   position:relative;
   background-color:#dddf;
@@ -184,7 +184,6 @@ indent{
   width:100%;
   height:100%;
   top:0%;
-  padding:2%;
   left:0%;
   border-radius:2px;
   border-bottom:1px solid #ffff;
@@ -195,45 +194,69 @@ indent{
   justify-content:space-around;
   align-items:center;
 }
+.bandLogo{
+  max-width:20vw;
+  max-height:10vh;
+  padding: 2vh 2vw;
+}
+
+#bandlogobox{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-end;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  padding:4vw;
+  background-color:white;
+}
+.bandLogo:hover{
+  background-color:#aaa8;
+  cursor:pointer;
+}
 
 
 .bandImg{
-  object-fit:cover;
+
   object-position:0% 40%;
 
   position:relative;
-  width:100vw;
-  height:5vh;
+  height:30vh;
+  padding:6px;
+  background-color:white;
 
   border-radius:2px;
 }
 #bandLeft{
-  width:100vw;
-  height:160px;
+  padding:3vh 0;
   display:flex;
-  justify-content:center;
+  width:100%;
+  justify-content:flex-start;
   align-items:center;
-max-width:800px;
+  max-width:800px;
 }
 #bandRight{
 
   position:relative;
-  width:calc(90vw - 130px);
-  height:200px;
+  width:100%;
+  height:100%;
 
   display:flex;
   justify-content:center;
   align-items:center;
   flex-direction:column;
-max-width:800px;
+  max-width:800px;
 }
+
+
 #bandRightText{
   position:relative;
-  top:-12px;
-  padding:6px;
   background-color:#ffff;
-  max-height:180px;
+  width:100%;
+  padding:2vh;
 }
+
+
 .indent{
   margin-left:35px;
 }

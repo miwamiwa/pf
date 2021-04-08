@@ -37,6 +37,8 @@ tangible media stuff??
 */
 
 let projectDescriptions = [
+
+  /* ENTRY 0 */
   {
     title:"c'est ta toune",
     fullDescription:"hommage to da gb camera",
@@ -53,7 +55,7 @@ let projectDescriptions = [
     ]
   },
 
-
+  /* ENTRY 1 */
   /* SAM'S JS13K 2020 GAME */
   {
     title:"js13k 2020 game",
@@ -107,7 +109,7 @@ let projectDescriptions = [
 
   },
   */
-
+  /* ENTRY 2 */
   /* GHOST GAME */
 {
   title:"Ghost Game",
@@ -154,7 +156,7 @@ let projectDescriptions = [
   ]
 },
 
-
+/* ENTRY 3 */
 /* GILGAMESH VIGNETTE GAMES */
 {
   title:"Gilgamesh vignettes",
@@ -218,7 +220,7 @@ let projectDescriptions = [
 },
 
 
-
+/* ENTRY 4 */
   //******************** 560 DODGER ******************************
   {
     title:"560 Dodger",
@@ -276,6 +278,9 @@ let projectDescriptions = [
     ]
   },
 
+
+/* ENTRY 5 */
+/* LAUNDROMADNESS! */
 {
   title:"Laundromadness!",
   fullDescription:"It's a big world out there. <br>In this game you play as a kid who has all sorts of adventures while trying to do his laundry. <br><br>Follow the story and discover the wild side of the local laundromat! Made with Bitsy.",
@@ -323,6 +328,10 @@ let projectDescriptions = [
     }
   ]
 },
+
+
+/* ENTRY 6 */
+/* BAD BOTS GMTK */
 
 {
   title: 'Bad Bots',
@@ -378,6 +387,7 @@ let projectDescriptions = [
   ]
 },
 
+/* ENTRY 7 */
 
 //******************** APE NAPS ******************************
   {
@@ -434,7 +444,7 @@ let projectDescriptions = [
 
 
 
-
+// entry 8
 
   //******************** LIQUID PERCEPTIONS ******************************
   {
@@ -477,7 +487,7 @@ let projectDescriptions = [
 
   },
 
-
+// entry 9
 
 
   //******************** FASTENED FURIOUS ******************************

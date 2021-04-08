@@ -176,10 +176,13 @@ function start(){
   // bind scroll event
   window.onscroll=scrollevent;
 
+  popupsection=document.getElementById("popupSection");
+  if(popupsection!=undefined)
+  popupsection.hidden=true;
+
   if(pageIs=="home"||pageIs=="works"){
     bodycontentsbox=document.getElementById("bodyContentBox");
-    popupsection=document.getElementById("popupSection");
-    popupsection.hidden=true;
+
     showmoresection=document.getElementById("showMoreSection");
     showlesssection=document.getElementById("showLessSection");
     showlesssection.hidden=true;
@@ -271,7 +274,7 @@ const bigSubTitleSize = "3";
 function scrollevent(){
 
   let level2height=navheight;
-  console.log(navheight);
+  //console.log(navheight);
   let scroll = document.body.scrollTop;
 
   let titlesize = bigTitleSize;
@@ -378,10 +381,11 @@ function scrollevent(){
     hidescrollnav();
 
     //console.log(scroll, revealedNav.style.display)
-
+/*
   if(banderollesection!=undefined)
   document.getElementsByClassName("bandImg")[0]
     .style.objectPosition=`0% ${ (100-60*document.body.scrollTop/window.innerHeight) }%`;
+    */
 }
 
 
@@ -668,7 +672,7 @@ function createCoverBox(){
   <div id="coverTitleBox">
   <div class="coverTitle1"><span class="coverlogo logoS">S</span><span id="logopt2">AMUEL PARÉ-CHOUINARD</span></div>
   <div class="coverTitle2 en">MULTIDISCIPLINARY DIGITAL ARTIST</div>
-  <div class="coverTitle2 fr">ARTISTE PLURIDISCIPLINAIRE</div>
+  <div class="coverTitle2 fr">ARTISTE MULTIDISCIPLINAIRE</div>
   </div>`;
 
   // video element

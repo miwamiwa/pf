@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width">
-  
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
@@ -28,12 +28,15 @@
   <section id="popupSection">
   </section>
   <section id="bodySection">
+
+    <div class="pageTitle f1" id="resumeTitle">
+    <span class="en">  RESUME </span>
+    <span class="fr"> CV </span>
+    </div>
+
     <div class="f2" id="resumeBody">
 
-<div class="pageTitle f1" id="resumeTitle">
-  RESUME
-</div>
-<br>
+
 
 
 
@@ -42,8 +45,8 @@
   Work</div>
 
   <div class="rIndentedWrap">
-    Teaching Assistant, Concordia University, 2020-2021
-    <div class="rIndentedBodyText">
+    Teaching Assistant, <span class="rGrey">Concordia University, 2020-2021</span>
+    <div class="rIndentedBodyText rNoItalics">
       CART 253, CART 263 Creative Computation classes
     </div>
     <div class="rIndentedBodyText">
@@ -52,40 +55,49 @@
   </div>
 
   <div class="rIndentedWrap">
-    Research Assistant, Concordia University, 2021
+    Research Assistant, <span class="rGrey">Concordia University, 2021</span>
     <div class="rIndentedBodyText">
       Hidden word puzzle game generation project led by prof. Jonathan Lessard
     </div>
   </div>
 
   <div class="rIndentedWrap">
-    Research Assistant, Concordia University, 2021
+    Research Assistant, <span class="rGrey">Concordia University, 2021</span>
     <div class="rIndentedBodyText">
       Generative text programming on Unity game project led by prof. Jonathan Lessard
     </div>
   </div>
 
   <div class="rIndentedWrap">
-    Teaching replacement, Institut Trébas, 2021
+    Teaching replacement, <span class="rGrey"> Institut Trébas, 2021 </span>
     <div class="rIndentedBodyText">
       Lecturing Sound Integration for Video Games class, grading weekly assignments.
     </div>
   </div>
 
   <div class="rIndentedWrap">
-    Workshop: Game Audio Basics, Gamerella, 2020
+    Workshop: Game Audio Basics, <span class="rGrey"> Gamerella, 2020 </span>
     <div class="rIndentedBodyText">
-      Online workshop on basics of game audio in Construct 3, given during Gamerella game jam at Concordia University.
+      Online workshop on basics of game audio in Construct 3, given during Gamerella,
+      Concordia's inclusive game jam.
     </div>
   </div>
 
   <div class="rIndentedWrap">
-    Sound design and integration, Liquid Perceptions, 2019
+    Sound design and integration, <span class="rGrey"> Liquid Perceptions, 2019 </span>
     <div class="rIndentedBodyText">
 
       Sound design and integration with Unity and Max Msp for VR game for Research-creation project at Milieu Institute, Concordia
     </div>
   </div>
+  
+  <div class="rIndentedWrap">
+    Administrative assistant, <span class="rGrey"> Bar Big in Japan, Bar Vol de Nuit, 2017-2020 </span>
+    <div class="rIndentedBodyText">
+    General management work for restauration and bar businesses in downtown Montreal.
+    </div>
+  </div>
+
 
 
 
@@ -95,31 +107,101 @@
 <div class="rSubtitle">
   Game Jams & Competitions</div>
 
-<div class="rIndentedWrap">
-  js13k games 2020
-  <span class="rItalics">
-    ( 2d platformer, html5/js, solo project )
-  </span>
+  <img src="images/glab2019.png" class="resumeImg" style="object-position: 0% 64%;"></img>
 
-  <span class="rLink" onclick="expandProject(1,true)"> view </span>
-</div>
+  <div class="rIndentedWrap">
+    <span class="rLink" onclick="expandProject(1,true)"> js13k games 2020 </span>
+    <span class="rItalics rSmall">
+      <br>( 2d platformer, html5/js, solo project )
+    </span>
 
+
+  </div>
+
+  <div class="rIndentedWrap">
+    <a href="https://www.concordia.ca/cunews/main/stories/2020/06/05/concordia-students-develop-a-new-cooperative-videogame-with-support-from-ubisoft-mentors.html" class="rLink"> Ubisoft Gamelab 2020 </a>
+    <span class="rItalics rSmall">
+      <br>( 3d coop game, Unity, sound, music and 3d production )
+    </span>
+
+    <!--
+    <span class="rLink" onclick="expandProject(1,true)"> view </span>
+  -->
+  </div>
+
+  <div class="rIndentedWrap">
+    <span class="rLink" onclick="expandProject(6,true)"> GMTK game jam 2020 </span>
+    <span class="rItalics rSmall">
+      <br>( 3d action game, Unity, solo project )
+    </span>
+
+
+  </div>
+
+  <div class="rIndentedWrap">
+    <span class="rLink" onclick="expandProject(4,true)"> Tweet-Tweet Jam 2020 </span>
+    <span class="rItalics rSmall">
+      <br>( microgame, javascript, solo project )
+    </span>
+
+
+  </div>
+
+  <div class="rIndentedWrap">
+    <span class="rLink" onclick="expandProject(7,true)"> js 13k games 2019 </span>
+    <span class="rItalics rSmall">
+      <br>( 2d platformer, javascript, solo project )
+    </span>
+
+
+  </div>
+
+  <div class="rIndentedWrap">
+    <span class="rLink" onclick="expandProject(9,true)"> Ubisoft Gamelab 2019 </span>
+    <span class="rItalics rSmall">
+      <br>( 3d coop race game, Unity, sound & music, Wwise implementation )
+    </span>
+
+
+  </div>
+
+<!--
 <div class="rIndentedWrap">
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </div>
-
+-->
 
 <div class="rSpacing"></div>
 
 <!--  STUDIES   -->
 <div class="rSubtitle">
   Studies</div>
-<div class="rIndentedWrap">Bachelors Degree in Computation Arts, Concordia University, graduating 2021
+<div class="rIndentedWrap">
+  Bachelors Degree in Computation Arts, Concordia University, graduating 2021
   </div>
-<div class="rIndentedWrap">Bachelors Degree in Music, McGill University, graduated 2016
+
+  <div class="rIndentedBodyText">
+<!-- Concepts explored: <br> -->
+Html/css/javascript,  node.js,
+<br>Unity/C#,
+<br>Game design,
+<br>3d modeling (Blender),
+<br>Digital audio (Max MSP),
+<br>Interactive electronics (Arduino, Particle Argon),
+<br>Video (Premier, AE, MadMapper, Vyv Photon)
   </div>
-<div class="rIndentedBodyText"> Classical piano performance specialization</div>
-<div class="rIndentedBodyText"> Minor in Music Applications of Technology</div>
+
+<div class="rIndentedWrap">
+  Bachelors Degree in Music, McGill University, graduated 2016
+  </div>
+
+<div class="rIndentedBodyText">
+  Classical piano performance specialization
+</div>
+
+<div class="rIndentedBodyText">
+  Minor in Music Applications of Technology
+</div>
 
 
 
@@ -130,13 +212,25 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <div class="rSubtitle">
   Music</div>
 
-<div class="rIndentedWrap">
-    List some gigs here
-</div>
+<img src="images/hoj.jpg" class="resumeImg"></img>
 
 <div class="rIndentedWrap">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  With Uzuazo (support DJ) : October 2015 (Divan Orange) , January 2016 ( TRH-Bar)
 </div>
+
+    <div class="rIndentedWrap">
+  	Classical concerto competition (piano) : Novemere 2015, McGill University
+  </div>
+
+    <div class="rIndentedWrap">
+  	Rose and the Thorns (piano pop/jazz) :
+    <br>20 August, 22 October 2013,
+    <br>28 January, 24 June 2014 (House of Jazz)
+  </div>
+
+<div class="rIndentedWrap">
+    Mcgill University Chorus (choir, tenor) : December and April  2013-2015
+  </div>
 
 
 
