@@ -72,6 +72,8 @@ let projectDescriptions = [
         bosses, a few weapon upgrades, a custom 2d animation system that uses
         canvas path drawing and a soundtrack made entirely of generated sounds.
 
+        %#%# %#a0 %#
+
         %#%#The levels are decorated with the code from the game itself! I did
         manage to fit everything into a 12.99k zip package, but in the end I had to cut out
         some parts, which impaired the performance quite a bit. Still I am glad to have finished it on time,
@@ -87,7 +89,12 @@ let projectDescriptions = [
         context:"js13k html5 game competition"
 
     },
-    coverImage:"samjs13kSMALL.png",
+    audioGallery:[
+      `<iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030007044%3Fsecret_token%3Ds-5wElwc2UBtP&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+      </iframe>`],
+    coverImage:"js13k2020/02.png",
+    imageGallery:["js13k2020/06.png","js13k2020/05.png","js13k2020/01.png" ],
     tags:["Game Design","Programming","Javascript","Game Sound"],
     date:[13,9,2020],
     externalLinks:[
@@ -507,7 +514,7 @@ let projectDescriptions = [
 
 
       %#%#I picked and produced sound effects, composed BGM tracks, set up the project
-      in Wwise and scripted audio triggers in C#. %#%#%#a0 %#The soundtrack featured midi
+      in Wwise and scripted audio triggers in C#. %#%# %#a0 %#The soundtrack featured midi
       instruments that would interchange during gameplay, using tools included
       in Wwise and some C# scripting on the Unity side.`,
       contributionDetails:["Sound effects","Music","Implementation in Wwise","Trigger implementation in Unity","Midi soundtrack design"],

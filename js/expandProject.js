@@ -177,12 +177,15 @@ function expandProject(index,noupdate){
   <div class="popupbody">
     <div class='popupbodyitalic'></div>
     ${overviewtxt}
+
+
+    <div class="popupexternallinks">
+      <div class='popupbodyitalic'>external links:</div>
+      ${links}
+    </div>
   </div>
 
-  <div class="popupexternallinks">
-    <div class='popupbodyitalic'>external links:</div>
-    ${links}
-  </div>
+
 
   `;
 

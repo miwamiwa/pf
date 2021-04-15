@@ -32,7 +32,7 @@ body{
   position:relative;
   top:0vh;
   left:0;
-  background-color:#dddf;
+  background-color:#ffff;
 }
 
 
@@ -120,8 +120,8 @@ indent{
   height:92vh;
   transform:translateY(-0px);
   z-index:1;
-  
-  filter: brightness(1.10) contrast(0.4);
+
+  filter: brightness(1.10) contrast(0.6);
 }
 
 #vidcontainer{
@@ -173,13 +173,17 @@ indent{
   width:100%;
   left:0%;
   position:relative;
-  background-color:#dddf;
-  padding:10vh 0;
+  background-color:#ffff;
+  border-top:1px solid #dddf;
+  border-left:1px solid #ddd4;
+  border-radius:0.6vw 0.6vw 0vw 0vw;
+  padding-top:6vh;
+  padding-bottom:4vh;
 
   max-width:800px;
 }
 #banderolleInside{
-  background-color:#eeef;
+
   position:relative;
   width:100%;
   height:100%;
@@ -228,7 +232,13 @@ indent{
   border-radius:2px;
 }
 #bandLeft{
-  padding:3vh 0;
+  background-color:#fdfdfdff;
+  border-top:1px solid #dddf;
+  border-left:1px solid #ddd4;
+  border-radius:0.6vw;
+
+  padding:4vh 4vh;
+  margin-top: 4vh;
   display:flex;
   width:100%;
   justify-content:flex-start;
@@ -245,6 +255,7 @@ indent{
   justify-content:center;
   align-items:center;
   flex-direction:column;
+  background-color:#fff8;
   max-width:800px;
 }
 
@@ -276,6 +287,10 @@ indent{
   position:relative;
 
   max-width:800px;
+
+  padding-top:2vh;
+  border-top:1px solid #eeef;
+  border-radius:0.6vw 0.6vw 0vw 0vw;
 
 }
 #subjectsContainer{

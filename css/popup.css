@@ -4,8 +4,9 @@
   padding-right:0px;
   position:relative;
   background-color:#ffff;
-  padding-bottom:15vh;
-}
+  padding-bottom:6vh;
+
+  }
 .popuptitle{
   cursor:pointer;
   padding-top:15px;
@@ -51,13 +52,13 @@
   object-fit:cover;
 
   width:100%;
-  height:50vh;
+  height:60vh;
   max-width:800px;
 }
 .popupimgcontainer{
   left:0vw;
   width:92vw;
-  height:50vh;
+  height:60vh;
   top:0;
   position:relative;
   overflow:hidden;
@@ -75,9 +76,13 @@
 }
 .popupTopPadding{
   padding:6px;
+  padding-top:4vh;
+  padding-bottom:4vh;
+  background-color:#ffff;
 }
 .datebox{
-  margin-left:5%;
+  margin-left:0%;
+
   float:left;
 }
 .tags{
@@ -104,7 +109,12 @@
 }
 /* links section in popup ui */
 .popupexternallinks{
-  margin-left:5%;
+  margin-top:6vh;
+  margin-left:0%;
+
+  padding-top:4vh;
+  border-top:1px solid #eeef;
+  border-radius:0.6vw 0.6vw 0vw 0vw;
 }
 /* individual link text */
 .popuplink{
@@ -116,23 +126,51 @@
 
   position:relative;
   width:100%;
-  display:flex;
-  flex-direction:row;
-  justify-content:space-between;
+  overflow:hidden;
+  height:30vh;
+  margin-bottom:0vh;
 }
 
 .fdinfosection{
-  width:200px;
-  padding:4px;
+
+  width:40%;
+
+  height:30vh;
+  padding:2vh;
+  padding-right:10%;
   color:#333f;
+  background-color:#fdfdfdff;
+  border-top:1px solid #eeef;
+  border-left:1px solid #ddd4;
+  border-radius:0.6vw 0.6vw 0vw 0vw;
+}
+
+.fdContribution{
+  left:0%;
+  background-color:#fdfdfdff;
+  position:absolute;
+}
+
+.fdInfoBoxRight{
+  background-color:#fbfbfbff;
+  left:33.33%;
+  position:absolute;
+}
+
+.fdCollaborators{
+  background-color:#fdfdfdff;
+  left:66.66%;
+  position:absolute;
 }
 
 .fdinfosection:hover{
+
   color:#111f;
 }
 
 .fdinfotitle{
   font-weight:bold;
+
   color:#666f;
 }
 
@@ -144,6 +182,9 @@
   position:relative;
   width:100%;
   max-width:800px;
+  padding-top:4vh;
+  border-top:1px solid #eeef;
+  border-radius:0.6vw 0.6vw 0vw 0vw;
 }
 .fdbox{
   width:100%;
