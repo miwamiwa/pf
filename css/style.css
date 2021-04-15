@@ -276,12 +276,11 @@ indent{
 
 
 
-
 }
 
 /* PAGE BODY */
 #bodySection{
-  background-color:#eeef;
+  background-color:#eeea;
   width:100%;
   min-height:200px;
   position:relative;

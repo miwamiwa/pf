@@ -255,7 +255,7 @@ function makeSlideShow(coverimg,covervideo,gallery){
   <div class="slideshowel" id="slideshowel2" style="z-index:0;">${el2}</div>
   </div>`;
 
-  ssInterval = setInterval(updateSlideShow, 100);
+  ssInterval = setInterval(updateSlideShow, 60);
   return result;
 }
 
@@ -272,7 +272,7 @@ function continueSlideShow(){
 
 let ssPaused = false;
 let ssIncrements = 10;
-let showDuration=30;
+let showDuration=60;
 let el1x =0;
 let el2x =ssIncrements;
 let transitionDuration=ssIncrements;

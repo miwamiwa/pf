@@ -36,8 +36,8 @@
 }
 .popupbody{
 
-    font-size:calc(8px + 1.2vh);
-    line-height:calc(10px + 1.2vh);
+    font-size:calc(8px + 1.0vh);
+    line-height:calc(10px + 1.0vh);
 
   width:100%;
   left:0vw;
@@ -49,9 +49,9 @@
 
 }
 .popupimg{
-  object-fit:cover;
 
-  width:100%;
+
+  max-width:100%;
   height:60vh;
   max-width:800px;
 }
@@ -64,6 +64,8 @@
   overflow:hidden;
   max-width:800px;
 
+
+
 }
 
 .slideshowel{
@@ -73,6 +75,9 @@
   height:100%;
   position:absolute;
   background-color:#eeef;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
 }
 .popupTopPadding{
   padding:6px;
@@ -199,5 +204,20 @@
 }
 
 .fdAudioEl{
+  margin-top:4vh;
+}
+
+@media screen and (max-width: 600px) {
+
+  .popupimg{
+
+    height:38vh;
+  }
+  .popupimgcontainer{
+    height:38vh;
+
+
+  }
+
 
 }
