@@ -865,40 +865,26 @@ function addProjectBox(p,index,isbigbox){
   tempbox.classList.add("featurebox");
   bodycontentsbox.appendChild(tempbox);
 
+  // add image
   let img = document.createElement("img");
   if(p.coverImage!=undefined) img.src="images/"+p.coverImage;
   else if (p.imageGallery!=undefined) img.src="images/"+p.imageGallery[0]
   else img.src="images/"+p.iconImage;
   img.style.objectFit="cover";
-/*
-  if(isbigbox){
-    let size = hunit*featureboxsize/10;//*window.innerHeight;
-    //img.width=size;
-    //img.height=size;
-
-  }
-  else {
-    let size = hunit*featureboxsize/10;
-    //img.width=size;
-    //img.height=size;
-    tempbox.classList.add("featureboxSmall");
-  }
-  */
   img.style.borderRadius="2px";
+  img.classList.add("pboximg");
 
-  img.classList.add("pboximg")
+  // img container
   let tempbox2 = document.createElement("div");
   tempbox2.classList.add("pboximg");
   tempbox2.appendChild(img);
   tempbox.appendChild(tempbox2);
+
+  // "overlay" is now the description text below the box
   boxoverlay = document.createElement("div");
   boxoverlay.classList.add("boxoverlay");
-  //boxoverlay.style.width=featureboxsize+"vh";
-  //boxoverlay.style.height=featureboxsize+"vh";
-  //boxoverlay.style.opacity =0;
 
-
-  let truncatedtxt =  "<div class='tagz'>"+(getTagData(index)) + "</div>";
+  let truncatedtxt =  "<div class='tagz f4'>"+(getTagData(index)) + "</div>";
   truncatedtxt += "<br>";
 
   if(p.shortDescription!=undefined) truncatedtxt += "<span>"+p.shortDescription+ "</span>";

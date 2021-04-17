@@ -60,6 +60,7 @@ let projectDescriptions = [
   {
     title:"js13k 2020 game",
     fullDescription:"Game made for js13k2020. Sound design features browser-based sound generation.",
+    shortDescription:"",
     iconImage:"13kicon.png",
     featuredIn:["Programming"],
     featureDescription:{
@@ -121,7 +122,7 @@ let projectDescriptions = [
 {
   title:"Ghost Game",
   fullDescription:"Prototype for an audio-only game about chasing ghosts. ",
-  coverImage:"ghostLarge.png",
+  coverImage:"ghostgame/02.png",
   featuredIn:["Game Sound","Game Design"],
   featureDescription:
   {
@@ -133,6 +134,12 @@ let projectDescriptions = [
 
       %#%#I programmed this with Unity and produced the sounds with Ableton and Cubase.
 
+      %#%#%#Ambiance track:
+
+      %# %#a0 %#%#
+      Extract from the game audio:
+
+      %# %#a1 %#
       `,
       contributionDetails:[
         "Sensor-based interaction design",
@@ -148,6 +155,14 @@ let projectDescriptions = [
       context:"CART 410 Research-Creation in the Computation Arts"
 
   },
+  imageGallery:[
+    "ghostgame/01.png",
+    "ghostLarge.png"
+  ],
+  audioGallery:[
+    `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030778947%3Fsecret_token%3Ds-nGrBcOBJBqh&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+    `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030781707%3Fsecret_token%3Ds-Tzxjkw2saLq&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+],
   iconImage:"GHOST.png",
   tags:["Game Design","Audio Game","Unity","Mobile","Game Sound","Programming"],
   date:[1,12,2020],
@@ -168,8 +183,8 @@ let projectDescriptions = [
 {
   title:"Gilgamesh vignettes",
   fullDescription:"Scenes from the epic of Gilgamesh told in vignette game form. ",
-  coverImage:"gilgaIMG.png",
-  featuredIn:["Game Design", "Game Sound"],
+  coverImage:"gilgamesh/06.png",
+  featuredIn:["Game Design"],//, "Game Sound"],
   featureDescription:{
 
       body:`
@@ -184,7 +199,7 @@ let projectDescriptions = [
       up Gilgamesh upon his arrival. The graphic elements (sketched by me and reworked by Melissa Lim)
       and sonic elements hopefully reinforce the tactile feel of each action,
       emphasizing the characters' belief in the gods' agency on the nature that surrounds them.
-
+      %#%# %#a0 %#
       %#%#In the second vignette, the player is Gilgamesh struggling with his impossible
       goal of crossing an ocean no man has ever crossed before, on a broken boat,
       using nothing but poles for propulsion, and eventually, out of sheer desparation,
@@ -197,6 +212,7 @@ let projectDescriptions = [
       and the contrasting character of the navigator calmly providing the user with
       instructions combine to depict Gilgamesh's mindset in this passage: anguished
       yet heroically moving forward.
+      %#%# %#a1 %#
 
       %#%#Regarding sound design, in both vignettes I explored the use of granulation
       to create different sound textures. The soundtrack of the first vignette is meant
@@ -205,12 +221,15 @@ let projectDescriptions = [
       yet melancholic sound that confirms the emotion in the scene.
       `,
       contributionDetails:["Unity/C# programming", "Game design","Sketches, art", "Music and sound effects"],
-      collaborators:["Melissa Lim (first vignette)"],
+      collaborators:["Melissa Lim"],
       tools:["Unity/C#"],
       context:"CART 415 Game Design Studio"
 
   },
-  iconImage:"gilgaIcon.png",
+  //iconImage:"gilgaIcon.png",
+  audioGallery:[`<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030473253%3Fsecret_token%3Ds-esKk0NgDdRE&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+    `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030470604%3Fsecret_token%3Ds-lQJRRydZ0dO&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`],
+  imageGallery:["gilgamesh/04.png","gilgamesh/08.png", "gilgamesh/09.png"],
   tags:["Game Design","Programming","Game Sound","Unity","Music"],
   date:[15,11,2020],
   externalLinks:[
@@ -259,6 +278,7 @@ let projectDescriptions = [
 
     },
 
+    imageGallery:["560/01.png"],
     iconImage:"560icon.png",
     tags:["Javascript","Programming","Game Design"],
     date:[5,5,2020],
@@ -357,7 +377,7 @@ let projectDescriptions = [
       sustain itself without constant care from robots. Somehow, the robots are
       getting out of control and their action is destroying the forests! The player's
       goal is to bust up these bad bots before the situation gets any more disastreous.
-
+      %#%# %#a0 %#
       %#%#This is a Unity game I made solo for the 2020 GMTK game jam. Definitely a
       big endeavour for a 48h jam, the goal was to have enough elements in the game
       by the end of the jam for people to get a feel for the concept and narrative.
@@ -370,9 +390,12 @@ let projectDescriptions = [
       context:"GMTK Game Jam, summer of 2020"
 
   },
-
-  iconImage:"badbotsicon.png",
-  coverImage:'badbot.png',
+  audioGallery:[
+    `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030771900%3Fsecret_token%3Ds-X4o1BFNU0MF&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+  ],
+  imageGallery:["badbots/01.png",'badbot.png'],
+  //iconImage:"badbotsicon.png",
+  coverImage:"badbots/02.png",
   externalLinks:[
     {
       title:'Play Bad Bots',
@@ -404,7 +427,13 @@ let projectDescriptions = [
   +"<br><br>This was a first time attempting to make a full game on my own! And a first time doing many things in javascript without any libraries, like canvas drawing and generating sound. Features my own image compression scheme."
   +"<br><br>Controls: left=a, right=d, space=jump, w=wiggle (drop a passenger)",
   coverVideo:`<iframe src="https://player.vimeo.com/video/432701435" class="popupimg" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`,
-  imageGallery:["apenaps.png"],
+  imageGallery:[
+    "apenaps.png",
+  "apenaps/01.png",
+  //"apenaps/02.png",
+  //"apenaps/05.png",
+  "apenaps/04.png"
+],
   iconImage:"apenapsicon.png",
   featuredIn:["Programming"],
 
@@ -485,7 +514,20 @@ let projectDescriptions = [
 
   },
 
-  iconImage:'lpicon.png',
+  //iconImage:'lpicon.png',
+
+  imageGallery:[
+    "lp/02.png",
+    "lp/01.png",
+    "lp/03.png",
+    "lp/04.png",
+    "lp/05.png"
+  ],
+
+  externalLinks:[{
+    link:"https://tag.hexagram.ca/projects/liquid-perceptions/",
+    title:"project web page"
+  }],
 
   coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
   <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
@@ -514,9 +556,28 @@ let projectDescriptions = [
 
 
       %#%#I picked and produced sound effects, composed BGM tracks, set up the project
-      in Wwise and scripted audio triggers in C#. %#%# %#a0 %#The soundtrack featured midi
+      in Wwise and scripted audio triggers in C#.
+
+      %#%# %#a1 %#%#
+
+      The soundtrack featured midi
       instruments that would interchange during gameplay, using tools included
-      in Wwise and some C# scripting on the Unity side.`,
+      in Wwise and some C# scripting on the Unity side.
+
+      %# %#a2 %#%#
+
+      I made a number of sound effects, including this level-reset jingle:
+
+      %# %#a3 %#%#
+
+      And this sound for a big bad plant-beast (think little shop of horrors!)
+      that ended up being removed from the game. One day, plant-beast.
+
+      %# %#a4 %#
+
+
+
+      `,
       contributionDetails:["Sound effects","Music","Implementation in Wwise","Trigger implementation in Unity","Midi soundtrack design"],
       collaborators:["Dougy Herard","Zied Jebali","Hiu Tung Lam", "Ricardo Liganor", "Melissa Lim", "Nicole Lin", "Scott Smith"],
       tools:["Unity/C#","Wwise","Ableton","Cubase"],
@@ -532,6 +593,13 @@ let projectDescriptions = [
   audioGallery:[
     `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
 
+    `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101751&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+    `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101742%3Fsecret_token%3Ds-ccvfe&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+    `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100596%3Fsecret_token%3Ds-a9vcH&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+    `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100584%3Fsecret_token%3Ds-eJ50M&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
   ],
   imageGallery:["FF_title.jpg","FF_03.jpg","FF_05.jpg"],
   externalLinks:[

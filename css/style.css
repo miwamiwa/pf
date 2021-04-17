@@ -53,6 +53,11 @@ body{
   line-height:calc(10px + 1.2vh);
 }
 
+.f4{
+  font-size:calc(6px + 0.6vh);
+  line-height:calc(7px + 0.6vh);
+}
+
 .pageTitle{
   font-size:calc(22px + 1.6vh);
   line-height:calc(26px + 1.6vh);
