@@ -198,7 +198,7 @@ function expandProject(index,noupdate){
     document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="3vw"
   }
   else {
-    document.getElementsByClassName("popupbody")[0].style.padding="0vw"
+    document.getElementsByClassName("popupbody")[0].style.padding="3vw"
     document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="0vw"
   }
 

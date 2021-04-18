@@ -3,7 +3,7 @@
   padding-left:0px;
   padding-right:0px;
   position:relative;
-  background-color:#ffff;
+  background-color:#eee6;
   padding-bottom:6vh;
 
 }
@@ -83,7 +83,7 @@
   padding:6px;
   padding-top:4vh;
   padding-bottom:4vh;
-  background-color:#ffff;
+/*  background-color:#ffff;*/
 }
 .datebox{
   margin-left:2vh;
@@ -157,15 +157,15 @@
 }
 
 .fdContribution{
-  background-color:#fdfdfdff;
+  background-color:#fdfdfd44;
 }
 
 .fdInfoBoxRight{
-  background-color:#fbfbfbff;
+  background-color:#fbfbfb44;
 }
 
 .fdCollaborators{
-  background-color:#fdfdfdff;
+  background-color:#fdfdfd44;
 }
 
 .fdinfosection:hover{

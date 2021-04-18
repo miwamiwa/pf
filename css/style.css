@@ -230,7 +230,7 @@ indent{
   object-position:0% 40%;
 
   position:relative;
-  height:30vh;
+  height:24vh;
   padding:6px;
   background-color:white;
 
@@ -285,7 +285,8 @@ indent{
 
 /* PAGE BODY */
 #bodySection{
-  background-color:#eeea;
+  margin-top:2vh;
+  background-color:#ddda;
   width:100%;
   min-height:200px;
   position:relative;
@@ -298,7 +299,7 @@ indent{
 
 }
 #subjectsContainer{
-  padding-top:4vh;
+  padding-top:2vh;
   font-size:calc(8px + 2vh);
   font-weight:bold;
   width:100%;
@@ -306,15 +307,20 @@ indent{
 }
 .subjectsTitle{
 
-  padding-left:10px;
+  padding-left:3vw;
 }
 #subjectsBox{
-  margin:1vh 0px;
+  margin-top:4vh;
+  margin-bottom:2vh;
   width:100%;
   display:flex;
   flex-wrap:wrap;
   justify-content:space-between;
   background-color:#ffff;
+
+  border-top:1px solid #dddf;
+  border-left:1px solid #ddd4;
+  border-radius:0.6vw 0.6vw 0vw 0vw;
 }
 /*
 .subjectbox{
@@ -344,6 +350,8 @@ cursor:pointer;
   padding-right:15px;
   text-align:center;
   background-color:white;
+
+
 }
 
 .subjectbox:hover{
@@ -356,7 +364,8 @@ cursor:pointer;
   background-color:#999f;
 }
 #bodyContentBox{
-  padding:8vh 2vh;
+  padding:1vh 2vh;
+  padding-bottom:4vh;
   width:100%;
   height:auto;
   display:flex;
@@ -365,7 +374,7 @@ cursor:pointer;
   justify-content:flex-start;
 }
 .featurebox{
-  width:22vh;
+  width:32vh;
   height:37vh;
   flex-grow: 1;
   background-color:white;
@@ -439,6 +448,7 @@ cursor:pointer;
 
 }
 .lessmore{
+
   padding:2vh 2vw;
   background-color:#dddf;
   color:#666f;
@@ -447,12 +457,16 @@ cursor:pointer;
   font-size:calc(6px + 2vh);
   line-height:calc(6px + 2vh);
   cursor:pointer;
-
+/*  margin-top:7vh; */
   max-width:800px;
+
+  border-top:1px solid #ddd9;
+  border-left:1px solid #ddd4;
+  border-radius:0.6vw 0.6vw 0vw 0vw;
 }
 .lessmore:hover{
   color:#bbbf;
-  background-color:#fff3;
+  background-color:#eee6;
 }
 
 
@@ -462,6 +476,7 @@ cursor:pointer;
   height:100px;
 
   max-width:800px;
+  margin-top:2vh;
 }
 
 

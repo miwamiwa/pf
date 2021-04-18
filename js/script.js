@@ -89,7 +89,7 @@ function resize(){
     document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="3vw"
   }
   else if(popupshown){
-    document.getElementsByClassName("popupbody")[0].style.padding="0vw"
+    document.getElementsByClassName("popupbody")[0].style.padding="3vw"
     document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="0vw"
   }
 
@@ -350,7 +350,7 @@ function scrollevent(){
     if(pageIs=="home")
     banderollesection.style.marginTop=level2height+"px";
     else {
-      document.getElementById("bodySection").style.marginTop=level2height+"px";
+      //document.getElementById("bodySection").style.marginTop=level2height+"px";
     }
     // fix popup title and body positions
     if(popupshown&&scroll>tbh+bsize){
@@ -369,7 +369,7 @@ function scrollevent(){
     document.getElementById("coverTitleBox").style.display="block";
     navsection.style.position="relative";
     if(pageIs=="home") banderollesection.style.marginTop="0px";
-    else document.getElementById("bodySection").style.marginTop="0px";
+  //  else document.getElementById("bodySection").style.marginTop="0px";
     if(popupshown) resetPopupSectionOffsets();
 
 
@@ -861,48 +861,52 @@ function hideBoxMeta(index){
 // image, hidden meta element, and mouse hover & click events.
 
 function addProjectBox(p,index,isbigbox){
-  let tempbox = document.createElement("div");
-  tempbox.classList.add("featurebox");
-  bodycontentsbox.appendChild(tempbox);
 
-  // add image
-  let img = document.createElement("img");
-  if(p.coverImage!=undefined) img.src="images/"+p.coverImage;
-  else if (p.imageGallery!=undefined) img.src="images/"+p.imageGallery[0]
-  else img.src="images/"+p.iconImage;
-  img.style.objectFit="cover";
-  img.style.borderRadius="2px";
-  img.classList.add("pboximg");
+  if(p.skip==undefined||(p.skip!=undefined&&p.skip==false)){
+    let tempbox = document.createElement("div");
+    tempbox.classList.add("featurebox");
+    bodycontentsbox.appendChild(tempbox);
 
-  // img container
-  let tempbox2 = document.createElement("div");
-  tempbox2.classList.add("pboximg");
-  tempbox2.appendChild(img);
-  tempbox.appendChild(tempbox2);
+    // add image
+    let img = document.createElement("img");
+    if(p.coverImage!=undefined) img.src="images/"+p.coverImage;
+    else if (p.imageGallery!=undefined) img.src="images/"+p.imageGallery[0]
+    else img.src="images/"+p.iconImage;
+    img.style.objectFit="cover";
+    img.style.borderRadius="2px";
+    img.classList.add("pboximg");
 
-  // "overlay" is now the description text below the box
-  boxoverlay = document.createElement("div");
-  boxoverlay.classList.add("boxoverlay");
+    // img container
+    let tempbox2 = document.createElement("div");
+    tempbox2.classList.add("pboximg");
+    tempbox2.appendChild(img);
+    tempbox.appendChild(tempbox2);
 
-  let truncatedtxt =  "<div class='tagz f4'>"+(getTagData(index)) + "</div>";
-  truncatedtxt += "<br>";
+    // "overlay" is now the description text below the box
+    boxoverlay = document.createElement("div");
+    boxoverlay.classList.add("boxoverlay");
 
-  if(p.shortDescription!=undefined) truncatedtxt += "<span>"+p.shortDescription+ "</span>";
-  else if(p.fullDescription.length>100)
-  truncatedtxt += p.fullDescription.substring(0,100)+"...";
-  else truncatedtxt+=p.fullDescription;
+    let truncatedtxt =  "<div class='tagz f4'>"+(getTagData(index)) + "</div>";
+    truncatedtxt += "<br>";
 
-  boxoverlay.innerHTML = `
-  <div class='boxoverlayTitle'>${p.title}</div>
-  <div class='boxoverlayBody'>${truncatedtxt}</div>
-  `;
+    if(p.shortDescription!=undefined) truncatedtxt += "<span>"+p.shortDescription+ "</span>";
+    else if(p.fullDescription.length>100)
+    truncatedtxt += p.fullDescription.substring(0,100)+"...";
+    else truncatedtxt+=p.fullDescription;
 
-  boxoverlay.id="box"+index;
+    boxoverlay.innerHTML = `
+    <div class='boxoverlayTitle'>${p.title}</div>
+    <div class='boxoverlayBody'>${truncatedtxt}</div>
+    `;
 
-  //boxoverlay.setAttribute("onmouseenter",`triggerShowBoxMeta(${index})`);
-  //boxoverlay.setAttribute("onmouseleave",`triggerHideBoxMeta(${index})`);
-  tempbox.setAttribute("onclick",`expandProject(${index})`);
-  tempbox.appendChild(boxoverlay);
+    boxoverlay.id="box"+index;
+
+    //boxoverlay.setAttribute("onmouseenter",`triggerShowBoxMeta(${index})`);
+    //boxoverlay.setAttribute("onmouseleave",`triggerHideBoxMeta(${index})`);
+    tempbox.setAttribute("onclick",`expandProject(${index})`);
+    tempbox.appendChild(boxoverlay);
+  }
+
 }
 
 
