@@ -68,7 +68,7 @@ let navbheight; // nav button height in px
 let navheight;
 let resized = true; // to prevent extra calls of checkresize()
 let viewport;
-
+let popupSpaceBelowTitle;
 //resize()
 //
 // on window resized callback
@@ -78,8 +78,17 @@ function resize(){
   if(isMobile) coverbox.style.height="86vh";
   tbh = document.getElementById("coverVideo").getBoundingClientRect().height;
   hunit = 0.1*window.innerHeight;
+  popupSpaceBelowTitle=0.4*hunit;
   viewportW=viewport.getBoundingClientRect().width;
 
+  updateBodyPadding();
+
+  navbheight = 0.2*hunit+8;
+  scrollevent();
+  styleTitle();
+}
+
+function updateBodyPadding(){
   if(popupshown&&isMobile&&viewportW<800){
     document.getElementsByClassName("popupbody")[0].style.padding="4vw"
     document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="4vw"
@@ -92,10 +101,6 @@ function resize(){
     document.getElementsByClassName("popupbody")[0].style.padding="3vw"
     document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="0vw"
   }
-
-  navbheight = 0.2*hunit+8;
-  scrollevent();
-  styleTitle();
 }
 
 // checkSmallMode()
@@ -164,6 +169,7 @@ function start(){
   doc.imageViewer = document.getElementById("galleryImageViewer");
   navsection=document.getElementById("navSection");
   banderollesection=document.getElementById("banderolleSection");
+
   if(banderollesection!=undefined)
     bsize=banderollesection.getBoundingClientRect().height;
 
@@ -340,25 +346,29 @@ function scrollevent(){
   // fix nav bar position on all pages
   if(scroll>tbh){
 
-
-
     document.getElementById("coverTitleBox").style.display="none";
     navsection.style.position="fixed";
     navsection.style.top="0px";
 
     // if there is a banderolle section, fix banderolle position
     if(pageIs=="home")
-    banderollesection.style.marginTop=level2height+"px";
+      banderollesection.style.marginTop=level2height+"px";
+
+    /*
     else {
       //document.getElementById("bodySection").style.marginTop=level2height+"px";
     }
-    // fix popup title and body positions
+    */
+    // fix popup title and body positions3
+    if(banderollesection!=undefined)
+      bsize=banderollesection.getBoundingClientRect().height;
+
     if(popupshown&&scroll>tbh+bsize){
       let p=document.getElementsByClassName("popuptitle");
       p[0].style.position="fixed";
       p[0].style.top=level2height+"px";
       popupoffsetted=true;
-      popupsection.style.marginTop=(level2height+20)+"px";
+      document.getElementsByClassName("popupimgcontainer")[0].style.marginTop=(level2height+20 + popupSpaceBelowTitle)+"px";
     }
     else if(popupshown) resetPopupSectionOffsets();
 
@@ -397,7 +407,7 @@ function resetPopupSectionOffsets(){
   p[0].style.position="relative";
   p[0].style.top="0px";
   popupoffsetted = false;
-  popupsection.style.marginTop="0px";
+  document.getElementsByClassName("popupimgcontainer")[0].style.marginTop=popupSpaceBelowTitle+"px";
 }
 
 
@@ -1000,7 +1010,7 @@ function reachPopup(){
   popupsection.scrollIntoView();
 
   if(popupoffsetted)
-    document.body.scrollTop -= Math.ceil(2*navheight);
+    document.body.scrollTop -= 2*navheight+popupSpaceBelowTitle;
   else document.body.scrollTop -= navheight;
 
   scrollevent();

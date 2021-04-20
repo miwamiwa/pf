@@ -185,28 +185,16 @@ function expandProject(index,noupdate){
     </div>
   </div>
 
-
-
   `;
 
-  if(isMobile&&viewportW<800){
-    document.getElementsByClassName("popupbody")[0].style.padding="4vw"
-    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="4vw"
-  }
-  else if(viewportW<800){
-    document.getElementsByClassName("popupbody")[0].style.padding="3vw"
-    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="3vw"
-  }
-  else {
-    document.getElementsByClassName("popupbody")[0].style.padding="3vw"
-    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="0vw"
-  }
+  updateBodyPadding();
 
   if(noupdate==undefined)
   // collapse featured project list
   showLess();
   // scroll to element
   popupshown=true;
+  updateLanguage();
   reachPopup();
 }
 
@@ -216,7 +204,9 @@ let ssInterval;
 let ssel1 = undefined;
 let ssel2 = undefined;
 let sscounter =0;
-// <img class="popupimg" src="images/${p.coverImage}"></img>
+
+
+
 function makeSlideShow(coverimg,covervideo,gallery){
 
   slideShowElements = [];
@@ -304,13 +294,8 @@ function updateSlideShow(){
 
         let newindex=(slideshowpos+2)%slideShowElements.length;
 
-
-
         ssel1.innerHTML=slideShowElements[newindex];
-
         setupVimeoVid(ssel1);
-
-
 
         slideshowpos++;
       }
@@ -322,10 +307,6 @@ function updateSlideShow(){
         slideshowpos++;
       }
     }
-
-
-
-
 
     sscounter++;
   }
@@ -344,20 +325,8 @@ function setupVimeoVid(el){
   if(iframe!=undefined){
     let player = new Vimeo.Player(iframe);
 
-    player.on('play', function() {
-        //console.log('played the video!');
-        ssVidPlaying=true;
-        //console.log("playing!")
-    });
-
-    player.on('bufferstart', function(){
-      ssVidPlaying=true;
-      //console.log("buffering!")
-    });
-
-    player.on('pause', function() {
-        //console.log('paused the video!');
-        ssVidPlaying=false;
-    });
-}
+    player.on('play', ()=> ssVidPlaying=true );
+    player.on('bufferstart', ()=> ssVidPlaying=true );
+    player.on('pause', ()=> ssVidPlaying=false );
+  }
 }
