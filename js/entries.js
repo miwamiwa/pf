@@ -176,7 +176,7 @@ let projectDescriptions = [
       body:`
 
       <span class="en">
-      %#%#In the fall of 2020 I learned about audio games, screenless video games,
+      In the fall of 2020 I learned about audio games, screenless video games,
       and decided to try making my own prototype of an audio game for mobile.
 
       %#%#My game is about chasing ghosts, and is meant to be played indoors with an
@@ -567,7 +567,7 @@ let projectDescriptions = [
 
         <span class="en">
 
-          
+
         </span>
 
 

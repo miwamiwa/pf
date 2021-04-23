@@ -65,9 +65,13 @@ function expandProject(index,noupdate){
 
   // setup overview text (popup body)
   let overviewtxt="";
+  let ptpContent = `<div class="datebox"> ${date} </div>
+  <div class="tags"> ${tags} </div>`;
 
   // if entry contains a 'featureDescription' property, display that:
   if(p.featureDescription!=undefined){
+
+    ptpContent="";
     let f = p.featureDescription;
 
     // create info box (above article body)
@@ -129,17 +133,24 @@ function expandProject(index,noupdate){
     <div class='fdBox'>
 
     <div class='fdInfoBox'>
-      <div class='fdContribution fdinfosection'>${contrib}</div>
+
+    <div class="datebox"> ${date} <span class="tags"> ${tags} </span> </div>
+
+      <div class='fdContribution fdinfosection infoToggle'>${contrib}</div>
 
       <div class='fdInfoBoxRight fdinfosection'>
-        <div class='fdTools'>${tools}</div> <br>
-        <div class='fdContext'>
+        <div class='fdTools infoToggle'>${tools}</div> <br>
+        <div class='fdContext infoToggle'>
           <span class='fdinfotitle'>Context:</span>
           ${f.context}
           </div>
           </div>
 
-      <div class='fdCollaborators fdinfosection'>${collaborators}</div>
+      <div class='fdCollaborators fdinfosection infoToggle'>${collaborators}</div>
+    </div>
+
+    <div id="infoBoxToggle" onclick="toggleInfoBox()">
+    more info
     </div>
 
     <div class='fdBody'>${bod}</div>
@@ -151,6 +162,7 @@ function expandProject(index,noupdate){
   // if this element has no 'featureDescription' property, use
   // 'fullDescription' for the body text.
   else overviewtxt=p.fullDescription;
+
 
 
   // get categories text (goes next to title)
@@ -170,8 +182,7 @@ function expandProject(index,noupdate){
   ${coverimg}
 
   <div class="popupTopPadding">
-    <div class="datebox"> ${date} </div>
-    <div class="tags"> ${tags} </div>
+    <div id='ptpContent'>${ptpContent}</div>
   </div>
 
   <div class="popupbody">
@@ -188,6 +199,9 @@ function expandProject(index,noupdate){
   `;
 
   updateBodyPadding();
+
+  infoBoxDisplayed=true; //revered
+  toggleInfoBox();
 
   if(noupdate==undefined)
   // collapse featured project list
@@ -329,4 +343,34 @@ function setupVimeoVid(el){
     player.on('bufferstart', ()=> ssVidPlaying=true );
     player.on('pause', ()=> ssVidPlaying=false );
   }
+}
+
+let infoBoxDisplayed=false;
+
+function toggleInfoBox(){
+  let b = document.getElementsByClassName("infoToggle");
+  let t= document.getElementById("infoBoxToggle");
+  let info = document.getElementsByClassName("fdInfoBox")[0]
+
+  if(infoBoxDisplayed){
+
+    for(let i=0; i<b.length; i++){
+      b[i].style.display="none";
+    }
+
+    t.innerHTML="more info"
+    info.style.height="8vh"
+  }
+  else  {
+
+    for(let i=0; i<b.length; i++){
+      b[i].style.display="block";
+    }
+
+    t.innerHTML="less info"
+    info.style.height="";
+  }
+
+
+  infoBoxDisplayed = !infoBoxDisplayed;
 }
