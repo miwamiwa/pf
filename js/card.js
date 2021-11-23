@@ -1,5 +1,6 @@
 let cards;
-
+const CardXPos = 0.075;
+const CardYPos = 0.025;
 
 class Card {
   constructor(page, pos, pagenum){
@@ -12,13 +13,14 @@ class Card {
 
     this.container = container;
 
+    // place off-screen
     this.position=pos;
     if(pos=="below")
-      position(container, {x:flo(0.075*window.innerWidth),y:window.innerHeight});
+      position(container, {x:flo(CardXPos*window.innerWidth),y:window.innerHeight});
     if(pos=="left")
-      position(container,{x:flo(0.075*window.innerWidth) - window.innerWidth,y:0.025*window.innerHeight});
+      position(container,{x:flo(CardXPos*window.innerWidth) - window.innerWidth,y:CardYPos*window.innerHeight});
     if(pos=="right")
-    position(container,{x:flo(0.075*window.innerWidth) + window.innerWidth,y:window.innerHeight});
+    position(container,{x:flo(CardXPos*window.innerWidth) + window.innerWidth,y:window.innerHeight});
 
   }
 }

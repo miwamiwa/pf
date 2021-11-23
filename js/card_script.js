@@ -2,7 +2,8 @@ window.onload = start;
 
 
 function start(){
-  console.log("hello world")
+  // fetch language settings from local storage, and
+  // hide page elements accordingly
   getLanguage();
   setLanguage();
 }

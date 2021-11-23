@@ -19,6 +19,7 @@ let playButton;
 //
 function openPage(pagename){
 
+  // replace url
   let url = window.location.href;
   let openpage = url.indexOf("?page");
   if(openpage==-1){
@@ -29,31 +30,21 @@ function openPage(pagename){
   }
   window.history.pushState("","last page",url);
 
+  // hide menu
   collapseMenu();
+
+  // if we're trying to open a page that's open, stop this nonsense
   if(pagename==card.pageName) return;
 
-  console.log("open this page: "+pagename);
+  // create new card and start transition
   transitionToPage(pagename);
   stopPreviousAudio();
 
-  if(pages[pagename].audio!=undefined){
-    if(audioPlayer==undefined){
-      audioPlayer = new Audio("audio/"+pages[pagename].audio);
-      audioPlayer.loop = true;
-      audioPlayer.volume = userVolume;
-    }
-    else {
-      audioPlayer.setAttribute('src',"audio/"+pages[pagename].audio); //change the source
-      audioPlayer.load();
-    }
-
-
-    createAudioPlayer(pages[pagename].audio);
-  }
-  else if(audioPlayer!=undefined){
-    fadeOut(audioPlayer);
-  }
+  // setup audio
+  setupAudio();
 }
+
+
 
 function menuHoverEnter(){
   console.log("enter")

@@ -134,7 +134,11 @@ link{
 
 }
 
-
+.alecoute{
+  overflow:hidden;
+  font-size:10px;
+  font-style:italic;
+}
 
 /* SLIDER */
 

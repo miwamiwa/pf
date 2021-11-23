@@ -21,7 +21,7 @@ function start(){
 }
 
 function resize(){
-  position(card.container,{x:0.075*window.innerWidth,y:0.025*window.innerHeight});
+  position(card.container,{x:CardXPos*window.innerWidth,y:CardYPos*window.innerHeight});
   setSize(card.container, {w:0.9*window.innerWidth,h:0.95*window.innerHeight});
   // arrows
   positionArrows();
@@ -43,6 +43,7 @@ function positionArrows(){
 function loadStartPage(){
   currentPage =0;
 
+  // check url for a page to laod
   let url = window.location.href;
   let openpage = url.indexOf("?page");
   if(openpage!=-1){
@@ -55,20 +56,9 @@ function loadStartPage(){
 
   if(card.numCards>1) createArrows();
 
-  if(pages[card.pageName].audio!=undefined){
-    if(audioPlayer==undefined){
-      audioPlayer = new Audio("audio/"+pages[card.pageName].audio);
-      audioPlayer.loop = true;
-      audioPlayer.volume = userVolume;
-    }
-    else {
-      audioPlayer.setAttribute('src',"audio/"+pages[card.pageName].audio); //change the source
-      audioPlayer.load();
-    }
+  setupAudio();
 
 
-    createAudioPlayer(pages[card.pageName].audio);
-  }
 }
 
 
