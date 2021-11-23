@@ -12,8 +12,11 @@ let transitInterval = 10;
 let cardDelta = 50;
 let leftArrow;
 let rightArrow;
+let width;
+let height;
 
 function start(){
+  updateWandH();
   body = document.body;
   loadStartPage();
   createMenu();
@@ -21,28 +24,37 @@ function start(){
   resize();
 }
 
+function updateWandH(){
+  //width = window.innerWidth;
+  //height = window.innerHeight;.
+  width = window.visualViewport.width;
+  height = window.visualViewport.height;
+}
+
 function resize(){
 
-  position(card.container,{x: getCardX(),y:CardYPos*window.innerHeight});
-  setSize(card.container, {w: getCardW(),h:0.95*window.innerHeight});
+  updateWandH();
+
+  position(card.container,{x: getCardX(),y:CardYPos*height});
+  setSize(card.container, {w: getCardW(),h:0.95*height});
   // arrows
   positionArrows();
 }
 
 function getCardX(){
-  let w = Math.max( 0.05*window.innerWidth, 60);
-  return w + 0.025 * (window.innerWidth - w)
+  let w = Math.max( 0.05*width, 60);
+  return w + 0.025 * (width - w)
 }
 
 function getCardW(){
-  let w = Math.max( 0.05*window.innerWidth, 60);
-  console.log("brap brap "+(0.95 * (window.innerWidth-w)))
-  return 0.95 * (window.innerWidth-w);
+  let w = Math.max( 0.05*width, 60);
+  console.log("brap brap "+(0.95 * (width-w)))
+  return 0.95 * (width-w);
 }
 function positionArrows(){
   let arrowPos = {
-    x: Math.min(window.innerWidth - 166,window.innerWidth*0.77),
-    y:window.innerHeight -0.045*window.innerHeight - 0.018*window.innerWidth -31
+    x: Math.min(width - 166,width*0.77),
+    y:height -0.045*height - 0.018*width -31
   };
   if(leftArrow!=undefined) position(leftArrow, arrowPos);
   if(rightArrow!=undefined){
@@ -157,11 +169,11 @@ function movePagesHorizontally(dir){
   setTimeout(()=>{
     cardX += cardDelta;
     if(
-      (dir==1&&(cardX<window.innerWidth - 0.075*window.innerWidth))
-      ||(dir==-1&&cardX<window.innerWidth)
+      (dir==1&&(cardX<width - 0.075*width))
+      ||(dir==-1&&cardX<width)
     ){
-      position(card.container, {x: -dir*cardX, y:window.innerHeight*0.025});
-      position(nextCard.container, {x:dir*(window.innerWidth - cardX), y:window.innerHeight*0.025});
+      position(card.container, {x: -dir*cardX, y:height*0.025});
+      position(nextCard.container, {x:dir*(width - cardX), y:height*0.025});
 
       // continue
       setTimeout(()=>{
@@ -175,7 +187,7 @@ function movePagesHorizontally(dir){
       // destroy prev card
       card.container.remove();
       card = nextCard;
-      //position(card.container, {x: getCardX(), y:window.innerHeight*0.025});
+      //position(card.container, {x: getCardX(), y:height*0.025});
       resize();
       currentPage =card.pageNum;
       removeArrows();
@@ -186,9 +198,9 @@ function movePagesHorizontally(dir){
 
 function movePagesUp(){
   cardY += cardDelta;
-  if(cardY<window.innerHeight){
+  if(cardY<height){
     position(card.container, {x:getCardX(),y:-cardY});
-    position(nextCard.container, {x:getCardX(),y:window.innerHeight-cardY});
+    position(nextCard.container, {x:getCardX(),y:height-cardY});
 
     // continue
     setTimeout(()=>{
@@ -198,12 +210,12 @@ function movePagesUp(){
   else {
     // end point reached
     transiting = false;
-    //position(nextCard.container,{x:getCardX(),y:0.025*window.innerHeight});
-    resize();
+    position(nextCard.container,{x:getCardX(),y:0.025*height});
+
     // destroy prev card
     card.container.remove();
     card = nextCard;
-
+    resize();
     currentPage =0;
     if(card.numCards > 1) createArrows();
   }

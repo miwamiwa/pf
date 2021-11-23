@@ -40,7 +40,7 @@ a:hover{
   z-index:10;
 
   color:#b92f; /* GOLD */
-  font-size:22px;
+  font-size:calc( 16px + 0.6vw );
   font-weight:bolder;
   text-align:center;
 
@@ -74,7 +74,7 @@ le menu est ouvert.
 /* "portfolio de Samuel Paré-Chouinard"
 */
 .menuTitle{
-  font-size:22px;
+  font-size:calc( 16px + 0.6vw );
   font-weight:bold;
   padding-left:1vw;
   cursor:pointer;
@@ -92,7 +92,7 @@ le menu est ouvert.
   margin-top:2vw;
   margin-bottom:2vw;
   padding-left:1vw;
-  font-size:20px;
+  font-size:calc( 14px + 0.6vw );
 
 }
 
@@ -126,7 +126,7 @@ les boutons du menu
 */
 
 .menuLink{
-  font-size:22px;
+  font-size:calc( 16px + 0.6vw );
   line-height:36px;
   text-decoration:underline;
   border-top-style:solid;
@@ -134,7 +134,7 @@ les boutons du menu
   margin-top:1vw;
   margin-bottom:0vw;
   padding: 4px 2vw;
-  width:25vw;
+  width:28vw;
   height:18px;
   overflow:hidden;
   position:relative;
@@ -182,5 +182,5 @@ les liens en bas
   position:relative;
   margin-bottom:2vw;
   padding: 10px 1vw;
-  font-size:20px;
+  font-size:calc( 14px + 0.6vw );
 }

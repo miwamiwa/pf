@@ -31,7 +31,7 @@ link{
   color:#970f; /* darker GOLD */
   background-color:#faf1eb; /* peachy cream */
 
-  font-size:20px;
+  font-size:calc( 14px + 0.4vw );
   font-weight:bolder;
 
 
@@ -61,8 +61,10 @@ link{
 /*  AUDIO ELEMENT  */
 .audioElement{
 
+  font-size:calc( 12px + 0.6vw );
+
   position:fixed;
-  top:4vh;
+  top:80px;
   right:0;
   z-index:20;
 
@@ -118,7 +120,7 @@ link{
 
 .autoplayTxt{
 
-  font-size:10px;
+  font-size:calc( 8px + 0.6vw );
   position:relative;
   bottom:3px;
   left:8px;
@@ -136,7 +138,7 @@ link{
 
 .alecoute{
   overflow:hidden;
-  font-size:10px;
+  font-size:calc( 8px + 0.6vw );
   font-style:italic;
 }
 

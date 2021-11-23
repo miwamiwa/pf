@@ -23,10 +23,18 @@ a:hover{
   box-shadow: -1px 2px 4px #2228;
 }
 
+@media (max-width:600px) {
+
+}
+
+@media (min-width:600px) {
+
+}
+
 .title{
   display:inline-block;
   margin-top:2vw;
-  font-size:22px;
+  font-size:calc( 16px + 0.6vw );
   font-weight:bold;
   text-transform: uppercase;
   /*text-decoration:underline;*/
@@ -35,12 +43,12 @@ a:hover{
 .subtitle{
   display:inline-block;
   max-width:40%;
-  font-size:22px;
+  font-size:calc( 16px + 0.4vw );
 }
 
 .body{
   max-width:60%;
-  font-size:16px;
+  font-size:calc( 12px + 0.4vw );
 }
 
 .bottomBox{
