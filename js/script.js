@@ -18,15 +18,27 @@ function start(){
   loadStartPage();
   createMenu();
   getLanguage();
+  resize();
 }
 
 function resize(){
-  position(card.container,{x:CardXPos*window.innerWidth,y:CardYPos*window.innerHeight});
-  setSize(card.container, {w:0.9*window.innerWidth,h:0.95*window.innerHeight});
+
+  position(card.container,{x: getCardX(),y:CardYPos*window.innerHeight});
+  setSize(card.container, {w: getCardW(),h:0.95*window.innerHeight});
   // arrows
   positionArrows();
 }
 
+function getCardX(){
+  let w = Math.max( 0.05*window.innerWidth, 60);
+  return w + 0.025 * (window.innerWidth - w)
+}
+
+function getCardW(){
+  let w = Math.max( 0.05*window.innerWidth, 60);
+  console.log("brap brap "+(0.95 * (window.innerWidth-w)))
+  return 0.95 * (window.innerWidth-w);
+}
 function positionArrows(){
   let arrowPos = {
     x: Math.min(window.innerWidth - 166,window.innerWidth*0.77),
@@ -132,7 +144,7 @@ function transitionToCard(cardnum,dir){
   let pos = "left";
   if(dir==-1) pos="right";
 
-  console.log(card.pageName,card,pages[card.pageName],pages, cardnum)
+  //console.log(card.pageName,card,pages[card.pageName],pages, cardnum)
   let newcard = new Card(pages[card.pageName],pos, cardnum);
   nextCard = newcard;
   transiting = true;
@@ -163,7 +175,8 @@ function movePagesHorizontally(dir){
       // destroy prev card
       card.container.remove();
       card = nextCard;
-      position(card.container, {x: 0.075*window.innerWidth, y:window.innerHeight*0.025});
+      //position(card.container, {x: getCardX(), y:window.innerHeight*0.025});
+      resize();
       currentPage =card.pageNum;
       removeArrows();
       if(card.numCards > 1) createArrows();
@@ -174,8 +187,8 @@ function movePagesHorizontally(dir){
 function movePagesUp(){
   cardY += cardDelta;
   if(cardY<window.innerHeight){
-    position(card.container, {x:0.075*window.innerWidth,y:-cardY});
-    position(nextCard.container, {x:0.075*window.innerWidth,y:window.innerHeight-cardY});
+    position(card.container, {x:getCardX(),y:-cardY});
+    position(nextCard.container, {x:getCardX(),y:window.innerHeight-cardY});
 
     // continue
     setTimeout(()=>{
@@ -185,8 +198,8 @@ function movePagesUp(){
   else {
     // end point reached
     transiting = false;
-    position(nextCard.container,{x:0.075*window.innerWidth,y:0.025*window.innerHeight});
-
+    //position(nextCard.container,{x:getCardX(),y:0.025*window.innerHeight});
+    resize();
     // destroy prev card
     card.container.remove();
     card = nextCard;

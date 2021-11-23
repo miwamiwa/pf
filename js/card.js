@@ -16,11 +16,11 @@ class Card {
     // place off-screen
     this.position=pos;
     if(pos=="below")
-      position(container, {x:flo(CardXPos*window.innerWidth),y:window.innerHeight});
+      position(container, {x:getCardX(),y:window.innerHeight});
     if(pos=="left")
-      position(container,{x:flo(CardXPos*window.innerWidth) - window.innerWidth,y:CardYPos*window.innerHeight});
+      position(container,{x:getCardX() - window.innerWidth,y:CardYPos*window.innerHeight});
     if(pos=="right")
-    position(container,{x:flo(CardXPos*window.innerWidth) + window.innerWidth,y:window.innerHeight});
+    position(container,{x:getCardX() + window.innerWidth,y:window.innerHeight});
 
   }
 }
