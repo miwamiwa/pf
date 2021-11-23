@@ -59,10 +59,22 @@ link{
 
 
 /*  AUDIO ELEMENT  */
+
+.audioIcon{
+  position:absolute;
+  width:100%;
+  height:86%;
+  z-index:99;
+  font-size:26px;
+  left:16px;
+  top:6px;
+  background-color:#faf1eb; /* peachy cream */
+}
+
 .audioElement{
 
   font-size:calc( 12px + 0.6vw );
-
+  overflow:hidden;
   position:fixed;
   top:80px;
   right:0;

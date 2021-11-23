@@ -23,22 +23,35 @@ a:hover{
   box-shadow: -1px 2px 4px #2228;
 }
 
-@media (max-width:600px) {
 
-}
-
-@media (min-width:600px) {
-
-}
 
 .title{
   display:inline-block;
-  margin-top:2vw;
+  margin-top:0vw;
   font-size:calc( 16px + 0.6vw );
   font-weight:bold;
   text-transform: uppercase;
+  position:relative;
+  padding:10px 20px;
   /*text-decoration:underline;*/
 }
+
+/* SMALL */
+@media (max-width:540px) {
+  .title{
+    display:block;
+    text-align:center;
+    margin-left:0;
+  }
+}
+
+/* WIDE */
+@media (min-width:540px) {
+  .title{
+    left:0;
+  }
+}
+
 
 .subtitle{
   display:inline-block;

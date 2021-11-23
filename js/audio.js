@@ -3,6 +3,9 @@ let audioElement;
 let cancelFadeout = false;
 let nowPlaying;
 let nowPlayingText;
+let autoplayActive = false;
+let audioIcon;
+let audioHovered = false;
 
 function stopPreviousAudio(){
   if(autoplayActive){
@@ -113,6 +116,9 @@ function soundLoaded(){
 
 }
 
+
+let closeaudio;
+
 function createAudioPlayer(name){
   audioElement = createDiv();
   playingAudio = false;
@@ -133,12 +139,30 @@ function createAudioPlayer(name){
   chkbox.setAttribute("ey","Play music on page load");
 
   document.body.appendChild(audioElement);
+
+  audioIcon = createDiv("🔊");
+  audioIcon.classList.add("audioIcon");
+  audioIcon.hidden = true;
+  audioElement.onmouseenter=()=>{
+    if(audioState=="collapsed") expandAudio();
+    audioHovered = true;
+  }
+  audioElement.onmouseleave=()=>{
+    if(audioState=="expanded") collapseAudio();
+    audioHovered = false;
+  }
+  audioElement.onclick=()=>{
+    if(audioState=="collapsed") expandAudio();
+  }
+
+  audioElement.appendChild(audioIcon);
+
   audioElement.appendChild(playButton);
   audioElement.appendChild(volumeSlider);
   volumeSlider.appendChild(chkbox);
 }
 
-let autoplayActive = false;
+
 
 function toggleAutoPlay(){
   autoplayActive = !autoplayActive;
@@ -196,6 +220,92 @@ function updatePlayButton(name){
 
   }
 }
+
+
 function getPlayMessage(name){
   return "▶️ " + name;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let audioState = "expanded";
+let audioOffset =0;
+let audioCollapsedOffset = 200;
+let audioIncrement = 20;
+
+function expandAudio(){
+  audioState = "transit";
+  audioExpandedMode();
+
+  setTimeout(()=>{
+    if(audioOffset-menuIncrement>=0){
+      //let fact = constrain(audioOffset/audioCollapsedOffset,0,1);
+
+      audioElement.style.right =  - audioOffset +"px";
+      audioOffset -= audioIncrement;
+
+      expandAudio();
+    }
+
+    // fully expanded
+    else {
+      audioElement.style.right = 0;
+      audioState = "expanded";
+
+      triggerCollapseAudio();
+
+    }
+
+  }, expandInterval);
+}
+
+function triggerCollapseAudio(){
+  clearInterval(closeaudio);
+  setTimeout(()=>{
+    closeaudio =setInterval(()=>{
+      if(!audioHovered) collapseAudio();
+    }, 2000);
+  }, 2000);
+}
+
+function collapseAudio(){
+  audioState = "transit";
+
+  setTimeout(()=>{
+    if(audioOffset+menuIncrement<=audioCollapsedOffset){
+      //let fact = constrain(audioOffset/audioCollapsedOffset,0,1);
+
+      audioElement.style.right =  - audioOffset +"px";
+      audioOffset += audioIncrement;
+      collapseAudio();
+    }
+
+    // fully expanded
+    else {
+      audioElement.style.right =  - audioCollapsedOffset +"px";
+      audioState = "collapsed";
+      audioCollapsedMode();
+    }
+
+  }, expandInterval);
+}
+
+
+function audioCollapsedMode(){
+  audioIcon.hidden = false;
+}
+
+function audioExpandedMode(){
+  audioIcon.hidden = true;
 }

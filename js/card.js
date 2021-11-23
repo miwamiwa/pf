@@ -13,6 +13,7 @@ class Card {
 
     this.container = container;
 
+
     // place off-screen
     this.position=pos;
     if(pos=="below")
@@ -48,6 +49,7 @@ function makeIFrame(page){
   el.setAttribute("src",page);
   el.setAttribute("scrolling","no");
   el.setAttribute("frameBorder",0);
+
   return el;
 }
 

@@ -15,6 +15,73 @@ let userVolume = 0.5;
 let playButton;
 let menuState = "collapsed";
 
+
+function expandMenu(){
+  menuState = "transit";
+
+  setTimeout(()=>{
+    openMenuButton.hidden = true;
+    menuMask.hidden = false;
+    if(menuW+menuIncrement<=expandedMenuW){
+      let fact = constrain(menuW/expandedMenuW,0,1);
+
+      menuW += menuIncrement;
+      menuEl.style.width = `${menuW}vw`;
+      menuEl.style.padding = `${flo(fact*5)}vw`;
+      menuMask.style.opacity = fact;
+
+      adaptMenu(fact);
+
+      // continue
+      if(!stopExpand) expandMenu();
+      else stopExpand = false;
+    }
+
+    // fully expanded
+    else {
+      menuState = "expanded";
+    }
+
+  }, expandInterval);
+}
+
+function collapseMenu(){
+  menuState = "transit";
+
+  setTimeout(()=>{
+
+    if(menuW-menuIncrement>=collapsedMenuW){
+      let fact = constrain(menuW/expandedMenuW,0,1);
+
+      menuW -= menuIncrement;
+      menuEl.style.width = `${menuW}vw`;
+      menuEl.style.padding = `${flo(fact*5)}vw`;
+      menuMask.style.opacity = fact;
+
+      adaptMenu(fact);
+      collapseMenu();
+    }
+    else{
+      // fully collapsed
+      //console.log("collapsed")
+      menuState = "collapsed";
+      menuMask.hidden = true;
+      menuEl.style.padding = 0;
+      openMenuButton.hidden = false;
+      adaptMenu(0);
+    }
+
+  }, expandInterval);
+}
+
+
+function adaptMenu(fact){
+  if(version=="small"){
+    menuEl.style.height=`${flo(12+fact*95)}vh`;
+  }
+  else menuEl.style.height="100vh";
+}
+
 // openPage()
 //
 //
@@ -73,6 +140,11 @@ function menuUnhovered(){
 function createMenu(){
 
   menuEl = createDiv();
+
+  menuEl.onclick=()=>{
+    if(audioState=="expanded") collapseAudio();
+  }
+
   menuEl.classList.add("menu_container");
   document.body.appendChild(menuEl);
   menuEl.onmousedown = menuSelected;
@@ -174,58 +246,7 @@ function menuSelected(){
     expandMenu();
 }
 
-function expandMenu(){
-  menuState = "transit";
 
-  setTimeout(()=>{
-    openMenuButton.hidden = true;
-    menuMask.hidden = false;
-    if(menuW+menuIncrement<=expandedMenuW){
-      let fact = constrain(menuW/expandedMenuW,0,1);
-
-      menuW += menuIncrement;
-      menuEl.style.width = `${menuW}vw`;
-      menuEl.style.padding = `${flo(fact*5)}vw`;
-      menuMask.style.opacity = fact;
-
-      // continue
-      if(!stopExpand) expandMenu();
-      else stopExpand = false;
-    }
-
-    // fully expanded
-    else {
-      menuState = "expanded";
-    }
-
-  }, expandInterval);
-}
-
-function collapseMenu(){
-  menuState = "transit";
-
-  setTimeout(()=>{
-
-    if(menuW-menuIncrement>=collapsedMenuW){
-      let fact = constrain(menuW/expandedMenuW,0,1);
-
-      menuW -= menuIncrement;
-      menuEl.style.width = `${menuW}vw`;
-      menuEl.style.padding = `${flo(fact*5)}vw`;
-      menuMask.style.opacity = fact;
-      collapseMenu();
-    }
-    else{
-      // fully collapsed
-      //console.log("collapsed")
-      menuState = "collapsed";
-      menuMask.hidden = true;
-      menuEl.style.padding = 0;
-      openMenuButton.hidden = false;
-    }
-
-  }, expandInterval);
-}
 
 
 function constrain(i, min, max){
