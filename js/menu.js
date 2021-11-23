@@ -13,6 +13,7 @@ let stopExpand = false;
 let playingAudio = false;
 let userVolume = 0.5;
 let playButton;
+let menuState = "collapsed";
 
 // openPage()
 //
@@ -47,22 +48,26 @@ function openPage(pagename){
 
 
 function menuHoverEnter(){
-  console.log("enter")
-    if(!menuHovered){
-      menuHovered = true;
+  //console.log("enter")
+    if(!menuHovered && menuState=="collapsed"){
+
       stopExpand = false;
       expandMenu();
     }
+
+    menuHovered = true;
 }
 
 function menuUnhovered(){
-  console.log("leave")
-  if(menuHovered){
-    menuHovered = false;
+  //console.log("leave")
+  if(menuHovered && menuState=="expanded"){
+
     stopExpand = true;
 
     collapseMenu();
   }
+
+  menuHovered = false;
 }
 
 function createMenu(){
@@ -170,6 +175,8 @@ function menuSelected(){
 }
 
 function expandMenu(){
+  menuState = "transit";
+
   setTimeout(()=>{
     openMenuButton.hidden = true;
     menuMask.hidden = false;
@@ -186,10 +193,17 @@ function expandMenu(){
       else stopExpand = false;
     }
 
+    // fully expanded
+    else {
+      menuState = "expanded";
+    }
+
   }, expandInterval);
 }
 
 function collapseMenu(){
+  menuState = "transit";
+
   setTimeout(()=>{
 
     if(menuW-menuIncrement>=collapsedMenuW){
@@ -203,6 +217,8 @@ function collapseMenu(){
     }
     else{
       // fully collapsed
+      //console.log("collapsed")
+      menuState = "collapsed";
       menuMask.hidden = true;
       menuEl.style.padding = 0;
       openMenuButton.hidden = false;
