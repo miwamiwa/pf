@@ -67,19 +67,20 @@ link{
   width:100%;
   height:86%;
   z-index:99;
-  font-size:26px;
+  font-size:32px;
   left:16px;
-  top:6px;
+  top:4px;
   background-color:#faf1eb; /* peachy cream */
 }
 
 .audioElement{
 
-  font-size:calc( 12px + 0.6vw );
+  font-size:18px;
   position:fixed;
-  top:80px;
+  top:86px;
   right:0;
   z-index:20;
+  width:220px;
 
   background-color:#faf1eb; /* peachy cream */
 
@@ -97,6 +98,10 @@ link{
 .playButton{
   color:#b92f; /* GOLD */
   background-color:white;
+  width:500px;
+  height: 26px;
+  word-wrap: normal;
+  overflow:hidden;
 }
 .playButton:hover{
   color:grey;

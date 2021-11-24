@@ -69,8 +69,8 @@ function resize(){
   updateWandH();
 
 
-  position(card.container,{x: getCardX(),y:CardYPos*height});
-  setSize(card.container, {w: getCardW(),h:0.95*height});
+  position(card.container,{x: getCardX(),y:getCardY()});
+  setSize(card.container, {w: getCardW(),h:getCardH()});
   // arrows
   positionArrows();
 
@@ -82,21 +82,32 @@ function resize(){
 }
 
 function getCardX(){
-  let w;
-  if(version=="wide") w = Math.max( 0.05*width, MenuMinWidth);
-  else w = 0.025*width;
+  if(version=="wide"){
+    let w = Math.max( 0.05*width, MenuMinWidth);
+    return w + 0.025 * (width - w);
+  }
+  else return 0;
 
-  return w + 0.025 * (width - w)
+
+}
+
+function getCardY(){
+  if(version=="wide") return CardYPos*height;
+  else return 0;
 }
 
 function getCardW(){
-  let w;
-  if(version=="wide") w = Math.max( 0.05*width, MenuMinWidth);
-  else w = 0.05*width;
-  return 0.95 * (width-w);
+  if(version=="wide"){
+    let w = Math.max( 0.05*width, MenuMinWidth);
+    return 0.95 * (width-w);
+  }
+  else return width;
 }
 
-
+function getCardH(){
+  if(version=="wide") return 0.95*height;
+  else return height;
+}
 
 
 function loadStartPage(){

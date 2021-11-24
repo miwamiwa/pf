@@ -39,9 +39,14 @@ a:hover{
 /* SMALL */
 @media (max-width:540px) {
   .title{
-    display:block;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
     text-align:center;
-    margin-left:0;
+    margin-left:60px;
+    height:60px;
+    line-height:30px;
   }
 }
 

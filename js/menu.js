@@ -15,6 +15,7 @@ let userVolume = 0.5;
 let playButton;
 let menuState = "collapsed";
 
+const MenuMinHeight = 80;
 
 function expandMenu(){
   menuState = "transit";
@@ -77,7 +78,7 @@ function collapseMenu(){
 
 function adaptMenu(fact){
   if(version=="small"){
-    menuEl.style.height=`calc( ${flo(fact*95)}vh + 80px)`;
+    menuEl.style.height=`calc( ${flo(fact*95)}vh + ${MenuMinHeight}px)`;
   }
   else menuEl.style.height="100vh";
 }

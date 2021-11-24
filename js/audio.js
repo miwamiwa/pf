@@ -7,6 +7,11 @@ let autoplayActive = false;
 let audioIcon;
 let audioHovered = false;
 
+let audioState = "expanded";
+let audioOffset =0;
+let audioCollapsedOffset = 200;
+let audioIncrement = 20;
+
 function stopPreviousAudio(){
   if(autoplayActive){
 
@@ -239,10 +244,7 @@ function getPlayMessage(name){
 
 
 
-let audioState = "expanded";
-let audioOffset =0;
-let audioCollapsedOffset = 200;
-let audioIncrement = 20;
+
 
 function expandAudio(){
   audioState = "transit";
@@ -293,9 +295,7 @@ function collapseAudio(){
 
     // fully expanded
     else {
-      if(audioElement!=undefined)
-      audioElement.style.right =  - audioCollapsedOffset +"px";
-      audioState = "collapsed";
+
       audioCollapsedMode();
     }
 
@@ -304,6 +304,8 @@ function collapseAudio(){
 
 
 function audioCollapsedMode(){
+  if(audioElement!=undefined) audioElement.style.right =  `${-audioCollapsedOffset}px`;
+  audioState = "collapsed";
   if(audioIcon!=undefined) audioIcon.hidden = false;
 }
 
