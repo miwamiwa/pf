@@ -32,6 +32,7 @@ a:hover{
   font-weight:bold;
   text-transform: uppercase;
   position:relative;
+  top:20vh; /*this is because the background container actually starts 20vh higher than the viewport*/
 
   /*text-decoration:underline;*/
 }
@@ -67,6 +68,7 @@ a:hover{
 .body{
   max-width:60%;
   font-size:calc( 12px + 0.4vw );
+  overflow:hidden;
 }
 
 .bottomBox{
@@ -93,11 +95,16 @@ a:hover{
   */
 }
 
+.backgroundImage.fitted{
+  object-fit:contain;
+}
+
+
 .backgroundContainer{
   z-index:0;
   width:100vw;
-  height:100vh;
-  top:0;
+  height:120vh;
+  top:-20vh;
   left:0;
   position:absolute;
   overflow-y:hidden;

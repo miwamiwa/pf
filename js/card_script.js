@@ -6,4 +6,11 @@ function start(){
   // hide page elements accordingly
   getLanguage();
   setLanguage();
+
+  // this would be useful lol (load video after setting language)
+  appendVideo();
+}
+
+function appendVideo(){
+
 }
