@@ -77,7 +77,7 @@ function collapseMenu(){
 
 function adaptMenu(fact){
   if(version=="small"){
-    menuEl.style.height=`${flo(12+fact*95)}vh`;
+    menuEl.style.height=`calc( ${flo(fact*95)}vh + 80px)`;
   }
   else menuEl.style.height="100vh";
 }

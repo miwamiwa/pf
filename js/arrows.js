@@ -1,49 +1,70 @@
 
 function positionArrows(){
   let arrowPos = {
-    x: Math.min(width - 166,width*0.77),
-    y:height -0.045*height - 0.018*width -31
+    x: Math.min(width - 166, width*0.77),
+    y: height -0.045*height - 0.018*width -20
   };
+
+  if(version=="small") arrowPos.x = 0.6 * 0.9 * width + 55;
+
+  // check if arrows exist because they don't appear
+  // if there's only 1 page in the card
   if(leftArrow!=undefined) position(leftArrow, arrowPos);
   if(rightArrow!=undefined){
-    arrowPos.x += 80;
+
+    if(version=="wide") arrowPos.x += 80;
+    else arrowPos.x += 55;
     position(rightArrow, arrowPos);
   }
 }
 
 function createArrows(){
 
-  leftArrow = createDiv("<-");
-  rightArrow = createDiv("->");
-  leftArrow.classList.add("arrow");
-  if(card.pageNum==0)
-    leftArrow.classList.add("disabled");
-  if(card.pageNum==card.numCards-1)
-    rightArrow.classList.add("disabled");
-  rightArrow.classList.add("arrow");
-  document.body.appendChild(leftArrow);
-  document.body.appendChild(rightArrow);
+  leftArrow = createArrow("<-");
+  rightArrow = createArrow("->");
+
+  if(card.pageNum==0) disable(leftArrow);
+  if(card.pageNum==card.numCards-1) disable(rightArrow);
 
   positionArrows();
 
   leftArrow.onclick=()=>{
-    if(!leftArrow.classList.contains("disabled")){
+    if(disable(leftArrow)){
       goLeft();
-      leftArrow.classList.add("disabled");
-      if(!rightArrow.classList.contains("disabled"))
-      rightArrow.classList.add("disabled");
+      disable(rightArrow);
     }
   }
 
   rightArrow.onclick=()=>{
-    if(!rightArrow.classList.contains("disabled")){
+    if(disable(rightArrow)){
       goRight();
-
-      rightArrow.classList.add("disabled");
-      if(!leftArrow.classList.contains("disabled"))
-      leftArrow.classList.add("disabled");
+      disable(leftArrow);
     }
   }
+}
+
+
+function createArrow(txt){
+  let el = createDiv(txt);
+  el.classList.add("arrow");
+  document.body.appendChild(el);
+  return el;
+}
+
+// disable()
+//
+// return true is the element wasn't already disabled
+function disable(el){
+  if(!el.classList.contains("disabled")){
+    el.classList.add("disabled");
+    return true;
+  }
+  return false;
+}
+
+function enable(el){
+  if(el.classList.contains("disabled"))
+  el.classList.remove("disabled");
 }
 
 function removeArrows(){

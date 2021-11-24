@@ -285,7 +285,7 @@ function collapseAudio(){
   setTimeout(()=>{
     if(audioOffset+menuIncrement<=audioCollapsedOffset){
       //let fact = constrain(audioOffset/audioCollapsedOffset,0,1);
-
+      if(audioElement!=undefined)
       audioElement.style.right =  - audioOffset +"px";
       audioOffset += audioIncrement;
       collapseAudio();
@@ -293,6 +293,7 @@ function collapseAudio(){
 
     // fully expanded
     else {
+      if(audioElement!=undefined)
       audioElement.style.right =  - audioCollapsedOffset +"px";
       audioState = "collapsed";
       audioCollapsedMode();

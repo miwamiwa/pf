@@ -17,7 +17,7 @@ a:hover{
 
 .boxEl{
   margin-left:2vw;
-  padding:1.4vw;
+  padding:10px 20px;
   z-index:1;
   border-radius:15px;
   box-shadow: -1px 2px 4px #2228;
@@ -32,7 +32,7 @@ a:hover{
   font-weight:bold;
   text-transform: uppercase;
   position:relative;
-  padding:10px 20px;
+
   /*text-decoration:underline;*/
 }
 

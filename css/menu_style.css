@@ -42,7 +42,8 @@ a:hover{
   z-index:10;
 
   color:#b92f; /* GOLD */
-  font-size:calc( 16px + 0.6vw );
+  font-size:20px;
+  line-height:20px;
   font-weight:bolder;
   text-align:center;
 
