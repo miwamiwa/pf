@@ -21,6 +21,7 @@ const MenuMinWidth = 55;
 let version; // wide/small
 
 function start(){
+
   updateWandH();
   body = document.body;
   loadStartPage();
@@ -29,7 +30,8 @@ function start(){
   resize();
   triggerCollapseAudio();
 
-  
+  body.ontouchstart=touchStart;
+  body.ontouchend=touchEnd;
 }
 
 function updateWandH(){
@@ -72,6 +74,7 @@ function resize(){
   // arrows
   positionArrows();
 
+  updateTouchThresholds();
 
   if(menuState=="expanded") collapseMenu();
 

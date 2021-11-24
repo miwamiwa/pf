@@ -5,7 +5,7 @@ function positionArrows(){
     y: height -0.045*height - 0.018*width -20
   };
 
-  if(version=="small") arrowPos.x = 0.6 * 0.9 * width + 55;
+  if(version=="small") arrowPos.x = 0.65 * 0.9 * width + 55;
 
   // check if arrows exist because they don't appear
   // if there's only 1 page in the card

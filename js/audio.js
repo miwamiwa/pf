@@ -304,9 +304,9 @@ function collapseAudio(){
 
 
 function audioCollapsedMode(){
-  audioIcon.hidden = false;
+  if(audioIcon!=undefined) audioIcon.hidden = false;
 }
 
 function audioExpandedMode(){
-  audioIcon.hidden = true;
+  if(audioIcon!=undefined) audioIcon.hidden = true;
 }

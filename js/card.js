@@ -13,7 +13,11 @@ class Card {
 
     this.container = container;
 
-
+    container.onload=()=>{
+      let bg = container.contentWindow.document.body;
+      bg.ontouchstart=touchStart;
+      bg.ontouchend=touchEnd;
+    }
     // place off-screen
     this.position=pos;
     if(pos=="below")
@@ -43,6 +47,7 @@ function createDiv(txt){
   if(txt!=undefined) d.innerHTML = txt;
   return d;
 }
+
 
 function makeIFrame(page){
   let el = document.createElement("iframe");
