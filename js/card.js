@@ -9,11 +9,14 @@ class Card {
     this.pageNum = pagenum;
     let container = getPage(page.name, pagenum);
     container.classList.add("card_container");
+
     body.appendChild(container);
 
     this.container = container;
 
     container.onload=()=>{
+      console.log("The iframe is loaded");
+
       let bg = container.contentWindow.document.body;
       bg.ontouchstart=touchStart;
       bg.ontouchend=touchEnd;
@@ -54,7 +57,11 @@ function makeIFrame(page){
   el.setAttribute("src",page);
   el.setAttribute("scrolling","no");
   el.setAttribute("frameBorder",0);
-
+  el.setAttribute("loading","lazy");
+  el.innerHTML = "<p>Your browser does not support iframes.</p>";
+  el.onerror = function() {
+  console.log("Something wrong happened");
+  };
   return el;
 }
 

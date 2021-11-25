@@ -138,9 +138,9 @@ link{
 
 .autoplayTxt{
 
-  font-size:calc( 8px + 0.6vw );
+  font-size:12px;
   position:relative;
-  bottom:3px;
+  bottom:2px;
   left:8px;
   margin:0 4px;
 }
