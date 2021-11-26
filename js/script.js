@@ -74,9 +74,9 @@ let resizetimeout;
 
 function resize(){
 
-  clearTimeout(resizetimeout);
-
-  resizetimeout=setTimeout(actuallyResize, 100);
+  //clearTimeout(resizetimeout);
+  //resizetimeout=setTimeout(actuallyResize, 100);
+  actuallyResize();
 }
 
 function actuallyResize(){
@@ -98,16 +98,16 @@ function actuallyResize(){
 
 function getCardX(){
   if(version=="wide"){
-    return 63;
+    return 60;
   }
   else if(isMobile) return 0;
-  else return 3;
+  else return 0;
 
 
 }
 
 function getCardY(){
-  if(version=="wide") return 8
+  if(version=="wide") return 0
   else if(isMobile) return 0;
   else return 12;
 }
