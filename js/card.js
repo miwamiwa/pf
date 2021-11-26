@@ -31,7 +31,14 @@ class Card {
     position(container,{x:getCardX() + width,y:height});
 
   }
+
+  reload(){
+    //console.log(this.container);
+    //this.container.setAttribute("loading","lazy")
+    this.container.src=this.container.src;
+  }
 }
+
 
 function getPage(page, num){
   return makeIFrame(`pages/${page}/page${num}.html`);

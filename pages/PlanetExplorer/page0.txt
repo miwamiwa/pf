@@ -1,0 +1,23 @@
+
+    [background] video video1.mp4
+
+    [audio] GhostGame_sample.mp3
+
+    [title]
+    [en] hello world!
+    [fr] Space Explorer!
+
+    [subtitle]
+
+    [body]
+
+    [en] English body text: Lorem ipsum dolor sit amet, consectetur adipisicing
+    elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+
+    [fr] Dans Space Explorer, je place le joueur dans un univers génératif
+    infini qu'il peut explorer à sa guise.
+    <br><br>À chaque planète son look unique, ses propres cours d'eau, ses
+    petits fruits interstellaires, sa langue locale et surtout,
+    mon aspect préféré, une petite musique, elle aussi générative et unique
+    à chaque endroit (à écouter dans le meddley ci-dessus).

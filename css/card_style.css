@@ -18,7 +18,7 @@ a:hover{
 .boxEl{
   margin-left:2vw;
   padding:10px 20px;
-  z-index:1;
+  z-index:10;
   border-radius:15px;
   box-shadow: -1px 2px 4px #2228;
 }
@@ -37,6 +37,71 @@ a:hover{
   /*text-decoration:underline;*/
 }
 
+.backgroundImage{
+  z-index:-1;
+  width:100%;
+  height:100%;
+  position:absolute;
+  image-rendering: pixelated;
+  top:-10vh;
+  left:0px;
+
+  object-fit:cover;
+
+  /*
+  object-fit:contain;
+  background-color:black;
+  */
+}
+
+.backgroundImage.fitted{
+  object-fit:contain;
+}
+
+.backgroundImage.smallfit{
+  height:40%;
+  top:30%;
+}
+
+.backgroundImage.medfit{
+  height:60%;
+  top:20%;
+}
+
+
+.backgroundContainer{
+  z-index:0;
+  width:100vw;
+  height:120vh;
+  top:-20vh;
+  left:0;
+  background-color:black;
+  position:absolute;
+  overflow-y:hidden;
+}
+
+
+
+.gradient{
+  width:100%;
+  height:40%;
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:-1;
+  background-color:transparent;
+}
+
+.shortGrad{
+  width:100%;
+  height:30%;
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:-1;
+  background-color:transparent;
+}
+
 /* SMALL */
 @media (max-width:540px) {
   .title{
@@ -46,14 +111,19 @@ a:hover{
 
     text-align:center;
     margin-left:60px;
-    height:60px;
+    height:30px;
     line-height:30px;
   }
+  .backgroundImage{
+    height:90%;
+  }
+
 }
 
 /* WIDE */
 @media (min-width:540px) {
   .title{
+    margin-top:15px;
     left:0;
   }
 }
@@ -76,36 +146,4 @@ a:hover{
   bottom:0;
   margin-bottom:2vw;
   background-color:transparent;
-}
-
-.backgroundImage{
-  z-index:-1;
-  width:100%;
-  height:100%;
-  position:absolute;
-  image-rendering: pixelated;
-  top:0px;
-  left:0px;
-
-  object-fit:cover;
-
-  /*
-  object-fit:contain;
-  background-color:black;
-  */
-}
-
-.backgroundImage.fitted{
-  object-fit:contain;
-}
-
-
-.backgroundContainer{
-  z-index:0;
-  width:100vw;
-  height:120vh;
-  top:-20vh;
-  left:0;
-  position:absolute;
-  overflow-y:hidden;
 }

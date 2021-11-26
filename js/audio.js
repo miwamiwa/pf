@@ -282,6 +282,8 @@ function triggerCollapseAudio(){
 }
 
 function collapseAudio(){
+  if(audioState=="collapsed") return;
+  
   audioState = "transit";
 
   setTimeout(()=>{

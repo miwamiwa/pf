@@ -19,8 +19,13 @@ const smallThreshold = 540;
 const MenuMinWidth = 55;
 
 let version; // wide/small
+let isMobile=false;
 
 function start(){
+
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    isMobile=true;
+  }
 
   updateWandH();
   body = document.body;
@@ -33,6 +38,7 @@ function start(){
   body.ontouchstart=touchStart;
   body.ontouchend=touchEnd;
 }
+
 
 function updateWandH(){
 
@@ -64,49 +70,61 @@ function updateWandH(){
   }
 }
 
+let resizetimeout;
+
 function resize(){
 
-  updateWandH();
+  clearTimeout(resizetimeout);
 
+  resizetimeout=setTimeout(actuallyResize, 100);
+}
 
-  position(card.container,{x: getCardX(),y:getCardY()});
-  setSize(card.container, {w: getCardW(),h:getCardH()});
-  // arrows
-  positionArrows();
+function actuallyResize(){
 
-  updateTouchThresholds();
+    updateWandH();
 
-  if(menuState=="expanded") collapseMenu();
+    position(card.container,{x: getCardX(),y:getCardY()});
+    setSize(card.container, {w: getCardW(),h:getCardH()});
+    // arrows
+    positionArrows();
 
-  if(menuState=="collapsed") adaptMenu(0);
+    updateTouchThresholds();
+
+    if(menuState=="expanded") collapseMenu();
+
+    if(menuState=="collapsed") adaptMenu(0);
+
 }
 
 function getCardX(){
   if(version=="wide"){
-    let w = Math.max( 0.05*width, MenuMinWidth);
-    return w + 0.025 * (width - w);
+    return 63;
   }
-  else return 0;
+  else if(isMobile) return 0;
+  else return 3;
 
 
 }
 
 function getCardY(){
-  if(version=="wide") return CardYPos*height;
-  else return 0;
+  if(version=="wide") return 8
+  else if(isMobile) return 0;
+  else return 12;
 }
 
 function getCardW(){
   if(version=="wide"){
-    let w = Math.max( 0.05*width, MenuMinWidth);
-    return 0.95 * (width-w);
+    //let w = Math.max( 0.05*width, MenuMinWidth);
+    //return 0.9 *
+    return width-60;
   }
   else return width;
 }
 
 function getCardH(){
-  if(version=="wide") return 0.95*height;
-  else return height;
+  //if(version=="wide") return 0.95*height;
+  //else return height;
+  return height;
 }
 
 

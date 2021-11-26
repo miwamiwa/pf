@@ -36,8 +36,8 @@ function movePagesHorizontally(dir){
       (dir==1&&(cardX<width - 0.075*width))
       ||(dir==-1&&cardX<width)
     ){
-      position(card.container, {x: -dir*cardX, y:height*0.025});
-      position(nextCard.container, {x:dir*(width - cardX), y:height*0.025});
+      position(card.container, {x: -dir*cardX, y:getCardY()});
+      position(nextCard.container, {x:dir*(width - cardX), y:getCardY()});
 
       // continue
       setTimeout(()=>{
@@ -51,7 +51,7 @@ function movePagesHorizontally(dir){
       // destroy prev card
       card.container.remove();
       card = nextCard;
-      //position(card.container, {x: getCardX(), y:height*0.025});
+      position(card.container, {x: getCardX(), y:getCardY()});
       resize();
       currentPage =card.pageNum;
       removeArrows();
@@ -74,7 +74,7 @@ function movePagesUp(){
   else {
     // end point reached
     transiting = false;
-    position(nextCard.container,{x:getCardX(),y:0.025*height});
+    position(nextCard.container,{x:getCardX(),y:getCardY()});
 
     // destroy prev card
     card.container.remove();

@@ -15,7 +15,7 @@ let userVolume = 0.5;
 let playButton;
 let menuState = "collapsed";
 
-const MenuMinHeight = 80;
+const MenuMinHeight = 50;
 
 function expandMenu(){
   menuState = "transit";
@@ -68,8 +68,10 @@ function collapseMenu(){
       menuState = "collapsed";
       menuMask.hidden = true;
       menuEl.style.padding = 0;
+      menuEl.style.width = "50px";
       openMenuButton.hidden = false;
       adaptMenu(0);
+      card.reload();
     }
 
   }, expandInterval);
@@ -221,7 +223,7 @@ function createMenu(){
   extLinks.classList.add("extLinks");
   menuEl.appendChild(extLinks);
 
-  openMenuButton = createDiv("_<br>_<br>_<br><br>m<br>e<br>n<br>u");
+  openMenuButton = createDiv("_<br>_<br>_<br><br>");
   openMenuButton.classList.add("openMenuButton");
   menuEl.appendChild(openMenuButton);
 
