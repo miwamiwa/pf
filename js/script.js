@@ -234,16 +234,17 @@ function styleTitle(fsize,lheight,fsize2,spacing){
   coversubtitle[0].style.fontSize=fsize2;
   coversubtitle[0].style.lineHeight=fsize2;
   coversubtitle[0].style.top=(14*scrollfact)+"vh";
-  coversubtitle[1].style.fontSize=fsize2;
-  coversubtitle[1].style.lineHeight=fsize2;
-  coversubtitle[1].style.top=(14*scrollfact)+"vh";
+
+
+
   titleel2.style.left=`calc(${fsize} + 15px)`;
 
   if(spacing!=undefined){
     titleel.style.letterSpacing=spacing+"px";
     titleel2.style.letterSpacing=spacing+"px";
     coversubtitle[0].style.letterSpacing=(spacing*.5)+"px";
-    coversubtitle[1].style.letterSpacing=(spacing*.5)+"px";
+    //if(coversubtitle.length>0)
+    //coversubtitle[1].style.letterSpacing=(spacing*.5)+"px";
   }
 
   let fact=scrollfact;
@@ -258,14 +259,16 @@ function styleTitle(fsize,lheight,fsize2,spacing){
 
     titlebox.style.top=(60*fact)+"vh";
     coversubtitle[0].style.top=(14*fact)+"vh";
-    coversubtitle[1].style.top=(14*fact)+"vh";
+    //if(coversubtitle.length>0)
+    //coversubtitle[1].style.top=(14*fact)+"vh";
 
   }
   else {
     //titlebox.style.left="26vw";
     titlebox.style.top=(20*fact)+"vh";
     coversubtitle[0].style.top=(26*fact)+"vh";
-    coversubtitle[1].style.top=(26*fact)+"vh";
+    //if(coversubtitle.length>0)
+    //coversubtitle[1].style.top=(26*fact)+"vh";
   }
 }
 
@@ -684,9 +687,8 @@ function createCoverBox(){
   // page title element
   coverbox.innerHTML=`
   <div id="coverTitleBox">
-  <div class="coverTitle1"><span class="coverlogo logoS">SAMUEL PARÉ-CHOUINARD</span><span id="logopt2"></span></div>
-  <div class="coverTitle2 en">portfolio</div>
-  <div class="coverTitle2 fr">portfolio</div>
+  <div class="coverTitle1"><span id="titletxt1" class="coverlogo logoS">SAMUEL PARÉ-CHOUINARD</span><span id="logopt2"></span></div>
+  <div id="titletxt2" class="coverTitle2">portfolio</div>
   </div>`;
 
   // video element
@@ -711,11 +713,11 @@ function setBGVid(path){
     <source src="${path}" type="video/mp4">
     </video>`;
   }
-  else videlement.setAttibute("src",path);
+  else videlement.setAttribute("src",path);
 }
 
 function setBGImg(path){
-  document.getElementById("vidcontainer").innerHTML=`<img src="${path}" height="100%" width="100%"></img>`;
+  document.getElementById("vidcontainer").innerHTML=`<img id="coverVideo" src="${path}" height="100%" width="100%"></img>`;
 }
 
 // populateBody()

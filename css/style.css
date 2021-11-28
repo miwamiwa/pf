@@ -123,8 +123,9 @@ indent{
   height:100vh;
   transform:translateY(-0px);
   z-index:1;
-
+  
   filter: brightness(1.10) contrast(0.6);
+
 }
 
 #vidcontainer{

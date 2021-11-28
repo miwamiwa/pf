@@ -203,13 +203,22 @@ function expandProject(index,noupdate){
   infoBoxDisplayed=true; //revered
   toggleInfoBox();
 
-  if(noupdate==undefined)
   // collapse featured project list
-  showLess();
+  if(noupdate==undefined) showLess();
   // scroll to element
   popupshown=true;
   updateLanguage();
-  reachPopup();
+  //reachPopup();
+
+  document.getElementById("titletxt1").innerText = "";//p.title;
+  document.getElementById("titletxt2").innerText = "";// p.title;
+
+  document.getElementById("coverVideo").style.filter = "brightness(1.0) contrast(1.0)";
+
+  if(p.bgVid!=undefined) setBGVid("video/"+p.bgVid);
+  else if(p.bgImg!=undefined) setBGImg("images/"+p.bgImg);
+
+  document.body.scrollTop =0;
 }
 
 let slideShowElements = [];
