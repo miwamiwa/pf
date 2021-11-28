@@ -28,7 +28,7 @@ let navsection;
 let banderollesection;
 let subjectsbox;
 let bodycontentsbox;
-let featureSelection="Programming";
+let featureSelection="all";
 let popupsection;
 let showmoresection;
 let showlesssection;
@@ -50,6 +50,8 @@ let tbh; // "Title Box Height". the "coverbox" is the
 // entire cover section (video and title)
 let hunit;
 let resizeRate=300;
+
+let amtThingsShown = 4;
 /*
 window.onhashchange = function() {
 console.log("hash change")
@@ -173,7 +175,7 @@ function start(){
   if(banderollesection!=undefined)
     bsize=banderollesection.getBoundingClientRect().height;
 
-  subjectsbox=document.getElementById("subjectsBox");
+  //subjectsbox=document.getElementById("subjectsBox");
 
   // create top page elements
   createCoverBox();
@@ -216,6 +218,8 @@ function start(){
   updateLanguage();
 
   if(pageIs!="home") scrollovercover();
+
+  scrollevent();
 }
 
 
@@ -252,7 +256,7 @@ function styleTitle(fsize,lheight,fsize2,spacing){
   // center elements
   if(smallmode){
 
-    titlebox.style.top=(30*fact)+"vh";
+    titlebox.style.top=(60*fact)+"vh";
     coversubtitle[0].style.top=(14*fact)+"vh";
     coversubtitle[1].style.top=(14*fact)+"vh";
 
@@ -321,8 +325,8 @@ function scrollevent(){
   }
 
   // VIDEO PARALLAX
-  document.getElementById("coverVideo").style.top =
-    (0-scroll/parallaxfactor) +"px";
+  //document.getElementById("coverVideo").style.top =
+  //  (0-scroll/parallaxfactor) +"px";
 
   if(scroll>shrinkover){
     navlogo.style.top=0;
@@ -680,9 +684,9 @@ function createCoverBox(){
   // page title element
   coverbox.innerHTML=`
   <div id="coverTitleBox">
-  <div class="coverTitle1"><span class="coverlogo logoS">S</span><span id="logopt2">AMUEL PARÉ-CHOUINARD</span></div>
-  <div class="coverTitle2 en">MULTIDISCIPLINARY DIGITAL ARTIST</div>
-  <div class="coverTitle2 fr">ARTISTE MULTIDISCIPLINAIRE</div>
+  <div class="coverTitle1"><span class="coverlogo logoS">SAMUEL PARÉ-CHOUINARD</span><span id="logopt2"></span></div>
+  <div class="coverTitle2 en">portfolio</div>
+  <div class="coverTitle2 fr">portfolio</div>
   </div>`;
 
   // video element
@@ -700,7 +704,19 @@ function createCoverBox(){
 }
 let logos;
 
+function setBGVid(path){
+  let videlement = document.getElementById("coverVideo"); //
+  if(videlement==undefined){
+    document.getElementById("vidcontainer").innerHTML=`<video id="coverVideo" height="100%" width="100%" autoplay muted loop >
+    <source src="${path}" type="video/mp4">
+    </video>`;
+  }
+  else videlement.setAttibute("src",path);
+}
 
+function setBGImg(path){
+  document.getElementById("vidcontainer").innerHTML=`<img src="${path}" height="100%" width="100%"></img>`;
+}
 
 // populateBody()
 //
@@ -720,7 +736,7 @@ function populateBody(){
     }
   }
   // create ui for subject selection
-  updateSubjectsBox();
+  //updateSubjectsBox();
 }
 
 
@@ -790,17 +806,23 @@ function showMore(){
   bodycontentsbox.innerHTML="";
   let featuredprojectcount =0;
   let taggedprojectcount =0;
+  amtThingsShown +=4;
   for(let i=0; i<projectDescriptions.length; i++){
-    let p = projectDescriptions[i];
-    if(p.tags.includes(featureSelection)) {
-      // add box to page
-      addProjectBox(p,i,false);
+    if(i<amtThingsShown){
+      let p = projectDescriptions[i];
+
+      addProjectBox(p,i,true);
+      featuredprojectcount++;
     }
+
   }
 
   // update show/hide button
-  showmoresection.hidden=true;
-  showlesssection.hidden=false;
+  if(amtThingsShown>=projectDescriptions.length){
+    showmoresection.hidden=true;
+    showlesssection.hidden=false;
+  }
+
   // update page scroll
   bodycontentsbox.scrollIntoView();
   //document.body.scrollTop -= 40;
@@ -1069,20 +1091,21 @@ function exitpopup(){
 function selectSubject(index){
   console.log("select subject!")
   featureSelection = subjects[index];
-  updateSubjectsBox();
+  amtThingsShown = 4;
+  //updateSubjectsBox();
   bodycontentsbox.innerHTML="";
   let featuredprojectcount =0;
   let taggedprojectcount =0;
   for(let i=0; i<projectDescriptions.length; i++){
-    let p = projectDescriptions[i];
-    if(p.tags.includes(featureSelection)) taggedprojectcount++;
-    if(p.featuredIn!=undefined){
-      if(p.featuredIn.includes(featureSelection)){
-        // add box to page
-        addProjectBox(p,i,true);
-        featuredprojectcount++;
-      }
+    if(featuredprojectcount<amtThingsShown){
+      let p = projectDescriptions[i];
+
+      addProjectBox(p,i,true);
+      featuredprojectcount++;
     }
+
+
+    taggedprojectcount ++;
   }
 
   if(featuredprojectcount<taggedprojectcount) showmoresection.hidden=false;

@@ -13,7 +13,6 @@ body{
 }
 #viewportparent{
 
-  background-color:white;
   position:absolute;
   top:92vh;
   left:0;
@@ -32,7 +31,6 @@ body{
   position:relative;
   top:0vh;
   left:0;
-  background-color:#ffff;
 }
 
 
@@ -122,7 +120,7 @@ indent{
   object-fit:cover;
   position:fixed;
   width:100%;
-  height:92vh;
+  height:100vh;
   transform:translateY(-0px);
   z-index:1;
 
@@ -178,9 +176,9 @@ indent{
   width:100%;
   left:0%;
   position:relative;
-  background-color:#ffff;
-  border-top:1px solid #dddf;
-  border-left:1px solid #ddd4;
+  background-color:#fff0;
+  border-top:1px solid #ddd0;
+  border-left:1px solid #ddd0;
   border-radius:0.6vw 0.6vw 0vw 0vw;
   padding-top:6vh;
   padding-bottom:4vh;
@@ -195,7 +193,7 @@ indent{
   top:0%;
   left:0%;
   border-radius:2px;
-  border-bottom:1px solid #ffff;
+  border-bottom:1px solid #fff0;
 
   display:flex;
   flex-flow:column-reverse;
@@ -286,7 +284,7 @@ indent{
 /* PAGE BODY */
 #bodySection{
   margin-top:2vh;
-  background-color:#ddda;
+  background-color:#dddc;
   width:100%;
   min-height:200px;
   position:relative;
@@ -457,12 +455,12 @@ cursor:pointer;
   font-size:calc(6px + 2vh);
   line-height:calc(6px + 2vh);
   cursor:pointer;
-/*  margin-top:7vh; */
+  margin-top:2vh;
   max-width:800px;
 
   border-top:1px solid #ddd9;
   border-left:1px solid #ddd4;
-  border-radius:0.6vw 0.6vw 0vw 0vw;
+  border-radius:0.6vw;
 }
 .lessmore:hover{
   color:#bbbf;
@@ -471,7 +469,6 @@ cursor:pointer;
 
 
 #footerSection{
-  background-color:#eeef;
   width:100%;
   height:100px;
 
