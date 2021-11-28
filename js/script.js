@@ -497,12 +497,6 @@ function populateNav(){
   <span class="en">ABOUT</span><span class="fr">À PROPOS</span>
   </a>
 
-  <a id="n2" class="navButton" onmouseenter="navfx(2)" href="resume.html">
-  <span class="en">CV</span><span class="fr">CV</span>
-  </a>
-  <a id="n3" class="navButton" onmouseenter="navfx(3)" href="contact.html">
-  <span class="en">CONTACT</span><span class="fr">CONTACT</span>
-  </a>
   <span id="n4" class="navButton" onmouseenter="navfx(4)" onclick="toggleLanguage()">
   <span class="en">FR</span><span class="fr">EN</span></span>
   </div>
@@ -726,6 +720,7 @@ function setBGImg(path){
 // called in start().
 
 function populateBody(){
+  console.log("populate body")
   // populate subjects list
   selectSubject(0);
   for(let i=0; i<projectDescriptions.length; i++){
@@ -1076,7 +1071,7 @@ function exitpopup(){
   selectedProject=undefined;
   clearInterval(ssInterval);
   updateCurrentURL();
-  if(pageIs=="home"||pageIs=="wors")
+  if(pageIs=="home"||pageIs=="works")
   document.getElementById("subjectsContainer").scrollIntoView();
   //console.log(document.getElementById("bodySection").getBoundingClientRect())
   //console.log(document.body.scrollTop)
