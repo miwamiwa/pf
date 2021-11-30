@@ -239,6 +239,8 @@ function makeSlideShow(coverimg,covervideo,gallery){
   slideShowElements = [];
   ssel1 = undefined;
   ssel2 = undefined;
+  el1x =0;
+  el2x =ssIncrements;
   sscounter =0;
   slideshowpos =0;
 
