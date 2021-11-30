@@ -1,6 +1,7 @@
 let projectDescriptions = [
 
   //****** Template *******
+  /*
   {
     // titre
     title:"titre",
@@ -67,6 +68,180 @@ let projectDescriptions = [
       date:[20,12,2019],
 
     },
+
+*/
+
+    //****** Maze n birb *******
+    {
+      // titre
+      title:"Maze n' Birb",
+
+      // sous-titre (no longer a sorting feature)
+      featuredIn:["Unity game prototype"],
+
+      // background
+      bgImg: "Maze/03.png",
+      bgVid:"mazenbirb.mp4",
+
+      // thumbnail text
+      fullDescription:"Game prototype made for What-a-Jam! game jam on itch.io.",
+
+      // article
+      featureDescription:{
+
+        // article body text
+        body:`Prototype de jeu pour le jam en ligne What-A-Jam en mai 2021.
+        Les thèmes étaient "raccourci" et "pizza"...
+
+        %#%# Dans ce jeu 3D, le joueur doit retrouver des statuettes
+        perdues dans un labyrinthe. Il peut gravir les murs à n'importe
+        quel moment, mais cela l'expose à l'oiseau de proie qui
+        tentera de le ramener à la case départ.
+
+        %#%#
+        %#a0
+        %#%#
+        J'ai produit le prototype avec Unity en une semaine,
+        incluant des modèles (+ un asset gratuit), les textures, et
+        une trame sonore. Il s'est retrouvé en 7e place dans la catégorie
+        Interprétation du thème, parmis les 55 jeux soumis.
+        %#%#
+
+      `,
+
+        // article top/info section
+        contributionDetails:["Game design","Programmation","Musique","Terrain"],
+        collaborators:[],
+        tools:["Unity/C#","Ableton (music)"],
+        context:"What-a-Jam! game jam sur itch.io"
+        },
+
+        // list of image to be displayed
+        imageGallery:[
+          "Maze/04.png",
+          "Maze/05.png",
+          "Maze/01.png",
+          "Maze/02.png"
+        ],
+
+        // list of audio elements to embed in page
+        audioGallery:[
+          `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1169369344%3Fsecret_token%3Ds-f6CnV3u4rEW&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+        ],
+
+        // list of links at the end of the document
+        externalLinks:[{
+          link:"https://sampc.itch.io/maze-birb",
+          title:"jouer"
+        },
+      {
+        link:"https://itch.io/jam/what-a-jam-may-2021",
+        title:"What-a-Jam! 2021"
+      }],
+
+        // a video embed to place in frame 1 of the slide show
+        //coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        //<div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+        // otherwise include an image (strangely not optional)
+        coverImage:"Maze/03.png",
+
+        // relevant tags for the project
+        tags:["Game Design","Unity", "Music"],
+
+        // date
+        date:[1,06,2021],
+
+      },
+
+
+
+    //****** Planetsz *******
+    {
+      // titre
+      title:"Planets",
+
+      // sous-titre (no longer a sorting feature)
+      featuredIn:["HTML5 game prototype"],
+
+      // background
+      bgImg: "Planets/01.png",
+      bgVid:"planets.mp4",
+
+      // thumbnail text
+      fullDescription:"Exploration game featuring an infinite universe made for js13k 2021",
+
+      // article
+      featureDescription:{
+
+        // article body text
+        body:`
+        Dans Space Explorer, je place le joueur dans un univers
+        génératif infini qu'il peut explorer à sa guise.
+        %#%#
+        À chaque planète son look unique, ses propres cours d'eau,
+        ses petits fruits interstellaires, sa langue locale et surtout,
+        mon aspect préféré, une petite musique, elle aussi générative et
+        unique à chaque endroit (à écouter dans le meddley ci-dessous).
+        %#%#
+        %#a0
+        %#%#
+        SpaceExplorer est un jeu que j'ai créé en aout 2021 pour le game
+        jam js13k, où on a un mois pour produire un jeu html5 contenu
+        dans un fichier zip de moins 13kb, tout library ou framework confondu.
+        %#%#
+        Pour y parvenir, j'ai codé le jeu au complet sans framework, de
+        la "physique" à la génération de sons - il y a même un encodage
+        spécial pour les sprites.
+
+        <br><br> Le prototype s'est classé 34e sur 223.
+
+        `,
+
+        // article top/info section
+        contributionDetails:["html5 game programming","generative music","generative world design"],
+        collaborators:[],
+        tools:["javascript"],
+        context:"js13k 2021 jam"
+        },
+
+        // list of image to be displayed
+        imageGallery:["Planets/04.png","Planets/05.png","Planets/06.png","Planets/07.png","Planets/02.png"],
+
+        // list of audio elements to embed in page
+        audioGallery:[
+          `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1169339392%3Fsecret_token%3Ds-21bj0ouihFp&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+        ],
+
+        // list of links at the end of the document
+        externalLinks:[{
+          link:"https://miwamiwa.github.io/Spacegame/",
+          title:"jouer"
+        },
+      {
+        link:"https://js13kgames.com/entries/spacew",
+        title:"page js13k"
+      },
+    {
+      link:"https://github.com/miwamiwa/Spacegame",
+      title:"github"
+    }],
+
+        // a video embed to place in frame 1 of the slide show
+      //  coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      //  <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+        // otherwise include an image (strangely not optional)
+        coverImage:"Planets/01.png",
+
+        // relevant tags for the project
+        tags:["Game Sound","Max MSP", "Unity"],
+
+        // date
+        date:[20,12,2019],
+
+      },
+
+
+
 
 
     //****** NosHistoiresExquises *******
