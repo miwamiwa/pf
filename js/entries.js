@@ -3,559 +3,491 @@ let projectDescriptions = [
   //****** Template *******
   /*
   {
-    // titre
-    title:"titre",
+  // titre
+  title:"titre",
 
-    // sous-titre (no longer a sorting feature)
-    featuredIn:["Game Sound"],
+  // sous-titre (no longer a sorting feature)
+  featuredIn:["Game Sound"],
 
-    // background
-    bgImg: "lp/02.png", // ou bien bgVid:"vid.mp4",
+  // background
+  bgImg: "lp/02.png", // ou bien bgVid:"vid.mp4",
 
-    // thumbnail text
-    fullDescription:"This text will be displayed on the thumbnail."
-    +"<br><br>Woop woop!",
+  // thumbnail text
+  fullDescription:"This text will be displayed on the thumbnail."
+  +"<br><br>Woop woop!",
 
-    // article
-    featureDescription:{
+  // article
+  featureDescription:{
 
-      // article body text
-      body:`This is the body text.
-      %#This is a line break.
-      %#
-      %#a0 This is a soundcloud embed from the audio gallery list.
-      %#
-      %#i0 This is an image from the image gallery list.
-      %#
+  // article body text
+  body:`This is the body text.
+  %#This is a line break.
+  %#
+  %#a0 This is a soundcloud embed from the audio gallery list.
+  %#
+  %#i0 This is an image from the image gallery list.
+  %#
 
-      <span class="en"></span>
-      <span class="fr"></span>`,
+  <span class="en"></span>
+  <span class="fr"></span>`,
 
-      // article top/info section
-      contributionDetails:["Something I did in the project","Something else","Keep it short"],
-      collaborators:["Untel (programmation)","Unautre Tel (design)"],
-      tools:["Unity/C#","Max/MSP","Cubase"],
-      context:"On a fait ca ou, pourquoi?"
-      },
+  // article top/info section
+  contributionDetails:["Something I did in the project","Something else","Keep it short"],
+  collaborators:["Untel (programmation)","Unautre Tel (design)"],
+  tools:["Unity/C#","Max/MSP","Cubase"],
+  context:"On a fait ca ou, pourquoi?"
+},
 
-      // list of image to be displayed
-      imageGallery:[
-        "lp/02.png",
-        "lp/01.png"
-      ],
+// list of image to be displayed
+imageGallery:[
+"lp/02.png",
+"lp/01.png"
+],
 
-      // list of audio elements to embed in page
-      audioGallery:[
-        `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101751&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
-      ],
+// list of audio elements to embed in page
+audioGallery:[
+`<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101751&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+],
 
-      // list of links at the end of the document
-      externalLinks:[{
-        link:"https://tag.hexagram.ca/projects/liquid-perceptions/",
-        title:"project web page"
-      }],
+// list of links at the end of the document
+externalLinks:[{
+link:"https://tag.hexagram.ca/projects/liquid-perceptions/",
+title:"project web page"
+}],
 
-      // a video embed to place in frame 1 of the slide show
-      coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-      // otherwise include an image (strangely not optional)
-      coverImage:"NHE/NHE_02.png",
+// a video embed to place in frame 1 of the slide show
+coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+// otherwise include an image (strangely not optional)
+coverImage:"NHE/NHE_02.png",
 
-      // relevant tags for the project
-      tags:["Game Sound","Max MSP", "Unity"],
+// relevant tags for the project
+tags:["Game Sound","Max MSP", "Unity"],
 
-      // date
-      date:[20,12,2019],
+// date
+date:[20,12,2019],
 
-    },
+},
 
 */
 
-    //****** Maze n birb *******
-    {
-      // titre
-      title:"Maze n' Birb",
-
-      // sous-titre (no longer a sorting feature)
-      featuredIn:["Unity game prototype"],
-
-      // background
-      bgImg: "Maze/03.png",
-      bgVid:"mazenbirb.mp4",
-
-      // thumbnail text
-      fullDescription:"Game prototype made for What-a-Jam! game jam on itch.io.",
-
-      // article
-      featureDescription:{
-
-        // article body text
-        body:`Prototype de jeu pour le jam en ligne What-A-Jam en mai 2021.
-        Les thèmes étaient "raccourci" et "pizza"...
-
-        %#%# Dans ce jeu 3D, le joueur doit retrouver des statuettes
-        perdues dans un labyrinthe. Il peut gravir les murs à n'importe
-        quel moment, mais cela l'expose à l'oiseau de proie qui
-        tentera de le ramener à la case départ.
-
-        %#%#
-        %#a0
-        %#%#
-        J'ai produit le prototype avec Unity en une semaine,
-        incluant des modèles (+ un asset gratuit), les textures, et
-        une trame sonore. Il s'est retrouvé en 7e place dans la catégorie
-        Interprétation du thème, parmis les 55 jeux soumis.
-        %#%#
-
-      `,
-
-        // article top/info section
-        contributionDetails:["Game design","Programmation","Musique","Terrain"],
-        collaborators:[],
-        tools:["Unity/C#","Ableton (music)"],
-        context:"What-a-Jam! game jam sur itch.io"
-        },
-
-        // list of image to be displayed
-        imageGallery:[
-          "Maze/04.png",
-          "Maze/05.png",
-          "Maze/01.png",
-          "Maze/02.png"
-        ],
-
-        // list of audio elements to embed in page
-        audioGallery:[
-          `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1169369344%3Fsecret_token%3Ds-f6CnV3u4rEW&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
-        ],
-
-        // list of links at the end of the document
-        externalLinks:[{
-          link:"https://sampc.itch.io/maze-birb",
-          title:"jouer"
-        },
-      {
-        link:"https://itch.io/jam/what-a-jam-may-2021",
-        title:"What-a-Jam! 2021"
-      }],
-
-        // a video embed to place in frame 1 of the slide show
-        //coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        //<div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-        // otherwise include an image (strangely not optional)
-        coverImage:"Maze/03.png",
-
-        // relevant tags for the project
-        tags:["Game Design","Unity", "Music"],
-
-        // date
-        date:[1,06,2021],
-
-      },
 
 
 
-    //****** Planetsz *******
-    {
-      // titre
-      title:"Planets",
+// # 0
 
-      // sous-titre (no longer a sorting feature)
-      featuredIn:["HTML5 game prototype"],
 
-      // background
-      bgImg: "Planets/01.png",
-      bgVid:"planets.mp4",
 
-      // thumbnail text
-      fullDescription:"Exploration game featuring an infinite universe made for js13k 2021",
+//****** NosHistoiresExquises *******
+{
+  // titre
+  title:"Nos Histoires Exquises",
 
-      // article
-      featureDescription:{
+  // sous-titre (no longer a sorting feature)
+  featuredIn:["Projection Intéractive"],
 
-        // article body text
-        body:`
-        Dans Space Explorer, je place le joueur dans un univers
-        génératif infini qu'il peut explorer à sa guise.
-        %#%#
-        À chaque planète son look unique, ses propres cours d'eau,
-        ses petits fruits interstellaires, sa langue locale et surtout,
-        mon aspect préféré, une petite musique, elle aussi générative et
-        unique à chaque endroit (à écouter dans le meddley ci-dessous).
-        %#%#
-        %#a0
-        %#%#
-        SpaceExplorer est un jeu que j'ai créé en aout 2021 pour le game
-        jam js13k, où on a un mois pour produire un jeu html5 contenu
-        dans un fichier zip de moins 13kb, tout library ou framework confondu.
-        %#%#
-        Pour y parvenir, j'ai codé le jeu au complet sans framework, de
-        la "physique" à la génération de sons - il y a même un encodage
-        spécial pour les sprites.
+  // background
+  bgImg: "NHE/NHE_02.png",
+  bgVid:"noshistoires.mp4",
 
-        <br><br> Le prototype s'est classé 34e sur 223.
+  // thumbnail text
+  fullDescription:`Projection
+  intéractive créée en collaboration avec Jules Galbraith, Dana
+  Ryashi et Rose-Marie Dion.`,
 
-        `,
+  // article
+  featureDescription:{
 
-        // article top/info section
-        contributionDetails:["html5 game programming","generative music","generative world design"],
-        collaborators:[],
-        tools:["javascript"],
-        context:"js13k 2021 jam"
-        },
+    // article body text
+    body:`
+    <span class="en"></span>
+    <span class="fr"></span>
 
-        // list of image to be displayed
-        imageGallery:["Planets/04.png","Planets/05.png","Planets/06.png","Planets/07.png","Planets/02.png"],
+    Nos Histoires Exquises est une projection intéractive
+    créée en collaboration avec Jules Galbraith (vidéo), Dana
+    Ryashi (design, programmation web) et Rose-Marie Dion (design graphique).
 
-        // list of audio elements to embed in page
-        audioGallery:[
-          `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1169339392%3Fsecret_token%3Ds-21bj0ouihFp&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
-        ],
+    %#%#
+    Pour ma part j'ai contributé la conception technique,
+    les outils front-end, la programmation du back-end
+    (node.js, mongodb, google cloud), l'animation du texte (unity/c#)
+    et le mapping (Photon).
 
-        // list of links at the end of the document
-        externalLinks:[{
-          link:"https://miwamiwa.github.io/Spacegame/",
-          title:"jouer"
-        },
-      {
-        link:"https://js13kgames.com/entries/spacew",
-        title:"page js13k"
-      },
-    {
-      link:"https://github.com/miwamiwa/Spacegame",
-      title:"github"
+    %#%#
+    L'oeuvre a été présentée le X aout 2021 sur la façade de l'Hotel 0,
+    grâce à une collaboration entre Vyv, la SAT, Alice Jarry et le
+    festival cinéma Urbain.
+
+    %#%#
+    %#i0
+
+    %#%#
+    Les participants pouvaient contribuer une phrase de leur
+    choix en direct en accédant à l'interface web, grâce à leur
+    téléphone ou bien en utilisant le poste disponible à cet effet.
+    `,
+
+    // article top/info section
+    contributionDetails:["Interaction design","System design","Text Animation","Programming"],
+    collaborators:["Jules Galbraith","Dana Ryashi","Rose-Marie Dion"],
+    tools:["Unity/C#","Photon (vyv)","html/javascript","node.js"],
+    context:"Festival cinema urbain, cours de CART 460"
+  },
+
+  // list of image to be displayed
+  imageGallery:[
+    "NHE/NHE_01.png",
+    "NHE/NHE_03.png"
+  ],
+
+  // list of audio elements to embed in page
+  audioGallery:[],
+
+  // a video embed to place in frame 1 of the slide show
+  //coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  //<div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+  coverImage:"NHE/NHE_02.png",
+
+  // relevant tags for the project
+  tags:["Projection Interactive","C#", "node.js"],
+
+  externalLinks:[],
+
+  // date
+  date:[01,08,2021],
+
+},
+
+
+
+
+// # 1
+
+
+
+
+
+//****** Planetsz *******
+{
+  // titre
+  title:"Planets",
+
+  // sous-titre (no longer a sorting feature)
+  featuredIn:["HTML5 game prototype"],
+
+  // background
+  bgImg: "Planets/01.png",
+  bgVid:"planets.mp4",
+
+  // thumbnail text
+  fullDescription:"Exploration game featuring an infinite universe made for js13k 2021",
+
+  // article
+  featureDescription:{
+
+    // article body text
+    body:`
+    Dans Space Explorer, je place le joueur dans un univers
+    génératif infini qu'il peut explorer à sa guise.
+    %#%#
+    À chaque planète son look unique, ses propres cours d'eau,
+    ses petits fruits interstellaires, sa langue locale et surtout,
+    mon aspect préféré, une petite musique, elle aussi générative et
+    unique à chaque endroit (à écouter dans le meddley ci-dessous).
+    %#%#
+    %#a0
+    %#%#
+    SpaceExplorer est un jeu que j'ai créé en aout 2021 pour le game
+    jam js13k, où on a un mois pour produire un jeu html5 contenu
+    dans un fichier zip de moins 13kb, tout library ou framework confondu.
+    %#%#
+    Pour y parvenir, j'ai codé le jeu au complet sans framework, de
+    la "physique" à la génération de sons - il y a même un encodage
+    spécial pour les sprites.
+
+    <br><br> Le prototype s'est classé 34e sur 223.
+
+    `,
+
+    // article top/info section
+    contributionDetails:["html5 game programming","generative music","generative world design"],
+    collaborators:[],
+    tools:["javascript"],
+    context:"js13k 2021 jam"
+  },
+
+  // list of image to be displayed
+  imageGallery:["Planets/04.png","Planets/05.png","Planets/06.png","Planets/07.png","Planets/02.png"],
+
+  // list of audio elements to embed in page
+  audioGallery:[
+    `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1169339392%3Fsecret_token%3Ds-21bj0ouihFp&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+  ],
+
+  // list of links at the end of the document
+  externalLinks:[{
+    link:"https://miwamiwa.github.io/Spacegame/",
+    title:"jouer"
+  },
+  {
+    link:"https://js13kgames.com/entries/spacew",
+    title:"page js13k"
+  },
+  {
+    link:"https://github.com/miwamiwa/Spacegame",
+    title:"github"
+  }],
+
+  // a video embed to place in frame 1 of the slide show
+  //  coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  //  <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+  // otherwise include an image (strangely not optional)
+  coverImage:"Planets/01.png",
+
+  // relevant tags for the project
+  tags:["Game Sound","Max MSP", "Unity"],
+
+  // date
+  date:[20,12,2019],
+
+},
+
+
+
+
+// # 2
+
+
+
+//****** Maze n birb *******
+{
+  // titre
+  title:"Maze n' Birb",
+
+  // sous-titre (no longer a sorting feature)
+  featuredIn:["Unity game prototype"],
+
+  // background
+  bgImg: "Maze/03.png",
+  bgVid:"mazenbirb.mp4",
+
+  // thumbnail text
+  fullDescription:"Game prototype made for What-a-Jam! game jam on itch.io.",
+
+  // article
+  featureDescription:{
+
+    // article body text
+    body:`Prototype de jeu pour le jam en ligne What-A-Jam en mai 2021.
+    Les thèmes étaient "raccourci" et "pizza"...
+
+    %#%# Dans ce jeu 3D, le joueur doit retrouver des statuettes
+    perdues dans un labyrinthe. Il peut gravir les murs à n'importe
+    quel moment, mais cela l'expose à l'oiseau de proie qui
+    tentera de le ramener à la case départ.
+
+    %#%#
+    %#a0
+    %#%#
+    J'ai produit le prototype avec Unity en une semaine,
+    incluant des modèles (+ un asset gratuit), les textures, et
+    une trame sonore. Il s'est retrouvé en 7e place dans la catégorie
+    Interprétation du thème, parmis les 55 jeux soumis.
+    %#%#
+
+    `,
+
+    // article top/info section
+    contributionDetails:["Game design","Programmation","Musique","Terrain"],
+    collaborators:[],
+    tools:["Unity/C#","Ableton (music)"],
+    context:"What-a-Jam! game jam sur itch.io"
+  },
+
+  // list of image to be displayed
+  imageGallery:[
+    "Maze/04.png",
+    "Maze/05.png",
+    "Maze/01.png",
+    "Maze/02.png"
+  ],
+
+  // list of audio elements to embed in page
+  audioGallery:[
+    `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1169369344%3Fsecret_token%3Ds-f6CnV3u4rEW&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+  ],
+
+  // list of links at the end of the document
+  externalLinks:[{
+    link:"https://sampc.itch.io/maze-birb",
+    title:"jouer"
+  },
+  {
+    link:"https://itch.io/jam/what-a-jam-may-2021",
+    title:"What-a-Jam! 2021"
+  }],
+
+  // a video embed to place in frame 1 of the slide show
+  //coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  //<div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+  // otherwise include an image (strangely not optional)
+  coverImage:"Maze/03.png",
+
+  // relevant tags for the project
+  tags:["Game Design","Unity", "Music"],
+
+  // date
+  date:[1,06,2021],
+
+},
+
+
+
+
+// # 3
+
+
+
+
+
+//******************** LIQUID PERCEPTIONS ******************************
+{
+  title:"Liquid Perceptions",
+  bgImg: "lp/02.png",
+  fullDescription:"Liquid Perceptions is a research-creation project by Olivia McGilchrist, Seyed M. Tabatabaei, Julia Salles and Dougy Hérard at the Milieux Institute at Concordia Univeristy, for which I provided some sound design work. "
+  +"<br><br>In this dual VR and non-VR experience, two players compete by catching as many fish as they can on a touch screen while a third player, wearing the VR set, witnesses directly the ecological damage of the first two players' fishing, as they swim across the increasingly dangerous underwater environment that lies beneath."
+  +"<br>I created sound effects and edited provided musical material to create different soundtracks for the underwater environment (for the VR user's headphones) and overwater (speakers heard by everyone).<br> I programmed the soundtrack in Max MSP (communicating with the Unity project using OSC), to route the soundtracks easily and to allow for some sound design experimentation. The final result featured use of granulation to handle large amounts of sound emitting objects, and some basic motion mapping.",
+
+  featuredIn:["Game Sound"],
+
+  featureDescription:{
+
+    body:`%#In this dual VR and non-VR experience, two players compete by catching
+    as many fish as they can on a touch screen while a third player, wearing the
+    VR set, witnesses directly the ecological damage of the first two players'
+    fishing, as they swim across the increasingly dangerous underwater environment
+    that lies beneath.
+    %#%#I created sound effects and edited provided musical material to create different
+    soundtracks for the underwater environment (for the VR user's headphones) and
+    overwater (speakers heard by everyone).
+    %#%#I programmed the soundtrack in Max MSP (communicating with the Unity project
+      using OSC), to route the soundtracks easily and to allow for some sound
+      design experimentation. The final result featured use of granulation to
+      handle large amounts of sound emitting objects, and some basic motion mapping.
+
+      %#%#The game was presented in a live demonstration in December 2019. `,
+      contributionDetails:["Sound editing","Sound effects production","Sound integration"],
+      collaborators:["Olivia McGilchrist","Seyed M. Tabatabaei","Julia Salles","Dougy Hérard"],
+      tools:["Unity/C#","Max/MSP","Cubase"],
+      context:"Research-creation project at Milieux Institute"
+
+    },
+
+    //iconImage:'lpicon.png',
+
+    imageGallery:[
+      "lp/02.png",
+      "lp/01.png",
+      "lp/03.png",
+      "lp/04.png",
+      "lp/05.png"
+    ],
+
+    externalLinks:[{
+      link:"https://tag.hexagram.ca/projects/liquid-perceptions/",
+      title:"project web page"
     }],
 
-        // a video embed to place in frame 1 of the slide show
-      //  coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      //  <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-        // otherwise include an image (strangely not optional)
-        coverImage:"Planets/01.png",
+    coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+    tags:["Game Sound","Max MSP", "Unity"],
+    date:[20,12,2019],
 
-        // relevant tags for the project
-        tags:["Game Sound","Max MSP", "Unity"],
+  },
 
-        // date
-        date:[20,12,2019],
 
-      },
 
 
+  // # 4
 
 
 
-    //****** NosHistoiresExquises *******
-    {
-      // titre
-      title:"Nos Histoires Exquises",
 
-      // sous-titre (no longer a sorting feature)
-      featuredIn:["Projection Intéractive"],
 
-      // background
-      bgImg: "NHE/NHE_02.png",
-
-      bgVid:"noshistoires.mp4",
-
-      // thumbnail text
-      fullDescription:`Nos Histoires Exquises est une projection
-      intéractive créée en collaboration avec Jules Galbraith, Dana
-      Ryashi et Rose-Marie Dion.`,
-
-      // article
-      featureDescription:{
-
-        // article body text
-        body:`
-        <span class="en"></span>
-        <span class="fr"></span>
-
-        Nos Histoires Exquises est une projection intéractive
-        créée en collaboration avec Jules Galbraith (vidéo), Dana
-        Ryashi (design, programmation web) et Rose-Marie Dion (design graphique).
-
-        %#%#
-        Pour ma part j'ai contributé la conception technique,
-        les outils front-end, la programmation du back-end
-        (node.js, mongodb, google cloud), l'animation du texte (unity/c#)
-        et le mapping (Photon).
-
-        %#%#
-        L'oeuvre a été présentée le X aout 2021 sur la façade de l'Hotel 0,
-        grâce à une collaboration entre Vyv, la SAT, Alice Jarry et le
-        festival cinéma Urbain.
-
-        %#%#
-        %#i0
-
-        %#%#
-        Les participants pouvaient contribuer une phrase de leur
-        choix en direct en accédant à l'interface web, grâce à leur
-        téléphone ou bien en utilisant le poste disponible à cet effet.
-        `,
-
-        // article top/info section
-        contributionDetails:["Interaction design","System design","Text Animation","Programming"],
-        collaborators:["Jules Galbraith","Dana Ryashi","Rose-Marie Dion"],
-        tools:["Unity/C#","Photon (vyv)","html/javascript","node.js"],
-        context:"Festival cinema urbain, cours de CART 460"
-        },
-
-        // list of image to be displayed
-        imageGallery:[
-          "NHE/NHE_01.png",
-          "NHE/NHE_03.png"
-        ],
-
-        // list of audio elements to embed in page
-        audioGallery:[],
-
-        // a video embed to place in frame 1 of the slide show
-        //coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        //<div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-        coverImage:"NHE/NHE_02.png",
-
-        // relevant tags for the project
-        tags:["Projection Interactive","C#", "node.js"],
-
-        externalLinks:[],
-
-        // date
-        date:[01,08,2021],
-
-      },
-
-
-
-    //******************** LIQUID PERCEPTIONS ******************************
-    {
-      title:"Liquid Perceptions",
-      bgImg: "lp/02.png",
-      fullDescription:"Liquid Perceptions is a research-creation project by Olivia McGilchrist, Seyed M. Tabatabaei, Julia Salles and Dougy Hérard at the Milieux Institute at Concordia Univeristy, for which I provided some sound design work. "
-      +"<br><br>In this dual VR and non-VR experience, two players compete by catching as many fish as they can on a touch screen while a third player, wearing the VR set, witnesses directly the ecological damage of the first two players' fishing, as they swim across the increasingly dangerous underwater environment that lies beneath."
-      +"<br>I created sound effects and edited provided musical material to create different soundtracks for the underwater environment (for the VR user's headphones) and overwater (speakers heard by everyone).<br> I programmed the soundtrack in Max MSP (communicating with the Unity project using OSC), to route the soundtracks easily and to allow for some sound design experimentation. The final result featured use of granulation to handle large amounts of sound emitting objects, and some basic motion mapping.",
-
-      featuredIn:["Game Sound"],
-
-      featureDescription:{
-
-        body:`%#In this dual VR and non-VR experience, two players compete by catching
-        as many fish as they can on a touch screen while a third player, wearing the
-        VR set, witnesses directly the ecological damage of the first two players'
-        fishing, as they swim across the increasingly dangerous underwater environment
-        that lies beneath.
-        %#%#I created sound effects and edited provided musical material to create different
-        soundtracks for the underwater environment (for the VR user's headphones) and
-        overwater (speakers heard by everyone).
-        %#%#I programmed the soundtrack in Max MSP (communicating with the Unity project
-          using OSC), to route the soundtracks easily and to allow for some sound
-          design experimentation. The final result featured use of granulation to
-          handle large amounts of sound emitting objects, and some basic motion mapping.
-
-          %#%#The game was presented in a live demonstration in December 2019. `,
-          contributionDetails:["Sound editing","Sound effects production","Sound integration"],
-          collaborators:["Olivia McGilchrist","Seyed M. Tabatabaei","Julia Salles","Dougy Hérard"],
-          tools:["Unity/C#","Max/MSP","Cubase"],
-          context:"Research-creation project at Milieux Institute"
-
-        },
-
-        //iconImage:'lpicon.png',
-
-        imageGallery:[
-          "lp/02.png",
-          "lp/01.png",
-          "lp/03.png",
-          "lp/04.png",
-          "lp/05.png"
-        ],
-
-        externalLinks:[{
-          link:"https://tag.hexagram.ca/projects/liquid-perceptions/",
-          title:"project web page"
-        }],
-
-        coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-        tags:["Game Sound","Max MSP", "Unity"],
-        date:[20,12,2019],
-
-      },
-
-      // entry 9
-
-
-      //******************** FASTENED FURIOUS ******************************
-      {
-        title:"Fastened Furious",
-        bgVid:"ff.mp4",
-        fullDescription:`Fastened Furious was created for the Ubisoft 2019 Game Lab Competition, where the theme was “spectacle.” The game is a race between two teams of two players tethered together, overcoming wacky obstacles and racing to the finish line. Our game was nominated for the Jury's Special Award. (summary and images by Nicole Lin)
-        <br><br>I picked and produced sound effects, composed BGM tracks, set up the project in Wwise and scripted audio triggers in C#. The soundtrack featured midi instruments that would interchange during gameplay, using tools included in Wwise and some C# scripting on the Unity side.
-        <br><br>Collaborators: Dougy Herard, Zied Jebali, Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin, Scott Smith`,
-        iconImage:'fficon.png',
-        featuredIn:["Game Sound"],
-        featureDescription:{
-
-          body:`%#Fastened Furious was created for the Ubisoft 2019 Game Lab Competition,
-          where the theme was “spectacle.” The game is a race between two teams of
-          two players tethered together, overcoming wacky obstacles and racing to the
-          finish line. Our game was nominated for the Jury's Special Award.
-
-
-          %#%#I picked and produced sound effects, composed BGM tracks, set up the project
-          in Wwise and scripted audio triggers in C#.
-
-          %#%# %#a1 %#%#
-
-          The soundtrack featured midi
-          instruments that would interchange during gameplay, using tools included
-          in Wwise and some C# scripting on the Unity side.
-
-          %# %#a2 %#%#
-
-          I made a number of sound effects, including this level-reset jingle:
-
-          %# %#a3 %#%#
-
-          And this sound for a big bad plant-beast (think little shop of horrors!)
-          that ended up being removed from the game. One day, plant-beast.
-
-          %# %#a4 %#
-
-
-
-          `,
-          contributionDetails:["Sound effects","Music","Implementation in Wwise","Trigger implementation in Unity","Midi soundtrack design"],
-          collaborators:["Dougy Herard","Zied Jebali","Hiu Tung Lam", "Ricardo Liganor", "Melissa Lim", "Nicole Lin", "Scott Smith"],
-          tools:["Unity/C#","Wwise","Ableton","Cubase"],
-          context:"Ubisoft Gamelab 2019"
-
-        },
-        coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-        tags:["Game Sound","Wwise", "Unity", "C#","Music"],
-        date:[1,4,2019],
-        soundcloudDescription:"BGM tracks from Fastened Furious:",
-        soundcloudLink: `<iframe width="80%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
-        audioGallery:[
-          `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
-
-          `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101751&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
-
-          `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101742%3Fsecret_token%3Ds-ccvfe&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
-
-          `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100596%3Fsecret_token%3Ds-a9vcH&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
-
-          `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100584%3Fsecret_token%3Ds-eJ50M&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
-        ],
-        imageGallery:["FF_title.jpg","FF_03.jpg","FF_05.jpg"],
-        externalLinks:[
-          {
-            title:"Playthrough video",
-            link:"https://vimeo.com/432698850"
-          }
-        ]
-      },
-
-
-
-
-
-  /****** JS13K 2020 GAME ******/
+  //******************** FASTENED FURIOUS ******************************
   {
-    title:"js13k 2020 game",
-    bgVid:"js13k2020.mp4",
-    fullDescription:"Game made for js13k2020. Sound design features browser-based sound generation.",
-    shortDescription:"A 13kb javascript platformer / shooter game I made for js13k competition in 2020.",
-    iconImage:"13kicon.png",
-    featuredIn:["Programming"],
+    title:"Fastened Furious",
+    bgVid:"ff.mp4",
+    fullDescription:`Fastened Furious was created for the Ubisoft 2019 Game Lab Competition, where the theme was “spectacle.” The game is a race between two teams of two players tethered together, overcoming wacky obstacles and racing to the finish line. Our game was nominated for the Jury's Special Award. (summary and images by Nicole Lin)
+    <br><br>I picked and produced sound effects, composed BGM tracks, set up the project in Wwise and scripted audio triggers in C#. The soundtrack featured midi instruments that would interchange during gameplay, using tools included in Wwise and some C# scripting on the Unity side.
+    <br><br>Collaborators: Dougy Herard, Zied Jebali, Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin, Scott Smith`,
+    iconImage:'fficon.png',
+    featuredIn:["Game Sound"],
     featureDescription:{
 
-      body:`<span class="en">
-      %#
-      In the summer of 2020 I decided to try the js13k 2020 competition again,
-      where the goal is to build an offline javascript game that fits in a 13kb zip
-      package, all libraries included. That year the theme was "404", and I
-      wanted to make some sort of platformer with a character that shoots bad
-      guys on his way to the prize (because why not??).
+      body:`%#Fastened Furious was created for the Ubisoft 2019 Game Lab Competition,
+      where the theme was “spectacle.” The game is a race between two teams of
+      two players tethered together, overcoming wacky obstacles and racing to the
+      finish line. Our game was nominated for the Jury's Special Award.
 
-      %#%# So the idea would be to recover the pages of your website that have
-      mysteriously gone 404, by literally getting in there with your blaster gun and
-      smacking the virus at the source. I wanted to make the game feel like
-      "entering a website" by using a navigation bar to move between levels. The
-      place is dark and stormy, it's raining characters, and the platforms are
-      covered with the game's code.
 
-      %#%# I used a js tool I made over the summer to produce the models and animations,
-      which are animated canvas paths (much like svg paths). I added in sfx and
-      a short bit of music, with sounds generated using the native javascript
-      audio buffer.
+      %#%#I picked and produced sound effects, composed BGM tracks, set up the project
+      in Wwise and scripted audio triggers in C#.
 
-      %#%# %#a0 %#
+      %#%# %#a1 %#%#
 
-      %#%# There are a few levels, two boss levels, and a small progression
-      system. The final result actually just barely fit within the 13kb limit,
-      and I struggled to make it fit in time without impairing the game performance
-      significantly. Lesson learned in terms of planning! Nonetheless it was fun to make, a
-      great coding challenge and the final 13.1kb result is not so shabby.
-      </span>
+      The soundtrack featured midi
+      instruments that would interchange during gameplay, using tools included
+      in Wwise and some C# scripting on the Unity side.
 
-      <span class="fr">
+      %# %#a2 %#%#
 
-      %#Lors de l'été 2020, j'ai décidé de réessayer le concours js13k 2020,
-      où le but est de construire un jeu javascript hors-ligne qui tient dans un zip de 13ko.,
-      toutes bibliothèques incluses. Cette année là, le thème était "404", et je
-      voulais faire une sorte de jeu plateformeur avec un personnage qui tire sur les méchants
-      en se dirigeant vers le prix (pourquoi pas ??).
+      I made a number of sound effects, including this level-reset jingle:
 
-      %#%# L'idée est donc de récupérer les pages de votre site web qui ont
-      mystérieusement disparues, en vous aventurant à l'intérieur avec votre pistolet pour blaster
-      le virus à la source. J'avais voulu donner l'impression
-      "d'entrer dans le site" en utilisant une barre de navigation pour passer d'un niveau à l'autre.
+      %# %#a3 %#%#
 
-      L'endroit est sombre et orageux, il pleut des caractères, et les plateformes sont
-      recouvertes du code source du jeu.
+      And this sound for a big bad plant-beast (think little shop of horrors!)
+      that ended up being removed from the game. One day, plant-beast.
 
-      %#%# J'ai utilisé un outil js que j'ai créé pendant l'été pour produire les modèles et les animations,
-      qui sont des paths de canvas animés. J'ai ajouté des effets sonores et
-      un petit morceau de musique, avec des sons générés par le buffer javascript natif.
+      %# %#a4 %#
 
-      %#%# %#a0 %#
 
-      %#%# Il y a quelques niveaux, deux niveaux de boss, et un petit système de progression.
-      Le résultat final rentre à peine dans la limite de 13ko,
-      et j'ai finalement eu du mal à amincir le code assez dans le temps accordé
-      sans altérer la performance du jeu. Ce fut une leçon de planification! C'était
-      tout de même amusant à faire, un bon défi de codage et le résultat final de 13.1kb
-      n'est quand même pas si mal.
 
-      </span>
       `,
-      contributionDetails:["Made everything in a 30 day timespan",
-      "Gameplay programming",
-      "Randomized level layouts using seeded noise",
-      "Custom animation framework",
-      "Sound generation for soundtrack and sfx"],
-      collaborators:[],
-      tools:["native javascript"],
-      context:"js13k html5 game competition"
+      contributionDetails:["Sound effects","Music","Implementation in Wwise","Trigger implementation in Unity","Midi soundtrack design"],
+      collaborators:["Dougy Herard","Zied Jebali","Hiu Tung Lam", "Ricardo Liganor", "Melissa Lim", "Nicole Lin", "Scott Smith"],
+      tools:["Unity/C#","Wwise","Ableton","Cubase"],
+      context:"Ubisoft Gamelab 2019"
 
     },
+    coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+    tags:["Game Sound","Wwise", "Unity", "C#","Music"],
+    date:[1,4,2019],
+    soundcloudDescription:"BGM tracks from Fastened Furious:",
+    soundcloudLink: `<iframe width="80%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
     audioGallery:[
-      `<iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030007044%3Fsecret_token%3Ds-5wElwc2UBtP&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false">
-      </iframe>`],
-      coverImage:"js13k2020/02.png",
-      imageGallery:["js13k2020/06.png","js13k2020/05.png","js13k2020/01.png" ],
-      tags:["Game Design","Programming","Javascript","Game Sound"],
-      date:[13,9,2020],
-      externalLinks:[
-        {
-          title:"Play",
-          link:"https://miwamiwa.github.io/13k2020/"
-        }
-      ]
-    },
+      `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
+
+      `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101751&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+      `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101742%3Fsecret_token%3Ds-ccvfe&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+      `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100596%3Fsecret_token%3Ds-a9vcH&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+      `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100584%3Fsecret_token%3Ds-eJ50M&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+    ],
+    imageGallery:["FF_title.jpg","FF_03.jpg","FF_05.jpg"],
+    externalLinks:[
+      {
+        title:"Playthrough video",
+        link:"https://vimeo.com/432698850"
+      }
+    ]
+  },
+
+
+
 
     /*
     featureDescription:{
@@ -798,9 +730,8 @@ let projectDescriptions = [
 
       //******************** 560 DODGER ******************************
       {
-        title:"560 Dodger",
-        shortDescription:`<span class='en'>A p5.js game with less than two Tweets worth of code.</span>
-        <span class='fr'>Un jeu avec moins de deux Tweets de code, créé avec p5.js</span>`,
+        title:"Dodger",
+        shortDescription:`An obstacle dodging game with < 560 characters of code made with p5js.`,
         fullDescription:``,
         coverImage:"560dodger2.png",
 
@@ -880,219 +811,326 @@ let projectDescriptions = [
           }, //https://itch.io/jam/tweettweetjam-4
 
           {
-          title:"Tweet tweet jam #4 homepage",
-          link:"https://itch.io/jam/tweettweetjam-4"
-        }
+            title:"Tweet tweet jam #4 homepage",
+            link:"https://itch.io/jam/tweettweetjam-4"
+          }
 
+        ]
+      },
+
+
+      {
+        title:"Laundromadness!",
+        fullDescription:"It's a big world out there. <br>In this game you play as a kid who has all sorts of adventures while trying to do his laundry. <br><br>Follow the story and discover the wild side of the local laundromat! Made with Bitsy.",
+        tags:["Game Design","Bitsy"],
+
+        featuredIn:["Game Design"],
+        featureDescription:{
+
+          body:`
+
+          <span class="en">
+
+          %# This is a short narrative game I made with Bitsy during a game design
+          course in 2019. The user follows the story of a kid having all sorts of
+          adventures while trying to wash his clothes at the local laundromat.
+
+          %#%# Almost immediately after entering the building, the player finds their
+          change disappeared from their pocket. Things get increasingly strange
+          and complicated when the only help they can find comes from greedy mice and
+          scary bugs! The player will have to learn to make the right friends in
+          this unsuspected new world.
+
+          %#%# The game is a linear narrative that the user walks through at their own
+          pace, with a few short game-like scenes conveying key moments in the story.
+
+          </span>
+
+
+          <span class="fr">
+
+          %# Laundromadness est un court jeu narratif que j'ai réalisé avec Bitsy
+          lors d'un cours de conception de jeux en 2019. L'utilisateur suit
+          l'histoire d'un enfant qui vit toutes sortes d'aventures en voulant
+          faire son lavage à la buanderie.
+
+          %#%# Presque immédiatement après être entré dans le bâtiment,
+          le joueur s'aperçoit qu'il a perdu ses sous. Les choses deviennent de plus en plus étranges
+          et compliquées lorsque la seule aide qu'il obtient provient d'une souris avares
+          et d'effrayants insectes !
+          Le joueur devra apprendre à choisir ses amis dans ce nouveau monde insoupçonné.
+
+          %#%# Le jeu est un récit linéaire que l'utilisateur parcourt à son propre rythme,
+          avec quelques courtes scènes de jeu pour illustrer les moments clés de l'histoire.
+
+          </span>
+          `,
+          contributionDetails:["Game Design with Bitsy"],
+          collaborators:[],
+          tools:["Bitsy"],
+          context:"CART 215 Introduction to Game Design"
+
+        },
+
+        date:[1,12,2019],
+        coverImage:"laundro/05.png",
+        imageGallery:["laundro/02.png", "laundro/07.png", "laundro/04.png", "laundro/06.png", "laundro/03.png"],
+        iconImage:"laundroicon.png",
+        externalLinks:[
+          {
+            title:"Play game",
+            link:"https://sampc.itch.io/laundromadness"
+          }
+        ]
+      },
+
+
+
+
+      /* ENTRY 7 */
+
+      //******************** APE NAPS ******************************
+      {
+        title:"Ape Naps",
+        bgVid: "apenaps.mp4",
+        fullDescription:"Ape Naps is my submission for Js 13k Games 2019, where one makes a javascript game that zips down to 13kb, all files and libraries included. The theme was 'Back'."
+        +"<br><br>In this game, you (mama ape) bring your kids back home, on your back, to some Bach. I wanted to make something silly and most peaceful. You run into other animals but you can't harm them. You only bump each other out of the way. Comments showed that part caused more grief to playtesters than anything! It was valuable feedback at the time."
+        +"<br><br>This was a first time attempting to make a full game on my own! And a first time doing many things in javascript without any libraries, like canvas drawing and generating sound. Features my own image compression scheme."
+        +"<br><br>Controls: left=a, right=d, space=jump, w=wiggle (drop a passenger)",
+        coverVideo:`<iframe src="https://player.vimeo.com/video/432701435" class="popupimg" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`,
+        imageGallery:[
+          "apenaps.png",
+          "apenaps/01.png",
+          //"apenaps/02.png",
+          //"apenaps/05.png",
+          "apenaps/04.png"
+        ],
+        iconImage:"apenapsicon.png",
+        featuredIn:["Programming"],
+
+        featureDescription:{
+
+          body:`
+          %#Ape Naps was my first submission to js13k games, a competition where one makes
+          a game with a 13kb limit on the final .zip package. The player incarnates
+          a mother ape who chases her babies to bring them back home, on her back, to
+          some Bach (the theme to follow was "back"...).
+
+          %#i0
+          %#%#I wanted to fit in as many images and sounds as possible, so I put together
+          a custom scheme to compress and display my sprites with native javascript. The
+          soundtrack and sfx employ generated sounds, also using native javascript tools.
+          Definitely an interesting programming challenge overall, and a nice learning
+          experience since it was my first time coding an entire game project.
+          `,
+          contributionDetails:["HTML5 game programming", "Graphics engine", "Sound generation"],
+          collaborators:[],
+          tools:["Javascript"],
+          context:"js13k games 2019"
+
+        },
+        tags:["Javascript","Programming","Game Design","Game Sound"],
+        date:[13,9,2019],
+        externalLinks:[
+          {
+            title:"Play Ape Naps",
+            link:"https://js13kgames.com/entries/ape-naps"
+          },
+          {
+            title:"Github",
+            link:"https://github.com/miwamiwa/13k2019"
+          }
+          /*,
+          {
+          title:"Js 13k Games Website",
+          link:"https://js13kgames.com/"
+        }
+        */
       ]
     },
 
 
-    {
-      title:"Laundromadness!",
-      fullDescription:"It's a big world out there. <br>In this game you play as a kid who has all sorts of adventures while trying to do his laundry. <br><br>Follow the story and discover the wild side of the local laundromat! Made with Bitsy.",
-      tags:["Game Design","Bitsy"],
-
-      featuredIn:["Game Design"],
-      featureDescription:{
-
-        body:`
-
-        <span class="en">
-
-        %# This is a short narrative game I made with Bitsy during a game design
-        course in 2019. The user follows the story of a kid having all sorts of
-        adventures while trying to wash his clothes at the local laundromat.
-
-        %#%# Almost immediately after entering the building, the player finds their
-        change disappeared from their pocket. Things get increasingly strange
-        and complicated when the only help they can find comes from greedy mice and
-        scary bugs! The player will have to learn to make the right friends in
-        this unsuspected new world.
-
-        %#%# The game is a linear narrative that the user walks through at their own
-        pace, with a few short game-like scenes conveying key moments in the story.
-
-        </span>
 
 
-        <span class="fr">
-
-        %# Laundromadness est un court jeu narratif que j'ai réalisé avec Bitsy
-        lors d'un cours de conception de jeux en 2019. L'utilisateur suit
-        l'histoire d'un enfant qui vit toutes sortes d'aventures en voulant
-        faire son lavage à la buanderie.
-
-        %#%# Presque immédiatement après être entré dans le bâtiment,
-        le joueur s'aperçoit qu'il a perdu ses sous. Les choses deviennent de plus en plus étranges
-        et compliquées lorsque la seule aide qu'il obtient provient d'une souris avares
-        et d'effrayants insectes !
-        Le joueur devra apprendre à choisir ses amis dans ce nouveau monde insoupçonné.
-
-        %#%# Le jeu est un récit linéaire que l'utilisateur parcourt à son propre rythme,
-        avec quelques courtes scènes de jeu pour illustrer les moments clés de l'histoire.
-
-        </span>
-        `,
-        contributionDetails:["Game Design with Bitsy"],
-        collaborators:[],
-        tools:["Bitsy"],
-        context:"CART 215 Introduction to Game Design"
-
-      },
-
-      date:[1,12,2019],
-      coverImage:"laundro/05.png",
-      imageGallery:["laundro/02.png", "laundro/07.png", "laundro/04.png", "laundro/06.png", "laundro/03.png"],
-      iconImage:"laundroicon.png",
-      externalLinks:[
-        {
-          title:"Play game",
-          link:"https://sampc.itch.io/laundromadness"
-        }
-      ]
-    },
 
 
-    /* ENTRY 6 */
-    /* BAD BOTS GMTK */
-
-    {
-      title: 'Bad Bots',
-      bgVid:"badbots.mp4",
-      fullDescription: 'Game prototype made solo in 48 hours for GTMK game jam in July 2020. The theme was "out of control".'
-      +"<br><br>Bad bots is a story about environmental collapse. <Br>In the future, trees are so rare that you can't breathe without being right next to one. Robots tend to the remains of the natural world.. but they've gone out of control! They're literally gobbling the trees!! Smack sense into them with your stick, and re-forest your way to the checkpoints to clear each level."
-      +"<br><br>Definitely wasn't the most polished submission out there, but it was my first 48h endeavour so I'm quite happy I managed to pack in enough mechanics and assets for people to test. I ended up getting quite a few comments on my submission which was really interesting and a nice reward. ",
-      tags:['Game Design',"Programming",'Sound Design','Unity','Blender',"Music"],
-      date:[12,07,2020],
-
-      featuredIn:["Programming","Game Design"],
-      featureDescription:{
-
-        body:`
-
-        <span class="en">
 
 
-        </span>
 
+      /****** JS13K 2020 GAME ******/
+      {
+        title:"js13k 2020 game",
+        bgVid:"js13k2020.mp4",
+        fullDescription:"Game made for js13k2020. Sound design features browser-based sound generation.",
+        shortDescription:"A 13kb javascript platformer / shooter game I made for js13k competition in 2020.",
+        iconImage:"13kicon.png",
+        featuredIn:["Programming"],
+        featureDescription:{
 
-        <span class="fr">
+          body:`<span class="en">
+          %#
+          In the summer of 2020 I decided to try the js13k 2020 competition again,
+          where the goal is to build an offline javascript game that fits in a 13kb zip
+          package, all libraries included. That year the theme was "404", and I
+          wanted to make some sort of platformer with a character that shoots bad
+          guys on his way to the prize (because why not??).
 
-        </span>
+          %#%# So the idea would be to recover the pages of your website that have
+          mysteriously gone 404, by literally getting in there with your blaster gun and
+          smacking the virus at the source. I wanted to make the game feel like
+          "entering a website" by using a navigation bar to move between levels. The
+          place is dark and stormy, it's raining characters, and the platforms are
+          covered with the game's code.
 
+          %#%# I used a js tool I made over the summer to produce the models and animations,
+          which are animated canvas paths (much like svg paths). I added in sfx and
+          a short bit of music, with sounds generated using the native javascript
+          audio buffer.
 
-        %#Bad Bots is a game prototype with a socio-environmental message. The player
-        discovers a future in which nature has thinned out to a minimum and cannot
-        sustain itself without constant care from robots. Somehow, the robots are
-        getting out of control and their action is destroying the forests! The player's
-        goal is to bust up these bad bots before the situation gets any more disastreous.
-        %#%# %#a0 %#
-        %#%#This is a Unity game I made solo for the 2020 GMTK game jam. Definitely a
-        big endeavour for a 48h jam, the goal was to have enough elements in the game
-        by the end of the jam for people to get a feel for the concept and narrative.
-        Though it wasn't a very polished submission, it was finished enough to get
-        quite a bit of feedback from other participants, which was a nice reward for the work done.
-        `,
-        contributionDetails:["Game Design", "Unity/C# programming", "Basic models in blender", "Music and sfx"],
-        collaborators:[],
-        tools:["Unity","Blender","Ableton"],
-        context:"GMTK Game Jam, summer of 2020"
+          %#%# %#a0 %#
 
-      },
-      audioGallery:[
-        `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030771900%3Fsecret_token%3Ds-X4o1BFNU0MF&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
-      ],
-      imageGallery:["badbots/01.png",'badbot.png'],
-      //iconImage:"badbotsicon.png",
-      coverImage:"badbots/02.png",
-      externalLinks:[
-        {
-          title:'Play Bad Bots',
-          link:'https://sampc.itch.io/bad-bots-gmtk-2020-jam'
+          %#%# There are a few levels, two boss levels, and a small progression
+          system. The final result actually just barely fit within the 13kb limit,
+          and I struggled to make it fit in time without impairing the game performance
+          significantly. Lesson learned in terms of planning! Nonetheless it was fun to make, a
+          great coding challenge and the final 13.1kb result is not so shabby.
+          </span>
+
+          <span class="fr">
+
+          %#Lors de l'été 2020, j'ai décidé de réessayer le concours js13k 2020,
+          où le but est de construire un jeu javascript hors-ligne qui tient dans un zip de 13ko.,
+          toutes bibliothèques incluses. Cette année là, le thème était "404", et je
+          voulais faire une sorte de jeu plateformeur avec un personnage qui tire sur les méchants
+          en se dirigeant vers le prix (pourquoi pas ??).
+
+          %#%# L'idée est donc de récupérer les pages de votre site web qui ont
+          mystérieusement disparues, en vous aventurant à l'intérieur avec votre pistolet pour blaster
+          le virus à la source. J'avais voulu donner l'impression
+          "d'entrer dans le site" en utilisant une barre de navigation pour passer d'un niveau à l'autre.
+
+          L'endroit est sombre et orageux, il pleut des caractères, et les plateformes sont
+          recouvertes du code source du jeu.
+
+          %#%# J'ai utilisé un outil js que j'ai créé pendant l'été pour produire les modèles et les animations,
+          qui sont des paths de canvas animés. J'ai ajouté des effets sonores et
+          un petit morceau de musique, avec des sons générés par le buffer javascript natif.
+
+          %#%# %#a0 %#
+
+          %#%# Il y a quelques niveaux, deux niveaux de boss, et un petit système de progression.
+          Le résultat final rentre à peine dans la limite de 13ko,
+          et j'ai finalement eu du mal à amincir le code assez dans le temps accordé
+          sans altérer la performance du jeu. Ce fut une leçon de planification! C'était
+          tout de même amusant à faire, un bon défi de codage et le résultat final de 13.1kb
+          n'est quand même pas si mal.
+
+          </span>
+          `,
+          contributionDetails:["Made everything in a 30 day timespan",
+          "Gameplay programming",
+          "Randomized level layouts using seeded noise",
+          "Custom animation framework",
+          "Sound generation for soundtrack and sfx"],
+          collaborators:[],
+          tools:["native javascript"],
+          context:"js13k html5 game competition"
+
         },
-        {
-          title:'GMTK entry page',
-          link:"https://itch.io/jam/gmtk-2020/rate/699374"
+        audioGallery:[
+          `<iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030007044%3Fsecret_token%3Ds-5wElwc2UBtP&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false">
+          </iframe>`],
+          coverImage:"js13k2020/02.png",
+          imageGallery:["js13k2020/06.png","js13k2020/05.png","js13k2020/01.png" ],
+          tags:["Game Design","Programming","Javascript","Game Sound"],
+          date:[13,9,2020],
+          externalLinks:[
+            {
+              title:"Play",
+              link:"https://miwamiwa.github.io/13k2020/"
+            }
+          ]
         },
+
+
+
+
+        /* ENTRY 6 */
+        /* BAD BOTS GMTK */
+/*
         {
-          title:"Gameplay video",
-          link:'https://vimeo.com/440352020'
+          title: 'Bad Bots',
+          bgVid:"badbots.mp4",
+          fullDescription: 'Game prototype made solo in 48 hours for GTMK game jam in July 2020. The theme was "out of control".'
+          +"<br><br>Bad bots is a story about environmental collapse. <Br>In the future, trees are so rare that you can't breathe without being right next to one. Robots tend to the remains of the natural world.. but they've gone out of control! They're literally gobbling the trees!! Smack sense into them with your stick, and re-forest your way to the checkpoints to clear each level."
+          +"<br><br>Definitely wasn't the most polished submission out there, but it was my first 48h endeavour so I'm quite happy I managed to pack in enough mechanics and assets for people to test. I ended up getting quite a few comments on my submission which was really interesting and a nice reward. ",
+          tags:['Game Design',"Programming",'Sound Design','Unity','Blender',"Music"],
+          date:[12,07,2020],
+
+          featuredIn:["Programming","Game Design"],
+          featureDescription:{
+
+            body:`
+
+            <span class="en">
+
+
+            </span>
+
+
+            <span class="fr">
+
+            </span>
+
+
+            %#Bad Bots is a game prototype with a socio-environmental message. The player
+            discovers a future in which nature has thinned out to a minimum and cannot
+            sustain itself without constant care from robots. Somehow, the robots are
+            getting out of control and their action is destroying the forests! The player's
+            goal is to bust up these bad bots before the situation gets any more disastreous.
+            %#%# %#a0 %#
+            %#%#This is a Unity game I made solo for the 2020 GMTK game jam. Definitely a
+            big endeavour for a 48h jam, the goal was to have enough elements in the game
+            by the end of the jam for people to get a feel for the concept and narrative.
+            Though it wasn't a very polished submission, it was finished enough to get
+            quite a bit of feedback from other participants, which was a nice reward for the work done.
+            `,
+            contributionDetails:["Game Design", "Unity/C# programming", "Basic models in blender", "Music and sfx"],
+            collaborators:[],
+            tools:["Unity","Blender","Ableton"],
+            context:"GMTK Game Jam, summer of 2020"
+
+          },
+          audioGallery:[
+            `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030771900%3Fsecret_token%3Ds-X4o1BFNU0MF&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+          ],
+          imageGallery:["badbots/01.png",'badbot.png'],
+          //iconImage:"badbotsicon.png",
+          coverImage:"badbots/02.png",
+          externalLinks:[
+            {
+              title:'Play Bad Bots',
+              link:'https://sampc.itch.io/bad-bots-gmtk-2020-jam'
+            },
+            {
+              title:'GMTK entry page',
+              link:"https://itch.io/jam/gmtk-2020/rate/699374"
+            },
+            {
+              title:"Gameplay video",
+              link:'https://vimeo.com/440352020'
+            },
+            {
+              title:'SFX video',
+              link:'https://vimeo.com/440352144'
+            }
+
+          ]
         },
-        {
-          title:'SFX video',
-          link:'https://vimeo.com/440352144'
-        }
+*/
 
-      ]
-    },
-
-    /* ENTRY 7 */
-
-    //******************** APE NAPS ******************************
-    {
-      title:"Ape Naps",
-      bgVid: "apenaps.mp4",
-      fullDescription:"Ape Naps is my submission for Js 13k Games 2019, where one makes a javascript game that zips down to 13kb, all files and libraries included. The theme was 'Back'."
-      +"<br><br>In this game, you (mama ape) bring your kids back home, on your back, to some Bach. I wanted to make something silly and most peaceful. You run into other animals but you can't harm them. You only bump each other out of the way. Comments showed that part caused more grief to playtesters than anything! It was valuable feedback at the time."
-      +"<br><br>This was a first time attempting to make a full game on my own! And a first time doing many things in javascript without any libraries, like canvas drawing and generating sound. Features my own image compression scheme."
-      +"<br><br>Controls: left=a, right=d, space=jump, w=wiggle (drop a passenger)",
-      coverVideo:`<iframe src="https://player.vimeo.com/video/432701435" class="popupimg" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`,
-      imageGallery:[
-        "apenaps.png",
-        "apenaps/01.png",
-        //"apenaps/02.png",
-        //"apenaps/05.png",
-        "apenaps/04.png"
-      ],
-      iconImage:"apenapsicon.png",
-      featuredIn:["Programming"],
-
-      featureDescription:{
-
-        body:`
-        %#Ape Naps was my first submission to js13k games, a competition where one makes
-        a game with a 13kb limit on the final .zip package. The player incarnates
-        a mother ape who chases her babies to bring them back home, on her back, to
-        some Bach (the theme to follow was "back"...).
-
-        %#i0
-        %#%#I wanted to fit in as many images and sounds as possible, so I put together
-        a custom scheme to compress and display my sprites with native javascript. The
-        soundtrack and sfx employ generated sounds, also using native javascript tools.
-        Definitely an interesting programming challenge overall, and a nice learning
-        experience since it was my first time coding an entire game project.
-        `,
-        contributionDetails:["HTML5 game programming", "Graphics engine", "Sound generation"],
-        collaborators:[],
-        tools:["Javascript"],
-        context:"js13k games 2019"
-
-      },
-      tags:["Javascript","Programming","Game Design","Game Sound"],
-      date:[13,9,2019],
-      externalLinks:[
-        {
-          title:"Play Ape Naps",
-          link:"https://js13kgames.com/entries/ape-naps"
-        },
-        {
-          title:"Github",
-          link:"https://github.com/miwamiwa/13k2019"
-        }
-        /*,
-        {
-        title:"Js 13k Games Website",
-        link:"https://js13kgames.com/"
-      }
-      */
-    ]
-  },
-
-
-
-
-
+/*
     {
       skip:true,
       title:"Doodle Risk",
@@ -1110,8 +1148,8 @@ let projectDescriptions = [
       ]
     },
 
-
-
+*/
+/*
     {
       title:"Animation Nodes Music Loop",
 
@@ -1122,6 +1160,7 @@ let projectDescriptions = [
       date:[15,4,2020],
 
     },
+    */
     /*
     {
     title:'soundcloud page',
@@ -1133,6 +1172,7 @@ let projectDescriptions = [
 
   },
   */
+  /*
   {
     title:"Talking head",
     fullDescription:"Short video made for CART 362 3D Digital Production class. Audio from Jaden Smith Reads Mind Blowing Facts About The Universe.",
@@ -1152,4 +1192,5 @@ let projectDescriptions = [
     date:[20,2,2019],
 
   },
+  */
 ]

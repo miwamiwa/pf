@@ -36,9 +36,9 @@
 }
 .popupbody{
 
-  background-color:#fffc;
+  background-color:#ffffffeb;
   font-size:calc(8px + 1.0vh);
-  line-height:calc(10px + 1.0vh);
+  line-height:calc(10px + 1.1vh);
 
   width:100%;
   left:0vw;

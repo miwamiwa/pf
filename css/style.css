@@ -355,7 +355,7 @@ cursor:pointer;
 }
 
 .subjectbox:hover{
-  background-color:#cccf;
+  background-color:#fffd;
   cursor:pointer;
 }
 
@@ -375,7 +375,7 @@ cursor:pointer;
 }
 .featurebox{
   width:32vh;
-  height:36vh;
+  height:34vh;
   flex-grow: 1;
   background-color:white;
   margin:0.5vh;
@@ -388,7 +388,7 @@ cursor:pointer;
   object-fit:cover;
   width:100%;
   height:22vh;
-  padding:3px;
+  padding:6px;
 }
 
 .featureboxSmall{
@@ -405,7 +405,7 @@ cursor:pointer;
   left:0;
   width:100%;
   height:14vh;
-  padding:8px;
+  padding:15px;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
@@ -413,21 +413,25 @@ cursor:pointer;
   overflow:hidden;
 }
 .tagz{
-  color:#666f;
+  color:#99df;
   display:inline-block;
   margin:0;
   padding:0;
   position:relative;
   width:100%;
-  font-style:italic;
+  font-weight:normal;
+  /*font-style:italic;*/
   margin-bottom:8px;
-  margin-top:2px;
+  margin-top:8px;
+  font-size:calc(8px + 0.6vh);
+  line-height:calc(8px + 0.6vh);
 }
 .featurebox:hover{
   cursor:pointer;
-  background-color:#ccc9;
+  background-color:#fffa;
 }
 .boxoverlayTitle{
+  margin-top:0px;
   font-size:calc(8px + 1.0vh);
   line-height:calc(8px + 1.0vh);
   font-weight:bold;

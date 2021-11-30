@@ -222,7 +222,7 @@ function expandProject(index,noupdate){
   if(p.bgVid!=undefined) setBGVid("video/"+p.bgVid);
   else if(p.bgImg!=undefined) setBGImg("images/"+p.bgImg);
 
-  //document.body.scrollTop =0;
+  document.body.scrollTop =0;
 }
 
 let slideShowElements = [];
