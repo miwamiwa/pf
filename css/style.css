@@ -66,6 +66,7 @@ body{
 .logoS{
   color:white;
   background-color:black;
+  text-shadow:-3px -2px 0px #666f,-6px -4px 0px #555f,-9px -6px 0px #333f,-12px -8px 0px #222f;
   padding:5px;
 }
 .coverlogo{
@@ -180,6 +181,7 @@ indent{
   border-top:1px solid #ddd0;
   border-left:1px solid #ddd0;
   border-radius:0.6vw 0.6vw 0vw 0vw;
+
   padding-top:6vh;
   padding-bottom:4vh;
 
@@ -284,7 +286,7 @@ indent{
 /* PAGE BODY */
 #bodySection{
   margin-top:2vh;
-  background-color:#dddc;
+  background-color:#fffc;
   width:100%;
   min-height:200px;
   position:relative;
@@ -470,7 +472,7 @@ cursor:pointer;
 
 #footerSection{
   width:100%;
-  height:100px;
+  height:86vh;
 
   max-width:800px;
   margin-top:2vh;
@@ -494,7 +496,7 @@ cursor:pointer;
   top:0;
   left:0;
   z-index:500;
-  background-color:#bbbc;
+  background-color:#fffc;
   display:none;
   position:fixed;
 
@@ -510,11 +512,13 @@ cursor:pointer;
   position:fixed;
   height:26vmin;
   width:50vmin;
+  font-weight:bolder;
+  user-select:none;
   padding-top:6vmin;
-
+  cursor:pointer;
 }
 .galleryButton:hover{
-  color:grey;
+  color:gold;
 }
 #closeGallery{
   padding-top:0;
@@ -539,6 +543,19 @@ cursor:pointer;
   padding-top:1vmin;
   left:0;
   top:0;
+}
+
+.galleryImgIcon{
+  background-position:center;
+  width:100px;
+  height:100px;
+  display:inline-block;
+  cursor:pointer;
+}
+.galleryImgIcon:hover{
+  border-style:solid;
+  border-color:black;
+  filter:brightness(1.6) contrast(0.8);
 }
 
 .hidden{

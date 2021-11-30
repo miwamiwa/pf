@@ -1,65 +1,295 @@
-/*
-
-{
-title:"",
-fullDescription:"",
-coverImage:"filename.png", // OR coverVideo:"<iframe>",
-tags:["tag1","tag2"],
-date:[j,m,a],
-
-//optional:
-imageGallery:["filename.png","filename2.png"],
-soundcloudDescription:"title above soundcloud element",
-soundcloudLink: "<iframe>",
-externalLinks:[
-{
-title:"link1",
-link:"url1"
-},
-{
-title:"link2",
-link:"url2"
-}
-]
-},
-
-
-*/
-
-
-/*
-
-to add
-cart 345 stuff??
-ant pong???
-tangible media stuff??
-
-*/
-
 let projectDescriptions = [
 
-  /* ENTRY 0 */
+  //****** Template *******
   {
-    skip:true,
-    title:"c'est ta toune",
-    fullDescription:"hommage to da gb camera",
-    coverImage:"toune.png",
-    tags:["Javascript","Programming"],
-    iconImage:"tatouneicon.png",
-    //featuredIn:["Programming"],
-    date:[1,4,2019],
-    externalLinks:[
-      {
-        title:"Play",
-        link:"https://miwamiwa.github.io/cart263-2019/projects/project3/"
-      }
-    ]
-  },
+    // titre
+    title:"titre",
 
-  /* ENTRY 1 */
-  /* SAM'S JS13K 2020 GAME */
+    // sous-titre (no longer a sorting feature)
+    featuredIn:["Game Sound"],
+
+    // background
+    bgImg: "lp/02.png", // ou bien bgVid:"vid.mp4",
+
+    // thumbnail text
+    fullDescription:"This text will be displayed on the thumbnail."
+    +"<br><br>Woop woop!",
+
+    // article
+    featureDescription:{
+
+      // article body text
+      body:`This is the body text.
+      %#This is a line break.
+      %#
+      %#a0 This is a soundcloud embed from the audio gallery list.
+      %#
+      %#i0 This is an image from the image gallery list.
+      %#
+
+      <span class="en"></span>
+      <span class="fr"></span>`,
+
+      // article top/info section
+      contributionDetails:["Something I did in the project","Something else","Keep it short"],
+      collaborators:["Untel (programmation)","Unautre Tel (design)"],
+      tools:["Unity/C#","Max/MSP","Cubase"],
+      context:"On a fait ca ou, pourquoi?"
+      },
+
+      // list of image to be displayed
+      imageGallery:[
+        "lp/02.png",
+        "lp/01.png"
+      ],
+
+      // list of audio elements to embed in page
+      audioGallery:[
+        `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101751&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
+      ],
+
+      // list of links at the end of the document
+      externalLinks:[{
+        link:"https://tag.hexagram.ca/projects/liquid-perceptions/",
+        title:"project web page"
+      }],
+
+      // a video embed to place in frame 1 of the slide show
+      coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+      // otherwise include an image (strangely not optional)
+      coverImage:"NHE/NHE_02.png",
+
+      // relevant tags for the project
+      tags:["Game Sound","Max MSP", "Unity"],
+
+      // date
+      date:[20,12,2019],
+
+    },
+
+
+    //****** NosHistoiresExquises *******
+    {
+      // titre
+      title:"Nos Histoires Exquises",
+
+      // sous-titre (no longer a sorting feature)
+      featuredIn:["Projection Intéractive"],
+
+      // background
+      bgImg: "NHE/NHE_02.png",
+
+      bgVid:"noshistoires.mp4",
+
+      // thumbnail text
+      fullDescription:`Nos Histoires Exquises est une projection
+      intéractive créée en collaboration avec Jules Galbraith, Dana
+      Ryashi et Rose-Marie Dion.`,
+
+      // article
+      featureDescription:{
+
+        // article body text
+        body:`
+        <span class="en"></span>
+        <span class="fr"></span>
+
+        Nos Histoires Exquises est une projection intéractive
+        créée en collaboration avec Jules Galbraith (vidéo), Dana
+        Ryashi (design, programmation web) et Rose-Marie Dion (design graphique).
+
+        %#%#
+        Pour ma part j'ai contributé la conception technique,
+        les outils front-end, la programmation du back-end
+        (node.js, mongodb, google cloud), l'animation du texte (unity/c#)
+        et le mapping (Photon).
+
+        %#%#
+        L'oeuvre a été présentée le X aout 2021 sur la façade de l'Hotel 0,
+        grâce à une collaboration entre Vyv, la SAT, Alice Jarry et le
+        festival cinéma Urbain.
+
+        %#%#
+        %#i0
+
+        %#%#
+        Les participants pouvaient contribuer une phrase de leur
+        choix en direct en accédant à l'interface web, grâce à leur
+        téléphone ou bien en utilisant le poste disponible à cet effet.
+        `,
+
+        // article top/info section
+        contributionDetails:["Interaction design","System design","Text Animation","Programming"],
+        collaborators:["Jules Galbraith","Dana Ryashi","Rose-Marie Dion"],
+        tools:["Unity/C#","Photon (vyv)","html/javascript","node.js"],
+        context:"Festival cinema urbain, cours de CART 460"
+        },
+
+        // list of image to be displayed
+        imageGallery:[
+          "NHE/NHE_01.png",
+          "NHE/NHE_03.png"
+        ],
+
+        // list of audio elements to embed in page
+        audioGallery:[],
+
+        // a video embed to place in frame 1 of the slide show
+        //coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        //<div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+        coverImage:"NHE/NHE_02.png",
+
+        // relevant tags for the project
+        tags:["Projection Interactive","C#", "node.js"],
+
+        externalLinks:[],
+
+        // date
+        date:[01,08,2021],
+
+      },
+
+
+
+    //******************** LIQUID PERCEPTIONS ******************************
+    {
+      title:"Liquid Perceptions",
+      bgImg: "lp/02.png",
+      fullDescription:"Liquid Perceptions is a research-creation project by Olivia McGilchrist, Seyed M. Tabatabaei, Julia Salles and Dougy Hérard at the Milieux Institute at Concordia Univeristy, for which I provided some sound design work. "
+      +"<br><br>In this dual VR and non-VR experience, two players compete by catching as many fish as they can on a touch screen while a third player, wearing the VR set, witnesses directly the ecological damage of the first two players' fishing, as they swim across the increasingly dangerous underwater environment that lies beneath."
+      +"<br>I created sound effects and edited provided musical material to create different soundtracks for the underwater environment (for the VR user's headphones) and overwater (speakers heard by everyone).<br> I programmed the soundtrack in Max MSP (communicating with the Unity project using OSC), to route the soundtracks easily and to allow for some sound design experimentation. The final result featured use of granulation to handle large amounts of sound emitting objects, and some basic motion mapping.",
+
+      featuredIn:["Game Sound"],
+
+      featureDescription:{
+
+        body:`%#In this dual VR and non-VR experience, two players compete by catching
+        as many fish as they can on a touch screen while a third player, wearing the
+        VR set, witnesses directly the ecological damage of the first two players'
+        fishing, as they swim across the increasingly dangerous underwater environment
+        that lies beneath.
+        %#%#I created sound effects and edited provided musical material to create different
+        soundtracks for the underwater environment (for the VR user's headphones) and
+        overwater (speakers heard by everyone).
+        %#%#I programmed the soundtrack in Max MSP (communicating with the Unity project
+          using OSC), to route the soundtracks easily and to allow for some sound
+          design experimentation. The final result featured use of granulation to
+          handle large amounts of sound emitting objects, and some basic motion mapping.
+
+          %#%#The game was presented in a live demonstration in December 2019. `,
+          contributionDetails:["Sound editing","Sound effects production","Sound integration"],
+          collaborators:["Olivia McGilchrist","Seyed M. Tabatabaei","Julia Salles","Dougy Hérard"],
+          tools:["Unity/C#","Max/MSP","Cubase"],
+          context:"Research-creation project at Milieux Institute"
+
+        },
+
+        //iconImage:'lpicon.png',
+
+        imageGallery:[
+          "lp/02.png",
+          "lp/01.png",
+          "lp/03.png",
+          "lp/04.png",
+          "lp/05.png"
+        ],
+
+        externalLinks:[{
+          link:"https://tag.hexagram.ca/projects/liquid-perceptions/",
+          title:"project web page"
+        }],
+
+        coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+        tags:["Game Sound","Max MSP", "Unity"],
+        date:[20,12,2019],
+
+      },
+
+      // entry 9
+
+
+      //******************** FASTENED FURIOUS ******************************
+      {
+        title:"Fastened Furious",
+        bgVid:"ff.mp4",
+        fullDescription:`Fastened Furious was created for the Ubisoft 2019 Game Lab Competition, where the theme was “spectacle.” The game is a race between two teams of two players tethered together, overcoming wacky obstacles and racing to the finish line. Our game was nominated for the Jury's Special Award. (summary and images by Nicole Lin)
+        <br><br>I picked and produced sound effects, composed BGM tracks, set up the project in Wwise and scripted audio triggers in C#. The soundtrack featured midi instruments that would interchange during gameplay, using tools included in Wwise and some C# scripting on the Unity side.
+        <br><br>Collaborators: Dougy Herard, Zied Jebali, Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin, Scott Smith`,
+        iconImage:'fficon.png',
+        featuredIn:["Game Sound"],
+        featureDescription:{
+
+          body:`%#Fastened Furious was created for the Ubisoft 2019 Game Lab Competition,
+          where the theme was “spectacle.” The game is a race between two teams of
+          two players tethered together, overcoming wacky obstacles and racing to the
+          finish line. Our game was nominated for the Jury's Special Award.
+
+
+          %#%#I picked and produced sound effects, composed BGM tracks, set up the project
+          in Wwise and scripted audio triggers in C#.
+
+          %#%# %#a1 %#%#
+
+          The soundtrack featured midi
+          instruments that would interchange during gameplay, using tools included
+          in Wwise and some C# scripting on the Unity side.
+
+          %# %#a2 %#%#
+
+          I made a number of sound effects, including this level-reset jingle:
+
+          %# %#a3 %#%#
+
+          And this sound for a big bad plant-beast (think little shop of horrors!)
+          that ended up being removed from the game. One day, plant-beast.
+
+          %# %#a4 %#
+
+
+
+          `,
+          contributionDetails:["Sound effects","Music","Implementation in Wwise","Trigger implementation in Unity","Midi soundtrack design"],
+          collaborators:["Dougy Herard","Zied Jebali","Hiu Tung Lam", "Ricardo Liganor", "Melissa Lim", "Nicole Lin", "Scott Smith"],
+          tools:["Unity/C#","Wwise","Ableton","Cubase"],
+          context:"Ubisoft Gamelab 2019"
+
+        },
+        coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
+        tags:["Game Sound","Wwise", "Unity", "C#","Music"],
+        date:[1,4,2019],
+        soundcloudDescription:"BGM tracks from Fastened Furious:",
+        soundcloudLink: `<iframe width="80%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
+        audioGallery:[
+          `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
+
+          `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101751&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+          `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101742%3Fsecret_token%3Ds-ccvfe&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+          `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100596%3Fsecret_token%3Ds-a9vcH&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+
+          `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100584%3Fsecret_token%3Ds-eJ50M&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
+        ],
+        imageGallery:["FF_title.jpg","FF_03.jpg","FF_05.jpg"],
+        externalLinks:[
+          {
+            title:"Playthrough video",
+            link:"https://vimeo.com/432698850"
+          }
+        ]
+      },
+
+
+
+
+
+  /****** JS13K 2020 GAME ******/
   {
     title:"js13k 2020 game",
+    bgVid:"js13k2020.mp4",
     fullDescription:"Game made for js13k2020. Sound design features browser-based sound generation.",
     shortDescription:"A 13kb javascript platformer / shooter game I made for js13k competition in 2020.",
     iconImage:"13kicon.png",
@@ -167,6 +397,7 @@ let projectDescriptions = [
   /* GHOST GAME */
   {
     title:"Ghost Game",
+    bgVid:"gg.mp4",
     fullDescription:"Prototype for an audio-only game about chasing ghosts. ",
     shortDescription:"ghosts AAAAH",
     coverImage:"ghostgame/02.png",
@@ -277,6 +508,7 @@ let projectDescriptions = [
   /* GILGAMESH VIGNETTE GAMES */
   {
     title:"Gilgamesh vignettes",
+    bgVid:"gilga.mp4",
     fullDescription:"Scenes from the epic of Gilgamesh told in vignette game form. ",
 
     shortDescriptions:`<span class='en'>Scenes from the epic of Gilgamesh told in vignette game form.</span>
@@ -388,7 +620,7 @@ let projectDescriptions = [
       },
 
 
-      /* ENTRY 4 */
+
       //******************** 560 DODGER ******************************
       {
         title:"560 Dodger",
@@ -470,19 +702,17 @@ let projectDescriptions = [
           {
             title:"Github",
             link:"https://github.com/miwamiwa/560Dodger"
-          } //https://itch.io/jam/tweettweetjam-4
-          /*
+          }, //https://itch.io/jam/tweettweetjam-4
+
           {
           title:"Tweet tweet jam #4 homepage",
           link:"https://itch.io/jam/tweettweetjam-4"
         }
-        */
+
       ]
     },
 
 
-    /* ENTRY 5 */
-    /* LAUNDROMADNESS! */
     {
       title:"Laundromadness!",
       fullDescription:"It's a big world out there. <br>In this game you play as a kid who has all sorts of adventures while trying to do his laundry. <br><br>Follow the story and discover the wild side of the local laundromat! Made with Bitsy.",
@@ -554,6 +784,7 @@ let projectDescriptions = [
 
     {
       title: 'Bad Bots',
+      bgVid:"badbots.mp4",
       fullDescription: 'Game prototype made solo in 48 hours for GTMK game jam in July 2020. The theme was "out of control".'
       +"<br><br>Bad bots is a story about environmental collapse. <Br>In the future, trees are so rare that you can't breathe without being right next to one. Robots tend to the remains of the natural world.. but they've gone out of control! They're literally gobbling the trees!! Smack sense into them with your stick, and re-forest your way to the checkpoints to clear each level."
       +"<br><br>Definitely wasn't the most polished submission out there, but it was my first 48h endeavour so I'm quite happy I managed to pack in enough mechanics and assets for people to test. I ended up getting quite a few comments on my submission which was really interesting and a nice reward. ",
@@ -626,7 +857,7 @@ let projectDescriptions = [
     //******************** APE NAPS ******************************
     {
       title:"Ape Naps",
-      bgVid: "video0.mp4",
+      bgVid: "apenaps.mp4",
       fullDescription:"Ape Naps is my submission for Js 13k Games 2019, where one makes a javascript game that zips down to 13kb, all files and libraries included. The theme was 'Back'."
       +"<br><br>In this game, you (mama ape) bring your kids back home, on your back, to some Bach. I wanted to make something silly and most peaceful. You run into other animals but you can't harm them. You only bump each other out of the way. Comments showed that part caused more grief to playtesters than anything! It was valuable feedback at the time."
       +"<br><br>This was a first time attempting to make a full game on my own! And a first time doing many things in javascript without any libraries, like canvas drawing and generating sound. Features my own image compression scheme."
@@ -684,137 +915,6 @@ let projectDescriptions = [
   },
 
 
-
-  // entry 8
-
-  //******************** LIQUID PERCEPTIONS ******************************
-  {
-    title:"Liquid Perceptions",
-    bgImg: "lp/02.png",
-    fullDescription:"Liquid Perceptions is a research-creation project by Olivia McGilchrist, Seyed M. Tabatabaei, Julia Salles and Dougy Hérard at the Milieux Institute at Concordia Univeristy, for which I provided some sound design work. "
-    +"<br><br>In this dual VR and non-VR experience, two players compete by catching as many fish as they can on a touch screen while a third player, wearing the VR set, witnesses directly the ecological damage of the first two players' fishing, as they swim across the increasingly dangerous underwater environment that lies beneath."
-    +"<br>I created sound effects and edited provided musical material to create different soundtracks for the underwater environment (for the VR user's headphones) and overwater (speakers heard by everyone).<br> I programmed the soundtrack in Max MSP (communicating with the Unity project using OSC), to route the soundtracks easily and to allow for some sound design experimentation. The final result featured use of granulation to handle large amounts of sound emitting objects, and some basic motion mapping.",
-
-    featuredIn:["Game Sound"],
-
-    featureDescription:{
-
-      body:`%#In this dual VR and non-VR experience, two players compete by catching
-      as many fish as they can on a touch screen while a third player, wearing the
-      VR set, witnesses directly the ecological damage of the first two players'
-      fishing, as they swim across the increasingly dangerous underwater environment
-      that lies beneath.
-      %#%#I created sound effects and edited provided musical material to create different
-      soundtracks for the underwater environment (for the VR user's headphones) and
-      overwater (speakers heard by everyone).
-      %#%#I programmed the soundtrack in Max MSP (communicating with the Unity project
-        using OSC), to route the soundtracks easily and to allow for some sound
-        design experimentation. The final result featured use of granulation to
-        handle large amounts of sound emitting objects, and some basic motion mapping.
-
-        %#%#The game was presented in a live demonstration in December 2019. `,
-        contributionDetails:["Sound editing","Sound effects production","Sound integration"],
-        collaborators:["Olivia McGilchrist","Seyed M. Tabatabaei","Julia Salles","Dougy Hérard"],
-        tools:["Unity/C#","Max/MSP","Cubase"],
-        context:"Research-creation project at Milieux Institute"
-
-      },
-
-      //iconImage:'lpicon.png',
-
-      imageGallery:[
-        "lp/02.png",
-        "lp/01.png",
-        "lp/03.png",
-        "lp/04.png",
-        "lp/05.png"
-      ],
-
-      externalLinks:[{
-        link:"https://tag.hexagram.ca/projects/liquid-perceptions/",
-        title:"project web page"
-      }],
-
-      coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-      tags:["Game Sound","Max MSP", "Unity"],
-      date:[20,12,2019],
-
-    },
-
-    // entry 9
-
-
-    //******************** FASTENED FURIOUS ******************************
-    {
-      title:"Fastened Furious",
-      fullDescription:`Fastened Furious was created for the Ubisoft 2019 Game Lab Competition, where the theme was “spectacle.” The game is a race between two teams of two players tethered together, overcoming wacky obstacles and racing to the finish line. Our game was nominated for the Jury's Special Award. (summary and images by Nicole Lin)
-      <br><br>I picked and produced sound effects, composed BGM tracks, set up the project in Wwise and scripted audio triggers in C#. The soundtrack featured midi instruments that would interchange during gameplay, using tools included in Wwise and some C# scripting on the Unity side.
-      <br><br>Collaborators: Dougy Herard, Zied Jebali, Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin, Scott Smith`,
-      iconImage:'fficon.png',
-      featuredIn:["Game Sound"],
-      featureDescription:{
-
-        body:`%#Fastened Furious was created for the Ubisoft 2019 Game Lab Competition,
-        where the theme was “spectacle.” The game is a race between two teams of
-        two players tethered together, overcoming wacky obstacles and racing to the
-        finish line. Our game was nominated for the Jury's Special Award.
-
-
-        %#%#I picked and produced sound effects, composed BGM tracks, set up the project
-        in Wwise and scripted audio triggers in C#.
-
-        %#%# %#a1 %#%#
-
-        The soundtrack featured midi
-        instruments that would interchange during gameplay, using tools included
-        in Wwise and some C# scripting on the Unity side.
-
-        %# %#a2 %#%#
-
-        I made a number of sound effects, including this level-reset jingle:
-
-        %# %#a3 %#%#
-
-        And this sound for a big bad plant-beast (think little shop of horrors!)
-        that ended up being removed from the game. One day, plant-beast.
-
-        %# %#a4 %#
-
-
-
-        `,
-        contributionDetails:["Sound effects","Music","Implementation in Wwise","Trigger implementation in Unity","Midi soundtrack design"],
-        collaborators:["Dougy Herard","Zied Jebali","Hiu Tung Lam", "Ricardo Liganor", "Melissa Lim", "Nicole Lin", "Scott Smith"],
-        tools:["Unity/C#","Wwise","Ableton","Cubase"],
-        context:"Ubisoft Gamelab 2019"
-
-      },
-      coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-      tags:["Game Sound","Wwise", "Unity", "C#","Music"],
-      date:[1,4,2019],
-      soundcloudDescription:"BGM tracks from Fastened Furious:",
-      soundcloudLink: `<iframe width="80%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
-      audioGallery:[
-        `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
-
-        `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101751&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
-
-        `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772101742%3Fsecret_token%3Ds-ccvfe&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
-
-        `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100596%3Fsecret_token%3Ds-a9vcH&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
-
-        `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100584%3Fsecret_token%3Ds-eJ50M&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
-      ],
-      imageGallery:["FF_title.jpg","FF_03.jpg","FF_05.jpg"],
-      externalLinks:[
-        {
-          title:"Playthrough video",
-          link:"https://vimeo.com/432698850"
-        }
-      ]
-    },
 
 
 

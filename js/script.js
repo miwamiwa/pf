@@ -1,5 +1,19 @@
 window.onload = start;
-window.onresize =resize;
+
+
+const MobileCoverSectionHeight = "84vh";
+const WidthThresholdForPaddingChange = 800;
+const WidthThresholdForSmallMode = 600;
+
+// base value for scaling title height (unit: vh)
+const TitleSize_Small = "4";
+const TitleSize_Wide = "8";
+const SubtitleSize_Small = "2";
+const SubtitleSize_Wide = "3";
+
+const SlideShowHeight_Default = "50vh";
+
+let titleExpandedAmount=1;
 
 let featureboxsize =22;
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -24,7 +38,7 @@ let doc = {
   nameButton:0
 }
 let imagesInArticle = [];
-let navsection;
+let navBar;
 let banderollesection;
 let subjectsbox;
 let bodycontentsbox;
@@ -50,7 +64,7 @@ let tbh; // "Title Box Height". the "coverbox" is the
 // entire cover section (video and title)
 let hunit;
 let resizeRate=300;
-
+let coverBlackSpan;
 let amtThingsShown = 4;
 /*
 window.onhashchange = function() {
@@ -60,65 +74,27 @@ console.log("hash change")
 
 let smallmode = false;
 let bsize;// banderolle section height
-let titleel;//=document.getElementsByClassName("coverTitle1")[0];
-let titleel2;//=document.getElementById("logopt2");
-let titlebox;
-let coversubtitle;
-let navlogo;
+let coverTitleDiv;//=document.getElementsByClassName("coverTitle1")[0];
+let coverWhiteSpan;//=document.getElementById("logopt2");
+let coverTitleParent;
+let coverSubtitle;
+let navLogoElement;
 let navbody;
 let navbheight; // nav button height in px
-let navheight;
+let navHeight;
 let resized = true; // to prevent extra calls of checkresize()
 let viewport;
 let popupSpaceBelowTitle;
-//resize()
-//
-// on window resized callback
-function resize(){
-  resized=true;
-  checkSmallMode();
-  if(isMobile) coverbox.style.height="86vh";
-  tbh = document.getElementById("coverVideo").getBoundingClientRect().height;
-  hunit = 0.1*window.innerHeight;
-  popupSpaceBelowTitle=0.4*hunit;
-  viewportW=viewport.getBoundingClientRect().width;
-
-  updateBodyPadding();
-
-  navbheight = 0.2*hunit+8;
-  scrollevent();
-  styleTitle();
-}
-
-function updateBodyPadding(){
-  if(popupshown&&isMobile&&viewportW<800){
-    document.getElementsByClassName("popupbody")[0].style.padding="4vw"
-    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="4vw"
-  }
-  else if(popupshown&&viewportW<800){
-    document.getElementsByClassName("popupbody")[0].style.padding="3vw"
-    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="3vw"
-  }
-  else if(popupshown){
-    document.getElementsByClassName("popupbody")[0].style.padding="3vw"
-    document.getElementsByClassName("popupimgcontainer")[0].style.marginLeft="0vw"
-  }
-}
-
-// checkSmallMode()
-//
-// if window width is < 600 px, then we are smol
-function checkSmallMode(){
-  if(window.innerWidth<=600){
-    smallmode=true;
-  }
-  else smallmode=false;
-  //smallmode = true;
-}
-
 const languageParam = "Swslv";
 let viewportW;
 let viewpp;
+
+
+
+
+
+
+
 // start()
 //
 // called when page loads.
@@ -126,56 +102,30 @@ let viewpp;
 
 function start(){
 
-  let lang= localStorage.getItem(languageParam);
+  getLanguageSettings();
 
   viewport=document.getElementById("viewport");
   viewportW=viewport.getBoundingClientRect().width;
   viewpp = document.getElementById("viewportparent");
-  //console.log(lang);
-  if(lang!=undefined&&lang!=null){
-    if(lang=="en") isFr=false;
-    else if(lang=="fr") isFr=true;
-  }
-  else isFr=true;
 
-  if(isMobile){
-    window.onorientationchange=resize;
-  }
-
-/*
-  let el = document.createElement("div");
-  el.innerHTML=window.innerWidth;
-  el.style.position="fixed";
-  el.style.top=0;
-  el.style.left=0;
-  el.style.fontSize="100px";
-  document.body.appendChild(el);
-  */
-
+  window.onresize =resize;
+  if(isMobile) window.onorientationchange=resize;
 
 
   checkSmallMode();
-  //console.log(window.visualViewport.width,window.innerHeight);
   lastH=window.innerHeight;
-  //console.log("is mobile: "+isMobile)
-  //setInterval(checkResize,resizeRate);
 
-
-  // save url on page start. prevents defaulting to wrong page on setup
   starturl=window.location.href;
   hunit = 0.1*window.innerHeight;
   navbheight = 2*hunit+8;
-  // create some pointers
 
   doc.galleryView = document.getElementById("galleryView");
   doc.imageViewer = document.getElementById("galleryImageViewer");
-  navsection=document.getElementById("navSection");
+  navBar=document.getElementById("navSection");
   banderollesection=document.getElementById("banderolleSection");
 
   if(banderollesection!=undefined)
     bsize=banderollesection.getBoundingClientRect().height;
-
-  //subjectsbox=document.getElementById("subjectsBox");
 
   // create top page elements
   createCoverBox();
@@ -223,60 +173,8 @@ function start(){
 }
 
 
-function styleTitle(fsize,lheight,fsize2,spacing){
-  // logo s
-  titleel.style.fontSize=fsize;
-  titleel.style.lineHeight=lheight;
-  // rest of the title
-  titleel2.style.fontSize=fsize;
-  titleel2.style.lineHeight=lheight;
-
-  coversubtitle[0].style.fontSize=fsize2;
-  coversubtitle[0].style.lineHeight=fsize2;
-  coversubtitle[0].style.top=(14*scrollfact)+"vh";
 
 
-
-  titleel2.style.left=`calc(${fsize} + 15px)`;
-
-  if(spacing!=undefined){
-    titleel.style.letterSpacing=spacing+"px";
-    titleel2.style.letterSpacing=spacing+"px";
-    coversubtitle[0].style.letterSpacing=(spacing*.5)+"px";
-    //if(coversubtitle.length>0)
-    //coversubtitle[1].style.letterSpacing=(spacing*.5)+"px";
-  }
-
-  let fact=scrollfact;
-  let w = logos.getBoundingClientRect().width + titleel2.getBoundingClientRect().width;
-  let offset = ( window.innerWidth - w )/2;
-  offset *= scrollfact;
-
-
-  titlebox.style.left=offset+"px";
-  // center elements
-  if(smallmode){
-
-    titlebox.style.top=(60*fact)+"vh";
-    coversubtitle[0].style.top=(14*fact)+"vh";
-    //if(coversubtitle.length>0)
-    //coversubtitle[1].style.top=(14*fact)+"vh";
-
-  }
-  else {
-    //titlebox.style.left="26vw";
-    titlebox.style.top=(20*fact)+"vh";
-    coversubtitle[0].style.top=(26*fact)+"vh";
-    //if(coversubtitle.length>0)
-    //coversubtitle[1].style.top=(26*fact)+"vh";
-  }
-}
-
-let scrollfact=1;
-const smallTitleSize = "4";
-const bigTitleSize = "8";
-const smallSubTitleSize = "2";
-const bigSubTitleSize = "3";
 // scrollevent()
 //
 // called when page is scrolled.
@@ -286,105 +184,112 @@ const bigSubTitleSize = "3";
 
 function scrollevent(){
 
-  let level2height=navheight;
-  //console.log(navheight);
   let scroll = document.body.scrollTop;
-
-  let titlesize = bigTitleSize;
-  let subtitlesize = bigSubTitleSize;
-  let shrinkrange = 4*hunit;
-
+  let titlesize = TitleSize_Wide;
+  let subtitlesize = SubtitleSize_Wide;
   if(smallmode){
-    shrinkrange = 4*hunit;
-    titlesize = smallTitleSize;
-    subtitlesize = smallSubTitleSize;
+    titlesize = TitleSize_Small;
+    subtitlesize = SubtitleSize_Small;
   }
 
+  // euh.. something to do with titleExpandedAmount
+  let shrinkrange = 4*hunit;
+  // scroll amount after which title starts to shrink
   let shrinkheight= 2*hunit;
-  let shrinkover=3*hunit;
-  // when title is shrinking
+  // scroll amount after which title disappears
+  let shrinkover= 3*hunit;
+
+
+  // set title size when title is shrinking :
 
   if(scroll>shrinkheight){
 
-    // sfact =1 at top of shrink range, 0 at bottom
-    scrollfact=( 1- (scroll-shrinkheight) / (shrinkrange) );
-    // font size
-    let fsize1 = titlesize * 0.1*hunit;
+    // titleExpandedAmount=1 at top of shrink range, 0 at bottom
+    titleExpandedAmount=( 1- (scroll-shrinkheight) / (shrinkrange) );
+    let adjustedSize = titlesize * 0.1*hunit;
 
-    let iscrollfact = 1-scrollfact;
-    //console.log(iscrollfact)
-    let fsize = navbheight + scrollfact*(fsize1-navbheight);//20+0.08 * window.innerHeight * scrollfact;
-    let fsize2 = navbheight + scrollfact*((subtitlesize * 0.1*hunit)-navbheight);
-    let lsize = 2 - 10  * iscrollfact; // space between characters
-    let lineheight= fsize - 19 * iscrollfact;
-    //console.log(fsize,titlesize)
-    styleTitle(fsize+"px",lineheight+"px",fsize2+"px",lsize)
+    let titleFontSize= navbheight + titleExpandedAmount*(adjustedSize-navbheight);
+    let subtitleFontSize = navbheight + titleExpandedAmount*((subtitlesize * 0.1*hunit)-navbheight);
+    let lineHeight = titleFontSize - 19 * (1-titleExpandedAmount);
+    let characterSpacing = 2 - 10  * (1-titleExpandedAmount);
+
+    styleTitle(
+      titleFontSize + "px",
+      lineHeight + "px",
+      subtitleFontSize + "px",
+      characterSpacing
+    );
   }
 
-  // when page fully scrolled up
+  // set title size when page fully scrolled up :
+
   else {
-    scrollfact=1;
-    styleTitle(titlesize+"vh",titlesize+"vh", subtitlesize+"vh",2);
+    titleExpandedAmount=1;
+    styleTitle(
+      titlesize+"vh",
+      titlesize+"vh",
+      subtitlesize+"vh",
+      2
+    );
   }
 
-  // VIDEO PARALLAX
-  //document.getElementById("coverVideo").style.top =
-  //  (0-scroll/parallaxfactor) +"px";
+  // show nav logo when shrink range is exceeded :
 
   if(scroll>shrinkover){
-    navlogo.style.top=0;
-    navlogo.style.display="block"
+    navLogoElement.style.top=0;
+    navLogoElement.style.display="block"
     navbody.style.width=compressednavwidth;
   }
-  else if(scroll>shrinkover-navheight){
 
-    // nav logo scrolls in from top
-    navlogo.style.top=(scroll - shrinkover);
-    navlogo.style.display="block";
+  // slide-in nav logo when in shrinking range :
+
+  else if(scroll>shrinkover-navHeight){
+    navLogoElement.style.top=(scroll - shrinkover);
+    navLogoElement.style.display="block";
     navbody.style.width=compressednavwidth;
-
   }
+
+  // hide nav logo when below shrinking range :
+
   else{
-
-    navlogo.style.display="none";
+    navLogoElement.style.display="none";
     navbody.style.width=expandednavwidth;
   }
 
-  // fix nav bar position on all pages
-  if(scroll>tbh){
+  // position nav bar when we scrolled into its fixed position
 
-    document.getElementById("coverTitleBox").style.display="none";
-    navsection.style.position="fixed";
-    navsection.style.top="0px";
+  if(scroll>tbh - navHeight){
+
+    coverTitleParent.style.display="none";
+    navBar.style.position="fixed";
+    navBar.style.top="0px";
 
     // if there is a banderolle section, fix banderolle position
-    if(pageIs=="home")
-      banderollesection.style.marginTop=level2height+"px";
+    if(pageIs=="home") banderollesection.style.marginTop=navHeight+"px";
+    else banderollesection.style.margin = 0;
 
-    /*
-    else {
-      //document.getElementById("bodySection").style.marginTop=level2height+"px";
-    }
-    */
-    // fix popup title and body positions3
-    if(banderollesection!=undefined)
-      bsize=banderollesection.getBoundingClientRect().height;
-
-    if(popupshown&&scroll>tbh+bsize){
+    if(popupshown&&scroll>tbh+bsize - navHeight){
       let p=document.getElementsByClassName("popuptitle");
       p[0].style.position="fixed";
-      p[0].style.top=level2height+"px";
+      p[0].style.top=navHeight+"px";
       popupoffsetted=true;
-      document.getElementsByClassName("popupimgcontainer")[0].style.marginTop=(level2height+20 + popupSpaceBelowTitle)+"px";
+
+      let slideshowEl = document.getElementsByClassName("popupimgcontainer")[0];
+
+      slideshowEl.style.marginTop=navHeight+"px";
+      slideshowEl.style.paddingTop=popupSpaceBelowTitle+"px";
+      slideshowEl.style.height = `calc(${SlideShowHeight_Default} + 20px)`;
     }
     else if(popupshown) resetPopupSectionOffsets();
 
   }
-  // if we've scrolled up and out of fix range, re-fix everything
+
+  // position nav bar when it is in adaptive range :
+
   else {
     navbody.style.width=expandednavwidth;
-    document.getElementById("coverTitleBox").style.display="block";
-    navsection.style.position="relative";
+    coverTitleParent.style.display="block";
+    navBar.style.position="relative";
     if(pageIs=="home") banderollesection.style.marginTop="0px";
   //  else document.getElementById("bodySection").style.marginTop="0px";
     if(popupshown) resetPopupSectionOffsets();
@@ -414,7 +319,11 @@ function resetPopupSectionOffsets(){
   p[0].style.position="relative";
   p[0].style.top="0px";
   popupoffsetted = false;
-  document.getElementsByClassName("popupimgcontainer")[0].style.marginTop=popupSpaceBelowTitle+"px";
+
+  let slideshowEl = document.getElementsByClassName("popupimgcontainer")[0];
+  slideshowEl.style.height = SlideShowHeight_Default;
+  slideshowEl.style.marginTop=popupSpaceBelowTitle+"px";
+  slideshowEl.style.paddingTop=(popupSpaceBelowTitle-20)+"px";
 }
 
 
@@ -474,47 +383,7 @@ function fadeOutNav(){
   }
 }
 
-// populatenav()
-//
-// add nav bar elements to the page
 
-function populateNav(){
-  navsection.innerHTML = `
-  <canvas id="navcanvas"></canvas>
-  <div id="scrollingnav" onclick="scrollNavAction()">
-  v v v
-  </div>
-  <div id="revealednav">
-  <div id="navHeader">
-  <div class="navlogo logoS" onclick="reachPage('index.html')">S</div> </div>
-  <!-- nav buttons -->
-  <div id="navBody" onmouseleave="navfx2()">
-  <a id="n0" class="navButton" onmouseenter="navfx(0)" href="works.html">
-  <span class="en">WORKS</span><span class="fr">PROJETS</span>
-  </a>
-
-  <a id="n1" class="navButton" onmouseenter="navfx(1)" href="about.html">
-  <span class="en">ABOUT</span><span class="fr">À PROPOS</span>
-  </a>
-
-  <span id="n4" class="navButton" onmouseenter="navfx(4)" onclick="toggleLanguage()">
-  <span class="en">FR</span><span class="fr">EN</span></span>
-  </div>
-  </div>
-  `;
-
-  scrollNavButton = document.getElementById("scrollingnav");
-  revealedNav = document.getElementById("revealednav");
-  navcanvas = document.getElementById("navcanvas");
-  navlogo = document.getElementById("navHeader");
-  navbody = document.getElementById("navBody");
-  navcanvas.width=window.innerWidth;
-  navcanvas.height=2;
-  navctx=navcanvas.getContext("2d");
-  navheight = navsection.getBoundingClientRect().height;
-
-  setInterval(navupdate,50);
-}
 
 function reachPage(){
   window.location.href="index.html"
@@ -528,24 +397,7 @@ function toggleLanguage(){
 
 }
 
-function updateLanguage(){
-  let enitems = document.getElementsByClassName("en");
-  let fritems = document.getElementsByClassName("fr");
 
-
-  for(let i=0; i<enitems.length;i++){
-    if(!isFr) enitems[i].classList.remove("hidden");
-    else enitems[i].classList.add("hidden");
-  }
-  for(let i=0; i<fritems.length;i++){
-    if(isFr) fritems[i].classList.remove("hidden");
-    else fritems[i].classList.add("hidden");
-  }
-
-  if(isFr)
-    localStorage.setItem(languageParam,"fr");
-  else localStorage.setItem(languageParam,"en");
-}
 
 function navupdate(){
   //console.log("ey")
@@ -674,7 +526,7 @@ function createCoverBox(){
   if(coverbox==undefined) coverbox=document.getElementById("coverSectionSmall");
 
   // fix cover page size if mobile (max vh is actually less than 100 lol wtf)
-  if(isMobile) coverbox.style.height="84vh";
+  if(isMobile) coverbox.style.height=MobileCoverSectionHeight;
 
 
 
@@ -686,33 +538,25 @@ function createCoverBox(){
   </div>`;
 
   // video element
-  document.getElementById("vidcontainer").innerHTML=`<video id="coverVideo" height="100%" width="100%" autoplay muted loop >
-  <source src="images/Sequence_01_1.mp4" type="video/mp4">
-  </video>`;
+  createVideo("images/Sequence_01_1.mp4");
 
   // create some pointers
-  titleel=document.getElementsByClassName("coverTitle1")[0];
-  logos = document.getElementsByClassName("coverlogo")[0];
-  titleel2=document.getElementById("logopt2");
-  titlebox=document.getElementById("coverTitleBox");
-  coversubtitle = document.getElementsByClassName("coverTitle2");
-  tbh = document.getElementById("coverVideo").getBoundingClientRect().height;
-}
-let logos;
-
-function setBGVid(path){
-  let videlement = document.getElementById("coverVideo"); //
-  if(videlement==undefined){
-    document.getElementById("vidcontainer").innerHTML=`<video id="coverVideo" height="100%" width="100%" autoplay muted loop >
-    <source src="${path}" type="video/mp4">
-    </video>`;
-  }
-  else videlement.setAttribute("src",path);
+  coverTitleDiv=document.getElementsByClassName("coverTitle1")[0];
+  coverBlackSpan = document.getElementsByClassName("coverlogo")[0];
+  coverWhiteSpan=document.getElementById("logopt2");
+  coverTitleParent=document.getElementById("coverTitleBox");
+  coverSubtitle = document.getElementsByClassName("coverTitle2");
+  updateTBH();
 }
 
-function setBGImg(path){
-  document.getElementById("vidcontainer").innerHTML=`<img id="coverVideo" src="${path}" height="100%" width="100%"></img>`;
+function updateTBH(){
+  //if(pageIs=="home") return 9*hunit;
+  //else return 8*hunit;
+  return tbh = document.getElementById("coverVideo").getBoundingClientRect().height;
 }
+
+
+
 
 // populateBody()
 //
@@ -808,7 +652,7 @@ function showMore(){
     if(i<amtThingsShown){
       let p = projectDescriptions[i];
 
-      addProjectBox(p,i,true);
+      addProjectBox(p,i,false);
       featuredprojectcount++;
     }
 
@@ -1029,8 +873,8 @@ function reachPopup(){
   popupsection.scrollIntoView();
 
   if(popupoffsetted)
-    document.body.scrollTop -= 2*navheight+popupSpaceBelowTitle;
-  else document.body.scrollTop -= navheight;
+    document.body.scrollTop -= 2*navHeight+popupSpaceBelowTitle;
+  else document.body.scrollTop -= navHeight;
 
   scrollevent();
 }
@@ -1044,21 +888,41 @@ returns date in string form given a 3-part date array
 let popupshown=false;
 function getDate(data){
   let month="";
-  switch(data[1]){
-    case 1: month="January"; break;
-    case 2: month="February"; break;
-    case 3: month="March"; break;
-    case 4: month="April"; break;
-    case 5: month="May"; break;
-    case 6: month="June"; break;
-    case 7: month="July"; break;
-    case 8: month="August"; break;
-    case 9: month="September"; break;
-    case 10: month="October"; break;
-    case 11: month="November"; break;
-    case 12: month="December"; break;
+  if(!isFr){
+    switch(data[1]){
+      case 1: month="January"; break;
+      case 2: month="February"; break;
+      case 3: month="March"; break;
+      case 4: month="April"; break;
+      case 5: month="May"; break;
+      case 6: month="June"; break;
+      case 7: month="July"; break;
+      case 8: month="August"; break;
+      case 9: month="September"; break;
+      case 10: month="October"; break;
+      case 11: month="November"; break;
+      case 12: month="December"; break;
+    }
   }
-  return data[0] +" "+month+" "+data[2];
+  else {
+    switch(data[1]){
+      case 1: month="Janvier"; break;
+      case 2: month="Février"; break;
+      case 3: month="Mars"; break;
+      case 4: month="Avril"; break;
+      case 5: month="Mai"; break;
+      case 6: month="Juin"; break;
+      case 7: month="Juillet"; break;
+      case 8: month="Août"; break;
+      case 9: month="Septembre"; break;
+      case 10: month="Octobre"; break;
+      case 11: month="Novembre"; break;
+      case 12: month="Décembre"; break;
+    }
+  }
+
+  //return data[0] +" "+month+" "+data[2];
+  return month+" "+data[2];
 }
 
 // exitpopup()

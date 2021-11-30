@@ -3,7 +3,7 @@
   padding-left:0px;
   padding-right:0px;
   position:relative;
-  background-color:#eee6;
+  background-color:#eeeb;
   padding-bottom:6vh;
 
 }
@@ -51,8 +51,8 @@
 }
 .popupimg{
 
-
-  max-width:100%;
+  object-fit:cover;
+  width:100%;
   height:60vh;
   max-width:800px;
 }
@@ -75,9 +75,10 @@
   width:100%;
   height:100%;
   position:absolute;
-  background-color:#eeef;
+
+  background-color:#eee0;
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   justify-content:center;
 }
 .popupTopPadding{
@@ -231,12 +232,12 @@
   padding:1vh;
   color:#aaaf;
   cursor:pointer;
-  background-color:#fff8;
+  background-color:#fffa;
 }
 
 #infoBoxToggle:hover{
-  background-color:#4444;
-  color:#ffff;
+  background-color:#fff6;
+  color:#888f;
 }
 
 @media screen and (max-width: 600px) {

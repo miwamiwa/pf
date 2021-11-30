@@ -58,10 +58,14 @@ function expandProject(index,noupdate){
 
   // get links string (for footer)
   let links = "";
-  if(p.externalLinks!=undefined)
-  for(let i=0; i<p.externalLinks.length; i++){
-    links += `<a class="popuplink" href='${p.externalLinks[i].link}'>${p.externalLinks[i].title}</a><br>`;
+  if(p.externalLinks!=undefined&&p.externalLinks.length>0){
+    links ="<div class='popupbodyitalic'>external links:</div>";
+
+    for(let i=0; i<p.externalLinks.length; i++){
+      links += `<a class="popuplink" href='${p.externalLinks[i].link}'>${p.externalLinks[i].title}</a><br>`;
+    }
   }
+
 
   // setup overview text (popup body)
   let overviewtxt="";
@@ -107,7 +111,7 @@ function expandProject(index,noupdate){
           let sourceImage = "images/"+p.imageGallery[i];
 
           gallerytxt += `
-          <div onclick="galleryImageClicked(0,${index},${i})" style="background-image:url('images/${p.imageGallery[i]}');background-position:center;width:100px;height:100px;display:inline-block;" ></div>
+          <div onclick="galleryImageClicked(0,${index},${i})" style="background-image:url('images/${p.imageGallery[i]}');" class="galleryImgIcon" ></div>
           `;
         }
       }
@@ -191,7 +195,7 @@ function expandProject(index,noupdate){
 
 
     <div class="popupexternallinks">
-      <div class='popupbodyitalic'>external links:</div>
+
       ${links}
     </div>
   </div>
@@ -208,7 +212,7 @@ function expandProject(index,noupdate){
   // scroll to element
   popupshown=true;
   updateLanguage();
-  //reachPopup();
+  reachPopup();
 
   document.getElementById("titletxt1").innerText = "";//p.title;
   document.getElementById("titletxt2").innerText = "";// p.title;
@@ -218,7 +222,7 @@ function expandProject(index,noupdate){
   if(p.bgVid!=undefined) setBGVid("video/"+p.bgVid);
   else if(p.bgImg!=undefined) setBGImg("images/"+p.bgImg);
 
-  document.body.scrollTop =0;
+  //document.body.scrollTop =0;
 }
 
 let slideShowElements = [];
