@@ -1,5 +1,6 @@
 window.onload = start;
 
+const ViewportYPercent = 0.90;
 
 const MobileCoverSectionHeight = "84vh";
 const WidthThresholdForPaddingChange = 800;
@@ -89,8 +90,7 @@ const languageParam = "Swslv";
 let viewportW;
 let viewpp;
 
-
-
+let bodySection;
 
 
 
@@ -107,7 +107,7 @@ function start(){
   viewport=document.getElementById("viewport");
   viewportW=viewport.getBoundingClientRect().width;
   viewpp = document.getElementById("viewportparent");
-
+  bodySection = document.getElementById("bodySection");
   window.onresize =resize;
   if(isMobile) window.onorientationchange=resize;
 
@@ -118,7 +118,7 @@ function start(){
   starturl=window.location.href;
   hunit = 0.1*window.innerHeight;
   navbheight = 2*hunit+8;
-
+  viewpp.style.top = (ViewportYPercent * window.innerHeight) + "px";
   doc.galleryView = document.getElementById("galleryView");
   doc.imageViewer = document.getElementById("galleryImageViewer");
   navBar=document.getElementById("navSection");
@@ -170,6 +170,10 @@ function start(){
   if(pageIs!="home") scrollovercover();
 
   scrollevent();
+
+
+  if(document.body.scrollTop>tbh - navHeight) coverTitleParent.style.display="none";
+
 }
 
 
@@ -256,22 +260,29 @@ function scrollevent(){
     navbody.style.width=expandednavwidth;
   }
 
+  // margin below nav bar is 2vh, see style.css:#bodySection
+
+
   // position nav bar when we scrolled into its fixed position
 
-  if(scroll>tbh - navHeight){
+  if(scroll>ViewportYPercent * window.innerHeight){
 
     coverTitleParent.style.display="none";
     navBar.style.position="fixed";
     navBar.style.top="0px";
 
+    bodySection.style.marginTop = (navHeight + 0.2*hunit) + "px";
+
+
+
     // if there is a banderolle section, fix banderolle position
-    if(pageIs=="home") banderollesection.style.marginTop=navHeight+"px";
-    else banderollesection.style.margin = 0;
+    //if(pageIs=="home") banderollesection.style.marginTop=(navHeight+2*hunit)+"px";
+    //else if(banderollesection!=undefined) banderollesection.style.margin = 0;
 
     if(popupshown&&scroll>tbh+bsize - navHeight){
       let p=document.getElementsByClassName("popuptitle");
       p[0].style.position="fixed";
-      p[0].style.top=navHeight+"px";
+      p[0].style.top=(2*navHeight+ 0.2*hunit)+"px";
       popupoffsetted=true;
 
       let slideshowEl = document.getElementsByClassName("popupimgcontainer")[0];
@@ -287,14 +298,12 @@ function scrollevent(){
   // position nav bar when it is in adaptive range :
 
   else {
+    bodySection.style.marginTop = (0.2*hunit) + "px";
     navbody.style.width=expandednavwidth;
     coverTitleParent.style.display="block";
     navBar.style.position="relative";
     if(pageIs=="home") banderollesection.style.marginTop="0px";
-  //  else document.getElementById("bodySection").style.marginTop="0px";
     if(popupshown) resetPopupSectionOffsets();
-
-
   }
 
   if(scroll==0&&scrollNavButton.style.display=="none")
@@ -346,7 +355,7 @@ function showscrollnav(){
 }
 
 function hidescrollnav(){
-  console.log("elo")
+  //console.log("elo")
   revealedNav.style.display="block";
   revealedNav.style.opacity =0;
   scrollNavButton.style.display="none";
@@ -511,7 +520,7 @@ function populateProjectsList(){
     div.classList.add("resumeListElement");
     let date = getDate(p.date);
     div.innerHTML = `- ${p.title}. ${date}.`;
-    document.getElementById("bodySection").appendChild(div);
+    bodySection.appendChild(div);
   }
 }
 
@@ -564,7 +573,7 @@ function updateTBH(){
 // called in start().
 
 function populateBody(){
-  console.log("populate body")
+  //console.log("populate body")
   // populate subjects list
   selectSubject(0);
   for(let i=0; i<projectDescriptions.length; i++){
@@ -950,7 +959,7 @@ function exitpopup(){
 // NEEDS FIX: called 3 times on load. feels like overkill.
 
 function selectSubject(index){
-  console.log("select subject!")
+  //console.log("select subject!")
   featureSelection = subjects[index];
   amtThingsShown = 4;
   //updateSubjectsBox();

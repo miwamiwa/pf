@@ -223,6 +223,8 @@ function expandProject(index,noupdate){
   else if(p.bgImg!=undefined) setBGImg("images/"+p.bgImg);
 
   document.body.scrollTop =0;
+
+  viewpp.style.top = (window.innerHeight-navHeight - document.getElementsByClassName("popuptitle")[0].getBoundingClientRect().height) + "px";
 }
 
 let slideShowElements = [];
