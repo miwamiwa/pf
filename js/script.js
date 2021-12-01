@@ -271,8 +271,20 @@ function scrollevent(){
     navBar.style.position="fixed";
     navBar.style.top="0px";
 
+    if(!popupshown)
     bodySection.style.marginTop = (navHeight + 0.2*hunit) + "px";
+    else{
 
+      let p=document.getElementsByClassName("popuptitle")[0];
+      //console.log(p)
+      p.style.position="fixed";
+      p.style.top=(navHeight)+"px";
+      //if(scroll>ViewportYPercent * window.innerHeight + navHeight)
+      popupSection.style.paddingTop = (navHeight+p.getBoundingClientRect().height+ 0.2*hunit) + "px";
+      //else popupSection.style.marginTop =0;
+//let slideshowEl = document.getElementsByClassName("popupimgcontainer")[0];
+      //slideshowEl.style.paddingTop=popupSpaceBelowTitle+"px";
+    }
 
 
     // if there is a banderolle section, fix banderolle position
@@ -280,9 +292,8 @@ function scrollevent(){
     //else if(banderollesection!=undefined) banderollesection.style.margin = 0;
 
     if(popupshown&&scroll>tbh+bsize - navHeight){
-      let p=document.getElementsByClassName("popuptitle");
-      p[0].style.position="fixed";
-      p[0].style.top=(2*navHeight+ 0.2*hunit)+"px";
+
+      //p[0].style.left=0;
       popupoffsetted=true;
 
       let slideshowEl = document.getElementsByClassName("popupimgcontainer")[0];
@@ -291,13 +302,14 @@ function scrollevent(){
       slideshowEl.style.paddingTop=popupSpaceBelowTitle+"px";
       slideshowEl.style.height = `calc(${SlideShowHeight_Default} + 20px)`;
     }
-    else if(popupshown) resetPopupSectionOffsets();
+    //else if(popupshown) resetPopupSectionOffsets();
 
   }
 
   // position nav bar when it is in adaptive range :
 
   else {
+    popupSection.style.paddingTop = ( 0*hunit) + "px";
     bodySection.style.marginTop = (0.2*hunit) + "px";
     navbody.style.width=expandednavwidth;
     coverTitleParent.style.display="block";
@@ -328,7 +340,7 @@ function resetPopupSectionOffsets(){
   p[0].style.position="relative";
   p[0].style.top="0px";
   popupoffsetted = false;
-
+  popupSection.style.marginTop =0;
   let slideshowEl = document.getElementsByClassName("popupimgcontainer")[0];
   slideshowEl.style.height = SlideShowHeight_Default;
   slideshowEl.style.marginTop=popupSpaceBelowTitle+"px";
@@ -370,7 +382,15 @@ let limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
                    document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
 
                    //console.log(document.body.scrollTop, limit)
-  if(document.body.scrollTop<tbh && document.body.scrollTop < limit-window.innerHeight) setTimeout(scrollovercover, 20);
+  if(document.body.scrollTop<ViewportYPercent*window.innerHeight && document.body.scrollTop < limit-window.innerHeight) setTimeout(scrollovercover, 20);
+  else{
+    if(popupshown){
+      reachPopup();
+      document.body.scrollTop+=navHeight;
+      scrollevent();
+    }
+
+  }
 }
 
 function fadeInNav(){

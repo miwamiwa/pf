@@ -212,7 +212,9 @@ function expandProject(index,noupdate){
   // scroll to element
   popupshown=true;
   updateLanguage();
-  reachPopup();
+  //reachPopup();
+  document.body.scrollTop =0;
+  scrollovercover();
 
   document.getElementById("titletxt1").innerText = "";//p.title;
   document.getElementById("titletxt2").innerText = "";// p.title;
@@ -222,7 +224,7 @@ function expandProject(index,noupdate){
   if(p.bgVid!=undefined) setBGVid("video/"+p.bgVid);
   else if(p.bgImg!=undefined) setBGImg("images/"+p.bgImg);
 
-  document.body.scrollTop =0;
+  //document.body.scrollTop =0;
 
   viewpp.style.top = (window.innerHeight-navHeight - document.getElementsByClassName("popuptitle")[0].getBoundingClientRect().height) + "px";
 }
