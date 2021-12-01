@@ -200,7 +200,7 @@ function expandProject(index,noupdate){
   document.getElementById("titletxt1").innerText = "";//p.title;
   document.getElementById("titletxt2").innerText = "";// p.title;
 
-  document.getElementById("coverVideo").style.filter = "brightness(1.0) contrast(1.0)";
+  //document.getElementById("coverVideo").style.filter = "brightness(1.0) contrast(1.0)";
 
   if(p.bgVid!=undefined) setBGVid("video/"+p.bgVid);
   else if(p.bgImg!=undefined) setBGImg("images/"+p.bgImg);
@@ -225,7 +225,7 @@ function setupLinkText(p){
     links ="<div class='popupbodyitalic'></div>";
 
     for(let i=0; i<p.externalLinks.length; i++){
-      links += `<a class="popuplink" href='${p.externalLinks[i].link}'>${p.externalLinks[i].title}</a><br>`;
+      links += `<a class="popuplink" href='${p.externalLinks[i].link}'>${p.externalLinks[i].title}</a>`;
     }
   }
   return links;

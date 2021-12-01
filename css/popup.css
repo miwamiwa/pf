@@ -134,13 +134,31 @@
   margin-top:6vh;
   margin-left:0%;
 
+  display:flex;
+  justify-content: space-around;
+  align-items:center;
+  flex-wrap:wrap;
+  width:100%;
+
   padding-top:4vh;
   border-top:1px solid #eeef;
   border-radius:0.6vw 0.6vw 0vw 0vw;
 }
 /* individual link text */
 .popuplink{
-
+  font-size:calc(6px + 1.2vh);
+  line-height:calc(6px + 1.2vh);
+  width:50%;
+  text-align:center;
+  padding:2.5vh;
+  border: 1px solid #cccf;
+  background-color: #fffe;
+  border-radius:1vh;
+  text-decoration:none;
+}
+.popuplink:hover{
+  color:white;
+  background-color:black;
 }
 
 

@@ -793,6 +793,8 @@ coverImage:"NHE/NHE_02.png",
         shortDescription:`Jeu de course à obstacle aux niveaux procéduraux,
         avec moins de 560 caractères de code (deux tweets!)`,
 
+        bgVid:"dodger.mp4",
+
         iconImage:"560icon.png",
         tags:["Jeu HTML5","p5.js","Tweet-tweet Jam"],
         date:[5,5,2020],
@@ -886,8 +888,11 @@ coverImage:"NHE/NHE_02.png",
       {
         title:"Laundromadness!",
 
-        shortDescription:`Petite aventure à la buanderie, un jeu créé avec
+        shortDescription:`Grande aventure à la buanderie, un jeu créé avec
         Bitsy.`,
+
+        // arrière-plan
+        bgImg:"laundro/06.png",
 
         //fullDescription:"It's a big world out there. <br>In this game you play as a kid who has all sorts of adventures while trying to do his laundry. <br><br>Follow the story and discover the wild side of the local laundromat! Made with Bitsy.",
         tags:["Bitsy","Game design"],
