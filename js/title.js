@@ -1,10 +1,16 @@
+const CoverTitleHeight_largemode = 45;
+const CoverTitleHeight_smallmode = 45;
+
+const CoverSubtitleHeight_largemode = 16;
+const CoverSubtitleHeight_smallmode = 14;
 
 // styleTitle()
 //
 // called in scrollevent, set position and size of page title in coverbox
 
 function styleTitle(fsize,lheight,fsize2,spacing){
-
+  //fsize *=0.5;
+  //lheight *=0.5;
   // set font size :
 
   coverTitleDiv.style.fontSize=fsize;
@@ -18,7 +24,7 @@ function styleTitle(fsize,lheight,fsize2,spacing){
   // set position :
 
   coverWhiteSpan.style.left=`calc(${fsize} + 15px)`;
-  coverSubtitle[0].style.top=`${14*titleExpandedAmount}vh`;
+  //coverSubtitle[0].style.top=`${14*titleExpandedAmount}vh`;
 
   // set letter spacing :
 
@@ -36,11 +42,11 @@ function styleTitle(fsize,lheight,fsize2,spacing){
   // set title element top-offset :
 
   if(smallmode){
-    coverTitleParent.style.top=(60*titleExpandedAmount)+"vh";
-    coverSubtitle[0].style.top=(14*titleExpandedAmount)+"vh";
+    coverTitleParent.style.top=(CoverTitleHeight_smallmode*titleExpandedAmount)+"vh";
+    coverSubtitle[0].style.top=(CoverSubtitleHeight_smallmode*titleExpandedAmount)+"vh";
   }
   else {
-    coverTitleParent.style.top=(20*titleExpandedAmount)+"vh";
-    coverSubtitle[0].style.top=(26*titleExpandedAmount)+"vh";
+    coverTitleParent.style.top=(CoverTitleHeight_largemode*titleExpandedAmount)+"vh";
+    coverSubtitle[0].style.top=(CoverSubtitleHeight_largemode*titleExpandedAmount)+"vh";
   }
 }

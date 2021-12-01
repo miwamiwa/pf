@@ -1,3 +1,5 @@
+let enableInfoBox = false;
+
 // expandProject()
 //
 // expand a selected project using projectDescritions data
@@ -9,62 +11,22 @@ function expandProject(index,noupdate){
   // put together "popup" element
   let p = projectDescriptions[index];
   selectedProject = p.title.replace(" ","_");
+
   // update url
   if(noupdate==undefined)
     updateCurrentURL();
 
-    clearInterval(ssInterval);
+  clearInterval(ssInterval);
+
   // clear and un-hide popup area
   popupsection.innerHTML = "";
   popupsection.hidden = false;
 
-  // setup cover image element
-  let coverimg = "";
-
-  // if there is a cover image
-  if(p.coverImage!=undefined){
-
-    // if there is no image gallery, display just the image
-    if(p.imageGallery==undefined)
-      coverimg=`<div class='popupimgcontainer'>
-      <img class="popupimg" src="images/${p.coverImage}"></img>
-      </div>`;
-
-    // if there is an image gallery, make a slide showwww
-    else {
-      coverimg=makeSlideShow(p.coverImage,false,p.imageGallery);
-    }
-  }
-
-  // if there is no cover image but there is a video
-  else if(p.coverVideo!=undefined){
-
-    // if there is no image gallery, display just the video
-    if(p.imageGallery==undefined)
-      coverimg=p.coverVideo;
-
-    // if there is an image gallery, make a slide showwww
-    else {
-      coverimg=makeSlideShow(false,p.coverVideo,p.imageGallery);
-    }
-  }
-
-
-  // get tags string
+  // generate html
+  let coverimg = setupImageArea(p);
   let tags = getTagData(index);
-
-  // get date string
   let date = getDate(p.date);
-
-  // get links string (for footer)
-  let links = "";
-  if(p.externalLinks!=undefined&&p.externalLinks.length>0){
-    links ="<div class='popupbodyitalic'>external links:</div>";
-
-    for(let i=0; i<p.externalLinks.length; i++){
-      links += `<a class="popuplink" href='${p.externalLinks[i].link}'>${p.externalLinks[i].title}</a><br>`;
-    }
-  }
+  let links = setupLinkText(p);
 
 
   // setup overview text (popup body)
@@ -74,20 +36,53 @@ function expandProject(index,noupdate){
 
   // if entry contains a 'featureDescription' property, display that:
   if(p.featureDescription!=undefined){
-
-    ptpContent="";
     let f = p.featureDescription;
+    ptpContent = "";
+    // default info box
+    let infoboxtxt = `<div class='fdInfoBox'>
+    <div class="datebox"> ${date} <span class="tags"> ${tags} </span> </div>
+    </div>`;
 
-    // create info box (above article body)
-    let contrib = "<span class='fdinfotitle'>Contribution:</span> "+listElementsInAString(f.contributionDetails);
-    let collaborators = "<span class='fdinfotitle'>This was a solo project.</span>";
-    if(f.collaborators.length>0){
-      collaborators = "<span class='fdinfotitle'>Collaborators:</span>";
-      collaborators += listElementsInAString(f.collaborators);
+    // if collapsable info box is enabled
+    if(enableInfoBox){
+      ptpContent="";
+
+      // create info box (above article body)
+      let contrib = "<span class='fdinfotitle'>Contribution:</span> "+listElementsInAString(f.contributionDetails);
+      let collaborators = "<span class='fdinfotitle'>This was a solo project.</span>";
+      if(f.collaborators.length>0){
+        collaborators = "<span class='fdinfotitle'>Collaborators:</span>";
+        collaborators += listElementsInAString(f.collaborators);
+      }
+      let tools = "<span class='fdinfotitle'>Tools used:</span> "+listElementsInAString(f.tools);
+
+      infoboxtxt = `<div class='fdInfoBox'>
+
+      <div class="datebox"> ${date} <span class="tags"> ${tags} </span> </div>
+
+        <div class='fdContribution fdinfosection infoToggle'>${contrib}</div>
+
+        <div class='fdInfoBoxRight fdinfosection'>
+          <div class='fdTools infoToggle'>${tools}</div> <br>
+          <div class='fdContext infoToggle'>
+            <span class='fdinfotitle'>Context:</span>
+            ${f.context}
+            </div>
+            </div>
+
+        <div class='fdCollaborators fdinfosection infoToggle'>${collaborators}</div>
+      </div>
+
+      <div id="infoBoxToggle" onclick="toggleInfoBox()">
+      more info
+      </div>`;
     }
-    let tools = "<span class='fdinfotitle'>Tools used:</span> "+listElementsInAString(f.tools);
 
-    // add images in article
+
+
+
+    // parse image tags
+
     let bod = f.body;
     imagesInArticle = [];
     while(bod.indexOf("%#i")>=0){
@@ -101,7 +96,6 @@ function expandProject(index,noupdate){
     // create image gallery element with remaining images (end of article)
     let gallerytxt="";
     if(p.imageGallery!=undefined){
-
       gallerytxt=`<br><br>
       <div class="imageGalleryDescription">Images:</div>
       <div class="imageGalleryContainer">`;
@@ -115,11 +109,11 @@ function expandProject(index,noupdate){
           `;
         }
       }
-
       gallerytxt +="</div>";
     }
 
-    // add audio preview elements
+    // parse audio elements
+
     while(bod.indexOf("%#a")>=0){
       let i = bod.indexOf("%#a");
       let j=parseInt( bod.substring(i+3,i+4) );
@@ -127,35 +121,20 @@ function expandProject(index,noupdate){
       bod = bod.replace("%#a",`<div class="fdAudioEl">${p.audioGallery[j]}</div>`)
     }
 
-    // add line breaks
+    // parse line breaks
+
     while(bod.indexOf("%#")>=0){
       bod = bod.replace("%#",`<br>`)
     }
 
 
+
     overviewtxt=`
     <div class='fdBox'>
 
-    <div class='fdInfoBox'>
+    ${infoboxtxt}
 
-    <div class="datebox"> ${date} <span class="tags"> ${tags} </span> </div>
 
-      <div class='fdContribution fdinfosection infoToggle'>${contrib}</div>
-
-      <div class='fdInfoBoxRight fdinfosection'>
-        <div class='fdTools infoToggle'>${tools}</div> <br>
-        <div class='fdContext infoToggle'>
-          <span class='fdinfotitle'>Context:</span>
-          ${f.context}
-          </div>
-          </div>
-
-      <div class='fdCollaborators fdinfosection infoToggle'>${collaborators}</div>
-    </div>
-
-    <div id="infoBoxToggle" onclick="toggleInfoBox()">
-    more info
-    </div>
 
     <div class='fdBody'>${bod}</div>
     ${gallerytxt}
@@ -205,6 +184,8 @@ function expandProject(index,noupdate){
   updateBodyPadding();
 
   infoBoxDisplayed=true; //revered
+
+  if(enableInfoBox)
   toggleInfoBox();
 
   // collapse featured project list
@@ -236,6 +217,42 @@ let ssel1 = undefined;
 let ssel2 = undefined;
 let sscounter =0;
 
+
+
+function setupLinkText(p){
+  let links = "";
+  if(p.externalLinks!=undefined&&p.externalLinks.length>0){
+    links ="<div class='popupbodyitalic'></div>";
+
+    for(let i=0; i<p.externalLinks.length; i++){
+      links += `<a class="popuplink" href='${p.externalLinks[i].link}'>${p.externalLinks[i].title}</a><br>`;
+    }
+  }
+  return links;
+}
+
+
+function setupImageArea(p){
+  let coverimg = "";
+
+  if(p.coverImage!=undefined){
+    // if there is no image gallery, display just the image
+    if(p.imageGallery==undefined) coverimg=`<div class='popupimgcontainer'>
+      <img class="popupimg" src="images/${p.coverImage}"></img> </div>`;
+
+    // if there is an image gallery, make a slide showwww
+    else coverimg=makeSlideShow(p.coverImage,false,p.imageGallery);
+  }
+
+  // if there is no cover image but there is a video
+  else if(p.coverVideo!=undefined){
+    // if there is no image gallery, display just the video
+    if(p.imageGallery==undefined) coverimg=p.coverVideo;
+    // if there is an image gallery, make a slide showwww
+    else coverimg=makeSlideShow(false,p.coverVideo,p.imageGallery);
+  }
+  return coverimg;
+}
 
 
 function makeSlideShow(coverimg,covervideo,gallery){

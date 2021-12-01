@@ -9,12 +9,25 @@ let projectDescriptions = [
   // sous-titre (no longer a sorting feature)
   featuredIn:["Game Sound"],
 
+  // date
+  date:[20,12,2019],
+
   // background
   bgImg: "lp/02.png", // ou bien bgVid:"vid.mp4",
 
-  // thumbnail text
+  // (sous-titre du thumbnail, en couleur)
+  tags:["Game Sound","Max MSP", "Unity"],
+
+  // spécifier une image pour le thumbnail (optionel)
+  iconImage:"GHOST.png",
+
+  // thumbnail text v1 (automatically truncated)
   fullDescription:"This text will be displayed on the thumbnail."
-  +"<br><br>Woop woop!",
+  +" Woop woop!",
+
+  // thumbnail text v2 (not truncated)
+  shortDescription:"This text will be displayed on the thumbnail."
+  +" Woop woop!",
 
   // article
   featureDescription:{
@@ -32,10 +45,11 @@ let projectDescriptions = [
   <span class="fr"></span>`,
 
   // article top/info section
-  contributionDetails:["Something I did in the project","Something else","Keep it short"],
-  collaborators:["Untel (programmation)","Unautre Tel (design)"],
-  tools:["Unity/C#","Max/MSP","Cubase"],
-  context:"On a fait ca ou, pourquoi?"
+  // (outdated)
+  // contributionDetails:["Something I did in the project","Something else","Keep it short"],
+  // collaborators:["Untel (programmation)","Unautre Tel (design)"],
+  // tools:["Unity/C#","Max/MSP","Cubase"],
+  // context:"On a fait ca ou, pourquoi?"
 },
 
 // list of image to be displayed
@@ -61,11 +75,7 @@ coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupi
 // otherwise include an image (strangely not optional)
 coverImage:"NHE/NHE_02.png",
 
-// relevant tags for the project
-tags:["Game Sound","Max MSP", "Unity"],
 
-// date
-date:[20,12,2019],
 
 },
 
@@ -91,7 +101,7 @@ date:[20,12,2019],
   bgVid:"noshistoires.mp4",
 
   // thumbnail text
-  fullDescription:`Projection
+  shortDescription:`Projection
   intéractive créée en collaboration avec Jules Galbraith, Dana
   Ryashi et Rose-Marie Dion.`,
 
@@ -114,7 +124,7 @@ date:[20,12,2019],
     et le mapping (Photon).
 
     %#%#
-    L'oeuvre a été présentée le X aout 2021 sur la façade de l'Hotel 0,
+    L'oeuvre a été présentée en aout 2021 sur la façade de l'Hotel 0,
     grâce à une collaboration entre Vyv, la SAT, Alice Jarry et le
     festival cinéma Urbain.
 
@@ -128,10 +138,10 @@ date:[20,12,2019],
     `,
 
     // article top/info section
-    contributionDetails:["Interaction design","System design","Text Animation","Programming"],
-    collaborators:["Jules Galbraith","Dana Ryashi","Rose-Marie Dion"],
-    tools:["Unity/C#","Photon (vyv)","html/javascript","node.js"],
-    context:"Festival cinema urbain, cours de CART 460"
+    // contributionDetails:["Interaction design","System design","Text Animation","Programming"],
+    // collaborators:["Jules Galbraith","Dana Ryashi","Rose-Marie Dion"],
+    // tools:["Unity/C#","Photon (vyv)","html/javascript","node.js"],
+    // context:"Festival cinema urbain, cours de CART 460"
   },
 
   // list of image to be displayed
@@ -140,8 +150,6 @@ date:[20,12,2019],
     "NHE/NHE_03.png"
   ],
 
-  // list of audio elements to embed in page
-  audioGallery:[],
 
   // a video embed to place in frame 1 of the slide show
   //coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -149,7 +157,7 @@ date:[20,12,2019],
   coverImage:"NHE/NHE_02.png",
 
   // relevant tags for the project
-  tags:["Projection Interactive","C#", "node.js"],
+  tags:["Projection intéractive","Unity", "node.js"],
 
   externalLinks:[],
 
@@ -175,12 +183,22 @@ date:[20,12,2019],
   // sous-titre (no longer a sorting feature)
   featuredIn:["HTML5 game prototype"],
 
+  // date
+  date:[20,12,2019],
+
+
+  // tags (thumbnail subtitle)
+  tags:["jeu HTML5","Monde génératif","musique procédurale"],
+
+  // thumbnail text
+  shortDescription:"Jeu d'exploration situé dans un univers génératif infini, créé dans le cadre du concours js13k 2021.",
+  //"Exploration game featuring an infinite universe made for js13k 2021",
+
+
   // background
   bgImg: "Planets/01.png",
   bgVid:"planets.mp4",
 
-  // thumbnail text
-  fullDescription:"Exploration game featuring an infinite universe made for js13k 2021",
 
   // article
   featureDescription:{
@@ -190,10 +208,9 @@ date:[20,12,2019],
     Dans Space Explorer, je place le joueur dans un univers
     génératif infini qu'il peut explorer à sa guise.
     %#%#
-    À chaque planète son look unique, ses propres cours d'eau,
-    ses petits fruits interstellaires, sa langue locale et surtout,
-    mon aspect préféré, une petite musique, elle aussi générative et
-    unique à chaque endroit (à écouter dans le meddley ci-dessous).
+    À chaque planète son look individuel, ses propres cours d'eau,
+    ses arbres et ses petits fruits interstellaires, sa langue locale et un
+    un petit extrait de musique générative unique.
     %#%#
     %#a0
     %#%#
@@ -244,11 +261,7 @@ date:[20,12,2019],
   // otherwise include an image (strangely not optional)
   coverImage:"Planets/01.png",
 
-  // relevant tags for the project
-  tags:["Game Sound","Max MSP", "Unity"],
 
-  // date
-  date:[20,12,2019],
 
 },
 
@@ -267,12 +280,19 @@ date:[20,12,2019],
   // sous-titre (no longer a sorting feature)
   featuredIn:["Unity game prototype"],
 
+  // date
+  date:[1,05,2021],
+
   // background
   bgImg: "Maze/03.png",
   bgVid:"mazenbirb.mp4",
 
+  // thumbnail subtitle
+  tags:["Game design","programmation","Unity 3D"],
+
   // thumbnail text
-  fullDescription:"Game prototype made for What-a-Jam! game jam on itch.io.",
+  shortDescription:"Prototype de jeu créé pour le game jam What-A-Jam! sur itch.io",
+  //"Game prototype made for What-a-Jam! game jam on itch.io.",
 
   // article
   featureDescription:{
@@ -333,11 +353,7 @@ date:[20,12,2019],
   // otherwise include an image (strangely not optional)
   coverImage:"Maze/03.png",
 
-  // relevant tags for the project
-  tags:["Game Design","Unity", "Music"],
 
-  // date
-  date:[1,06,2021],
 
 },
 
@@ -350,15 +366,36 @@ date:[20,12,2019],
 
 
 
-//******************** LIQUID PERCEPTIONS ******************************
-{
-  title:"Liquid Perceptions",
-  bgImg: "lp/02.png",
-  fullDescription:"Liquid Perceptions is a research-creation project by Olivia McGilchrist, Seyed M. Tabatabaei, Julia Salles and Dougy Hérard at the Milieux Institute at Concordia Univeristy, for which I provided some sound design work. "
-  +"<br><br>In this dual VR and non-VR experience, two players compete by catching as many fish as they can on a touch screen while a third player, wearing the VR set, witnesses directly the ecological damage of the first two players' fishing, as they swim across the increasingly dangerous underwater environment that lies beneath."
-  +"<br>I created sound effects and edited provided musical material to create different soundtracks for the underwater environment (for the VR user's headphones) and overwater (speakers heard by everyone).<br> I programmed the soundtrack in Max MSP (communicating with the Unity project using OSC), to route the soundtracks easily and to allow for some sound design experimentation. The final result featured use of granulation to handle large amounts of sound emitting objects, and some basic motion mapping.",
+// ********** LIQUID PERCEPTIONS **********
 
-  featuredIn:["Game Sound"],
+{
+  // titre
+  title:"Liquid Perceptions",
+  // sous-titre
+  featuredIn:["Conception sonore"],
+
+  // arrière-plan
+  bgImg: "lp/02.png",
+
+  // texte du thumbnail
+  shortDescription:`Liquid Perceptions est une installation VR à laquelle j'ai
+  contribué un travail de conception sonore technique.`,
+
+  // sous-titre bleu du thumbnail
+  tags:["Conception sonore","Conception audio technique","Max/MSP"],
+  date:[20,12,2019],
+
+
+  //Le projet faisait partie
+  //d'un travail de recherche-création mené par Olivia McGilchrist à l'université
+  //Concordia. ,
+
+
+  //"Liquid Perceptions is a research-creation project by Olivia McGilchrist, Seyed M. Tabatabaei, Julia Salles and Dougy Hérard at the Milieux Institute at Concordia Univeristy, for which I provided some sound design work. "
+  //+"<br><br>In this dual VR and non-VR experience, two players compete by catching as many fish as they can on a touch screen while a third player, wearing the VR set, witnesses directly the ecological damage of the first two players' fishing, as they swim across the increasingly dangerous underwater environment that lies beneath."
+  //+"<br>I created sound effects and edited provided musical material to create different soundtracks for the underwater environment (for the VR user's headphones) and overwater (speakers heard by everyone).<br> I programmed the soundtrack in Max MSP (communicating with the Unity project using OSC), to route the soundtracks easily and to allow for some sound design experimentation. The final result featured use of granulation to handle large amounts of sound emitting objects, and some basic /////motion mapping.",
+
+
 
   featureDescription:{
 
@@ -400,8 +437,7 @@ date:[20,12,2019],
 
     coverVideo:`<iframe src="https://player.vimeo.com/video/395215205" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
     <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-    tags:["Game Sound","Max MSP", "Unity"],
-    date:[20,12,2019],
+
 
   },
 
@@ -414,15 +450,33 @@ date:[20,12,2019],
 
 
 
-  //******************** FASTENED FURIOUS ******************************
+  // ******* FASTENED FURIOUS *******
+
+
   {
+    // titre
     title:"Fastened Furious",
+    // subtitle
+    featuredIn:["Conception sonore"],
+    // date
+    date:[1,4,2019],
+
+    // arriere plan
     bgVid:"ff.mp4",
-    fullDescription:`Fastened Furious was created for the Ubisoft 2019 Game Lab Competition, where the theme was “spectacle.” The game is a race between two teams of two players tethered together, overcoming wacky obstacles and racing to the finish line. Our game was nominated for the Jury's Special Award. (summary and images by Nicole Lin)
-    <br><br>I picked and produced sound effects, composed BGM tracks, set up the project in Wwise and scripted audio triggers in C#. The soundtrack featured midi instruments that would interchange during gameplay, using tools included in Wwise and some C# scripting on the Unity side.
-    <br><br>Collaborators: Dougy Herard, Zied Jebali, Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin, Scott Smith`,
+
+    // thumbnail
+    shortDescription: `Fastened Furious est un jeu créé dans le cadre du concours universitaire Gamelab auquel j'ai contribué un travail de conception sonore.`,
+
+    //`Fastened Furious was created for the Ubisoft 2019 Game Lab Competition, where the theme was “spectacle.” The game is a race between two teams of two players tethered together, overcoming wacky obstacles and racing to the finish line. Our game was nominated for the Jury's Special Award. (summary and images by Nicole Lin)
+    //<br><br>I picked and produced sound effects, composed BGM tracks, set up the project in Wwise and scripted audio triggers in C#. The soundtrack featured midi instruments that would interchange during gameplay, using tools included in Wwise and some C# scripting on the Unity side.
+    //<br><br>Collaborators: Dougy Herard, Zied Jebali, Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin, Scott Smith`,
+
+    // sous-titre thumbnail
+    tags:["Conception sonore","Wwise", "Musique"],
+
+    // image thumbnail (optionel)
     iconImage:'fficon.png',
-    featuredIn:["Game Sound"],
+
     featureDescription:{
 
       body:`%#Fastened Furious was created for the Ubisoft 2019 Game Lab Competition,
@@ -462,10 +516,12 @@ date:[20,12,2019],
     },
     coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
     <div class="videoCredits f3">Sneak peak video by Dougy Hérard</div>`, // OR coverVideo:"<iframe>",
-    tags:["Game Sound","Wwise", "Unity", "C#","Music"],
-    date:[1,4,2019],
+
+    // euh?????
     soundcloudDescription:"BGM tracks from Fastened Furious:",
+    // euh??
     soundcloudLink: `<iframe width="80%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
+
     audioGallery:[
       `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1007037676%3Fsecret_token%3Ds-i4Q0D&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/zpoon" title="zpoon" target="_blank" style="color: #cccccc; text-decoration: none;">zpoon</a> · <a href="https://soundcloud.com/zpoon/sets/fastened-furious-soundtrack-1/s-i4Q0D" title="fastened furious soundtrack" target="_blank" style="color: #cccccc; text-decoration: none;">fastened furious soundtrack</a></div>`,
 
@@ -505,10 +561,13 @@ date:[20,12,2019],
   {
     title:"Ghost Game",
     bgVid:"gg.mp4",
-    fullDescription:"Prototype for an audio-only game about chasing ghosts. ",
-    shortDescription:"ghosts AAAAH",
+    //fullDescription:"Prototype for an audio-only game about chasing ghosts. ",
+    shortDescription:"Ghost Game est un prototype de jeu Audio, à jouer sur mobile.",
+    iconImage:"GHOST.png",
+    tags:["Audio Game","Unity","Android"],
+    date:[1,12,2020],
     coverImage:"ghostgame/02.png",
-    featuredIn:["Game Sound","Game Design"],
+    featuredIn:["Game design"],
     featureDescription:
     {
       body:`
@@ -596,9 +655,7 @@ date:[20,12,2019],
       `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030778947%3Fsecret_token%3Ds-nGrBcOBJBqh&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
       `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030781707%3Fsecret_token%3Ds-Tzxjkw2saLq&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`
     ],
-    iconImage:"GHOST.png",
-    tags:["Game Design","Audio Game","Unity","Mobile","Game Sound","Programming"],
-    date:[1,12,2020],
+
     externalLinks:[
       {
         title:"Download (itch.io page)",
@@ -614,14 +671,17 @@ date:[20,12,2019],
   /* ENTRY 3 */
   /* GILGAMESH VIGNETTE GAMES */
   {
-    title:"Gilgamesh vignettes",
+    title:"L'épopée de Gilgamesh",
     bgVid:"gilga.mp4",
-    fullDescription:"Scenes from the epic of Gilgamesh told in vignette game form. ",
+    //fullDescription:"Scenes from the epic of Gilgamesh told in vignette game form. ",
+    shortDescription:`Scènes de l'épopée de Gilgamesh racontées sous forme de jeu-vignette, créés en solo et avec Melissa Lim.`,
+    //shortDescriptions:`<span class='en'>Scenes from the epic of Gilgamesh told in vignette game form.</span>
+    //<span class='fr'>Deux extraits de l'épopée de Gilgamesh sous forme de jeux-vignette</span>`,
+    tags:["Game design","Conception graphique","Conception sonore"],
+    date:[15,11,2020],
 
-    shortDescriptions:`<span class='en'>Scenes from the epic of Gilgamesh told in vignette game form.</span>
-    <span class='fr'>Deux extraits de l'épopée de Gilgamesh sous forme de jeux-vignette</span>`,
     coverImage:"gilgamesh/06.png",
-    featuredIn:["Game Design"],//, "Game Sound"],
+    featuredIn:["Game design"],//, "Game Sound"],
     featureDescription:{
 
       body:`
@@ -711,8 +771,7 @@ date:[20,12,2019],
         audioGallery:[`<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030473253%3Fsecret_token%3Ds-esKk0NgDdRE&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
         `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1030470604%3Fsecret_token%3Ds-lQJRRydZ0dO&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`],
         imageGallery:["gilgamesh/04.png","gilgamesh/08.png", "gilgamesh/09.png"],
-        tags:["Game Design","Programming","Game Sound","Unity","Music"],
-        date:[15,11,2020],
+
         externalLinks:[
 
           {
@@ -731,11 +790,18 @@ date:[20,12,2019],
       //******************** 560 DODGER ******************************
       {
         title:"Dodger",
-        shortDescription:`An obstacle dodging game with < 560 characters of code made with p5js.`,
-        fullDescription:``,
+        shortDescription:`Jeu de course à obstacle aux niveaux procéduraux,
+        avec moins de 560 caractères de code (deux tweets!)`,
+
+        iconImage:"560icon.png",
+        tags:["Jeu HTML5","p5.js","Tweet-tweet Jam"],
+        date:[5,5,2020],
+
+        //shortDescription:`An obstacle dodging game with < 560 characters of code made with p5js.`,
+        //fullDescription:``,
         coverImage:"560dodger2.png",
 
-        featuredIn:["Programming"],
+        featuredIn:["Programmation"],
         featureDescription:{
 
           body:`
@@ -792,9 +858,7 @@ date:[20,12,2019],
         },
 
         imageGallery:["560/01.png"],
-        iconImage:"560icon.png",
-        tags:["Javascript","Programming","Game Design"],
-        date:[5,5,2020],
+
         externalLinks:[
 
           {
@@ -821,10 +885,14 @@ date:[20,12,2019],
 
       {
         title:"Laundromadness!",
-        fullDescription:"It's a big world out there. <br>In this game you play as a kid who has all sorts of adventures while trying to do his laundry. <br><br>Follow the story and discover the wild side of the local laundromat! Made with Bitsy.",
-        tags:["Game Design","Bitsy"],
 
-        featuredIn:["Game Design"],
+        shortDescription:`Petite aventure à la buanderie, un jeu créé avec
+        Bitsy.`,
+
+        //fullDescription:"It's a big world out there. <br>In this game you play as a kid who has all sorts of adventures while trying to do his laundry. <br><br>Follow the story and discover the wild side of the local laundromat! Made with Bitsy.",
+        tags:["Bitsy","Game design"],
+
+        featuredIn:["Game design"],
         featureDescription:{
 
           body:`
@@ -893,10 +961,15 @@ date:[20,12,2019],
       {
         title:"Ape Naps",
         bgVid: "apenaps.mp4",
-        fullDescription:"Ape Naps is my submission for Js 13k Games 2019, where one makes a javascript game that zips down to 13kb, all files and libraries included. The theme was 'Back'."
-        +"<br><br>In this game, you (mama ape) bring your kids back home, on your back, to some Bach. I wanted to make something silly and most peaceful. You run into other animals but you can't harm them. You only bump each other out of the way. Comments showed that part caused more grief to playtesters than anything! It was valuable feedback at the time."
-        +"<br><br>This was a first time attempting to make a full game on my own! And a first time doing many things in javascript without any libraries, like canvas drawing and generating sound. Features my own image compression scheme."
-        +"<br><br>Controls: left=a, right=d, space=jump, w=wiggle (drop a passenger)",
+
+        tags:["Jeu HTML5","Programmation"],
+        date:[13,9,2019],
+
+        shortDescription:`Platformer créé pour le concours Js 13k Games 2019, où le défi est de rendre un fichier zip de 13kb.`,
+        //fullDescription:"Ape Naps is my submission for Js 13k Games 2019, where one makes a javascript game that zips down to 13kb, all files and libraries included. The theme was 'Back'."
+        //+"<br><br>In this game, you (mama ape) bring your kids back home, on your back, to some Bach. I wanted to make something silly and most peaceful. You run into other animals but you can't harm them. You only bump each other out of the way. Comments showed that part caused more grief to playtesters than anything! It was valuable feedback at the time."
+        //+"<br><br>This was a first time attempting to make a full game on my own! And a first time doing many things in javascript without any libraries, like canvas drawing and generating sound. Features my own image compression scheme."
+        //+"<br><br>Controls: left=a, right=d, space=jump, w=wiggle (drop a passenger)",
         coverVideo:`<iframe src="https://player.vimeo.com/video/432701435" class="popupimg" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`,
         imageGallery:[
           "apenaps.png",
@@ -929,8 +1002,7 @@ date:[20,12,2019],
           context:"js13k games 2019"
 
         },
-        tags:["Javascript","Programming","Game Design","Game Sound"],
-        date:[13,9,2019],
+
         externalLinks:[
           {
             title:"Play Ape Naps",
@@ -958,6 +1030,7 @@ date:[20,12,2019],
 
 
       /****** JS13K 2020 GAME ******/
+      /*
       {
         title:"js13k 2020 game",
         bgVid:"js13k2020.mp4",
@@ -1052,7 +1125,7 @@ date:[20,12,2019],
             }
           ]
         },
-
+*/
 
 
 

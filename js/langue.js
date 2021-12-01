@@ -10,6 +10,9 @@ function getLanguageSettings(){
     else if(lang=="fr") isFr=true;
   }
   else isFr=true;
+
+  // override
+  isFr=true;
 }
 
 

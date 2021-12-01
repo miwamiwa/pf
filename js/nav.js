@@ -21,8 +21,10 @@ function populateNav(){
   <span class="en">ABOUT</span><span class="fr">À PROPOS</span>
   </a>
 
+  <!-- language boutonne
   <span id="n4" class="navButton" onmouseenter="navfx(4)" onclick="toggleLanguage()">
   <span class="en">FR</span><span class="fr">EN</span></span>
+  -->
   </div>
   </div>
   `;

@@ -158,8 +158,8 @@ indent{
 .coverTitle1{
   font-family: 'Roboto', helvetica, sans-serif;
   font-weight:bold;
-  font-size:8vh;
-  line-height:8vh;
+  font-size:4vh;
+  line-height:4vh;
   letter-spacing:2px;
 }
 
@@ -374,10 +374,10 @@ cursor:pointer;
 }
 .featurebox{
   width:32vh;
-  height:34vh;
+  height:32vh;
   flex-grow: 1;
   background-color:white;
-  margin:0.5vh;
+  margin:1vh;
   border-radius:3px;
   z-index:0;
   position:relative;
@@ -386,7 +386,7 @@ cursor:pointer;
 .pboximg{
   object-fit:cover;
   width:100%;
-  height:22vh;
+  height:18vh;
   padding:6px;
 }
 
@@ -408,7 +408,6 @@ cursor:pointer;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-
   overflow:hidden;
 }
 .tagz{

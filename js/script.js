@@ -14,6 +14,8 @@ const SubtitleSize_Wide = "3";
 
 const SlideShowHeight_Default = "50vh";
 
+const DefaultAmtThingsShown = 6;
+
 let titleExpandedAmount=1;
 
 let featureboxsize =22;
@@ -205,7 +207,9 @@ function scrollevent(){
 
 
   // set title size when title is shrinking :
-
+  let mult = 1;
+  
+  if(!smallmode) mult = .6;
   if(scroll>shrinkheight){
 
     // titleExpandedAmount=1 at top of shrink range, 0 at bottom
@@ -213,14 +217,15 @@ function scrollevent(){
     let adjustedSize = titlesize * 0.1*hunit;
 
     let titleFontSize= navbheight + titleExpandedAmount*(adjustedSize-navbheight);
+
     let subtitleFontSize = navbheight + titleExpandedAmount*((subtitlesize * 0.1*hunit)-navbheight);
     let lineHeight = titleFontSize - 19 * (1-titleExpandedAmount);
     let characterSpacing = 2 - 10  * (1-titleExpandedAmount);
 
     styleTitle(
-      titleFontSize + "px",
-      lineHeight + "px",
-      subtitleFontSize + "px",
+      (titleFontSize*mult) + "px",
+      (lineHeight*mult) + "px",
+      (subtitleFontSize) + "px",
       characterSpacing
     );
   }
@@ -230,9 +235,9 @@ function scrollevent(){
   else {
     titleExpandedAmount=1;
     styleTitle(
-      titlesize+"vh",
-      titlesize+"vh",
-      subtitlesize+"vh",
+      (titlesize*mult)+"vh",
+      (titlesize*mult)+"vh",
+      (subtitlesize)+"vh",
       2
     );
   }
@@ -309,7 +314,7 @@ function scrollevent(){
   // position nav bar when it is in adaptive range :
 
   else {
-    popupSection.style.paddingTop = ( 0*hunit) + "px";
+    if(popupshown) popupSection.style.paddingTop = ( 0*hunit) + "px";
     bodySection.style.marginTop = (0.2*hunit) + "px";
     navbody.style.width=expandednavwidth;
     coverTitleParent.style.display="block";
@@ -664,7 +669,11 @@ function traductionSubjectBox(input){
 
 function showLess(){
   let index=subjects.indexOf(featureSelection);
+  amtThingsShown = DefaultAmtThingsShown;
   selectSubject(index,true);
+  bodycontentsbox.scrollIntoView();
+  document.body.scrollTop -= 200;
+
 }
 
 // showMore()
@@ -676,16 +685,25 @@ function showMore(){
   bodycontentsbox.innerHTML="";
   let featuredprojectcount =0;
   let taggedprojectcount =0;
+  let firstNewBoxIndex = amtThingsShown-1;
+  let firstNewBox;
   amtThingsShown +=4;
   for(let i=0; i<projectDescriptions.length; i++){
     if(i<amtThingsShown){
       let p = projectDescriptions[i];
 
-      addProjectBox(p,i,false);
+      let newbox = addProjectBox(p,i,false);
+      if(i==firstNewBoxIndex){
+        console.log(i);
+        firstNewBox = newbox;
+        console.log(newbox)
+      }
       featuredprojectcount++;
     }
 
   }
+
+
 
   // update show/hide button
   if(amtThingsShown>=projectDescriptions.length){
@@ -693,8 +711,14 @@ function showMore(){
     showlesssection.hidden=false;
   }
 
+  if(firstNewBox!=undefined){
+    firstNewBox.scrollIntoView();
+    //document.body.scrollTop-= navHeight;
+    //if(popupshown) document.body.scrollTop-= navHeight;
+  }
+
   // update page scroll
-  bodycontentsbox.scrollIntoView();
+//bodycontentsbox.scrollIntoView();
   //document.body.scrollTop -= 40;
 }
 
@@ -807,6 +831,8 @@ function addProjectBox(p,index,isbigbox){
     //boxoverlay.setAttribute("onmouseleave",`triggerHideBoxMeta(${index})`);
     tempbox.setAttribute("onclick",`expandProject(${index})`);
     tempbox.appendChild(boxoverlay);
+
+    return tempbox;
   }
 
 }
@@ -899,12 +925,11 @@ scroll to the "popup" section on the page
 
 function reachPopup(){
 
+  // scroll
   popupsection.scrollIntoView();
+  document.body.scrollTop -= navHeight;
 
-  if(popupoffsetted)
-    document.body.scrollTop -= 2*navHeight+popupSpaceBelowTitle;
-  else document.body.scrollTop -= navHeight;
-
+  // adapt ui
   scrollevent();
 }
 
@@ -981,7 +1006,7 @@ function exitpopup(){
 function selectSubject(index){
   //console.log("select subject!")
   featureSelection = subjects[index];
-  amtThingsShown = 4;
+  amtThingsShown = DefaultAmtThingsShown;
   //updateSubjectsBox();
   bodycontentsbox.innerHTML="";
   let featuredprojectcount =0;
