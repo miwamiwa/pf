@@ -673,6 +673,22 @@ coverImage:"NHE/NHE_02.png",
     featureDescription:{
 
       body:`
+
+
+      Deux scènes de l'épopée de Gilgamesh racontées sous forme de jeu-vignette.
+
+      %#%#
+
+      Dans le premier jeu, conçu avec Melissa Lim, on aide Gilgamesh à frayer
+      son chemin dans des terres inconnues avec quelques gestes simples de 
+      click-and-drag. Dans le deuxième, on suit le héros sur son radeau, dans les
+      moments les plus éprouvants de la traversé d'une mer sans fin.
+
+      %#%#
+
+
+
+
       <span class="en">
       %#
       Two passages from the epic of Gilgamesh told in the form of miniature (or
