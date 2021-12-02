@@ -207,9 +207,9 @@ function scrollevent(){
 
 
   // set title size when title is shrinking :
-  let mult = 1;
-  
-  if(!smallmode) mult = .6;
+  let mult = 1.5;
+
+  if(!smallmode) mult = .8;
   if(scroll>shrinkheight){
 
     // titleExpandedAmount=1 at top of shrink range, 0 at bottom

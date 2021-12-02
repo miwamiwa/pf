@@ -1,8 +1,8 @@
 const CoverTitleHeight_largemode = 45;
 const CoverTitleHeight_smallmode = 45;
 
-const CoverSubtitleHeight_largemode = 16;
-const CoverSubtitleHeight_smallmode = 14;
+const CoverSubtitleHeight_largemode = 22;
+const CoverSubtitleHeight_smallmode = 21;
 
 // styleTitle()
 //

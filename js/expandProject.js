@@ -27,6 +27,8 @@ function expandProject(index,noupdate){
   let tags = getTagData(index);
   let date = getDate(p.date);
   let links = setupLinkText(p);
+  let linksHeader = "";
+  if(links!="") linksHeader = "<br><br><br><div class='popupbodyitalic'>Liens:</div>";
 
 
   // setup overview text (popup body)
@@ -97,7 +99,7 @@ function expandProject(index,noupdate){
     let gallerytxt="";
     if(p.imageGallery!=undefined){
       gallerytxt=`<br><br>
-      <div class="imageGalleryDescription">Images:</div>
+      <br><div class="imageGalleryDescription popupbodyitalic">Images:</div><br>
       <div class="imageGalleryContainer">`;
 
       for(let i=0; i<p.imageGallery.length; i++){
@@ -172,7 +174,7 @@ function expandProject(index,noupdate){
     <div class='popupbodyitalic'></div>
     ${overviewtxt}
 
-
+    ${linksHeader}
     <div class="popupexternallinks">
 
       ${links}
@@ -222,7 +224,7 @@ let sscounter =0;
 function setupLinkText(p){
   let links = "";
   if(p.externalLinks!=undefined&&p.externalLinks.length>0){
-    links ="<div class='popupbodyitalic'></div>";
+    links = "";
 
     for(let i=0; i<p.externalLinks.length; i++){
       links += `<a class="popuplink" href='${p.externalLinks[i].link}'>${p.externalLinks[i].title}</a>`;

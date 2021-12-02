@@ -131,18 +131,18 @@
 }
 /* links section in popup ui */
 .popupexternallinks{
-  margin-top:6vh;
+  margin-top:2vh;
   margin-left:0%;
 
   display:flex;
   justify-content: space-between;
-  flex-direction:row-reverse;
+  flex-direction:row;
 
   align-items:center;
   flex-wrap:wrap;
   width:100%;
 
-  padding-top:4vh;
+  padding-top:2vh;
   border-top:1px solid #eeef;
   border-radius:0.6vw 0.6vw 0vw 0vw;
 }
