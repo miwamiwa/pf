@@ -124,7 +124,7 @@ coverImage:"NHE/NHE_02.png",
     et le mapping (Photon).
 
     %#%#
-    L'oeuvre a été présentée en aout 2021 sur la façade de l'Hotel 0,
+    L'oeuvre a été présentée en aout 2021 sur la façade de l'Hotel Zéro1,
     grâce à une collaboration entre Vyv, la SAT, Alice Jarry et le
     festival cinéma Urbain.
 
@@ -147,7 +147,8 @@ coverImage:"NHE/NHE_02.png",
   // list of image to be displayed
   imageGallery:[
     "NHE/NHE_01.png",
-    "NHE/NHE_03.png"
+    "NHE/NHE_03.png",
+    "NHE/04.png"
   ],
 
 
@@ -178,7 +179,7 @@ coverImage:"NHE/NHE_02.png",
 //****** Planetsz *******
 {
   // titre
-  title:"Planets",
+  title:"Planètes",
 
   // sous-titre (no longer a sorting feature)
   featuredIn:["HTML5 game prototype"],
@@ -219,8 +220,7 @@ coverImage:"NHE/NHE_02.png",
     dans un fichier zip de moins 13kb, tout library ou framework confondu.
     %#%#
     Pour y parvenir, j'ai codé le jeu au complet sans framework, de
-    la "physique" à la génération de sons - il y a même un encodage
-    spécial pour les sprites.
+    la "physique" à la génération de sons, l'encodage des sprites, etc.
 
     <br><br> Le prototype s'est classé 34e sur 223.
 
@@ -244,15 +244,15 @@ coverImage:"NHE/NHE_02.png",
   // list of links at the end of the document
   externalLinks:[{
     link:"https://miwamiwa.github.io/Spacegame/",
-    title:"jouer"
+    title:"Jouer"
   },
   {
     link:"https://js13kgames.com/entries/spacew",
-    title:"page js13k"
+    title:"Page js13k"
   },
   {
     link:"https://github.com/miwamiwa/Spacegame",
-    title:"github"
+    title:"Github"
   }],
 
   // a video embed to place in frame 1 of the slide show
@@ -399,20 +399,33 @@ coverImage:"NHE/NHE_02.png",
 
   featureDescription:{
 
-    body:`%#In this dual VR and non-VR experience, two players compete by catching
-    as many fish as they can on a touch screen while a third player, wearing the
-    VR set, witnesses directly the ecological damage of the first two players'
-    fishing, as they swim across the increasingly dangerous underwater environment
-    that lies beneath.
-    %#%#I created sound effects and edited provided musical material to create different
-    soundtracks for the underwater environment (for the VR user's headphones) and
-    overwater (speakers heard by everyone).
-    %#%#I programmed the soundtrack in Max MSP (communicating with the Unity project
-      using OSC), to route the soundtracks easily and to allow for some sound
-      design experimentation. The final result featured use of granulation to
-      handle large amounts of sound emitting objects, and some basic motion mapping.
+    body:`
 
-      %#%#The game was presented in a live demonstration in December 2019. `,
+    Liquid Perceptions est une installation multimédia à laquelle j'ai
+    contribué un travail de conception sonore technique.
+
+    %#%#
+
+    Deux participants s'adonnent à une compétition de pêche dans un jeu
+    de style d'arcade affiché sur un écran TV, tandis qu'une 3e personne,
+    grâce au casque VR qui lui fait office de scanphandre,
+    sera témoin de l'impact des activités des
+    autres joueurs sur l'écosystème marin.
+
+    %#%#
+
+    Me joignant au projet près d'une semaine avant sa conclusion,
+    j'ai produit les effets sonores, edité la musique produite par
+    l'artiste sonore, et implémenté le tout dans un patch Max/MSP de ma
+    création, communiquant au projet Unity avec OSC. Le travail comportait
+    notamment une bande sonore adaptive aux game-states, ainsi que
+     deux sorties audios indépendantes, pour les deux sorties vidéo,
+     chacune avec sa propre trame sonore.
+
+    %#%#
+
+    Le jeu a été présenté en live en Décembre 2019.`,
+
       contributionDetails:["Sound editing","Sound effects production","Sound integration"],
       collaborators:["Olivia McGilchrist","Seyed M. Tabatabaei","Julia Salles","Dougy Hérard"],
       tools:["Unity/C#","Max/MSP","Cubase"],
@@ -479,39 +492,45 @@ coverImage:"NHE/NHE_02.png",
 
     featureDescription:{
 
-      body:`%#Fastened Furious was created for the Ubisoft 2019 Game Lab Competition,
-      where the theme was “spectacle.” The game is a race between two teams of
-      two players tethered together, overcoming wacky obstacles and racing to the
-      finish line. Our game was nominated for the Jury's Special Award.
+      body:`
+      En 2019 j'ai participé en tant que concepteur sonore au
+      projet Fastened Furious, créé avec Dougy Hérard, Zied Jebali,
+      Hiu Tung Lam, Ricardo Liganor, Melissa Lim, Nicole Lin et
+      Scott Smith dans le cadre du concours universitaire Gamelab
+      organisé par Ubisoft.
 
+      %#%#
 
-      %#%#I picked and produced sound effects, composed BGM tracks, set up the project
-      in Wwise and scripted audio triggers in C#.
+      J'ai produit les effets sonores, créé la musique et j'ai fait
+      l'implémentation des sons avec Wwise et Unity.
 
-      %#%# %#a1 %#%#
+      %#%#
 
-      The soundtrack featured midi
-      instruments that would interchange during gameplay, using tools included
-      in Wwise and some C# scripting on the Unity side.
+      Dans le jeu, deux équipes de deux joueurs liés entre eux
+      s'affrontent dans une course à obstacle sur le thème de l'espace.
 
-      %# %#a2 %#%#
+      %#%#
 
-      I made a number of sound effects, including this level-reset jingle:
+      La bande sonore, implémentée avec Wwise mais aussi grâce à un
+      script c#, était jouée à partir d'instruments MIDI dont le son
+      pouvait être changé lors du gameplay.
 
-      %# %#a3 %#%#
+      %#%# %#a1
 
-      And this sound for a big bad plant-beast (think little shop of horrors!)
-      that ended up being removed from the game. One day, plant-beast.
+      %#%# %#a2
 
-      %# %#a4 %#
+      %#%# %#i3
 
+      %#%#
 
+      C'était un projet bien amusant, avec une équipe bien cool.
+      %#... et puis notre jeu figurait parmis les mentions spéciales du jury!
 
       `,
-      contributionDetails:["Sound effects","Music","Implementation in Wwise","Trigger implementation in Unity","Midi soundtrack design"],
-      collaborators:["Dougy Herard","Zied Jebali","Hiu Tung Lam", "Ricardo Liganor", "Melissa Lim", "Nicole Lin", "Scott Smith"],
-      tools:["Unity/C#","Wwise","Ableton","Cubase"],
-      context:"Ubisoft Gamelab 2019"
+      //contributionDetails:["Sound effects","Music","Implementation in Wwise","Trigger implementation in Unity","Midi soundtrack design"],
+      //collaborators:["Dougy Herard","Zied Jebali","Hiu Tung Lam", "Ricardo Liganor", "Melissa Lim", "Nicole Lin", "Scott Smith"],
+      //tools:["Unity/C#","Wwise","Ableton","Cubase"],
+      //context:"Ubisoft Gamelab 2019"
 
     },
     coverVideo:`<iframe src="https://player.vimeo.com/video/395510779" class="popupimg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -533,10 +552,10 @@ coverImage:"NHE/NHE_02.png",
 
       `<iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/772100584%3Fsecret_token%3Ds-eJ50M&color=%23ff9900&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`,
     ],
-    imageGallery:["FF_title.jpg","FF_03.jpg","FF_05.jpg"],
+    imageGallery:["FF_title.jpg","FF_03.jpg","FF_05.jpg","glab2019.png"],
     externalLinks:[
       {
-        title:"Playthrough video",
+        title:"Vidéo de gameplay",
         link:"https://vimeo.com/432698850"
       }
     ]
@@ -572,23 +591,30 @@ coverImage:"NHE/NHE_02.png",
     {
       body:`
 
-      <span class="en">
-      In the fall of 2020 I learned about audio games, screenless video games,
-      and decided to try making my own prototype of an audio game for mobile.
+      GhostGame est un prototype de jeu audio, soit un jeu vidéo-sans-vidéo,
+      à jouer sur mobile.
 
-      %#%#My game is about chasing ghosts, and is meant to be played indoors with an
-      android phone and some headphones. The player will walk around their home
-      in search of ghosts, their steps being the cue for the game to advance the
-      narration and trigger events. Using specially designed sound cues, they must bust the darn ghosts by pointing and "shooting" with their
-      phone.
+      %#%#
 
-      %#%#This was an interesting project in so many ways, for the exploration of
-      mobile phone interaction, for the sound design challenge of conveying information
-      without a visual support, as well as for the game design challenge of composing
-      with so many restrictions. It was also just so fun recording and producing
-      sounds in such close connection to the game design.
+      C'est une petite séance de chasse aux fantômes, à jouer chez soi avec
+      les oreilles grandes ouvertes.
 
-      %#%#I programmed this with Unity and produced the sounds with Ableton and Cubase.
+      %#%# Grâce à des moments de narration,
+      des indices sonores spécialement conçus,
+      ainsi que l'usage des capteurs de l'appareil Android,
+      soit l'accéléromètre, le gyroscope et les capteurs de l'écran,
+      le téléphone devient un objet qui servira à débusquer les spectres
+      qui rodent chez vous afin de les éliminer une fois pour toute!
+
+      %#%#
+
+
+      L'objectif est à la fois d'interpeller
+      l'imagination du joueur, et de créer des liens amusants entre son
+      entourage et le monde du jeu. À suivre!
+
+
+
 
       %#%#%#Ambiance track:
 
@@ -596,55 +622,17 @@ coverImage:"NHE/NHE_02.png",
       Extract from the game audio:
 
       %# %#a1 %#
-      </span>
 
-      <span class="fr">
 
-      %#%# En automne 2020, j'ai découvert les jeux audio, forme de jeux vidéo sans écran
-      que je ne connaissais pas, et j'ai décidé d'essayer d'en créer mon propre prototype
-      pour mobile.
-
-      %#%# Mon jeu consiste à chasser des fantômes avec son téléphone. Il est conçu pour être joué
-      à l'intérieur, avec un
-      un téléphone androïde et des écouteurs.
-
-      %#%# Le joueur se promène chez lui
-      à la recherche de fantômes, ses pas signalant au jeu de faire avancer la
-      la narration et de déclencher les événements.
-      En utilisant des indices sonores spécialement conçus, ils doivent arrêter les fantômes en pointant et en "tirant" avec leur téléphone.
-
-      %#%# C'était un projet intéressant à bien des égards, pour l'exploration des
-      interactions avec un téléphone portable, pour le défi de la conception sonore
-      de transmettre des informations pertinantes
-      sans support visuel, ainsi que pour le défi de composer
-      avec de telles restrictions au niveau de la conception de jeu.
-      %#%# C'était également amusant d'enregistrer et de produire
-      des sons en lien si étroit avec le processus de conception du jeu.
-
-      %#%# Je l'ai programmé avec Unity et ai produit les sons avec Ableton et Cubase.
-
-      %#%#%#Piste d'ambiance:
-
-      %# %#a0 %#%#
-      Extrait du jeu:
-
-      %# %#a1 %#
-      </span>
 
 
       `,
-      contributionDetails:[
-        "Sensor-based interaction design",
-        "Audio-only game design",
-        "Unity/C# programming for Android",
-        "Sound effects",
-        "Ambiance track",
-        "Voice over / narration",
-        "Sound integration in Unity"
-      ],
-      collaborators:[],
-      tools:["Unity", "Ableton", "Cubase", "Android"],
-      context:"CART 410 Research-Creation in the Computation Arts"
+      //contributionDetails:[
+      //  "Sensor-based interaction design"
+      //],
+      //collaborators:[],
+      //tools:["Unity", "Ableton", "Cubase", "Android"],
+      //context:"CART 410 Research-Creation in the Computation Arts"
 
     },
     imageGallery:[
@@ -658,11 +646,11 @@ coverImage:"NHE/NHE_02.png",
 
     externalLinks:[
       {
-        title:"Download (itch.io page)",
+        title:"Télécharger (itch.io)",
         link:"https://sampc.itch.io/ghost-game-demo"
       },
       {
-        title:"Demo",
+        title:"Démo",
         link:"https://vimeo.com/486280011"
       }
     ]
