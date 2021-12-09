@@ -16,10 +16,12 @@ function populateNav(){
   <a id="n0" class="navButton" onmouseenter="navfx(0)" href="works.html">
   <span class="en">WORKS</span><span class="fr">PROJETS</span>
   </a>
-
+  
+  <!--
   <a id="n1" class="navButton" onmouseenter="navfx(1)" href="about.html">
   <span class="en">ABOUT</span><span class="fr">À PROPOS</span>
   </a>
+  -->
 
   <!-- language boutonne
   <span id="n4" class="navButton" onmouseenter="navfx(4)" onclick="toggleLanguage()">
